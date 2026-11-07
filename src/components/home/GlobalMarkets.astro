@@ -1,0 +1,160 @@
+---
+import { ArrowRight, Globe2, Anchor, Navigation } from 'lucide-react';
+
+const targetCorridors = [
+  { country: 'United Arab Emirates', ports: 'Jebel Ali, Khalifa Port', focus: 'Animal nutrition, bio-fertilizers & technical oils' },
+  { country: 'Saudi Arabia', ports: 'Jeddah Islamic Port, King Abdulaziz Port (Dammam)', focus: 'Agricultural feeds & industrial commodities' },
+  { country: 'Oman', ports: 'Sohar Port, Port of Salalah', focus: 'Soil conditioning & organic feed components' },
+  { country: 'Qatar', ports: 'Hamad Port', focus: 'Specialized agricultural procurement' },
+  { country: 'Bahrain', ports: 'Khalifa Bin Salman Port', focus: 'Commercial commodity sourcing' },
+  { country: 'Kuwait', ports: 'Shuwaikh Port, Shuaiba Port', focus: 'Feed ingredients & industrial supplies' }
+];
+---
+
+<section class="py-20 lg:py-28 bg-white overflow-hidden relative" aria-labelledby="global-markets-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="max-w-3xl space-y-4 mb-16">
+      <span class="text-xs font-bold uppercase tracking-[0.2em] text-teal font-heading">
+        Strategic Trade Corridors
+      </span>
+      <h2 id="global-markets-heading" class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-navy-900 tracking-tight leading-tight">
+        Connecting India to <br />
+        <span class="font-serif italic font-normal text-gold">Global Markets.</span>
+      </h2>
+      <p class="text-base text-slate-600 leading-relaxed max-w-2xl">
+        Sourcing agricultural commodities from western India for international buyers, with primary strategic focus on the Arabian Gulf and Middle Eastern markets.
+      </p>
+    </div>
+
+    <!-- Map & Trade Corridor Interactive Visual -->
+    <div class="bg-navy-950 rounded-3xl p-6 sm:p-10 lg:p-12 text-white relative overflow-hidden shadow-premium">
+      
+      <!-- Background Ambient Grid -->
+      <div class="absolute inset-0 bg-[radial-gradient(#193F66_1px,transparent_1px)] [background-size:20px_20px] opacity-25"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
+        
+        <!-- Left: Vector Route Map Graphic (7 cols) -->
+        <div class="lg:col-span-7 bg-navy-900/90 rounded-2xl p-6 border border-slate-800 relative">
+          
+          <div class="flex items-center justify-between pb-4 border-b border-slate-800/80 mb-6">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-gold animate-ping"></span>
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-300">Indian Ocean &amp; Arabian Gulf Corridor</span>
+            </div>
+            <span class="text-[11px] font-mono text-teal bg-teal/10 px-2 py-0.5 rounded border border-teal/20">Active Trade Routes</span>
+          </div>
+
+          <!-- SVG Maritime Trade Map -->
+          <div class="relative w-full aspect-[16/10] bg-navy-950/80 rounded-xl overflow-hidden border border-slate-800">
+            <svg viewBox="0 0 700 420" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Simplified Abstract Geographic Outlines -->
+              <!-- Arabian Peninsula Landmass -->
+              <path d="M120 140 C160 120, 220 120, 260 150 C290 180, 280 240, 270 280 C240 310, 180 320, 150 280 C120 250, 100 200, 120 140 Z" fill="#132B45" stroke="#1E446B" stroke-width="1.5" />
+              <!-- Iran / Gulf North Coast -->
+              <path d="M260 110 C320 100, 400 120, 440 160 C400 170, 320 150, 260 130 Z" fill="#132B45" stroke="#1E446B" stroke-width="1.5" />
+              <!-- Indian Subcontinent (Gujarat Gateway) -->
+              <path d="M460 160 C500 160, 540 180, 560 230 C550 290, 510 350, 480 370 C470 340, 460 280, 440 220 C430 190, 440 170, 460 160 Z" fill="#16385C" stroke="#398D89" stroke-width="2" />
+              
+              <!-- Mundra / Kandla Port Hub (Gujarat) -->
+              <g class="cursor-pointer">
+                <circle cx="465" cy="195" r="7" fill="#C8A45D" />
+                <circle cx="465" cy="195" r="14" stroke="#C8A45D" stroke-width="1.5" opacity="0.5" class="animate-pulse" />
+                <text x="485" y="198" fill="#FFFFFF" font-size="12" font-weight="700" font-family="sans-serif">Gujarat, India</text>
+                <text x="485" y="213" fill="#C8A45D" font-size="10" font-family="sans-serif">Sourcing Gateway (Mundra / Kandla)</text>
+              </g>
+
+              <!-- Trade Route Arcs (Mundra to Middle East) -->
+              <!-- Route to UAE (Jebel Ali) -->
+              <path d="M465 195 Q360 190 280 200" stroke="#C8A45D" stroke-width="2" stroke-dasharray="5 4" />
+              <!-- Route to Oman (Sohar) -->
+              <path d="M465 195 Q380 230 300 240" stroke="#398D89" stroke-width="1.5" stroke-dasharray="4 4" />
+              <!-- Route to Saudi Arabia (Dammam) -->
+              <path d="M465 195 Q340 150 240 170" stroke="#C8A45D" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.8" />
+              <!-- Route to Kuwait -->
+              <path d="M465 195 Q320 120 220 140" stroke="#398D89" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.8" />
+
+              <!-- Destination Port Markers -->
+              <!-- UAE -->
+              <circle cx="280" cy="200" r="5" fill="#398D89" />
+              <text x="290" y="195" fill="#E2E8F0" font-size="11" font-weight="600">UAE (Jebel Ali)</text>
+
+              <!-- Oman -->
+              <circle cx="300" cy="240" r="4.5" fill="#398D89" />
+              <text x="310" y="245" fill="#CBD5E1" font-size="10">Oman (Sohar)</text>
+
+              <!-- Saudi Arabia -->
+              <circle cx="230" cy="180" r="4.5" fill="#398D89" />
+              <text x="140" y="185" fill="#CBD5E1" font-size="10">Saudi Arabia (Dammam/Jeddah)</text>
+
+              <!-- Qatar -->
+              <circle cx="255" cy="190" r="4" fill="#398D89" />
+              <text x="250" y="175" fill="#CBD5E1" font-size="9">Qatar</text>
+
+              <!-- Kuwait -->
+              <circle cx="220" cy="140" r="4" fill="#398D89" />
+              <text x="175" y="135" fill="#CBD5E1" font-size="9">Kuwait</text>
+            </svg>
+          </div>
+
+          <div class="mt-4 flex items-center justify-between text-xs text-slate-400">
+            <span class="flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-gold"></span>
+              Sourcing Hub (Western India)
+            </span>
+            <span class="flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-teal"></span>
+              Target Import Seaports
+            </span>
+          </div>
+
+        </div>
+
+        <!-- Right: Target Markets List & Positioning (5 cols) -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="space-y-2">
+            <h3 class="font-heading font-bold text-2xl text-white">
+              Target Trade Destinations
+            </h3>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              We structure procurement contracts tailored to regional quarantine regulations, port handling practices, and delivery timetables across the Gulf.
+            </p>
+          </div>
+
+          <!-- Target Market Badges -->
+          <div class="grid grid-cols-2 gap-3">
+            {targetCorridors.map((c) => (
+              <div class="p-3 rounded-xl bg-navy-900 border border-slate-800 hover:border-slate-700 transition-colors">
+                <span class="font-heading font-semibold text-sm text-white block">
+                  {c.country}
+                </span>
+                <span class="text-[11px] text-slate-400 block mt-0.5">
+                  {c.ports}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <div class="pt-2">
+            <a
+              href="/contact"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gold hover:bg-gold-dark text-navy-950 font-heading font-bold text-xs uppercase tracking-wider transition-all duration-200"
+            >
+              <span>Discuss Destination Logistics</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+
+          <p class="text-[11px] text-slate-400 border-t border-slate-800 pt-3 italic">
+            *DHRIVAA facilitates trade and procurement coordination between verified Indian suppliers and international buyers. We communicate genuine sourcing opportunities without making unwarranted claims.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

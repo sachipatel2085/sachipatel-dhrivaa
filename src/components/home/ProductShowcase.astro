@@ -1,0 +1,98 @@
+---
+import { productsData } from '../../data/products';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
+---
+
+<section class="py-20 lg:py-28 bg-white relative" aria-labelledby="products-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-slate-200">
+      <div class="max-w-2xl space-y-3">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-teal font-heading">
+          Featured Commodities
+        </span>
+        <h2 id="products-heading" class="font-heading font-extrabold text-3xl sm:text-4xl text-navy-900 tracking-tight">
+          Our Products
+        </h2>
+        <p class="text-base text-slate-600 leading-relaxed">
+          Agricultural commodities sourced according to buyer requirements, with a focus on quality and reliability.
+        </p>
+      </div>
+
+      <a
+        href="/products"
+        class="inline-flex items-center gap-2 text-sm font-heading font-bold text-navy-900 hover:text-teal group transition-colors flex-shrink-0"
+      >
+        <span>View All Products</span>
+        <ArrowRight className="w-4 h-4 text-gold group-hover:translate-x-1 transition-transform" />
+      </a>
+    </div>
+
+    <!-- Product Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12">
+      {productsData.map((product) => (
+        <article class="group bg-surface-card rounded-2xl overflow-hidden border border-slate-200/80 hover:border-slate-300 shadow-subtle hover:shadow-card transition-all duration-300 flex flex-col justify-between">
+          
+          <!-- Image Container with Zoom Effect -->
+          <div class="relative aspect-[4/3] overflow-hidden bg-slate-100">
+            <img
+              src={product.image}
+              alt={product.alt}
+              class="w-full h-full object-cover object-center transform transition-transform duration-500 ease-out group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+
+          <!-- Content Body -->
+          <div class="p-6 sm:p-7 flex-grow flex flex-col justify-between space-y-6">
+            <div class="space-y-2.5">
+              <span class="text-[10px] uppercase font-bold tracking-widest text-teal">
+                Sourced from Gujarat, India
+              </span>
+              <h3 class="font-heading font-bold text-2xl text-navy-900 group-hover:text-teal transition-colors">
+                {product.name}
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                {product.shortDescription}
+              </p>
+            </div>
+
+            <!-- Footer Action -->
+            <div class="pt-4 border-t border-slate-200/70 flex items-center justify-between">
+              <a
+                href={`/products/${product.slug}`}
+                class="inline-flex items-center gap-2 text-sm font-heading font-semibold text-navy-900 group-hover:text-teal transition-colors"
+                aria-label={`Explore ${product.name} details and procurement specifications`}
+              >
+                <span>Explore Commodity</span>
+              </a>
+              <a
+                href={`/products/${product.slug}`}
+                class="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-gold flex items-center justify-center transition-all duration-300 text-navy-900 group-hover:text-navy-950 group-hover:rotate-45"
+                tabindex="-1"
+                aria-hidden="true"
+              >
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+            </div>
+
+          </div>
+
+        </article>
+      ))}
+    </div>
+
+    <!-- Bottom Reassurance Note -->
+    <div class="mt-14 p-5 rounded-xl bg-slate-50 border border-slate-200/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <p>
+        <strong class="text-navy-900 font-semibold">Buyer-Specific Procurement:</strong> We do not offer fixed off-the-shelf stockpiles; every lot is vetted and contracted strictly against your parameter schedule.
+      </p>
+      <a href="/contact" class="text-teal hover:text-teal-dark font-semibold whitespace-nowrap">
+        Submit Buyer Specification &rarr;
+      </a>
+    </div>
+
+  </div>
+</section>

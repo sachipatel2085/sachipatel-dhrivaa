@@ -1,0 +1,69 @@
+---
+import { whyChoosePoints } from '../../data/company';
+---
+
+<section class="py-20 lg:py-28 bg-navy-950 text-white relative overflow-hidden" aria-labelledby="why-dhrivaa-heading">
+  <!-- Ambient subtle light glow -->
+  <div class="absolute -top-40 right-0 w-96 h-96 bg-teal/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute -bottom-40 left-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="max-w-3xl space-y-4 mb-16">
+      <span class="text-xs font-bold uppercase tracking-[0.2em] text-gold font-heading">
+        Partnership & Trade Values
+      </span>
+      <h2 id="why-dhrivaa-heading" class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight">
+        More Than a Supplier. <br />
+        <span class="font-serif italic font-normal text-gold-light">A Dedicated Trade Partner.</span>
+      </h2>
+      <p class="text-base text-slate-300 leading-relaxed max-w-2xl">
+        International commodity trade requires more than just transactions—it demands boots-on-the-ground coordination, transparent communications, and unflinching fidelity to contract specifications.
+      </p>
+    </div>
+
+    <!-- 6 Feature Blocks Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {whyChoosePoints.map((point, index) => (
+        <div class="bg-navy-900/80 rounded-2xl p-8 border border-slate-800 hover:border-gold/40 transition-all duration-300 hover:-translate-y-1 group relative">
+          <!-- Editorial Number -->
+          <div class="flex items-center justify-between pb-6 mb-6 border-b border-slate-800">
+            <span class="font-heading font-bold text-xs uppercase tracking-widest text-slate-400 group-hover:text-gold transition-colors">
+              Pillar {String(index + 1).padStart(2, '0')}
+            </span>
+            <div class="w-2 h-2 rounded-full bg-slate-700 group-hover:bg-gold transition-colors"></div>
+          </div>
+
+          <!-- Title & Description -->
+          <h3 class="font-heading font-bold text-xl text-white group-hover:text-gold-light transition-colors mb-3">
+            {point.title}
+          </h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            {point.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Sourcing Integrity Quote -->
+    <div class="mt-16 p-8 rounded-2xl bg-navy-900 border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="space-y-1">
+        <h4 class="font-heading font-bold text-lg text-white">
+          Sourcing Independence &amp; Objective Quality
+        </h4>
+        <p class="text-sm text-slate-400 max-w-2xl">
+          Because we represent the buyer's procurement mandate, our sole loyalty is to your specification, quality standard, and delivery timeline.
+        </p>
+      </div>
+      <a
+        href="/about-us"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-800 hover:bg-slate-700 text-gold-light font-heading font-semibold text-xs tracking-wider uppercase border border-slate-700 transition-colors whitespace-nowrap"
+      >
+        <span>Read Our Story</span>
+        &rarr;
+      </a>
+    </div>
+
+  </div>
+</section>

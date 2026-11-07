@@ -1,0 +1,82 @@
+---
+import { sourcingSteps } from '../../data/company';
+import { ArrowRight, ClipboardList, Users2, ShieldAlert, Ship } from 'lucide-react';
+
+const stepIcons = [ClipboardList, Users2, ShieldAlert, Ship];
+---
+
+<section class="py-20 lg:py-28 bg-surface-light border-y border-slate-200" aria-labelledby="process-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      
+      <!-- Left Column Header (4 cols) -->
+      <div class="lg:col-span-4 space-y-6">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-teal font-heading">
+          Methodology & Governance
+        </span>
+        <h2 id="process-heading" class="font-heading font-extrabold text-3xl sm:text-4xl text-navy-900 tracking-tight leading-tight">
+          Our Sourcing Process.
+        </h2>
+        <p class="text-base text-slate-600 leading-relaxed">
+          A structured and transparent approach to source the right agricultural commodities for your business.
+        </p>
+
+        <div class="pt-2">
+          <a
+            href="/sourcing-procurement"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-navy-900 hover:bg-navy-800 text-gold-light font-heading font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-sm"
+          >
+            <span>Learn More</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </a>
+        </div>
+
+        <div class="p-5 rounded-xl bg-white border border-slate-200 text-xs text-slate-500 space-y-1.5 shadow-subtle">
+          <p class="font-semibold text-navy-900">End-to-End Coordination</p>
+          <p>From commercial parameters to port container loading, every milestone is verified and tracked.</p>
+        </div>
+      </div>
+
+      <!-- Right Column: 4 Steps (8 cols) -->
+      <div class="lg:col-span-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 relative">
+          {sourcingSteps.map((step, idx) => {
+            const Icon = stepIcons[idx];
+            return (
+              <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-subtle hover:shadow-card hover:border-slate-300 transition-all duration-300 flex flex-col justify-between relative group">
+                
+                <!-- Step Top Header -->
+                <div>
+                  <div class="flex items-center justify-between mb-5">
+                    <div class="w-12 h-12 rounded-xl bg-navy-900 text-gold flex items-center justify-center font-heading font-extrabold text-base shadow-sm group-hover:scale-105 group-hover:bg-navy-950 transition-transform">
+                      {step.step}
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-slate-400 group-hover:text-teal transition-colors">
+                      Phase {idx + 1}
+                    </span>
+                  </div>
+
+                  <h3 class="font-heading font-bold text-lg text-navy-900 mb-2 group-hover:text-teal transition-colors">
+                    {step.title}
+                  </h3>
+                  <p class="text-sm text-slate-600 leading-relaxed">
+                    {step.shortDesc}
+                  </p>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+                  <span>Standardized Procedure</span>
+                  <div class="w-1.5 h-1.5 rounded-full bg-gold"></div>
+                </div>
+
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

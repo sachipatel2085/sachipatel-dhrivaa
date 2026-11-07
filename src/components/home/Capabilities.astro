@@ -1,0 +1,52 @@
+---
+import { Search, Building2, FileCheck2, PackageCheck } from 'lucide-react';
+
+const capabilities = [
+  {
+    icon: Search,
+    title: 'Buyer-Led Sourcing',
+    description: 'We source as per your requirements'
+  },
+  {
+    icon: Building2,
+    title: 'Supplier Coordination',
+    description: 'Access to suitable suppliers across India.'
+  },
+  {
+    icon: FileCheck2,
+    title: 'Quality Documentation',
+    description: 'Support for specifications and documents'
+  },
+  {
+    icon: PackageCheck,
+    title: 'Procurement Support',
+    description: 'Packaging and shipment coordination'
+  }
+];
+---
+
+<!-- Core Capabilities Section (Restored to original full height with generous padding & presence) -->
+<section class="bg-navy-900 border-y border-navy-800 relative z-20 py-8 lg:py-10 shadow-lg" aria-label="Core Capabilities">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      {capabilities.map((item, idx) => {
+        const Icon = item.icon;
+        return (
+          <div class="group flex items-start gap-4 p-4 rounded-xl transition-all duration-300 hover:bg-navy-850/60 border border-transparent hover:border-slate-700/50">
+            <div class="w-12 h-12 rounded-lg bg-navy-800/80 border border-slate-700/60 flex items-center justify-center flex-shrink-0 text-gold group-hover:border-gold/40 group-hover:scale-105 transition-all">
+              <Icon className="w-5 h-5 text-gold group-hover:text-gold-light" />
+            </div>
+            <div class="space-y-1">
+              <h3 class="font-heading font-bold text-sm lg:text-base text-white group-hover:text-gold-light transition-colors">
+                {item.title}
+              </h3>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

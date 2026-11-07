@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/common/PageHero.astro';
+import { companyData } from '../data/company';
+
+const pageTitle = `Privacy Policy | ${companyData.name}`;
+const pageDescription = 'Privacy Policy for DHRIVAA – Global Trade Partner. Details on how we handle procurement inquiries and client business information.';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  
+  <!-- Cinematic Hero Header with Dark Gradient Overlay -->
+  <PageHero
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Privacy Policy' }
+    ]}
+    eyebrow="LEGAL & DATA GOVERNANCE"
+    title="Privacy Policy."
+    titleAccent="Confidentiality & Trade Integrity."
+    description="How DHRIVAA handles commercial specifications, contact information, and client inquiry records."
+    bannerImage="/images/banner-about.jpg"
+    bannerAlt="Corporate trade governance and compliance"
+    trustTags={[
+      { text: 'Commercial Confidentiality', color: 'teal' },
+      { text: 'Non-Disclosure Protocols', color: 'gold' }
+    ]}
+    minHeightClass="min-h-[44vh] lg:min-h-[48vh]"
+  />
+
+  <section class="py-16 bg-white text-slate-700">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 text-sm leading-relaxed">
+      
+      <div>
+        <h2 class="font-heading font-bold text-xl text-navy-900 mb-2">1. Overview</h2>
+        <p>
+          DHRIVAA ("we", "our", or "the Company") respects your corporate privacy and is committed to protecting the confidentiality of information submitted by international buyers, partners, and visitors through our website.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-xl text-navy-900 mb-2">2. Information We Collect</h2>
+        <p>
+          We only collect commercial information that you voluntarily submit when requesting commodity sourcing quotes, technical specifications, or communications. This includes:
+        </p>
+        <ul class="list-disc pl-5 mt-2 space-y-1 text-slate-600">
+          <li>Full name and corporate title</li>
+          <li>Company / legal business entity name</li>
+          <li>Business email address and telephone contact</li>
+          <li>Target country of destination and required commodity parameters</li>
+          <li>Target order volume and shipment preferences</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-xl text-navy-900 mb-2">3. Commercial Use of Information</h2>
+        <p>
+          Collected information is used exclusively to:
+        </p>
+        <ul class="list-disc pl-5 mt-2 space-y-1 text-slate-600">
+          <li>Evaluate your product sourcing requirements and prepare commercial offers</li>
+          <li>Coordinate laboratory sample dispatches and pre-shipment inspections</li>
+          <li>Communicate order logistics, documentation, and maritime schedules</li>
+        </ul>
+        <p class="mt-2">
+          We do not sell, rent, or trade your commercial contact details to third-party marketing companies.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-xl text-navy-900 mb-2">4. Data Security &amp; Retention</h2>
+        <p>
+          We implement standard security measures to safeguard procurement data against unauthorized disclosure. Commercial records are retained only as long as necessary to fulfill trade obligations or comply with export and commercial laws.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-xl text-navy-900 mb-2">5. Contact Regarding Privacy</h2>
+        <p>
+          For inquiries regarding this privacy statement or your submitted business data, please contact our compliance desk at: <a href={`mailto:${companyData.email}`} class="text-teal font-semibold hover:underline">{companyData.email}</a>.
+        </p>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/common/PageHero.astro';
+import FinalCTA from '../../components/home/FinalCTA.astro';
+import { productsData } from '../../data/products';
+import { companyData } from '../../data/company';
+import { ArrowRight, ArrowUpRight, CheckCircle2, ShieldCheck } from 'lucide-react';
+
+const pageTitle = `Agricultural Commodities & Products | ${companyData.name}`;
+const pageDescription = 'Explore agricultural commodities sourced by DHRIVAA from Gujarat, India. Buyer-specific procurement for Rapeseed Meal, Castorseed Meal, and Castor Oil.';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  
+  <!-- Cinematic Hero Header with Dark Gradient Overlay & Products Banner -->
+  <PageHero
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Products' }
+    ]}
+    eyebrow="COMMODITY PORTFOLIO · BUYER-SPECIFIC SOURCING"
+    title="Our Products."
+    titleAccent="Sourced for Global Markets."
+    description="Agricultural commodities sourced according to buyer requirements, with a focus on quality, transparency, and dependable ocean logistics from India."
+    bannerImage="/images/banner-products.jpg"
+    bannerAlt="Agricultural commodities: golden rapeseed, raw castor seeds, and pure vegetable oil in laboratory glassware"
+    primaryButton={{
+      label: 'Enquire for Any Product',
+      href: '/contact'
+    }}
+    secondaryButton={{
+      label: 'View Sourcing Process',
+      href: '/sourcing-procurement'
+    }}
+    trustTags={[
+      { text: 'Rapeseed Meal', color: 'teal' },
+      { text: 'Castorseed Meal', color: 'gold' },
+      { text: 'Castor Oil', color: 'slate' }
+    ]}
+  />
+
+  <!-- Commodity Cards Section -->
+  <section class="py-16 lg:py-24 bg-surface-light">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {productsData.map((product) => (
+          <article class="bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-card hover:shadow-card-hover hover:border-slate-300 transition-all duration-300 flex flex-col justify-between group">
+            
+            <!-- Image with Zoom -->
+            <div class="relative aspect-[4/3] overflow-hidden bg-slate-100">
+              <img
+                src={product.image}
+                alt={product.alt}
+                class="w-full h-full object-cover object-center transform transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div class="absolute top-4 left-4 bg-navy-950/80 backdrop-blur-md text-gold text-[10px] uppercase font-bold tracking-wider px-3 py-1 rounded-full border border-slate-700">
+                Origin: Gujarat, India
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6 sm:p-8 flex-grow flex flex-col justify-between space-y-6">
+              
+              <div class="space-y-3">
+                <span class="text-[10px] uppercase tracking-widest font-bold text-teal block">
+                  {product.eyebrow}
+                </span>
+                <h2 class="font-heading font-extrabold text-2xl text-navy-900 group-hover:text-teal transition-colors">
+                  {product.name}
+                </h2>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                  {product.shortDescription}
+                </p>
+
+                <!-- Application Highlights -->
+                <div class="pt-3 border-t border-slate-100 space-y-2">
+                  <span class="text-xs font-bold text-navy-900 block">Primary Usages:</span>
+                  <ul class="text-xs text-slate-500 space-y-1.5" role="list">
+                    {product.applications.slice(0, 2).map((app) => (
+                      <li class="flex items-start gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-teal flex-shrink-0 mt-0.5" />
+                        <span>{app}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Action Link -->
+              <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <a
+                  href={`/products/${product.slug}`}
+                  class="inline-flex items-center gap-2 font-heading font-bold text-sm text-navy-900 group-hover:text-teal transition-colors"
+                >
+                  <span>View Details &amp; Specifications</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-gold group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+
+            </div>
+
+          </article>
+        ))}
+      </div>
+
+      <!-- Specification Policy Banner -->
+      <div class="mt-16 p-8 rounded-2xl bg-white border border-slate-200/90 shadow-subtle flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-navy-900 text-gold flex items-center justify-center flex-shrink-0">
+            <ShieldCheck className="w-5 h-5" />
+          </div>
+          <div class="space-y-1">
+            <h3 class="font-heading font-bold text-base text-navy-900">
+              Buyer-Specific Parameter Schedules
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 max-w-2xl leading-relaxed">
+              We do not promote generic fixed specifications. All product parameters are coordinated according to buyer requirements and confirmed with supplier certificates prior to contracting.
+            </p>
+          </div>
+        </div>
+
+        <a
+          href="/contact"
+          class="px-6 py-2.5 rounded-full bg-navy-900 hover:bg-navy-800 text-gold-light text-xs font-heading font-bold uppercase tracking-wider transition-colors whitespace-nowrap"
+        >
+          Request Specification Sheet
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <FinalCTA />
+
+</BaseLayout>

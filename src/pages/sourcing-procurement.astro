@@ -1,0 +1,188 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/common/PageHero.astro';
+import FinalCTA from '../components/home/FinalCTA.astro';
+import { sourcingSteps, companyData } from '../data/company';
+import { ArrowRight, CheckCircle2, ShieldCheck, ClipboardCheck, Anchor, Search } from 'lucide-react';
+
+const pageTitle = `Sourcing & Procurement Process | ${companyData.name}`;
+const pageDescription = 'Discover DHRIVAA’s structured four-stage agricultural commodity sourcing and procurement process connecting global buyers with reliable Indian suppliers.';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  
+  <!-- Cinematic Hero Header with Dark Gradient Overlay & Logistics Banner -->
+  <PageHero
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Sourcing & Procurement' }
+    ]}
+    eyebrow="STRUCTURED TRADE EXECUTION & GOVERNANCE"
+    title="Sourcing & Procurement."
+    titleAccent="Structured, Transparent & Predictable."
+    description="A structured and transparent process to source agricultural commodities for your business. We manage supplier identification, specification alignment, and shipment logistics from India."
+    bannerImage="/images/step-logistics.jpg"
+    bannerAlt="Heavy-duty gantry cranes loading containerized agricultural cargo onto an ocean vessel at port"
+    primaryButton={{
+      label: 'Discuss Your Requirements',
+      href: '/contact'
+    }}
+    secondaryButton={{
+      label: 'Quality Assurance',
+      href: '/quality-assurance'
+    }}
+    trustTags={[
+      { text: 'Buyer-Led Sourcing', color: 'teal' },
+      { text: 'Direct Mill Identification', color: 'gold' },
+      { text: 'Port Logistics Oversight', color: 'slate' }
+    ]}
+  />
+
+  <!-- 4 Step Visual Photographic Cards -->
+  <section class="py-16 lg:py-24 bg-surface-light border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto space-y-3 mb-14">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-teal font-heading">
+          Step-by-Step Workflow
+        </span>
+        <h2 class="font-heading font-extrabold text-3xl text-navy-900 tracking-tight">
+          How We Coordinate Your Sourcing
+        </h2>
+        <p class="text-sm text-slate-600">
+          Every phase is executed with clear milestones and auditable documentation.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {sourcingSteps.map((step) => (
+          <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-subtle hover:shadow-card transition-all flex flex-col justify-between group">
+            
+            <!-- Photographic Preview -->
+            <div class="relative aspect-[4/3] overflow-hidden bg-slate-100">
+              <img
+                src={step.image}
+                alt={step.title}
+                class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div class="absolute top-3 left-3 w-8 h-8 rounded-lg bg-navy-900 text-gold flex items-center justify-center font-heading font-bold text-xs shadow-md">
+                {step.step}
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6 flex-grow flex flex-col justify-between space-y-3">
+              <div class="space-y-1.5">
+                <h3 class="font-heading font-bold text-lg text-navy-900 group-hover:text-teal transition-colors">
+                  {step.title}
+                </h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  {step.fullDesc}
+                </p>
+              </div>
+
+              <div class="pt-3 border-t border-slate-100 text-[11px] font-semibold text-teal">
+                Phase {step.step} Checkpoint &rarr;
+              </div>
+            </div>
+
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Deep Dive: Sourcing Framework vs Conventional Trading -->
+  <section class="py-20 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-6 space-y-6">
+          <span class="text-xs font-bold uppercase tracking-[0.2em] text-teal font-heading">
+            Client-Centered Model
+          </span>
+          <h2 class="font-heading font-extrabold text-3xl text-navy-900 tracking-tight leading-tight">
+            Buyer-Led Sourcing vs Traditional Commodity Brokering
+          </h2>
+          <p class="text-base text-slate-600 leading-relaxed">
+            Conventional commodity brokers often attempt to offload speculative inventory or push standard grades regardless of your unique manufacturing or feed requirements. DHRIVAA operates under a buyer-led procurement mandate:
+          </p>
+
+          <div class="space-y-4">
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+              <h4 class="font-heading font-bold text-sm text-navy-900 flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-teal" />
+                <span>Tailored Technical Parameters</span>
+              </h4>
+              <p class="text-xs text-slate-600 pl-6">
+                We contract suppliers whose processing methods directly match your required moisture, protein, or acid value targets.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+              <h4 class="font-heading font-bold text-sm text-navy-900 flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-teal" />
+                <span>Direct Crushing Mill Access</span>
+              </h4>
+              <p class="text-xs text-slate-600 pl-6">
+                We connect directly with verified processing mills in Gujarat, cutting through opaque intermediary tiers to ensure price clarity.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+              <h4 class="font-heading font-bold text-sm text-navy-900 flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-teal" />
+                <span>Independent Quality Supervision</span>
+              </h4>
+              <p class="text-xs text-slate-600 pl-6">
+                Our team facilitates third-party inspection, container stuffing verification, and pre-departure photos so you know your shipment state before it sails.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6">
+          <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-card bg-navy-950 p-8 text-white space-y-6">
+            <span class="text-xs font-bold uppercase tracking-widest text-gold">
+              Procurement Pillars
+            </span>
+            <h3 class="font-heading font-bold text-2xl text-white">
+              Logistics from Western India to the Arabian Gulf
+            </h3>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Gujarat offers unmatched maritime proximity to UAE and Gulf ports:
+            </p>
+            
+            <div class="space-y-3 pt-2">
+              <div class="flex items-center justify-between p-3 rounded-xl bg-navy-900 border border-slate-800 text-xs">
+                <span>Mundra / Kandla &rarr; Jebel Ali (UAE)</span>
+                <span class="text-gold font-mono font-bold">~ 3 - 5 Days Sea Transit</span>
+              </div>
+              <div class="flex items-center justify-between p-3 rounded-xl bg-navy-900 border border-slate-800 text-xs">
+                <span>Mundra / Kandla &rarr; Dammam (Saudi Arabia)</span>
+                <span class="text-gold font-mono font-bold">~ 5 - 7 Days Sea Transit</span>
+              </div>
+              <div class="flex items-center justify-between p-3 rounded-xl bg-navy-900 border border-slate-800 text-xs">
+                <span>Mundra / Kandla &rarr; Sohar (Oman)</span>
+                <span class="text-gold font-mono font-bold">~ 3 - 4 Days Sea Transit</span>
+              </div>
+            </div>
+
+            <p class="text-[11px] text-slate-400 italic">
+              *Transit times are indicative standard maritime container lines schedules.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <FinalCTA />
+
+</BaseLayout>

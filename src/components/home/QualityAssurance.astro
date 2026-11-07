@@ -1,0 +1,112 @@
+---
+import { CheckCircle2, ShieldCheck, Microscope, ArrowRight } from 'lucide-react';
+
+const qualityPoints = [
+  {
+    title: 'Buyer-Specific Product Specifications',
+    desc: 'Every sourcing mandate begins with aligning precisely on your chemical, physical, and purity metrics.'
+  },
+  {
+    title: 'Supplier Documentation Review',
+    desc: 'Verification of supplier facility compliance, historical consistency, and processing capabilities.'
+  },
+  {
+    title: 'Sample Coordination',
+    desc: 'Courier dispatch of representative production samples for buyer review and preliminary laboratory testing.'
+  },
+  {
+    title: 'Quality Inspection Coordination',
+    desc: 'Facilitating pre-shipment surveyor inspection (SGS, Bureau Veritas, or buyer-nominated agencies) on demand.'
+  },
+  {
+    title: 'Certificate of Analysis (COA)',
+    desc: 'Batch-wise laboratory analysis documentation confirming agreed specification thresholds prior to vessel loading.'
+  },
+  {
+    title: 'Packaging & Container Sealing',
+    desc: 'Verification of bag integrity, moisture liners, container cleanliness, and tamper-evident container sealing.'
+  }
+];
+---
+
+<section class="py-20 lg:py-28 bg-surface-light border-b border-slate-200" aria-labelledby="quality-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Column: Imagery & Lab Focus (5 cols) -->
+      <div class="lg:col-span-5 relative">
+        <div class="relative rounded-3xl overflow-hidden shadow-card border border-slate-200 bg-white">
+          <img
+            src="/images/step-quality.jpg"
+            alt="Agricultural commodity quality testing and laboratory sample analysis"
+            class="w-full aspect-[4/5] object-cover object-center"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent"></div>
+
+          <!-- Bottom floating badge -->
+          <div class="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-navy-900/90 backdrop-blur-md border border-slate-700 text-white space-y-1">
+            <div class="flex items-center gap-2 text-gold">
+              <ShieldCheck className="w-4 h-4" />
+              <span class="text-xs font-bold uppercase tracking-wider">Independent Coordination</span>
+            </div>
+            <p class="text-xs text-slate-300">
+              Third-party sampling and testing coordinated per contractual terms to protect buyer interests.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Content & Checkpoints (7 cols) -->
+      <div class="lg:col-span-7 space-y-8">
+        
+        <div class="space-y-4">
+          <span class="text-xs font-bold uppercase tracking-[0.2em] text-teal font-heading">
+            Objective Oversight
+          </span>
+          <h2 id="quality-heading" class="font-heading font-extrabold text-3xl sm:text-4xl text-navy-900 tracking-tight leading-tight">
+            Quality at Every Stage.
+          </h2>
+          <p class="text-base text-slate-600 leading-relaxed">
+            We support rigorous quality coordination and documentation based on your contracted specifications, working directly with established testing bodies across Gujarat.
+          </p>
+        </div>
+
+        <!-- Checkpoints Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {qualityPoints.map((item) => (
+            <div class="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-slate-200/80 shadow-subtle hover:border-slate-300 transition-colors">
+              <CheckCircle2 className="w-5 h-5 text-teal flex-shrink-0 mt-0.5" />
+              <div class="space-y-1">
+                <h3 class="font-heading font-bold text-sm text-navy-900">
+                  {item.title}
+                </h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="pt-2 flex flex-wrap items-center gap-4">
+          <a
+            href="/quality-assurance"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-navy-900 hover:bg-navy-800 text-gold-light font-heading font-bold text-xs uppercase tracking-wider transition-all duration-200"
+          >
+            <span>Learn Quality Protocols</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </a>
+
+          <span class="text-xs text-slate-500">
+            Certificate of Analysis provided per batch upon dispatch.
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,177 @@
+---
+import { ArrowRight } from 'lucide-react';
+
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface TrustTag {
+  text: string;
+  color?: 'teal' | 'gold' | 'slate';
+}
+
+interface ButtonItem {
+  label: string;
+  href: string;
+  isExternal?: boolean;
+}
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  titleAccent?: string;
+  description: string;
+  bannerImage: string;
+  bannerAlt: string;
+  breadcrumbs: BreadcrumbItem[];
+  primaryButton?: ButtonItem;
+  secondaryButton?: ButtonItem;
+  trustTags?: TrustTag[];
+  minHeightClass?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  titleAccent,
+  description,
+  bannerImage,
+  bannerAlt,
+  breadcrumbs,
+  primaryButton,
+  secondaryButton,
+  trustTags = [],
+  minHeightClass = 'min-h-[54vh] lg:min-h-[60vh]'
+} = Astro.props;
+---
+
+<section class={`relative ${minHeightClass} flex items-center bg-navy-950 overflow-hidden`} aria-label="Page Header">
+  
+  <!-- Right-Aligned Topic Banner Photography -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src={bannerImage}
+      alt={bannerAlt}
+      class="w-full h-full object-cover object-right lg:object-[80%_center] filter brightness-[0.98] contrast-[1.04]"
+      loading="eager"
+      fetchpriority="high"
+    />
+    
+    <!-- Dark Gradient Overlay (Exact reference layout in Dark Theme):
+         Solid deep navy on the left (0% to ~36%), smooth multi-stop gradient transition across center (36% to ~82%),
+         leaving the topic photography on the right vibrant and clearly visible -->
+    <div class="absolute inset-0 bg-[linear-gradient(90deg,#091C30_0%,#091C30_36%,rgba(9,28,48,0.94)_48%,rgba(9,28,48,0.68)_64%,rgba(9,28,48,0.2)_82%,transparent_100%)] pointer-events-none"></div>
+    
+    <!-- Subtle bottom transition fade into the page section below -->
+    <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-navy-950 via-navy-950/60 to-transparent pointer-events-none"></div>
+  </div>
+
+  <!-- Subtle Global Trade Map / Watermark Layer in Midground -->
+  <div class="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+    <svg class="w-full h-full opacity-20" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g fill="#398D89" opacity="0.6">
+        <circle cx="680" cy="380" r="2.5" />
+        <circle cx="700" cy="370" r="2.5" />
+        <circle cx="720" cy="365" r="3" />
+        <circle cx="740" cy="380" r="2.5" />
+        <circle cx="710" cy="395" r="2" />
+        <circle cx="820" cy="400" r="3" fill="#C8A45D" />
+        <circle cx="840" cy="420" r="2.5" fill="#C8A45D" />
+        <circle cx="830" cy="440" r="2" fill="#C8A45D" />
+        <circle cx="780" cy="360" r="1.5" />
+        <circle cx="880" cy="380" r="1.5" />
+      </g>
+      <path d="M820 400 C780 340, 740 340, 720 365" stroke="#C8A45D" stroke-width="1.8" stroke-dasharray="5 4" opacity="0.8" />
+      <path d="M820 400 C760 370, 720 370, 680 380" stroke="#398D89" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.7" />
+      <circle cx="820" cy="400" r="6" fill="#C8A45D" />
+      <circle cx="720" cy="365" r="5" fill="#398D89" />
+    </svg>
+  </div>
+
+  <!-- Left-Aligned Content Container -->
+  <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 w-full">
+    <div class="max-w-2xl lg:max-w-3xl space-y-6 text-left">
+      
+      <!-- Breadcrumb Navigation -->
+      <nav class="flex items-center gap-2 text-xs text-slate-400" aria-label="Breadcrumb">
+        {breadcrumbs.map((crumb, idx) => (
+          <>
+            {idx > 0 && <span class="text-slate-600">/</span>}
+            {crumb.href ? (
+              <a href={crumb.href} class="hover:text-gold transition-colors">
+                {crumb.label}
+              </a>
+            ) : (
+              <span class="text-gold font-medium">{crumb.label}</span>
+            )}
+          </>
+        ))}
+      </nav>
+
+      <!-- Eyebrow Tag -->
+      {eyebrow && (
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-navy-900/90 border border-gold/30 text-gold-light text-xs font-heading font-semibold uppercase tracking-[0.22em] shadow-sm backdrop-blur-md">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+          <span>{eyebrow}</span>
+        </div>
+      )}
+
+      <!-- Main Headline -->
+      <h1 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] text-white tracking-tight leading-[1.1] text-balance">
+        {title}
+        {titleAccent && (
+          <>
+            <br />
+            <span class="font-serif italic font-normal text-gold-light">{titleAccent}</span>
+          </>
+        )}
+      </h1>
+
+      <!-- Supporting Description -->
+      <p class="text-base sm:text-lg text-slate-300 max-w-xl leading-relaxed font-normal">
+        {description}
+      </p>
+
+      <!-- Action Buttons -->
+      {(primaryButton || secondaryButton) && (
+        <div class="pt-2 flex flex-wrap items-center gap-4">
+          {primaryButton && (
+            <a
+              href={primaryButton.href}
+              class="inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-gold hover:bg-gold-dark text-navy-950 font-heading font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-gold-glow hover:-translate-y-0.5 active:translate-y-0"
+            >
+              <span>{primaryButton.label}</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          )}
+
+          {secondaryButton && (
+            <a
+              href={secondaryButton.href}
+              class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-navy-900/70 hover:bg-navy-850 text-slate-100 hover:text-white border border-slate-600/70 hover:border-gold/70 font-heading font-semibold text-xs sm:text-sm tracking-wide transition-all duration-300 backdrop-blur-md hover:-translate-y-0.5"
+            >
+              <span>{secondaryButton.label}</span>
+            </a>
+          )}
+        </div>
+      )}
+
+      <!-- Trust Tags / Metadata Highlights -->
+      {trustTags.length > 0 && (
+        <div class="pt-6 border-t border-slate-800/80 flex flex-wrap items-center gap-6 sm:gap-8 text-xs sm:text-sm text-slate-400">
+          {trustTags.map((tag) => (
+            <div class="flex items-center gap-2">
+              <span class={`w-2 h-2 rounded-full ${
+                tag.color === 'teal' ? 'bg-teal' : tag.color === 'gold' ? 'bg-gold' : 'bg-slate-500'
+              }`}></span>
+              <span>{tag.text}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
+    </div>
+  </div>
+
+</section>

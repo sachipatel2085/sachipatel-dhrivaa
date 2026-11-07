@@ -1,0 +1,150 @@
+---
+import Logo from '../common/Logo.astro';
+import { companyData } from '../../data/company';
+import { footerQuickLinks, footerProductLinks, footerServiceLinks, footerLegalLinks } from '../../data/navigation';
+import { Mail, Phone, MapPin, MessageSquare, ArrowUpRight, ShieldCheck } from 'lucide-react';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-navy-950 text-slate-300 border-t border-navy-800 relative overflow-hidden" aria-labelledby="footer-heading">
+  <h2 id="footer-heading" class="sr-only">Footer</h2>
+
+  <!-- Subtle ambient trade grid texture -->
+  <div class="absolute inset-0 bg-[radial-gradient(#193F66_1px,transparent_1px)] [background-size:24px_24px] opacity-15 pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 relative z-10">
+    <!-- Top Grid: Brand & Column Links -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-navy-850">
+      
+      <!-- Col 1: Brand Info (5 cols) -->
+      <div class="lg:col-span-5 space-y-5">
+        <Logo variant="dark" />
+        <p class="text-sm text-slate-400 max-w-sm leading-relaxed">
+          Connecting international buyers with reliable agricultural commodity sources from India through transparent sourcing, quality coordination, and dependable procurement.
+        </p>
+
+        <!-- Positioning Note -->
+        <div class="p-3.5 bg-navy-900/80 rounded-xl border border-navy-800 text-xs text-slate-400 flex items-start gap-2.5 max-w-md">
+          <ShieldCheck className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
+          <p class="leading-relaxed">
+            <span class="text-slate-200 font-semibold">Trade Integrity:</span> DHRIVAA operates as an independent sourcing and procurement coordinator. We partner with verified mills and crushers; we do not manufacture.
+          </p>
+        </div>
+
+        <!-- Direct WhatsApp Pill -->
+        <div>
+          <a
+            href={companyData.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/30 text-white text-xs font-semibold tracking-wide transition-all duration-200 hover:scale-[1.02]"
+          >
+            <span class="w-2 h-2 rounded-full bg-[#25D366] animate-pulse"></span>
+            <MessageSquare className="w-3.5 h-3.5 text-[#25D366]" />
+            <span>Direct WhatsApp Inquiry: {companyData.phoneDisplay}</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Agricultural Products (2 cols) -->
+      <div class="lg:col-span-2 space-y-4">
+        <h3 class="font-heading text-xs font-bold uppercase tracking-widest text-gold">
+          Commodities
+        </h3>
+        <ul class="space-y-2.5 text-sm" role="list">
+          {footerProductLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-slate-400 hover:text-white transition-colors inline-flex items-center gap-1 group"
+              >
+                <span>{link.label}</span>
+                <ArrowUpRight className="w-3 h-3 text-slate-600 group-hover:text-gold opacity-0 group-hover:opacity-100 transition-all" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Col 3: Sourcing & Quality (2 cols) -->
+      <div class="lg:col-span-2 space-y-4">
+        <h3 class="font-heading text-xs font-bold uppercase tracking-widest text-gold">
+          Procurement
+        </h3>
+        <ul class="space-y-2.5 text-sm" role="list">
+          {footerServiceLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-slate-400 hover:text-white transition-colors"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Col 4: Contact & Geographic Hub (3 cols) -->
+      <div class="lg:col-span-3 space-y-4">
+        <h3 class="font-heading text-xs font-bold uppercase tracking-widest text-gold">
+          Trade Coordination
+        </h3>
+        <div class="space-y-3 text-sm text-slate-400">
+          <div class="flex items-start gap-3">
+            <MapPin className="w-4 h-4 text-teal flex-shrink-0 mt-1" />
+            <div>
+              <p class="text-slate-200 font-medium">{companyData.location}</p>
+              <p class="text-xs text-slate-500 mt-0.5">Primary Agro Processing & Crushing Belt</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <Mail className="w-4 h-4 text-teal flex-shrink-0" />
+            <a href={`mailto:${companyData.email}`} class="text-slate-300 hover:text-gold transition-colors text-xs">
+              {companyData.email}
+            </a>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <Phone className="w-4 h-4 text-teal flex-shrink-0" />
+            <a href={`tel:${companyData.phone}`} class="text-slate-300 hover:text-gold transition-colors text-xs">
+              {companyData.phoneDisplay}
+            </a>
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <span class="text-[11px] uppercase tracking-wider text-slate-500 font-semibold block mb-1.5">
+            Key Target Corridors
+          </span>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            UAE &bull; Saudi Arabia &bull; Oman &bull; Qatar &bull; Bahrain &bull; Kuwait
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar: Legal, Navigation & Copyright -->
+    <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <div class="flex items-center gap-6">
+        <p>&copy; {currentYear} {companyData.name}. All rights reserved.</p>
+        <span class="hidden md:inline text-slate-700">|</span>
+        <p class="hidden md:inline">Registered Sourcing Partner &bull; Gujarat, India</p>
+      </div>
+
+      <div class="flex items-center space-x-6">
+        {footerLegalLinks.map((link) => (
+          <a href={link.href} class="hover:text-slate-300 transition-colors">
+            {link.label}
+          </a>
+        ))}
+        <a href="#top" class="hover:text-gold transition-colors">
+          Back to Top &uarr;
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,133 @@
+---
+import { ArrowRight } from 'lucide-react';
+---
+
+<section class="relative min-h-[88vh] lg:min-h-[92vh] flex items-center bg-navy-950 overflow-hidden" aria-label="Hero">
+  
+  <!-- Right-Aligned Cargo Ship Photography -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src="/images/hero-port.jpg"
+      alt="International container cargo ship at deep sea port terminal at sunset"
+      class="w-full h-full object-cover object-right lg:object-[80%_center] filter brightness-[0.98] contrast-[1.04]"
+      loading="eager"
+      fetchpriority="high"
+    />
+    
+    <!-- Dark Gradient Overlay (matching reference layout in Dark Theme):
+         Solid deep navy on the left (0% to ~38%), smooth gradient transition across center (38% to ~75%),
+         leaving the cargo vessel on the right vibrant and clearly visible -->
+    <div class="absolute inset-0 bg-[linear-gradient(90deg,#091C30_0%,#091C30_36%,rgba(9,28,48,0.94)_48%,rgba(9,28,48,0.68)_64%,rgba(9,28,48,0.2)_82%,transparent_100%)] pointer-events-none"></div>
+    
+    <!-- Subtle vertical bottom fade into capabilities bar -->
+    <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-navy-950 via-navy-950/60 to-transparent pointer-events-none"></div>
+  </div>
+
+  <!-- Subtle Global Trade Map / Watermark Layer in Midground (matching reference image) -->
+  <div class="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+    <svg class="w-full h-full opacity-25" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Dotted world map abstraction centered between text and ship -->
+      <g fill="#398D89" opacity="0.6">
+        <!-- Arabian Gulf & Middle East Node Cluster -->
+        <circle cx="680" cy="380" r="2.5" />
+        <circle cx="700" cy="370" r="2.5" />
+        <circle cx="720" cy="365" r="3" />
+        <circle cx="740" cy="380" r="2.5" />
+        <circle cx="710" cy="395" r="2" />
+        <circle cx="690" cy="410" r="2" />
+        <circle cx="730" cy="405" r="2.5" />
+
+        <!-- Indian Subcontinent Node Cluster -->
+        <circle cx="820" cy="400" r="3" fill="#C8A45D" />
+        <circle cx="840" cy="420" r="2.5" fill="#C8A45D" />
+        <circle cx="830" cy="440" r="2" fill="#C8A45D" />
+        <circle cx="850" cy="450" r="2.5" fill="#C8A45D" />
+        <circle cx="810" cy="420" r="2.5" fill="#C8A45D" />
+        <circle cx="860" cy="430" r="2" fill="#C8A45D" />
+
+        <!-- Connecting Trade Grid Dots -->
+        <circle cx="600" cy="320" r="1.5" />
+        <circle cx="630" cy="340" r="1.5" />
+        <circle cx="660" cy="330" r="1.5" />
+        <circle cx="750" cy="340" r="1.5" />
+        <circle cx="780" cy="360" r="1.5" />
+        <circle cx="880" cy="380" r="1.5" />
+        <circle cx="910" cy="400" r="1.5" />
+        <circle cx="940" cy="420" r="1.5" />
+      </g>
+
+      <!-- Glowing Sourcing Connection Arcs (Gujarat <-> UAE & Gulf) -->
+      <path d="M820 400 C780 340, 740 340, 720 365" stroke="#C8A45D" stroke-width="1.8" stroke-dasharray="5 4" opacity="0.8" />
+      <path d="M820 400 C760 370, 720 370, 680 380" stroke="#398D89" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.7" />
+      
+      <!-- Sourcing Hub Node (Gujarat, India) -->
+      <circle cx="820" cy="400" r="6" fill="#C8A45D" />
+      <circle cx="820" cy="400" r="14" stroke="#C8A45D" stroke-width="1.5" opacity="0.4" class="animate-ping" />
+      
+      <!-- Target Gulf Hub Node (UAE) -->
+      <circle cx="720" cy="365" r="5" fill="#398D89" />
+      <circle cx="720" cy="365" r="11" stroke="#398D89" stroke-width="1.5" opacity="0.4" />
+    </svg>
+  </div>
+
+  <!-- Hero Content Container: Left-Aligned Editorial Layout -->
+  <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 w-full">
+    <div class="max-w-2xl lg:max-w-3xl space-y-7 text-left">
+      
+      <!-- Eyebrow Tag (matching reference format: INDIA · UAE · MIDDLE EAST) -->
+      <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-navy-900/90 border border-gold/30 text-gold-light text-xs font-heading font-semibold uppercase tracking-[0.22em] shadow-sm backdrop-blur-md">
+        <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+        <span>Gujarat, India &bull; UAE &bull; Middle East</span>
+      </div>
+
+      <!-- Main Headline (Two balanced editorial lines) -->
+      <h1 class="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] text-white tracking-tight leading-[1.08] text-balance">
+        Agricultural Sourcing. <br />
+        <span class="font-serif italic font-normal text-gold-light">Built on Trust.</span>
+      </h1>
+
+      <!-- Supporting Body Text -->
+      <p class="text-base sm:text-lg md:text-xl text-slate-300 max-w-xl leading-relaxed font-normal">
+        Connecting global agricultural commodity buyers with reliable sourcing and procurement opportunities from India.
+      </p>
+
+      <!-- CTA Buttons (matching reference layout: Primary Pill + Outlined Pill) -->
+      <div class="pt-3 flex flex-wrap items-center gap-4">
+        <!-- Primary Button -->
+        <a
+          href="/products"
+          class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gold hover:bg-gold-dark text-navy-950 font-heading font-bold text-sm tracking-wider uppercase transition-all duration-300 shadow-gold-glow hover:-translate-y-0.5 active:translate-y-0"
+        >
+          <span>Explore Our Products</span>
+          <ArrowRight className="w-4 h-4" />
+        </a>
+
+        <!-- Secondary Button ("Partner With Us" / Enquiry) -->
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-navy-900/70 hover:bg-navy-850 text-slate-100 hover:text-white border border-slate-600/70 hover:border-gold/70 font-heading font-semibold text-sm tracking-wide transition-all duration-300 backdrop-blur-md hover:-translate-y-0.5"
+        >
+          <span>Partner With Us</span>
+        </a>
+      </div>
+
+      <!-- Sourcing Trust Highlights at base of text -->
+      <div class="pt-8 border-t border-slate-800/80 flex flex-wrap items-center gap-6 sm:gap-10 text-xs sm:text-sm text-slate-400">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-teal"></span>
+          <span>Origin: Mundra &amp; Kandla Ports</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-gold"></span>
+          <span>Destination: UAE, Saudi Arabia &amp; Gulf</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-slate-500"></span>
+          <span>Buyer-Specific Sourcing</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>

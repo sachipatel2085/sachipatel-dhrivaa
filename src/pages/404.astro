@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/common/PageHero.astro';
+import { ArrowRight, Compass } from 'lucide-react';
+
+const pageTitle = 'Page Not Found (404) | DHRIVAA – Global Trade Partner';
+---
+
+<BaseLayout title={pageTitle}>
+  <PageHero
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Error 404' }
+    ]}
+    eyebrow="NAVIGATION DEVIATION · 404"
+    title="Page Not Found."
+    titleAccent="Return to Active Trade Corridors."
+    description="The commodity specifications, resource, or destination page you are looking for has been relocated or is unavailable."
+    bannerImage="/images/hero-port.jpg"
+    bannerAlt="Container shipping vessel at port terminal"
+    primaryButton={{
+      label: 'Return to Homepage',
+      href: '/'
+    }}
+    secondaryButton={{
+      label: 'Browse Commodities',
+      href: '/products'
+    }}
+    trustTags={[
+      { text: 'Gujarat Sourcing Hub', color: 'teal' },
+      { text: 'Active Maritime Trade Routes', color: 'gold' }
+    ]}
+    minHeightClass="min-h-[70vh]"
+  />
+</BaseLayout>

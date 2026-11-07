@@ -1,0 +1,32 @@
+---
+interface Props {
+  variant?: 'light' | 'dark';
+  className?: string;
+  imgClassName?: string;
+}
+
+const { 
+  variant = 'light', 
+  className = '', 
+  imgClassName = 'h-10 sm:h-11 md:h-12 w-auto object-contain' 
+} = Astro.props;
+
+const isDark = variant === 'dark';
+const logoSrc = isDark ? '/images/logo-white.png' : '/images/logo.png';
+---
+
+<a 
+  href="/" 
+  class={`inline-flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-lg transition-transform duration-200 hover:scale-[1.02] active:scale-[0.99] ${className}`} 
+  aria-label="DHRIVAA – Global Trade Partner Home"
+>
+  <img
+    src={logoSrc}
+    alt="DHRIVAA – Global Trade Partner"
+    class={imgClassName}
+    width="984"
+    height="305"
+    loading="eager"
+    decoding="async"
+  />
+</a>

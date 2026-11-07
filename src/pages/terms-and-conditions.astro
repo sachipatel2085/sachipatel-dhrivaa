@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/common/PageHero.astro';
+import { companyData } from '../data/company';
+
+const pageTitle = `Terms & Conditions | ${companyData.name}`;
+const pageDescription = 'Terms and Conditions governing the use of the DHRIVAA trade portal and procurement coordination services.';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  
+  <!-- Cinematic Hero Header with Dark Gradient Overlay -->
+  <PageHero
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Terms & Conditions' }
+    ]}
+    eyebrow="COMMERCIAL TERMS & JURISDICTION"
+    title="Terms & Conditions."
+    titleAccent="Sourcing Governance & Trade Terms."
+    description="Terms governing procurement inquiries, contract structuring, and trade coordination via DHRIVAA."
+    bannerImage="/images/banner-contact.jpg"
+    bannerAlt="International shipping port logistics and trade terms"
+    trustTags={[
+      { text: 'Incoterms Standards', color: 'teal' },
+      { text: 'Governing Law: India', color: 'gold' }
+    ]}
+    minHeightClass="min-h-[44vh] lg:min-h-[48vh]"
+  />
+
+  <section class="py-16 bg-white text-slate-700">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 text-sm leading-relaxed">
+      
+      <div>
+        <h2 class="font-heading font-bold text-xl text-navy-900 mb-2">1. Nature of Business &amp; Positioning</h2>
+        <p>
+          DHRIVAA operates as an independent agricultural commodity sourcing and procurement coordinator based in Gujarat, India. DHRIVAA is not a manufacturer and does not own or operate processing factories. All transactions are coordinated with verified third-party suppliers, solvent extraction plants, and crushing units in India.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-xl text-navy-900 mb-2">2. Website Content &amp; Quotations</h2>
+        <p>
+          Information provided on this website is for informational and commercial inquiry purposes only. Quotations, specifications, and shipment commitments become binding only upon execution of formal, signed commercial purchase contracts specifying Incoterms, payment conditions, and agreed technical parameters.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-xl text-navy-900 mb-2">3. Product Specifications &amp; Quality</h2>
+        <p>
+          Because agricultural commodities are subject to natural seasonal and processing variations, product specifications are subject to confirmation on an individual contract basis. Official Certificate of Analysis (COA) and third-party inspection certificates govern product conformity.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-xl text-navy-900 mb-2">4. Governing Law</h2>
+        <p>
+          Unless otherwise explicitly agreed in a bilateral commercial sales contract, general use of this website is governed by the laws of India.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-xl text-navy-900 mb-2">5. Contact</h2>
+        <p>
+          Questions concerning these terms may be directed to <a href={`mailto:${companyData.email}`} class="text-teal font-semibold hover:underline">{companyData.email}</a>.
+        </p>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

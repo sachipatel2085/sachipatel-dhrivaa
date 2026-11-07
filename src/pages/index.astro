@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import Capabilities from '../components/home/Capabilities.astro';
+import ProductShowcase from '../components/home/ProductShowcase.astro';
+import WhyChooseUs from '../components/home/WhyChooseUs.astro';
+import SourcingProcess from '../components/home/SourcingProcess.astro';
+import GlobalMarkets from '../components/home/GlobalMarkets.astro';
+import QualityAssurance from '../components/home/QualityAssurance.astro';
+import FinalCTA from '../components/home/FinalCTA.astro';
+import { companyData } from '../data/company';
+
+const pageTitle = `${companyData.name} – Global Trade Partner | Agricultural Commodity Sourcing India`;
+const pageDescription = 'Connecting global buyers with reliable agricultural commodity sources from India through transparent sourcing and procurement. Specializing in Rapeseed Meal, Castorseed Meal, and Castor Oil.';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <!-- Section 2: Cinematic Hero -->
+  <Hero />
+
+  <!-- Section 3: Business Capabilities Strip -->
+  <Capabilities />
+
+  <!-- Section 4: Product Portfolio -->
+  <ProductShowcase />
+
+  <!-- Section 5: Why Choose DHRIVAA? -->
+  <WhyChooseUs />
+
+  <!-- Section 6: Sourcing Process -->
+  <SourcingProcess />
+
+  <!-- Section 7: Global Markets & Trade Corridor -->
+  <GlobalMarkets />
+
+  <!-- Section 8: Quality Assurance -->
+  <QualityAssurance />
+
+  <!-- Section 9: Final CTA -->
+  <FinalCTA />
+</BaseLayout>
