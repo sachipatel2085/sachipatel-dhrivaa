@@ -94,7 +94,7 @@ const {
     <div class="max-w-2xl lg:max-w-3xl space-y-6 text-left">
       
       <!-- Breadcrumb Navigation -->
-      <nav class="flex items-center gap-2 text-xs text-slate-400" aria-label="Breadcrumb">
+      <nav class="flex flex-wrap items-center gap-1.5 text-xs text-slate-400" aria-label="Breadcrumb">
         {breadcrumbs.map((crumb, idx) => (
           <>
             {idx > 0 && <span class="text-slate-600">/</span>}
@@ -118,7 +118,7 @@ const {
       )}
 
       <!-- Main Headline -->
-      <h1 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] text-white tracking-tight leading-[1.1] text-balance">
+      <h1 class="font-heading font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-[3.5rem] text-white tracking-tight leading-[1.15] text-balance break-words">
         {title}
         {titleAccent && (
           <>
@@ -129,17 +129,17 @@ const {
       </h1>
 
       <!-- Supporting Description -->
-      <p class="text-base sm:text-lg text-slate-300 max-w-xl leading-relaxed font-normal">
+      <p class="text-sm sm:text-base md:text-lg text-slate-300 max-w-xl leading-relaxed font-normal">
         {description}
       </p>
 
       <!-- Action Buttons -->
       {(primaryButton || secondaryButton) && (
-        <div class="pt-2 flex flex-wrap items-center gap-4">
+        <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
           {primaryButton && (
             <a
               href={primaryButton.href}
-              class="inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-gold hover:bg-gold-dark text-navy-950 font-heading font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-gold-glow hover:-translate-y-0.5 active:translate-y-0"
+              class="inline-flex items-center justify-center gap-3 px-6 sm:px-7 py-3.5 rounded-full bg-gold hover:bg-gold-dark text-navy-950 font-heading font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-gold-glow hover:-translate-y-0.5 active:translate-y-0 text-center"
             >
               <span>{primaryButton.label}</span>
               <ArrowRight className="w-4 h-4" />
@@ -149,7 +149,7 @@ const {
           {secondaryButton && (
             <a
               href={secondaryButton.href}
-              class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-navy-900/70 hover:bg-navy-850 text-slate-100 hover:text-white border border-slate-600/70 hover:border-gold/70 font-heading font-semibold text-xs sm:text-sm tracking-wide transition-all duration-300 backdrop-blur-md hover:-translate-y-0.5"
+              class="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-full bg-navy-900/70 hover:bg-navy-850 text-slate-100 hover:text-white border border-slate-600/70 hover:border-gold/70 font-heading font-semibold text-xs sm:text-sm tracking-wide transition-all duration-300 backdrop-blur-md hover:-translate-y-0.5 text-center"
             >
               <span>{secondaryButton.label}</span>
             </a>
