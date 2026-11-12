@@ -108,7 +108,7 @@ const jsonLdGraph = {
   ]
 };
 
-const whatsappProductUrl = `https://wa.me/919987654321?text=${encodeURIComponent(
+const whatsappProductUrl = `https://wa.me/${companyData.phone.replace('+', '')}?text=${encodeURIComponent(
   `Hello DHRIVAA Trade Desk, I am inquiring regarding sourcing and technical parameters for ${product.name}.`
 )}`;
 ---

@@ -40,6 +40,10 @@ const defaultOrgJsonLd = {
   url: 'https://dhrivaa.com',
   logo: 'https://dhrivaa.com/images/logo.png',
   description: description,
+  sameAs: [
+    companyData.socialLinks.linkedin,
+    companyData.socialLinks.instagram
+  ],
   address: {
     '@type': 'PostalAddress',
     addressRegion: 'Gujarat',

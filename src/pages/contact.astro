@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/common/PageHero.astro';
 import ContactForm from '../components/contact/ContactForm';
 import { companyData } from '../data/company';
-import { Mail, Phone, MapPin, MessageSquare, Clock, Globe, ShieldCheck } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageSquare, Clock, Globe, ShieldCheck, Linkedin, Instagram, ArrowUpRight } from 'lucide-react';
 
 const pageTitle = `Contact Trade Coordination | ${companyData.name} – Global Trade Partner`;
 const pageDescription = 'Get in touch with DHRIVAA’s agricultural commodity sourcing team. Inquire about Rapeseed Meal, Castorseed Meal, or Castor Oil procurement from Gujarat, India.';
@@ -105,6 +105,39 @@ const pageDescription = 'Get in touch with DHRIVAA’s agricultural commodity so
                 <MessageSquare className="w-4 h-4" />
                 <span>Chat on WhatsApp Directly</span>
               </a>
+            </div>
+
+            <!-- Official Social Channels -->
+            <div class="pt-4 border-t border-slate-100 space-y-2.5">
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block font-heading">
+                Connect on Social Networks
+              </span>
+              <div class="grid grid-cols-2 gap-3">
+                <a
+                  href={companyData.socialLinks.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-navy-900 text-xs font-semibold transition-all group"
+                >
+                  <span class="flex items-center gap-2">
+                    <Linkedin className="w-4 h-4 text-[#0A66C2]" />
+                    <span>LinkedIn</span>
+                  </span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-navy-900 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
+                <a
+                  href={companyData.socialLinks.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-navy-900 text-xs font-semibold transition-all group"
+                >
+                  <span class="flex items-center gap-2">
+                    <Instagram className="w-4 h-4 text-[#E4405F]" />
+                    <span>Instagram</span>
+                  </span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-navy-900 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
+              </div>
             </div>
 
           </div>

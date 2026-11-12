@@ -1,3 +1,8 @@
+export interface CompanySocialLinks {
+  linkedin: string;
+  instagram: string;
+}
+
 export interface CompanyInfo {
   name: string;
   tagline: string;
@@ -9,6 +14,7 @@ export interface CompanyInfo {
   phone: string;
   phoneDisplay: string;
   whatsappUrl: string;
+  socialLinks: CompanySocialLinks;
   businessModel: string;
   positioningNotice: string;
 }
@@ -29,9 +35,13 @@ export const companyData: CompanyInfo = {
     'Other International Markets'
   ],
   email: 'info@dhrivaa.global',
-  phone: '+919876543210',
-  phoneDisplay: '+91 98765 43210',
-  whatsappUrl: 'https://wa.me/919876543210?text=Hello%20DHRIVAA%20team,%20I%20would%20like%20to%20inquire%20about%20agricultural%20commodity%20sourcing.',
+  phone: '+919265154502',
+  phoneDisplay: '+91 92651 54502',
+  whatsappUrl: 'https://wa.me/919265154502?text=Hello%20DHRIVAA%20team,%20I%20would%20like%20to%20inquire%20about%20agricultural%20commodity%20sourcing.',
+  socialLinks: {
+    linkedin: 'https://www.linkedin.com/company/dhrivaa',
+    instagram: 'https://www.instagram.com/dhrivaa.global?srtk=MTc1YzQ5YWdndGptbA=='
+  },
   businessModel: 'Buyer-specific agricultural commodity sourcing and procurement coordination',
   positioningNotice: 'DHRIVAA operates as an independent sourcing and procurement coordinator connecting international buyers with verified Indian commodity suppliers. DHRIVAA is not a manufacturer and does not operate production facilities.'
 };
