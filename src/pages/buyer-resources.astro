@@ -1,0 +1,367 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/common/PageHero.astro';
+import FinalCTA from '../components/home/FinalCTA.astro';
+import { buyerResourcesData } from '../data/buyerResources';
+import { 
+  FileText, 
+  Package, 
+  ShieldCheck, 
+  ArrowRight, 
+  CheckCircle2, 
+  Anchor, 
+  Scale, 
+  Clock, 
+  Truck, 
+  HelpCircle,
+  FileCheck,
+  AlertCircle,
+  Layers,
+  Award
+} from 'lucide-react';
+
+const { hero, specsGuide, packagingGuide, documentationGuide, incotermsGuide, procurementGuide } = buyerResourcesData;
+
+const pageTitle = 'B2B Agricultural Commodity Buyer Resources | DHRIVAA';
+const pageDescription = 'Comprehensive procurement intelligence for agricultural commodity buyers in UAE and Middle East. Product specifications guide, export packaging, shipping documentation, and Incoterms.';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://dhrivaa.com/'
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Buyer Resources',
+      item: 'https://dhrivaa.com/buyer-resources'
+    }
+  ]
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={breadcrumbJsonLd}>
+  <!-- Page Hero with Dark Gradient Overlay & Topic Banner -->
+  <PageHero
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Buyer Resources' }
+    ]}
+    eyebrow={hero.eyebrow}
+    title={hero.title}
+    titleAccent={hero.titleAccent}
+    description={hero.description}
+    bannerImage={hero.bannerImage}
+    bannerAlt={hero.bannerAlt}
+    primaryButton={{
+      label: 'Download Sourcing Guide (PDF Inquiry)',
+      href: '/contact'
+    }}
+    secondaryButton={{
+      label: 'Browse Incoterms & Packaging',
+      href: '#incoterms-explained'
+    }}
+    trustTags={[
+      { text: 'Incoterms 2020 Compliant', color: 'teal' },
+      { text: 'Accredited Lab Testing (COA)', color: 'gold' },
+      { text: 'Gujarat Seaports: Mundra & Kandla', color: 'slate' }
+    ]}
+  />
+
+  <!-- Sticky In-Page Navigation Bar -->
+  <nav class="sticky top-[69px] z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 py-3 shadow-xs hidden md:block" aria-label="Buyer Resources Navigation">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between text-xs font-heading font-semibold uppercase tracking-wider text-slate-600">
+        <span class="text-navy-950 font-bold flex items-center gap-1.5">
+          <Layers className="w-3.5 h-3.5 text-teal" />
+          <span>Jump to Guide:</span>
+        </span>
+        <div class="flex items-center gap-6">
+          <a href="#specifications-guide" class="hover:text-teal transition-colors">Specifications</a>
+          <a href="#packaging-standards" class="hover:text-teal transition-colors">Packaging</a>
+          <a href="#export-documentation" class="hover:text-teal transition-colors">Export Docs</a>
+          <a href="#incoterms-explained" class="hover:text-teal transition-colors">Incoterms</a>
+          <a href="#procurement-workflow" class="hover:text-teal transition-colors">Procurement Steps</a>
+        </div>
+        <a href="/contact" class="text-teal font-bold hover:text-gold transition-colors">
+          Inquire Now &rarr;
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SECTION 1: Product Specifications Guide -->
+  <section id="specifications-guide" class="py-20 bg-white border-b border-slate-200 scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-3 mb-14">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-teal font-heading">
+          {specsGuide.badge}
+        </span>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-navy-900 tracking-tight">
+          {specsGuide.title}
+        </h2>
+        <p class="text-sm font-medium text-slate-500">
+          {specsGuide.subtitle}
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed pt-2">
+          {specsGuide.description}
+        </p>
+      </div>
+
+      <!-- Principles Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {specsGuide.principles.map((p, idx) => (
+          <div class="p-8 rounded-2xl bg-surface-light border border-slate-200/90 shadow-card hover:shadow-premium transition-all space-y-4">
+            <div class="w-10 h-10 rounded-xl bg-navy-900 text-gold flex items-center justify-center font-mono font-bold text-sm">
+              0{idx + 1}
+            </div>
+            <h3 class="font-heading font-bold text-lg sm:text-xl text-navy-900">
+              {p.title}
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              {p.description}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Disclaimer Banner -->
+      <div class="mt-10 p-5 rounded-2xl bg-amber-50 border border-amber-200 text-xs sm:text-sm text-amber-950 flex items-start gap-3">
+        <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+        <p class="leading-relaxed">
+          <strong>Quality Disclaimer:</strong> DHRIVAA does not publish generic rigid chemical guarantees because agricultural processing by-products naturally vary across regional crushing seasons. We guarantee that your contractual parameters are locked with verified mills and confirmed through independent laboratory testing before shipment authorization.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: Export Packaging Standards -->
+  <section id="packaging-standards" class="py-20 bg-surface-light border-b border-slate-200 scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-3 mb-14">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-teal font-heading">
+          {packagingGuide.badge}
+        </span>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-navy-900 tracking-tight">
+          {packagingGuide.title}
+        </h2>
+        <p class="text-sm font-medium text-slate-500">
+          {packagingGuide.subtitle}
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed pt-2">
+          {packagingGuide.description}
+        </p>
+      </div>
+
+      <!-- Packaging Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {packagingGuide.formats.map((pkg) => (
+          <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-card flex flex-col justify-between space-y-5 hover:-translate-y-1 transition-all">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                <span class="text-xs font-mono font-bold text-teal bg-teal/10 px-2.5 py-1 rounded-md">
+                  {pkg.capacity}
+                </span>
+                <span class="text-[11px] text-slate-400 font-medium">
+                  {pkg.commodities}
+                </span>
+              </div>
+              <h3 class="font-heading font-bold text-lg text-navy-900">
+                {pkg.title}
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                {pkg.description}
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-slate-100 space-y-2">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
+                Primary Advantages:
+              </span>
+              <ul class="space-y-1.5 text-xs text-slate-700">
+                {pkg.advantages.map((adv) => (
+                  <li class="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-teal flex-shrink-0" />
+                    <span>{adv}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: Essential Export Documentation Guide -->
+  <section id="export-documentation" class="py-20 bg-white border-b border-slate-200 scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-3 mb-14">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-teal font-heading">
+          {documentationGuide.badge}
+        </span>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-navy-900 tracking-tight">
+          {documentationGuide.title}
+        </h2>
+        <p class="text-sm font-medium text-slate-500">
+          {documentationGuide.subtitle}
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed pt-2">
+          {documentationGuide.description}
+        </p>
+      </div>
+
+      <!-- Documentation Table / Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {documentationGuide.documents.map((doc) => (
+          <div class="p-7 rounded-2xl bg-surface-light border border-slate-200 shadow-subtle hover:shadow-card transition-all flex flex-col justify-between space-y-4">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded bg-navy-900 text-gold font-mono font-bold text-xs">
+                  {doc.code}
+                </span>
+                <span class="text-[11px] text-slate-400 font-medium">
+                  {doc.issuedBy}
+                </span>
+              </div>
+              <h3 class="font-heading font-bold text-base sm:text-lg text-navy-900">
+                {doc.name}
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                {doc.description}
+              </p>
+            </div>
+            <div class="pt-3 border-t border-slate-200/80">
+              <span class="text-[11px] text-teal font-semibold block">
+                Trade Purpose: {doc.importance}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: Incoterms for Commodity Buyers -->
+  <section id="incoterms-explained" class="py-20 bg-surface-light border-b border-slate-200 scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-3 mb-14">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-teal font-heading">
+          {incotermsGuide.badge}
+        </span>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-navy-900 tracking-tight">
+          {incotermsGuide.title}
+        </h2>
+        <p class="text-sm font-medium text-slate-500">
+          {incotermsGuide.subtitle}
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed pt-2">
+          {incotermsGuide.description}
+        </p>
+      </div>
+
+      <!-- Incoterms Cards -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {incotermsGuide.terms.map((term) => (
+          <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-card flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <div class="w-14 h-14 rounded-2xl bg-navy-900 text-gold flex items-center justify-center font-heading font-extrabold text-xl shadow-sm">
+                {term.term}
+              </div>
+              <h3 class="font-heading font-bold text-lg text-navy-900">
+                {term.name}
+              </h3>
+              
+              <div class="space-y-3 text-xs leading-relaxed">
+                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
+                  <span class="font-bold text-navy-900 block mb-0.5">Risk Transfer Point:</span>
+                  <span class="text-slate-600">{term.buyerRisk}</span>
+                </div>
+                <div>
+                  <span class="font-bold text-teal block mb-0.5">Seller Arranges &amp; Pays:</span>
+                  <span class="text-slate-600">{term.sellerDoes}</span>
+                </div>
+                <div>
+                  <span class="font-bold text-slate-700 block mb-0.5">Buyer Pays:</span>
+                  <span class="text-slate-600">{term.buyerPays}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-100">
+              <span class="text-[11px] font-bold uppercase text-slate-400 block mb-1">Recommended When:</span>
+              <p class="text-xs text-navy-900 font-semibold">{term.bestFor}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: The Bulk Procurement Roadmap -->
+  <section id="procurement-workflow" class="py-20 bg-white border-b border-slate-200 scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-3 mb-14">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-teal font-heading">
+          {procurementGuide.badge}
+        </span>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-navy-900 tracking-tight">
+          {procurementGuide.title}
+        </h2>
+        <p class="text-sm font-medium text-slate-500">
+          {procurementGuide.subtitle}
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed pt-2">
+          {procurementGuide.description}
+        </p>
+      </div>
+
+      <!-- 5-Step Process Timeline -->
+      <div class="space-y-6">
+        {procurementGuide.steps.map((step) => (
+          <div class="p-7 sm:p-8 rounded-2xl bg-surface-light border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-gold/50 transition-all">
+            <div class="flex items-start gap-5">
+              <div class="w-12 h-12 rounded-2xl bg-navy-900 text-gold font-mono font-extrabold text-base flex items-center justify-center flex-shrink-0">
+                {step.step}
+              </div>
+              <div class="space-y-1.5">
+                <h3 class="font-heading font-bold text-lg sm:text-xl text-navy-900">
+                  {step.title}
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-3xl">
+                  {step.description}
+                </p>
+              </div>
+            </div>
+
+            <div class="md:w-72 p-4 rounded-xl bg-white border border-slate-200 text-xs flex-shrink-0">
+              <span class="font-bold text-teal block uppercase text-[10px] tracking-wider mb-1">
+                Milestone Deliverable:
+              </span>
+              <span class="text-slate-700 font-medium">{step.output}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Action Button -->
+      <div class="mt-12 text-center">
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gold hover:bg-gold-dark text-navy-950 font-heading font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-gold-glow hover:-translate-y-0.5"
+        >
+          <span>Initiate Sourcing Evaluation / Submit RFQ</span>
+          <ArrowRight className="w-4 h-4" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <FinalCTA />
+</BaseLayout>

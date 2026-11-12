@@ -81,7 +81,7 @@ const pageDescription = 'Explore agricultural commodities sourced by DHRIVAA fro
                     {product.applications.slice(0, 2).map((app) => (
                       <li class="flex items-start gap-2">
                         <CheckCircle2 className="w-3.5 h-3.5 text-teal flex-shrink-0 mt-0.5" />
-                        <span>{app}</span>
+                        <span class="font-medium text-slate-700">{app.title}</span>
                       </li>
                     ))}
                   </ul>

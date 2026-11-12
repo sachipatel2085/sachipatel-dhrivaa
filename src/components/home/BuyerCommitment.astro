@@ -1,0 +1,126 @@
+---
+import { ShieldCheck, Target, Eye, FileText, CheckCircle2, Lock, ArrowRight } from 'lucide-react';
+
+const commitments = [
+  {
+    icon: Target,
+    title: 'Independent Buyer Representation',
+    subtitle: 'Zero Factory Bias',
+    description: 'We do not own factories or maintain unsold mill inventory. Our mandate is exclusively to source the highest quality batch at the most competitive price point on behalf of the international buyer.'
+  },
+  {
+    icon: Eye,
+    title: 'Pre-Shipment Sampling & Laboratory Verification',
+    subtitle: 'COA Before Dispatch',
+    description: 'Every production lot is subjected to accredited laboratory analysis prior to vessel loading. Buyers receive transparent test parameters (protein, moisture, acid value, or NPK) before goods leave Gujarat.'
+  },
+  {
+    icon: Lock,
+    title: 'Container Stuffing & Moisture Defense',
+    subtitle: 'Cargo Security',
+    description: 'We supervise container stuffing, ensuring proper desiccant placement, clean container liners, and verified seal numbers to prevent marine moisture absorption during Arabian Sea transit.'
+  },
+  {
+    icon: FileText,
+    title: 'Legalized & Complete Trade Documentation',
+    subtitle: 'Seamless GCC Customs',
+    description: 'From Clean on Board Bills of Lading and authorized Phytosanitary Certificates to Chamber of Commerce Certificates of Origin, we ensure prompt document dispatch to prevent terminal demurrage.'
+  }
+];
+
+const guarantees = [
+  'Transparent, uninflated sourcing pricing based on prevailing regional spot markets',
+  'Strict adherence to contracted Incoterms (FOB Mundra/Kandla or CIF/CFR Gulf ports)',
+  'Direct communication channel with dedicated sourcing coordinators in Gujarat',
+  'Complete willingness to facilitate third-party inspection (SGS, Bureau Veritas) upon buyer instruction'
+];
+---
+
+<section class="py-20 lg:py-28 bg-white border-b border-slate-200 relative overflow-hidden" aria-labelledby="commitment-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Column: Editorial Manifesto (5 cols) -->
+      <div class="lg:col-span-5 space-y-6">
+        <span class="text-xs font-bold uppercase tracking-[0.22em] text-teal font-heading">
+          Trade Ethics &amp; Integrity
+        </span>
+        <h2 id="commitment-heading" class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-navy-900 tracking-tight leading-tight">
+          Our Commitment <br />
+          <span class="font-serif italic font-normal text-gold">to Global Buyers.</span>
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+          In international agricultural commodity trading, trust is built on verifiable specifications, consistent execution, and total commercial transparency.
+        </p>
+
+        <!-- Positioning Callout Box -->
+        <div class="p-5 rounded-2xl bg-surface-light border border-slate-200/90 text-xs sm:text-sm text-slate-700 space-y-3">
+          <div class="flex items-center gap-2 text-navy-900 font-bold font-heading">
+            <ShieldCheck className="w-5 h-5 text-teal" />
+            <span>The Independent Procurement Advantage</span>
+          </div>
+          <p class="text-slate-600 leading-relaxed text-xs">
+            DHRIVAA acts as your dedicated procurement office in India. Because we do not operate manufacturing plants, we are never incentivized to push compromised or off-spec production batches. Your contract specifications dictate our mill selection.
+          </p>
+        </div>
+
+        <!-- Guarantee Checklist -->
+        <div class="space-y-3 pt-2">
+          {guarantees.map((item) => (
+            <div class="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
+              <CheckCircle2 className="w-4 h-4 text-teal flex-shrink-0 mt-0.5" />
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="pt-4">
+          <a
+            href="/sourcing-procurement"
+            class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-navy-900 hover:bg-navy-850 text-white font-heading font-bold text-xs uppercase tracking-wider transition-colors shadow-sm"
+          >
+            <span>Explore Our Sourcing Methodology</span>
+            <ArrowRight className="w-3.5 h-3.5 text-gold" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: 4 Commitment Pillars (7 cols) -->
+      <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {commitments.map((c, idx) => {
+          const Icon = c.icon;
+          return (
+            <div class="bg-surface-light p-7 rounded-2xl border border-slate-200 shadow-card hover:shadow-premium transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+              <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                  <div class="w-12 h-12 rounded-xl bg-navy-900 text-gold flex items-center justify-center group-hover:bg-gold group-hover:text-navy-950 transition-colors shadow-sm">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <span class="font-mono text-xs font-bold text-slate-400 group-hover:text-teal transition-colors">
+                    0{idx + 1}
+                  </span>
+                </div>
+
+                <div>
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-teal block mb-1">
+                    {c.subtitle}
+                  </span>
+                  <h3 class="font-heading font-bold text-lg text-navy-900 group-hover:text-teal transition-colors">
+                    {c.title}
+                  </h3>
+                </div>
+
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                  {c.description}
+                </p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+    </div>
+
+  </div>
+</section>

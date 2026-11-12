@@ -1,0 +1,272 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/common/PageHero.astro';
+import FinalCTA from '../../components/home/FinalCTA.astro';
+import { insightsData } from '../../data/insights';
+import { Calendar, Clock, ArrowRight, BookOpen, Layers, ShieldCheck, Tag } from 'lucide-react';
+
+const featuredArticle = insightsData[0];
+const remainingArticles = insightsData.slice(1);
+
+const pageTitle = 'International Agricultural Trade Insights & Analysis | DHRIVAA';
+const pageDescription = 'Market intelligence, nutritional benchmarks, and maritime supply chain analysis for agricultural commodity buyers in UAE, Saudi Arabia, and the Middle East.';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://dhrivaa.com/'
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Trade Insights',
+      item: 'https://dhrivaa.com/insights'
+    }
+  ]
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={breadcrumbJsonLd}>
+  <!-- Page Hero -->
+  <PageHero
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Trade Insights' }
+    ]}
+    eyebrow="TRADE INTELLIGENCE &amp; SUPPLY CHAIN ANALYSIS"
+    title="International Trade Insights"
+    titleAccent="Market Analysis from the Sourcing Belt."
+    description="Original technical briefings, nutritional benchmarks, and shipping logistics analyses authored by DHRIVAA’s agricultural commodity research desk in Gujarat, India."
+    bannerImage="/images/banner-products.jpg"
+    bannerAlt="Agricultural commodities laboratory evaluation and international trade documents"
+    primaryButton={{
+      label: 'Read Featured Analysis',
+      href: `#featured-article`
+    }}
+    secondaryButton={{
+      label: 'Explore Buyer Resources',
+      href: '/buyer-resources'
+    }}
+    trustTags={[
+      { text: 'Authored by Sourcing Specialists', color: 'teal' },
+      { text: 'Focused on UAE & GCC Corridors', color: 'gold' },
+      { text: 'Practical B2B Procurement Data', color: 'slate' }
+    ]}
+  />
+
+  <!-- Main Editorial Container -->
+  <div class="py-20 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <!-- Featured Strategic Article Banner -->
+      <section id="featured-article" class="scroll-mt-28">
+        <div class="text-xs font-bold uppercase tracking-[0.2em] text-teal font-heading mb-4">
+          Featured Strategic Briefing
+        </div>
+
+        <article class="relative rounded-3xl bg-navy-950 text-white overflow-hidden shadow-premium border border-navy-800 grid grid-cols-1 lg:grid-cols-12 group">
+          <!-- Image Column (7 cols) -->
+          <div class="lg:col-span-7 relative aspect-[16/10] lg:aspect-auto overflow-hidden">
+            <img
+              src={featuredArticle.image}
+              alt={featuredArticle.alt}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-[0.9]"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-navy-950 via-navy-950/40 to-transparent"></div>
+            
+            <div class="absolute top-5 left-5">
+              <span class="inline-block px-3.5 py-1.5 rounded-full bg-navy-900/90 text-gold-light border border-gold/40 text-xs font-heading font-bold uppercase tracking-wider backdrop-blur-md">
+                {featuredArticle.category}
+              </span>
+            </div>
+          </div>
+
+          <!-- Content Column (5 cols) -->
+          <div class="lg:col-span-5 p-8 sm:p-10 lg:p-12 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <!-- Meta Row -->
+              <div class="flex items-center gap-4 text-xs text-slate-400">
+                <span class="flex items-center gap-1.5">
+                  <Calendar className="w-3.5 h-3.5 text-teal" />
+                  <time datetime={featuredArticle.publishDate}>{featuredArticle.publishDate}</time>
+                </span>
+                <span>&bull;</span>
+                <span class="flex items-center gap-1.5">
+                  <Clock className="w-3.5 h-3.5 text-teal" />
+                  <span>{featuredArticle.readTime}</span>
+                </span>
+              </div>
+
+              <!-- Title -->
+              <h2 class="font-heading font-bold text-2xl sm:text-3xl text-white group-hover:text-gold-light transition-colors leading-tight">
+                <a href={`/insights/${featuredArticle.slug}`}>
+                  {featuredArticle.title}
+                </a>
+              </h2>
+
+              <!-- Excerpt -->
+              <p class="text-sm text-slate-300 leading-relaxed font-normal">
+                {featuredArticle.excerpt}
+              </p>
+
+              <!-- Key Takeaway Bullets -->
+              <div class="space-y-2 pt-2 border-t border-navy-850">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-gold block">
+                  Key Briefing Points:
+                </span>
+                <ul class="space-y-1 text-xs text-slate-400">
+                  {featuredArticle.keyTakeaways.slice(0, 2).map((takeaway) => (
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-teal flex-shrink-0 mt-1.5"></span>
+                      <span>{takeaway}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <!-- Action Button -->
+            <div class="pt-4">
+              <a
+                href={`/insights/${featuredArticle.slug}`}
+                class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gold hover:bg-gold-dark text-navy-950 font-heading font-bold text-xs uppercase tracking-wider transition-colors shadow-md"
+              >
+                <span>Read Full Briefing</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- All Intelligence Articles Grid -->
+      <section>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-200 mb-10 gap-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-teal font-heading block mb-1">
+              Briefings Library
+            </span>
+            <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-navy-900 tracking-tight">
+              Commodity &amp; Supply Chain Reports
+            </h2>
+          </div>
+
+          <div class="flex items-center gap-2 text-xs text-slate-500">
+            <ShieldCheck className="w-4 h-4 text-teal" />
+            <span>Fact-based market intelligence without speculative noise</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {remainingArticles.map((article) => (
+            <article class="bg-surface-light rounded-3xl border border-slate-200 overflow-hidden shadow-card hover:shadow-premium transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+              <div>
+                <!-- Image Wrapper -->
+                <div class="relative aspect-[16/10] overflow-hidden bg-navy-950">
+                  <img
+                    src={article.image}
+                    alt={article.alt}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-[0.95]"
+                    loading="lazy"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent"></div>
+                  
+                  <div class="absolute bottom-4 left-4">
+                    <span class="inline-block px-3 py-1 rounded-full bg-navy-900/90 text-gold-light border border-gold/30 text-[10px] font-heading font-bold uppercase tracking-wider backdrop-blur-md">
+                      {article.category}
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Content -->
+                <div class="p-7 sm:p-8 space-y-4">
+                  <!-- Meta -->
+                  <div class="flex items-center gap-4 text-xs text-slate-400">
+                    <span class="flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5 text-teal" />
+                      <time datetime={article.publishDate}>{article.publishDate}</time>
+                    </span>
+                    <span>&bull;</span>
+                    <span class="flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5 text-teal" />
+                      <span>{article.readTime}</span>
+                    </span>
+                  </div>
+
+                  <!-- Title -->
+                  <h3 class="font-heading font-bold text-xl text-navy-900 group-hover:text-teal transition-colors leading-snug">
+                    <a href={`/insights/${article.slug}`}>
+                      {article.title}
+                    </a>
+                  </h3>
+
+                  <!-- Excerpt -->
+                  <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                    {article.excerpt}
+                  </p>
+
+                  <!-- Tags -->
+                  <div class="flex flex-wrap gap-1.5 pt-2">
+                    {article.tags.map((tag) => (
+                      <span class="text-[11px] font-mono text-slate-500 bg-white px-2.5 py-1 rounded-md border border-slate-200">
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Read Link Footer -->
+              <div class="px-7 sm:px-8 pb-7 pt-4 border-t border-slate-200/80 flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-500">
+                  {article.author.name}
+                </span>
+                <a
+                  href={`/insights/${article.slug}`}
+                  class="inline-flex items-center gap-1.5 text-xs font-heading font-bold text-navy-900 hover:text-teal uppercase tracking-wider transition-colors group/link"
+                >
+                  <span>Read Article</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-gold group-hover/link:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- Sourcing Consultation Ribbon -->
+      <section class="p-8 sm:p-10 rounded-3xl bg-surface-light border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-2 text-left">
+          <span class="text-xs font-bold uppercase tracking-wider text-teal font-heading">
+            Bespoke Procurement Analysis
+          </span>
+          <h3 class="font-heading font-bold text-xl sm:text-2xl text-navy-900">
+            Need Custom Sourcing Feasibility for Your Target Market?
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 max-w-2xl leading-relaxed">
+            Share your monthly tonnage requirements, target seaport, and required chemical/protein specifications. Our research desk will evaluate prevailing Gujarat spot mill pricing and ocean container freight.
+          </p>
+        </div>
+
+        <div class="flex-shrink-0">
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-navy-900 hover:bg-navy-850 text-white font-heading font-bold text-xs uppercase tracking-wider transition-colors shadow-sm"
+          >
+            <span>Request Market Evaluation</span>
+            <ArrowRight className="w-3.5 h-3.5 text-gold" />
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Final CTA -->
+  <FinalCTA />
+</BaseLayout>

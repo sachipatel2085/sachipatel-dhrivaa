@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { productsData } from '../../data/products';
 
@@ -28,6 +28,21 @@ export default function ContactForm() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const productParam = params.get('product');
+      if (productParam) {
+        const found = productsData.find(
+          (p) => p.slug === productParam || p.name.toLowerCase() === productParam.toLowerCase()
+        );
+        if (found) {
+          setFormData((prev) => ({ ...prev, interestedProduct: found.name }));
+        }
+      }
+    }
+  }, []);
 
   const handleBlur = (field: string) => {
     setTouched((prev) => ({ ...prev, [field]: true }));

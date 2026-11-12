@@ -3,39 +3,63 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/home/Hero.astro';
 import Capabilities from '../components/home/Capabilities.astro';
 import ProductShowcase from '../components/home/ProductShowcase.astro';
+import ProductSpecsComparison from '../components/home/ProductSpecsComparison.astro';
+import IndustriesWeServe from '../components/home/IndustriesWeServe.astro';
+import WhyGujarat from '../components/home/WhyGujarat.astro';
+import BuyerCommitment from '../components/home/BuyerCommitment.astro';
 import WhyChooseUs from '../components/home/WhyChooseUs.astro';
 import SourcingProcess from '../components/home/SourcingProcess.astro';
 import GlobalMarkets from '../components/home/GlobalMarkets.astro';
 import QualityAssurance from '../components/home/QualityAssurance.astro';
+import HomeInsightsPreview from '../components/home/HomeInsightsPreview.astro';
+import HomeFAQ from '../components/home/HomeFAQ.astro';
 import FinalCTA from '../components/home/FinalCTA.astro';
 import { companyData } from '../data/company';
 
 const pageTitle = `${companyData.name} – Global Trade Partner | Agricultural Commodity Sourcing India`;
-const pageDescription = 'Connecting global buyers with reliable agricultural commodity sources from India through transparent sourcing and procurement. Specializing in Rapeseed Meal, Castorseed Meal, and Castor Oil.';
+const pageDescription = 'Connecting global buyers with reliable agricultural commodity sources from Gujarat, India through transparent sourcing and procurement. Specializing in Rapeseed Meal, Castorseed Meal, and Castor Oil.';
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-  <!-- Section 2: Cinematic Hero -->
+  <!-- Section 1: Cinematic Hero -->
   <Hero />
 
-  <!-- Section 3: Business Capabilities Strip -->
+  <!-- Section 2: Business Capabilities Strip -->
   <Capabilities />
 
-  <!-- Section 4: Product Portfolio -->
+  <!-- Section 3: Product Portfolio Overview -->
   <ProductShowcase />
 
-  <!-- Section 5: Why Choose DHRIVAA? -->
+  <!-- Section 4: NEW - Product Specifications at a Glance -->
+  <ProductSpecsComparison />
+
+  <!-- Section 5: NEW - Industries We Serve -->
+  <IndustriesWeServe />
+
+  <!-- Section 6: NEW - Why Source from Gujarat, India? -->
+  <WhyGujarat />
+
+  <!-- Section 7: NEW - Our Commitment to International Buyers -->
+  <BuyerCommitment />
+
+  <!-- Section 8: Why Choose DHRIVAA Trade Partner -->
   <WhyChooseUs />
 
-  <!-- Section 6: Sourcing Process -->
+  <!-- Section 9: Sourcing Process Workflow -->
   <SourcingProcess />
 
-  <!-- Section 7: Global Markets & Trade Corridor -->
+  <!-- Section 10: Global Markets & Maritime Corridor -->
   <GlobalMarkets />
 
-  <!-- Section 8: Quality Assurance -->
+  <!-- Section 11: Quality Assurance & Testing Standards -->
   <QualityAssurance />
 
-  <!-- Section 9: Final CTA -->
+  <!-- Section 12: NEW - International Trade Insights Preview -->
+  <HomeInsightsPreview />
+
+  <!-- Section 13: NEW - Frequently Asked Questions (with FAQ Schema) -->
+  <HomeFAQ />
+
+  <!-- Section 14: Final Commercial Inquiry CTA -->
   <FinalCTA />
 </BaseLayout>

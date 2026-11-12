@@ -1,0 +1,163 @@
+---
+import { ArrowRight, Wheat, Sprout, Factory, Droplets, FlaskConical, ShieldCheck } from 'lucide-react';
+
+const industries = [
+  {
+    icon: Wheat,
+    title: 'Animal Nutrition & Feed Mills',
+    focus: 'Commercial Livestock, Dairy & Poultry Compounds',
+    description: 'Supplying solvent-extracted rapeseed meal with balanced crude protein and bypass amino acids for livestock, dairy cattle, and commercial poultry feed manufacturers across the Gulf.',
+    matchedProduct: 'Rapeseed Meal',
+    matchedLink: '/products/rapeseed-meal'
+  },
+  {
+    icon: Sprout,
+    title: 'Organic Farming & Palm Plantations',
+    focus: 'Soil Conditioning & Organic NPK Enrichment',
+    description: 'Sourcing organic castorseed meal (castor cake) to restore arid soil structure, retain irrigation water, and deter soil nematodes in Gulf date palm groves and agricultural projects.',
+    matchedProduct: 'Castorseed Meal',
+    matchedLink: '/products/castorseed-meal'
+  },
+  {
+    icon: Droplets,
+    title: 'High-Performance Lubricants & Greases',
+    focus: 'Specialty Tribology & Aviation Fluids',
+    description: 'Procuring high-viscosity-index industrial castor oil for blending thermal-stable heavy machinery greases, hydraulic fluids, and performance synthetic lubricant formulations.',
+    matchedProduct: 'Castor Oil',
+    matchedLink: '/products/castor-oil'
+  },
+  {
+    icon: Factory,
+    title: 'Polyurethane Resins, Coatings & Foams',
+    focus: 'Bio-Based Polymer Synthesis',
+    description: 'Delivering First Special Grade (FSG) castor oil with natural hydroxyl functionality for direct synthesis into rigid polyurethane foams, industrial adhesives, and architectural coatings.',
+    matchedProduct: 'Castor Oil (FSG)',
+    matchedLink: '/products/castor-oil'
+  },
+  {
+    icon: FlaskConical,
+    title: 'Specialty Oleochemicals & Intermediates',
+    focus: 'Sebacic Acid, Esters & Plasticizers',
+    description: 'Coordinating high-purity industrial vegetable oil feedstocks for synthesizing sebacic acid, nylon-11 engineering polymers, and specialty non-toxic plasticizers.',
+    matchedProduct: 'Castor Oil',
+    matchedLink: '/products/castor-oil'
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Commercial Fertilizer Blending & Turf',
+    focus: 'Customized NPK Granulation & Sports Turf',
+    description: 'Supplying bulk nitrogenous plant meal for commercial compost enrichment, high-end golf course turf maintenance, and specialized horticultural soil mixes.',
+    matchedProduct: 'Castorseed Meal',
+    matchedLink: '/products/castorseed-meal'
+  }
+];
+---
+
+<section class="py-20 lg:py-28 bg-white border-b border-slate-200 relative overflow-hidden" aria-labelledby="industries-heading">
+  <!-- Subtle background ambient grid -->
+  <div class="absolute inset-0 bg-[radial-gradient(#CBD5E1_1px,transparent_1px)] [background-size:24px_24px] opacity-20 pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+      <div class="max-w-2xl space-y-3">
+        <span class="text-xs font-bold uppercase tracking-[0.22em] text-teal font-heading">
+          Target Sectors &amp; End-Uses
+        </span>
+        <h2 id="industries-heading" class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-navy-900 tracking-tight leading-tight">
+          Industries We <br class="hidden sm:inline" />
+          <span class="font-serif italic font-normal text-gold">Serve Globally.</span>
+        </h2>
+        <p class="text-base text-slate-600 leading-relaxed">
+          From Middle Eastern commercial feed mills and date palm plantations to international chemical plants, DHRIVAA aligns agricultural commodity sourcing with industry-specific technical requirements.
+        </p>
+      </div>
+
+      <div class="flex-shrink-0">
+        <a
+          href="/buyer-resources"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-100 hover:bg-slate-200/80 text-navy-950 font-heading font-bold text-xs uppercase tracking-wider transition-all duration-200 group"
+        >
+          <span>View Buyer Guides</span>
+          <ArrowRight className="w-3.5 h-3.5 text-teal group-hover:translate-x-1 transition-transform" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Industries Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      {industries.map((ind, idx) => {
+        const Icon = ind.icon;
+        return (
+          <div class="group relative bg-surface-light hover:bg-white p-7 sm:p-8 rounded-2xl border border-slate-200/90 hover:border-gold/50 shadow-subtle hover:shadow-premium transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
+            <div class="space-y-4">
+              <!-- Top Row: Icon + Index -->
+              <div class="flex items-center justify-between">
+                <div class="w-12 h-12 rounded-xl bg-navy-900 text-gold flex items-center justify-center group-hover:bg-gold group-hover:text-navy-950 transition-colors shadow-sm">
+                  <Icon className="w-6 h-6" />
+                </div>
+                <span class="font-mono text-xs text-slate-400 group-hover:text-teal font-bold transition-colors">
+                  0{idx + 1}
+                </span>
+              </div>
+
+              <!-- Titles -->
+              <div>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-teal block mb-1">
+                  {ind.focus}
+                </span>
+                <h3 class="font-heading font-bold text-lg sm:text-xl text-navy-900 group-hover:text-teal transition-colors">
+                  {ind.title}
+                </h3>
+              </div>
+
+              <!-- Body Description -->
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                {ind.description}
+              </p>
+            </div>
+
+            <!-- Matched Commodity Link -->
+            <div class="pt-5 mt-6 border-t border-slate-200/80 flex items-center justify-between">
+              <span class="text-xs text-slate-500 font-medium">
+                Sourced Commodity:
+              </span>
+              <a
+                href={ind.matchedLink}
+                class="inline-flex items-center gap-1.5 text-xs font-heading font-bold text-navy-900 hover:text-teal transition-colors group/link"
+              >
+                <span>{ind.matchedProduct}</span>
+                <ArrowRight className="w-3 h-3 text-gold group-hover/link:translate-x-1 transition-transform" />
+              </a>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Bottom Reassurance Banner -->
+    <div class="mt-12 p-6 rounded-2xl bg-navy-950 text-white flex flex-col sm:flex-row items-center justify-between gap-4 border border-navy-800 shadow-md">
+      <div class="flex items-center gap-4 text-left">
+        <div class="w-10 h-10 rounded-xl bg-teal/20 text-teal-light flex items-center justify-center flex-shrink-0">
+          <ShieldCheck className="w-5 h-5 text-teal" />
+        </div>
+        <div>
+          <h4 class="font-heading font-bold text-sm text-white">
+            Custom Industrial Specifications Available
+          </h4>
+          <p class="text-xs text-slate-400 mt-0.5">
+            Require custom protein ratios, viscosity limits, or specific moisture boundaries? We coordinate batch-specific parameters per contract.
+          </p>
+        </div>
+      </div>
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gold hover:bg-gold-dark text-navy-950 font-heading font-bold text-xs uppercase tracking-wider transition-colors flex-shrink-0"
+      >
+        <span>Discuss Requirements</span>
+        <ArrowRight className="w-3.5 h-3.5" />
+      </a>
+    </div>
+
+  </div>
+</section>

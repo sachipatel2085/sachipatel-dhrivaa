@@ -1,0 +1,106 @@
+---
+import { HelpCircle, ChevronDown, ArrowRight, ShieldCheck } from 'lucide-react';
+
+const faqs = [
+  {
+    question: 'What is DHRIVAA’s business model and legal role in procurement?',
+    answer: 'DHRIVAA operates as an independent agricultural commodity sourcing and procurement coordinator based in Gujarat, India. We do not manufacture products or operate crushing plants. Instead, we represent international buyers, auditing solvent extraction facilities and castor refineries to match buyer-specific parameters, negotiate competitive lot pricing, supervise pre-shipment sampling, and coordinate export logistics through Indian seaports.'
+  },
+  {
+    question: 'Which international seaports and target markets do you serve?',
+    answer: 'Our primary strategic trade corridors connect Gujarat (Mundra Port and Kandla Port) to the Arabian Gulf and Middle Eastern seaports, including Jebel Ali and Khalifa Port (UAE), King Abdulaziz Port Dammam and Jeddah Islamic Port (Saudi Arabia), Sohar and Salalah (Oman), Hamad Port (Qatar), Khalifa Bin Salman Port (Bahrain), and Shuwaikh Port (Kuwait), as well as wider international destinations.'
+  },
+  {
+    question: 'How does DHRIVAA ensure product quality before export shipment?',
+    answer: 'We enforce an auditable quality protocol: representative composite samples are drawn from production batches and tested at accredited ISO/IEC 17025 testing laboratories for key contractual benchmarks (protein, moisture, sand/silica, acid value, or Lovibond color). A certified Certificate of Analysis (COA) is issued. Furthermore, international buyers may nominate independent surveyor agencies (such as SGS, Bureau Veritas, or Intertek) to conduct third-party sampling and container stuffing inspection.'
+  },
+  {
+    question: 'What commercial Incoterms and payment mechanisms are supported?',
+    answer: 'We coordinate commercial shipments under Incoterms 2020 rules, typically FOB Indian Seaports (Mundra or Kandla) for buyers with global carrier contracts, or CFR / CIF to designated Gulf seaports. Standard commercial payment structures include Irrevocable Letters of Credit (LC at Sight) from prime international banks or structured Telegraphic Transfer (T/T).'
+  },
+  {
+    question: 'What is the ocean transit timeframe from Gujarat to Middle Eastern ports?',
+    answer: 'Owing to Gujarat’s western maritime geography, direct container feeder services from Mundra and Kandla reach Jebel Ali (Dubai) in approximately 3 to 5 days, and Dammam or Sohar in 5 to 8 days. This rapid sailing significantly reduces oceanic moisture exposure and minimizes working capital inventory lockup.'
+  },
+  {
+    question: 'Can buyers request customized packaging, bag weights, and bilingual labeling?',
+    answer: 'Yes. We coordinate packaging tailored to your discharge terminal infrastructure: 50 kg PP woven bags with optional moisture liners, 1,000 kg UV-stabilized jumbo bags, 20ft bulk container liners, 200L ISO steel drums, or 24,000L flexitanks. Customized buyer stenciling, batch lot numbers, and bilingual (English and Arabic) labeling are arranged per destination customs regulations.'
+  }
+];
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer
+    }
+  }))
+};
+---
+
+<section class="py-20 lg:py-28 bg-white border-b border-slate-200 relative overflow-hidden" aria-labelledby="faq-heading">
+  <!-- FAQ JSON-LD Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+      <span class="text-xs font-bold uppercase tracking-[0.22em] text-teal font-heading">
+        Trade Clarifications
+      </span>
+      <h2 id="faq-heading" class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-navy-900 tracking-tight leading-tight">
+        Frequently Asked <br />
+        <span class="font-serif italic font-normal text-gold">Questions.</span>
+      </h2>
+      <p class="text-base text-slate-600 leading-relaxed font-normal">
+        Clear answers to foundational questions regarding agricultural commodity procurement, quality verification, and export logistics from Gujarat to the Middle East.
+      </p>
+    </div>
+
+    <!-- Accordion FAQ Items -->
+    <div class="space-y-4">
+      {faqs.map((faq, idx) => (
+        <details
+          class="group bg-surface-light hover:bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 transition-all duration-200 shadow-subtle hover:shadow-card open:bg-white open:border-gold/50 open:shadow-card"
+          open={idx === 0}
+        >
+          <summary class="flex items-center justify-between cursor-pointer list-none focus:outline-none select-none">
+            <h3 class="font-heading font-bold text-base sm:text-lg text-navy-900 group-hover:text-teal group-open:text-navy-950 transition-colors flex items-center gap-3 pr-4">
+              <span class="w-2 h-2 rounded-full bg-teal flex-shrink-0 group-open:bg-gold transition-colors"></span>
+              <span>{faq.question}</span>
+            </h3>
+            <div class="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-slate-200 group-open:bg-navy-900 group-open:text-gold flex items-center justify-center flex-shrink-0 transition-colors text-slate-500">
+              <ChevronDown className="w-4 h-4 transform group-open:rotate-180 transition-transform duration-200" />
+            </div>
+          </summary>
+          <div class="pt-4 mt-3 border-t border-slate-100 text-sm text-slate-600 leading-relaxed font-normal pl-5">
+            <p>{faq.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <!-- Additional Inquiries Footer -->
+    <div class="mt-12 text-center p-6 rounded-2xl bg-surface-light border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3 text-left">
+        <HelpCircle className="w-5 h-5 text-teal flex-shrink-0" />
+        <span class="text-xs sm:text-sm text-slate-700 font-medium">
+          Have specific commercial questions regarding contract terms, minimum order quantities, or destination port clearances?
+        </span>
+      </div>
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-navy-900 hover:bg-navy-850 text-white font-heading font-bold text-xs uppercase tracking-wider transition-colors flex-shrink-0"
+      >
+        <span>Ask Our Sourcing Desk</span>
+        <ArrowRight className="w-3.5 h-3.5 text-gold" />
+      </a>
+    </div>
+
+  </div>
+</section>

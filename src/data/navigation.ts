@@ -30,6 +30,8 @@ export const mainNavItems: NavItem[] = [
   },
   { label: 'Sourcing & Procurement', href: '/sourcing-procurement' },
   { label: 'Quality Assurance', href: '/quality-assurance' },
+  { label: 'Buyer Resources', href: '/buyer-resources' },
+  { label: 'Insights', href: '/insights' },
   { label: 'Contact', href: '/contact' }
 ];
 
@@ -37,6 +39,8 @@ export const footerQuickLinks = [
   { label: 'Home', href: '/' },
   { label: 'About DHRIVAA', href: '/about-us' },
   { label: 'Our Products', href: '/products' },
+  { label: 'Buyer Resources', href: '/buyer-resources' },
+  { label: 'Trade Insights', href: '/insights' },
   { label: 'Sourcing Process', href: '/sourcing-procurement' },
   { label: 'Quality Coordination', href: '/quality-assurance' },
   { label: 'Contact Us', href: '/contact' }
@@ -47,6 +51,14 @@ export const footerProductLinks = [
   { label: 'Castorseed Meal', href: '/products/castorseed-meal' },
   { label: 'Castor Oil', href: '/products/castor-oil' },
   { label: 'All Products Overview', href: '/products' }
+];
+
+export const footerResourceLinks = [
+  { label: 'Product Specifications Guide', href: '/buyer-resources#specifications-guide' },
+  { label: 'Packaging Standards Guide', href: '/buyer-resources#packaging-standards' },
+  { label: 'Export Documentation Package', href: '/buyer-resources#export-documentation' },
+  { label: 'Incoterms for Commodity Buyers', href: '/buyer-resources#incoterms-explained' },
+  { label: 'Bulk Procurement Roadmap', href: '/buyer-resources#procurement-workflow' }
 ];
 
 export const footerServiceLinks = [

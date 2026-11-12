@@ -1,8 +1,8 @@
 ---
 import Logo from '../common/Logo.astro';
 import { companyData } from '../../data/company';
-import { footerQuickLinks, footerProductLinks, footerServiceLinks, footerLegalLinks } from '../../data/navigation';
-import { Mail, Phone, MapPin, MessageSquare, ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { footerQuickLinks, footerProductLinks, footerServiceLinks, footerResourceLinks, footerLegalLinks } from '../../data/navigation';
+import { Mail, Phone, MapPin, MessageSquare, ArrowUpRight, ShieldCheck, BookOpen, FileCheck } from 'lucide-react';
 
 const currentYear = new Date().getFullYear();
 ---
@@ -17,8 +17,8 @@ const currentYear = new Date().getFullYear();
     <!-- Top Grid: Brand & Column Links -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-navy-850">
       
-      <!-- Col 1: Brand Info (5 cols) -->
-      <div class="lg:col-span-5 space-y-5">
+      <!-- Col 1: Brand Info (4 cols) -->
+      <div class="lg:col-span-4 space-y-5">
         <Logo variant="dark" />
         <p class="text-sm text-slate-400 max-w-sm leading-relaxed">
           Connecting international buyers with reliable agricultural commodity sources from India through transparent sourcing, quality coordination, and dependable procurement.
@@ -67,22 +67,31 @@ const currentYear = new Date().getFullYear();
         </ul>
       </div>
 
-      <!-- Col 3: Sourcing & Quality (2 cols) -->
-      <div class="lg:col-span-2 space-y-4">
-        <h3 class="font-heading text-xs font-bold uppercase tracking-widest text-gold">
-          Procurement
+      <!-- Col 3: Buyer Resources & Intelligence (3 cols) -->
+      <div class="lg:col-span-3 space-y-4">
+        <h3 class="font-heading text-xs font-bold uppercase tracking-widest text-gold flex items-center gap-1.5">
+          <span>Buyer Resources</span>
         </h3>
         <ul class="space-y-2.5 text-sm" role="list">
-          {footerServiceLinks.map((link) => (
+          {footerResourceLinks.map((link) => (
             <li>
               <a
                 href={link.href}
-                class="text-slate-400 hover:text-white transition-colors"
+                class="text-slate-400 hover:text-white transition-colors block text-xs leading-relaxed"
               >
                 {link.label}
               </a>
             </li>
           ))}
+          <li class="pt-1">
+            <a
+              href="/insights"
+              class="text-teal hover:text-gold transition-colors font-semibold text-xs inline-flex items-center gap-1"
+            >
+              <span>Explore Trade Insights</span>
+              &rarr;
+            </a>
+          </li>
         </ul>
       </div>
 
@@ -96,7 +105,7 @@ const currentYear = new Date().getFullYear();
             <MapPin className="w-4 h-4 text-teal flex-shrink-0 mt-1" />
             <div>
               <p class="text-slate-200 font-medium">{companyData.location}</p>
-              <p class="text-xs text-slate-500 mt-0.5">Primary Agro Processing & Crushing Belt</p>
+              <p class="text-xs text-slate-500 mt-0.5">Mundra & Kandla Seaport Corridor</p>
             </div>
           </div>
 

@@ -106,7 +106,7 @@ export default function Navbar({ currentPath = '/' }: NavbarProps) {
             </a>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2" aria-label="Main Navigation">
+            <nav className="hidden lg:flex items-center space-x-0.5 xl:space-x-1.5" aria-label="Main Navigation">
               {mainNavItems.map((item) => {
                 const isActive = checkIsActive(item.href, path);
 
@@ -121,7 +121,7 @@ export default function Navbar({ currentPath = '/' }: NavbarProps) {
                       <a
                         href={item.href}
                         aria-current={isActive ? 'page' : undefined}
-                        className={`group relative inline-flex items-center gap-1.5 px-3.5 py-2.5 text-sm font-medium transition-colors ${
+                        className={`group relative inline-flex items-center gap-1 px-2.5 xl:px-3.5 py-2 text-xs xl:text-sm font-medium transition-colors ${
                           isActive
                             ? 'text-navy-950 font-semibold'
                             : 'text-trade-text/80 hover:text-navy-950'
@@ -131,15 +131,15 @@ export default function Navbar({ currentPath = '/' }: NavbarProps) {
                       >
                         <span>{item.label}</span>
                         <ChevronDown
-                          className={`w-4 h-4 transition-transform duration-200 ${
+                          className={`w-3.5 h-3.5 transition-transform duration-200 ${
                             productsDropdownOpen ? 'rotate-180 text-teal' : isActive ? 'text-teal' : 'text-slate-400'
                           }`}
                         />
                         {/* Active & Hover Underline Indicator */}
                         {isActive ? (
-                          <span className="absolute bottom-0 left-3.5 right-3.5 h-[3px] bg-teal rounded-full shadow-[0_1px_3px_rgba(57,141,137,0.35)]" />
+                          <span className="absolute bottom-0 left-2.5 right-2.5 xl:left-3.5 xl:right-3.5 h-[3px] bg-teal rounded-full shadow-[0_1px_3px_rgba(57,141,137,0.35)]" />
                         ) : (
-                          <span className="absolute bottom-0 left-3.5 right-3.5 h-[2px] bg-teal/40 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-center" />
+                          <span className="absolute bottom-0 left-2.5 right-2.5 xl:left-3.5 xl:right-3.5 h-[2px] bg-teal/40 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-center" />
                         )}
                       </a>
 
@@ -197,7 +197,7 @@ export default function Navbar({ currentPath = '/' }: NavbarProps) {
                     key={item.label}
                     href={item.href}
                     aria-current={isActive ? 'page' : undefined}
-                    className={`group relative inline-flex items-center px-3.5 py-2.5 text-sm font-medium transition-colors ${
+                    className={`group relative inline-flex items-center px-2.5 xl:px-3.5 py-2 text-xs xl:text-sm font-medium transition-colors ${
                       isActive
                         ? 'text-navy-950 font-semibold'
                         : 'text-trade-text/80 hover:text-navy-950'
@@ -206,9 +206,9 @@ export default function Navbar({ currentPath = '/' }: NavbarProps) {
                     <span>{item.label}</span>
                     {/* Active & Hover Underline Indicator */}
                     {isActive ? (
-                      <span className="absolute bottom-0 left-3.5 right-3.5 h-[3px] bg-teal rounded-full shadow-[0_1px_3px_rgba(57,141,137,0.35)]" />
+                      <span className="absolute bottom-0 left-2.5 right-2.5 xl:left-3.5 xl:right-3.5 h-[3px] bg-teal rounded-full shadow-[0_1px_3px_rgba(57,141,137,0.35)]" />
                     ) : (
-                      <span className="absolute bottom-0 left-3.5 right-3.5 h-[2px] bg-teal/40 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-center" />
+                      <span className="absolute bottom-0 left-2.5 right-2.5 xl:left-3.5 xl:right-3.5 h-[2px] bg-teal/40 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-center" />
                     )}
                   </a>
                 );
