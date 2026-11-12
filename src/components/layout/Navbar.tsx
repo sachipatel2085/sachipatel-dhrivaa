@@ -1,39 +1,41 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronDown, Menu, X, ArrowRight } from 'lucide-react';
-import { mainNavItems } from '../../data/navigation';
+import React, { useState, useEffect } from "react";
+import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
+import { mainNavItems } from "../../data/navigation";
 
 interface NavbarProps {
   currentPath?: string;
 }
 
 const normalizePath = (p: string) => {
-  if (!p) return '/';
-  const clean = p.split('?')[0].split('#')[0];
-  return clean.length > 1 && clean.endsWith('/') ? clean.slice(0, -1) : clean;
+  if (!p) return "/";
+  const clean = p.split("?")[0].split("#")[0];
+  return clean.length > 1 && clean.endsWith("/") ? clean.slice(0, -1) : clean;
 };
 
 const checkIsActive = (itemHref: string, current: string) => {
   const normCurrent = normalizePath(current);
   const normHref = normalizePath(itemHref);
 
-  if (normHref === '/') {
-    return normCurrent === '/' || normCurrent === '';
+  if (normHref === "/") {
+    return normCurrent === "/" || normCurrent === "";
   }
-  return normCurrent === normHref || normCurrent.startsWith(normHref + '/');
+  return normCurrent === normHref || normCurrent.startsWith(normHref + "/");
 };
 
-export default function Navbar({ currentPath = '/' }: NavbarProps) {
+export default function Navbar({ currentPath = "/" }: NavbarProps) {
   const [path, setPath] = useState(currentPath);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
-  const [mobileProductsOpen, setMobileProductsOpen] = useState(() => checkIsActive('/products', currentPath));
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(() =>
+    checkIsActive("/products", currentPath),
+  );
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const locPath = window.location.pathname;
       setPath(locPath);
-      if (checkIsActive('/products', locPath)) {
+      if (checkIsActive("/products", locPath)) {
         setMobileProductsOpen(true);
       }
     }
@@ -48,33 +50,33 @@ export default function Navbar({ currentPath = '/' }: NavbarProps) {
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [mobileMenuOpen]);
 
   // Handle escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         setMobileMenuOpen(false);
         setProductsDropdownOpen(false);
       }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   return (
@@ -82,8 +84,8 @@ export default function Navbar({ currentPath = '/' }: NavbarProps) {
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-card border-b border-trade-border/60 py-3'
-            : 'bg-white/90 backdrop-blur-sm border-b border-trade-border/40 py-3.5 sm:py-5'
+            ? "bg-white/95 backdrop-blur-md shadow-card border-b border-trade-border/60 py-3"
+            : "bg-white/90 backdrop-blur-sm border-b border-trade-border/40 py-3.5 sm:py-5"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -106,7 +108,10 @@ export default function Navbar({ currentPath = '/' }: NavbarProps) {
             </a>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-0.5 xl:space-x-1.5" aria-label="Main Navigation">
+            <nav
+              className="hidden lg:flex items-center space-x-0.5 xl:space-x-1.5"
+              aria-label="Main Navigation"
+            >
               {mainNavItems.map((item) => {
                 const isActive = checkIsActive(item.href, path);
 
@@ -120,11 +125,11 @@ export default function Navbar({ currentPath = '/' }: NavbarProps) {
                     >
                       <a
                         href={item.href}
-                        aria-current={isActive ? 'page' : undefined}
-                        className={`group relative inline-flex items-center gap-1 px-2.5 xl:px-3.5 py-2 text-xs xl:text-sm font-medium transition-colors ${
+                        aria-current={isActive ? "page" : undefined}
+                        className={`group relative inline-flex items-center gap-1 px-1.5 xl:px-3.5 py-1 text-xs xl:text-sm font-medium transition-colors ${
                           isActive
-                            ? 'text-navy-950 font-semibold'
-                            : 'text-trade-text/80 hover:text-navy-950'
+                            ? "text-navy-950 font-semibold"
+                            : "text-trade-text/80 hover:text-navy-950"
                         }`}
                         aria-expanded={productsDropdownOpen}
                         aria-haspopup="true"
@@ -132,7 +137,11 @@ export default function Navbar({ currentPath = '/' }: NavbarProps) {
                         <span>{item.label}</span>
                         <ChevronDown
                           className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                            productsDropdownOpen ? 'rotate-180 text-teal' : isActive ? 'text-teal' : 'text-slate-400'
+                            productsDropdownOpen
+                              ? "rotate-180 text-teal"
+                              : isActive
+                                ? "text-teal"
+                                : "text-slate-400"
                           }`}
                         />
                         {/* Active & Hover Underline Indicator */}
@@ -151,19 +160,29 @@ export default function Navbar({ currentPath = '/' }: NavbarProps) {
                           </div>
                           <div className="space-y-1">
                             {item.children.map((child) => {
-                              const isChildActive = normalizePath(path) === normalizePath(child.href);
+                              const isChildActive =
+                                normalizePath(path) ===
+                                normalizePath(child.href);
                               return (
                                 <a
                                   key={child.href}
                                   href={child.href}
-                                  aria-current={isChildActive ? 'page' : undefined}
+                                  aria-current={
+                                    isChildActive ? "page" : undefined
+                                  }
                                   className={`group block p-2.5 rounded-lg transition-colors ${
-                                    isChildActive ? 'bg-teal/10 border-l-2 border-teal' : 'hover:bg-slate-50'
+                                    isChildActive
+                                      ? "bg-teal/10 border-l-2 border-teal"
+                                      : "hover:bg-slate-50"
                                   }`}
                                 >
-                                  <div className={`font-heading font-semibold text-sm flex items-center justify-between ${
-                                    isChildActive ? 'text-teal font-bold' : 'text-navy-900 group-hover:text-teal'
-                                  }`}>
+                                  <div
+                                    className={`font-heading font-semibold text-sm flex items-center justify-between ${
+                                      isChildActive
+                                        ? "text-teal font-bold"
+                                        : "text-navy-900 group-hover:text-teal"
+                                    }`}
+                                  >
                                     <span>{child.label}</span>
                                     {isChildActive ? (
                                       <span className="w-1.5 h-1.5 rounded-full bg-teal" />
@@ -196,11 +215,11 @@ export default function Navbar({ currentPath = '/' }: NavbarProps) {
                   <a
                     key={item.label}
                     href={item.href}
-                    aria-current={isActive ? 'page' : undefined}
-                    className={`group relative inline-flex items-center px-2.5 xl:px-3.5 py-2 text-xs xl:text-sm font-medium transition-colors ${
+                    aria-current={isActive ? "page" : undefined}
+                    className={`group relative inline-flex items-center px-1.5 xl:px-1.5 py-2 text-xs xl:text-sm font-medium transition-colors ${
                       isActive
-                        ? 'text-navy-950 font-semibold'
-                        : 'text-trade-text/80 hover:text-navy-950'
+                        ? "text-navy-950 font-semibold"
+                        : "text-trade-text/80 hover:text-navy-950"
                     }`}
                   >
                     <span>{item.label}</span>
@@ -221,27 +240,29 @@ export default function Navbar({ currentPath = '/' }: NavbarProps) {
                 href="/contact"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gold hover:bg-gold-dark text-navy-950 font-heading font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-sm hover:shadow-gold-glow hover:-translate-y-0.5 active:translate-y-0"
               >
-                <span>Request a Quote</span>
+                <span>Send enquiry</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </a>
             </div>
 
             {/* Mobile Action & Menu Button */}
             <div className="flex lg:hidden items-center gap-2">
-              <a
-                href="/contact"
-                className="px-3 py-1.5 rounded-full bg-gold hover:bg-gold-dark text-navy-950 font-heading font-bold text-xs uppercase tracking-wider transition-colors shadow-sm"
-              >
-                Quote
-              </a>
               <button
                 type="button"
-                onClick={() => setMobileMenuOpen(prev => !prev)}
+                onClick={() => setMobileMenuOpen((prev) => !prev)}
                 className="p-2 rounded-lg text-navy-900 hover:bg-slate-100 active:bg-slate-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-                aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
+                aria-label={
+                  mobileMenuOpen
+                    ? "Close Navigation Menu"
+                    : "Open Navigation Menu"
+                }
                 aria-expanded={mobileMenuOpen}
               >
-                {mobileMenuOpen ? <X className="w-6 h-6 text-navy-900" /> : <Menu className="w-6 h-6 text-navy-900" />}
+                {mobileMenuOpen ? (
+                  <X className="w-6 h-6 text-navy-900" />
+                ) : (
+                  <Menu className="w-6 h-6 text-navy-900" />
+                )}
               </button>
             </div>
           </div>
@@ -251,7 +272,9 @@ export default function Navbar({ currentPath = '/' }: NavbarProps) {
       {/* Mobile Backdrop (Rendered outside header to guarantee viewport-fixed coverage) */}
       <div
         className={`fixed inset-0 bg-navy-950/70 backdrop-blur-sm z-[998] lg:hidden transition-opacity duration-300 ${
-          mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          mobileMenuOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
         }`}
         onClick={() => setMobileMenuOpen(false)}
         aria-hidden="true"
@@ -260,7 +283,9 @@ export default function Navbar({ currentPath = '/' }: NavbarProps) {
       {/* Mobile Navigation Drawer (Rendered outside header, covers 100% viewport height cleanly) */}
       <aside
         className={`fixed top-0 right-0 bottom-0 w-[86vw] max-w-sm bg-white shadow-2xl z-[999] transform transition-transform duration-300 ease-out lg:hidden flex flex-col justify-between h-screen h-[100dvh] overflow-hidden ${
-          mobileMenuOpen ? 'translate-x-0' : 'translate-x-full pointer-events-none'
+          mobileMenuOpen
+            ? "translate-x-0"
+            : "translate-x-full pointer-events-none"
         }`}
         role="dialog"
         aria-modal="true"
@@ -268,7 +293,11 @@ export default function Navbar({ currentPath = '/' }: NavbarProps) {
       >
         {/* Mobile Drawer Top Bar: Brand Logo + Close Button */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 bg-slate-50/80 flex-shrink-0">
-          <a href="/" onClick={() => setMobileMenuOpen(false)} className="inline-block">
+          <a
+            href="/"
+            onClick={() => setMobileMenuOpen(false)}
+            className="inline-block"
+          >
             <img
               src="/images/logo.png"
               alt="DHRIVAA – Global Trade Partner"
@@ -306,17 +335,17 @@ export default function Navbar({ currentPath = '/' }: NavbarProps) {
                     <div
                       className={`flex items-center justify-between rounded-xl transition-all ${
                         isActive
-                          ? 'bg-navy-900 text-white shadow-sm border-b-2 border-teal'
+                          ? "bg-navy-900 text-white shadow-sm border-b-2 border-teal"
                           : mobileProductsOpen
-                          ? 'bg-slate-100 text-navy-900'
-                          : 'text-navy-900 hover:bg-slate-50'
+                            ? "bg-slate-100 text-navy-900"
+                            : "text-navy-900 hover:bg-slate-50"
                       }`}
                     >
                       {/* Direct Page Link */}
                       <a
                         href={item.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        aria-current={isActive ? 'page' : undefined}
+                        aria-current={isActive ? "page" : undefined}
                         className="flex-1 flex items-center gap-2 px-3.5 py-3 text-base font-semibold"
                       >
                         <span>{item.label}</span>
@@ -334,15 +363,19 @@ export default function Navbar({ currentPath = '/' }: NavbarProps) {
                         }}
                         className={`p-3 rounded-lg transition-colors focus:outline-none ${
                           isActive
-                            ? 'text-white/80 hover:text-white hover:bg-white/10'
-                            : 'text-slate-500 hover:text-navy-900 hover:bg-slate-200/60'
+                            ? "text-white/80 hover:text-white hover:bg-white/10"
+                            : "text-slate-500 hover:text-navy-900 hover:bg-slate-200/60"
                         }`}
-                        aria-label={mobileProductsOpen ? 'Close Products Menu' : 'Open Products Menu'}
+                        aria-label={
+                          mobileProductsOpen
+                            ? "Close Products Menu"
+                            : "Open Products Menu"
+                        }
                         aria-expanded={mobileProductsOpen}
                       >
                         <ChevronDown
                           className={`w-5 h-5 transition-transform duration-300 ${
-                            mobileProductsOpen ? 'rotate-180 text-teal' : ''
+                            mobileProductsOpen ? "rotate-180 text-teal" : ""
                           }`}
                         />
                       </button>
@@ -356,9 +389,9 @@ export default function Navbar({ currentPath = '/' }: NavbarProps) {
                           href="/products"
                           onClick={() => setMobileMenuOpen(false)}
                           className={`flex items-center justify-between py-2 px-3 rounded-lg text-sm font-semibold transition-colors ${
-                            normalizePath(path) === '/products'
-                              ? 'text-teal font-bold bg-teal/10'
-                              : 'text-navy-900 hover:bg-slate-50'
+                            normalizePath(path) === "/products"
+                              ? "text-teal font-bold bg-teal/10"
+                              : "text-navy-900 hover:bg-slate-50"
                           }`}
                         >
                           <span>All Commodities Overview</span>
@@ -367,17 +400,18 @@ export default function Navbar({ currentPath = '/' }: NavbarProps) {
 
                         {/* Three Specific Commodities */}
                         {item.children.map((child) => {
-                          const isChildActive = normalizePath(path) === normalizePath(child.href);
+                          const isChildActive =
+                            normalizePath(path) === normalizePath(child.href);
                           return (
                             <a
                               key={child.href}
                               href={child.href}
                               onClick={() => setMobileMenuOpen(false)}
-                              aria-current={isChildActive ? 'page' : undefined}
+                              aria-current={isChildActive ? "page" : undefined}
                               className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-colors ${
                                 isChildActive
-                                  ? 'text-teal font-bold bg-teal/10 border-b border-teal/40'
-                                  : 'text-slate-700 hover:text-navy-900 hover:bg-slate-50 active:bg-slate-100'
+                                  ? "text-teal font-bold bg-teal/10 border-b border-teal/40"
+                                  : "text-slate-700 hover:text-navy-900 hover:bg-slate-50 active:bg-slate-100"
                               }`}
                             >
                               <div className="flex items-center justify-between">
@@ -401,11 +435,11 @@ export default function Navbar({ currentPath = '/' }: NavbarProps) {
                   <a
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    aria-current={isActive ? 'page' : undefined}
+                    aria-current={isActive ? "page" : undefined}
                     className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-base font-semibold transition-colors ${
                       isActive
-                        ? 'bg-navy-900 text-white shadow-sm border-b-2 border-teal'
-                        : 'text-navy-900 hover:bg-slate-50 active:bg-slate-100'
+                        ? "bg-navy-900 text-white shadow-sm border-b-2 border-teal"
+                        : "text-navy-900 hover:bg-slate-50 active:bg-slate-100"
                     }`}
                   >
                     <span>{item.label}</span>
