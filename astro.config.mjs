@@ -13,9 +13,4 @@ export default defineConfig({
     }),
     sitemap(),
   ],
-  vite: {
-    optimizeDeps: {
-      include: ['react', 'react-dom', 'lucide-react'],
-    },
-  },
 });
