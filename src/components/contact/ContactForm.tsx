@@ -97,7 +97,7 @@ export default function ContactForm() {
         setSubmitted(true);
         setFormData(initialFormState);
       } else {
-        throw new Error('Form submission failed. Please reach out to info@dhrivaa.global directly.');
+        throw new Error('Form submission failed. Please reach out to info@dhrivaa.com directly.');
       }
     } catch (err: any) {
       // Graceful fallback: set submitted to true so buyer request is acknowledged, or prompt direct email

@@ -34,7 +34,7 @@ export const companyData: CompanyInfo = {
     'Kuwait',
     'Other International Markets'
   ],
-  email: 'info@dhrivaa.global',
+  email: 'info@dhrivaa.com',
   phone: '+919265154502',
   phoneDisplay: '+91 92651 54502',
   whatsappUrl: 'https://wa.me/919265154502?text=Hello%20DHRIVAA%20team,%20I%20would%20like%20to%20inquire%20about%20agricultural%20commodity%20sourcing.',
