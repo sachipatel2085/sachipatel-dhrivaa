@@ -270,3 +270,39 @@ details[open] summary svg {
 ::-webkit-scrollbar-thumb:hover {
   background: #C8A45D;
 }
+
+/* Maritime Animated Route Flows */
+@keyframes routeFlow {
+  from {
+    stroke-dashoffset: 48;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-route-flow {
+  animation: routeFlow 2.5s linear infinite;
+}
+
+.animate-route-flow-fast {
+  animation: routeFlow 1.6s linear infinite;
+}
+
+@keyframes mapRadarWave {
+  0% {
+    r: 3;
+    opacity: 0.9;
+    stroke-width: 1.5;
+  }
+  100% {
+    r: 18;
+    opacity: 0;
+    stroke-width: 0.3;
+  }
+}
+
+.animate-radar-wave {
+  animation: mapRadarWave 2.4s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+}
+
