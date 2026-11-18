@@ -123,7 +123,7 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                         <a
                           href={item.href}
                           aria-current={isActive ? "page" : undefined}
-                          className={`relative inline-flex items-center gap-1 px-2.5 py-1 text-xs xl:text-sm font-semibold font-heading whitespace-nowrap transition-colors ${
+                          className={`group relative inline-flex items-center gap-1 px-2.5 py-1 text-xs xl:text-sm font-semibold font-heading whitespace-nowrap transition-colors ${
                             isActive
                               ? "text-navy-950"
                               : "text-navy-900/80 hover:text-navy-950"
@@ -137,10 +137,14 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                                 : "text-slate-500 group-hover:text-navy-950"
                             }`}
                           />
-                          {/* Active Underline Indicator */}
-                          {isActive && (
-                            <span className="absolute -bottom-1 left-2.5 right-2.5 h-[2px] bg-navy-950 rounded-full" />
-                          )}
+                          {/* Active / Hover Underline Indicator */}
+                          <span
+                            className={`absolute -bottom-1 left-2.5 right-2.5 h-[2px] rounded-full transition-all duration-200 ${
+                              isActive
+                                ? "bg-navy-950 opacity-100 scale-x-100"
+                                : "bg-navy-900/40 opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100"
+                            }`}
+                          />
                         </a>
 
                         {/* Dropdown Menu */}
@@ -194,17 +198,21 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                       key={item.label}
                       href={item.href}
                       aria-current={isActive ? "page" : undefined}
-                      className={`relative inline-flex items-center px-2.5 py-1 text-xs xl:text-sm font-semibold font-heading whitespace-nowrap transition-colors ${
+                      className={`group relative inline-flex items-center px-2.5 py-1 text-xs xl:text-sm font-semibold font-heading whitespace-nowrap transition-colors ${
                         isActive
                           ? "text-navy-950"
                           : "text-navy-900/80 hover:text-navy-950"
                       }`}
                     >
                       <span>{item.label}</span>
-                      {/* Active Underline Indicator */}
-                      {isActive && (
-                        <span className="absolute -bottom-1 left-2.5 right-2.5 h-[2px] bg-navy-950 rounded-full" />
-                      )}
+                      {/* Active / Hover Underline Indicator */}
+                      <span
+                        className={`absolute -bottom-1 left-2.5 right-2.5 h-[2px] rounded-full transition-all duration-200 ${
+                          isActive
+                            ? "bg-navy-950 opacity-100 scale-x-100"
+                            : "bg-navy-900/40 opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100"
+                        }`}
+                      />
                     </a>
                   );
                 })}
@@ -214,10 +222,10 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
               <div className="hidden lg:flex items-center flex-shrink-0">
                 <a
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-5 py-2 xl:px-6 xl:py-2.5 rounded-full bg-navy-950 text-white text-xs xl:text-sm font-semibold font-heading hover:bg-navy-900 transition-all duration-200 shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98]"
+                  className="btn-navy-interactive group inline-flex items-center gap-2 px-5 py-2 xl:px-6 xl:py-2.5 rounded-full bg-navy-950 text-white text-xs xl:text-sm font-semibold font-heading hover:bg-navy-900 shadow-sm hover:shadow-md"
                 >
                   <span>Inquire Now</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-gold" />
+                  <ArrowRight className="w-3.5 h-3.5 text-gold group-hover:translate-x-1 transition-transform duration-200" />
                 </a>
               </div>
 

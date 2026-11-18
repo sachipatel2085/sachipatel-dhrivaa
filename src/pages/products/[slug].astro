@@ -93,23 +93,24 @@ const whatsappUrl = `https://wa.me/${companyData.phone.replace('+', '')}?text=${
     </div>
   </div>
 
-  <!-- Product Main: Image + Info -->
+  <!-- Product Main: Image + Info with Reveal -->
   <section class="bg-white py-10 lg:py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
 
-        <!-- Product Image -->
-        <div class="rounded-2xl overflow-hidden bg-slate-100 aspect-[4/3] shadow-sm">
+        <!-- Product Image with Smooth Hover Zoom -->
+        <div class="reveal-slide-left group relative rounded-2xl overflow-hidden bg-slate-100 aspect-[4/3] shadow-card hover:shadow-premium transition-all duration-500">
           <img
             src={product.image}
             alt={product.alt}
-            class="w-full h-full object-cover object-center"
+            class="w-full h-full object-cover object-center transform transition-transform duration-700 ease-out group-hover:scale-106"
             loading="eager"
           />
+          <div class="absolute inset-0 bg-gradient-to-t from-navy-950/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
         </div>
 
         <!-- Product Info -->
-        <div class="space-y-6">
+        <div class="reveal-slide-right space-y-6">
           <div class="space-y-2">
             <span class="text-xs font-semibold uppercase tracking-widest text-teal">{product.eyebrow}</span>
             <h1 class="font-heading font-bold text-3xl sm:text-4xl text-navy-900 tracking-tight">{product.name}</h1>
@@ -118,41 +119,41 @@ const whatsappUrl = `https://wa.me/${companyData.phone.replace('+', '')}?text=${
 
           <!-- Key Facts -->
           <div class="grid grid-cols-2 gap-3 text-xs">
-            <div class="bg-slate-50 rounded-xl p-3 border border-slate-200">
+            <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 hover-lift transition-all">
               <span class="text-slate-400 block mb-0.5">Origin</span>
               <span class="font-semibold text-navy-900">Gujarat & Western India</span>
             </div>
-            <div class="bg-slate-50 rounded-xl p-3 border border-slate-200">
+            <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 hover-lift transition-all">
               <span class="text-slate-400 block mb-0.5">Shipping Ports</span>
               <span class="font-semibold text-navy-900">Mundra & Kandla</span>
             </div>
-            <div class="bg-slate-50 rounded-xl p-3 border border-slate-200">
+            <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 hover-lift transition-all">
               <span class="text-slate-400 block mb-0.5">Transit to UAE</span>
               <span class="font-semibold text-teal">3–5 Days</span>
             </div>
-            <div class="bg-slate-50 rounded-xl p-3 border border-slate-200">
+            <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 hover-lift transition-all">
               <span class="text-slate-400 block mb-0.5">Minimum Order</span>
               <span class="font-semibold text-navy-900">1 × 20ft FCL</span>
             </div>
           </div>
 
-          <!-- CTA Buttons -->
+          <!-- CTA Buttons with Micro-Interactions -->
           <div class="flex flex-col sm:flex-row gap-3 pt-2">
             <a
               href={`/contact?product=${product.slug}`}
-              class="flex-1 flex items-center justify-center gap-2 py-3 px-5 rounded-full bg-navy-900 hover:bg-navy-800 text-white font-heading font-bold text-sm tracking-wide transition-colors"
+              class="btn-navy-interactive group flex-1 flex items-center justify-center gap-2 py-3 px-5 rounded-full bg-navy-900 hover:bg-navy-800 text-white font-heading font-bold text-sm tracking-wide"
             >
-              Request a Quote
-              <ArrowRight className="w-4 h-4" />
+              <span>Request a Quote</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-200" />
             </a>
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              class="flex-1 flex items-center justify-center gap-2 py-3 px-5 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-heading font-bold text-sm tracking-wide transition-colors"
+              class="flex-1 flex items-center justify-center gap-2 py-3 px-5 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-heading font-bold text-sm tracking-wide transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:shadow group"
             >
-              <MessageSquare className="w-4 h-4" />
-              WhatsApp Inquiry
+              <MessageSquare className="w-4 h-4 group-hover:rotate-12 transition-transform duration-200" />
+              <span>WhatsApp Inquiry</span>
             </a>
           </div>
 
@@ -167,7 +168,7 @@ const whatsappUrl = `https://wa.me/${companyData.phone.replace('+', '')}?text=${
   </section>
 
   <!-- Specifications -->
-  <section id="specifications" class="bg-slate-50 py-10 lg:py-14 border-t border-slate-200">
+  <section id="specifications" class="reveal-on-scroll bg-slate-50 py-10 lg:py-14 border-t border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mb-6">
         <h2 class="font-heading font-bold text-2xl text-navy-900">Typical Specifications</h2>
@@ -185,7 +186,7 @@ const whatsappUrl = `https://wa.me/${companyData.phone.replace('+', '')}?text=${
           </thead>
           <tbody class="divide-y divide-slate-100">
             {product.specifications.map((row, idx) => (
-              <tr class={idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/50'}>
+              <tr class={`transition-colors hover:bg-teal-50/40 ${idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/50'}`}>
                 <td class="py-3 px-5 font-medium text-navy-900">{row.parameter}</td>
                 <td class="py-3 px-5 font-mono text-teal font-semibold">{row.value}</td>
                 <td class="py-3 px-5 text-slate-400 text-xs hidden sm:table-cell">{row.testMethod || '—'}</td>
@@ -198,7 +199,7 @@ const whatsappUrl = `https://wa.me/${companyData.phone.replace('+', '')}?text=${
   </section>
 
   <!-- Applications + Packaging (side by side on desktop) -->
-  <section class="bg-white py-10 lg:py-14 border-t border-slate-200">
+  <section class="reveal-on-scroll bg-white py-10 lg:py-14 border-t border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
@@ -207,7 +208,7 @@ const whatsappUrl = `https://wa.me/${companyData.phone.replace('+', '')}?text=${
           <h2 class="font-heading font-bold text-2xl text-navy-900 mb-5">{product.applicationsHeading}</h2>
           <ul class="space-y-3">
             {product.applications.map((app) => (
-              <li class="flex items-start gap-3 p-4 rounded-xl border border-slate-200 bg-slate-50">
+              <li class="flex items-start gap-3 p-4 rounded-xl border border-slate-200 bg-slate-50 hover-lift transition-all">
                 <CheckCircle2 className="w-4 h-4 text-teal flex-shrink-0 mt-0.5" />
                 <div>
                   <span class="font-semibold text-navy-900 text-sm">{app.title}</span>
@@ -223,7 +224,7 @@ const whatsappUrl = `https://wa.me/${companyData.phone.replace('+', '')}?text=${
           <h2 class="font-heading font-bold text-2xl text-navy-900 mb-5">Packaging Options</h2>
           <ul class="space-y-3">
             {product.packagingOptions.map((opt) => (
-              <li class="flex items-start gap-3 p-4 rounded-xl border border-slate-200 bg-slate-50">
+              <li class="flex items-start gap-3 p-4 rounded-xl border border-slate-200 bg-slate-50 hover-lift transition-all">
                 <Package className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
                 <div>
                   <span class="font-semibold text-navy-900 text-sm">{opt.title}</span>
@@ -240,15 +241,15 @@ const whatsappUrl = `https://wa.me/${companyData.phone.replace('+', '')}?text=${
 
   <!-- FAQs -->
   {product.faqs.length > 0 && (
-    <section class="bg-slate-50 py-10 lg:py-14 border-t border-slate-200">
+    <section class="reveal-on-scroll bg-slate-50 py-10 lg:py-14 border-t border-slate-200">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="font-heading font-bold text-2xl text-navy-900 mb-6">Common Questions</h2>
         <div class="space-y-3">
           {product.faqs.map((faq) => (
-            <details class="group bg-white rounded-xl border border-slate-200 overflow-hidden">
+            <details class="group bg-white rounded-xl border border-slate-200 overflow-hidden hover-lift transition-all">
               <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none">
                 <span class="font-semibold text-sm text-navy-900">{faq.question}</span>
-                <ChevronRight className="w-4 h-4 text-slate-400 flex-shrink-0 group-open:rotate-90 transition-transform" />
+                <ChevronRight className="w-4 h-4 text-slate-400 flex-shrink-0 group-open:rotate-90 transition-transform duration-200" />
               </summary>
               <div class="px-5 pb-4 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
                 {faq.answer}
@@ -261,28 +262,29 @@ const whatsappUrl = `https://wa.me/${companyData.phone.replace('+', '')}?text=${
   )}
 
   <!-- Other Products -->
-  <section class="bg-white py-10 lg:py-14 border-t border-slate-200">
+  <section class="reveal-on-scroll bg-white py-10 lg:py-14 border-t border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between mb-6">
         <h2 class="font-heading font-bold text-xl text-navy-900">Other Products</h2>
-        <a href="/products" class="text-xs font-semibold text-teal hover:underline inline-flex items-center gap-1">
-          View All <ArrowRight className="w-3.5 h-3.5" />
+        <a href="/products" class="text-xs font-semibold text-teal hover:underline inline-flex items-center gap-1 group">
+          <span>View All</span>
+          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
         </a>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
         {otherProducts.map((p) => (
           <a
             href={`/products/${p.slug}`}
-            class="group flex gap-4 items-center p-4 rounded-xl border border-slate-200 hover:border-slate-300 hover:shadow-sm bg-white transition-all"
+            class="group flex gap-4 items-center p-4 rounded-xl border border-slate-200 hover:border-slate-300 hover:shadow-card hover-lift bg-white transition-all duration-300"
           >
             <div class="w-20 h-20 rounded-lg overflow-hidden bg-slate-100 flex-shrink-0">
-              <img src={p.image} alt={p.alt} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+              <img src={p.image} alt={p.alt} class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" />
             </div>
             <div class="flex-grow min-w-0">
               <h3 class="font-heading font-semibold text-sm text-navy-900 group-hover:text-teal transition-colors">{p.name}</h3>
               <p class="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">{p.shortDescription}</p>
             </div>
-            <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-teal flex-shrink-0 transition-colors" />
+            <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-teal group-hover:translate-x-1 flex-shrink-0 transition-all duration-200" />
           </a>
         ))}
       </div>

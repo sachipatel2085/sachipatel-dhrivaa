@@ -204,7 +204,7 @@ const finalJsonLd = jsonLd || defaultOrgJsonLd;
 
         // 2. High-Performance IntersectionObserver for Scroll-Driven Reveals
         const initReveals = () => {
-          const elements = document.querySelectorAll('.reveal-on-scroll, .reveal-fade, .reveal-scale');
+          const elements = document.querySelectorAll('.reveal-on-scroll, .reveal-fade, .reveal-scale, .reveal-slide-left, .reveal-slide-right');
           if (!elements.length) return;
 
           if ('IntersectionObserver' in window) {

@@ -69,7 +69,7 @@ const qualityStages = [
   <!-- Compliance & Honest Stance Notice -->
   <section class="py-10 bg-white border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-4">
+      <div class="reveal-on-scroll p-6 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-4 hover-lift">
         <ShieldCheck className="w-5 h-5 text-teal flex-shrink-0 mt-0.5" />
         <div class="space-y-1">
           <h3 class="font-bold text-sm text-navy-900">
@@ -87,7 +87,7 @@ const qualityStages = [
   <section class="py-16 lg:py-24 bg-surface-light border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="max-w-3xl space-y-3 mb-14">
+      <div class="reveal-on-scroll max-w-3xl space-y-3 mb-14">
         <span class="text-xs font-bold uppercase tracking-[0.2em] text-teal font-heading">
           Systematic Verification
         </span>
@@ -100,10 +100,10 @@ const qualityStages = [
       </div>
 
       <div class="space-y-6">
-        {qualityStages.map((stage) => (
-          <div class="bg-white p-7 rounded-2xl border border-slate-200/90 shadow-subtle hover:shadow-card transition-all flex flex-col md:flex-row md:items-center justify-between gap-6">
+        {qualityStages.map((stage, idx) => (
+          <div class={`reveal-on-scroll delay-${(idx + 1) * 75} bg-white p-7 rounded-2xl border border-slate-200/90 shadow-subtle hover:shadow-card hover-lift glow-card transition-all flex flex-col md:flex-row md:items-center justify-between gap-6`}>
             <div class="flex items-start gap-5">
-              <div class="w-12 h-12 rounded-xl bg-navy-900 text-gold font-heading font-extrabold text-base flex items-center justify-center flex-shrink-0">
+              <div class="icon-box-interactive w-12 h-12 rounded-xl bg-navy-900 text-gold font-heading font-extrabold text-base flex items-center justify-center flex-shrink-0 shadow-sm">
                 {stage.step}
               </div>
               <div class="space-y-1">
@@ -132,7 +132,7 @@ const qualityStages = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
-        <div class="lg:col-span-6 space-y-6">
+        <div class="reveal-slide-left lg:col-span-6 space-y-6">
           <span class="text-xs font-bold uppercase tracking-[0.2em] text-teal font-heading">
             Third-Party Verification
           </span>
@@ -144,31 +144,31 @@ const qualityStages = [
           </p>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1 hover-lift transition-all">
               <p class="font-bold text-navy-900">Weight &amp; Quantity Survey</p>
               <p class="text-slate-500">Gross/tare weighbridge verification and bag count certification.</p>
             </div>
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1 hover-lift transition-all">
               <p class="font-bold text-navy-900">Sampling &amp; Lab Sealing</p>
               <p class="text-slate-500">Composite sampling per ISO standards and tamper-proof sample sealing.</p>
             </div>
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1 hover-lift transition-all">
               <p class="font-bold text-navy-900">Container Cleanliness</p>
               <p class="text-slate-500">Inspection of marine containers for odor, moisture, and structural integrity.</p>
             </div>
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1 hover-lift transition-all">
               <p class="font-bold text-navy-900">Stuffing &amp; Bottle Seal</p>
               <p class="text-slate-500">High-resolution photographic documentation of container stuffing and seal numbers.</p>
             </div>
           </div>
         </div>
 
-        <div class="lg:col-span-6">
-          <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-card">
+        <div class="reveal-slide-right delay-150 lg:col-span-6">
+          <div class="group rounded-2xl overflow-hidden border border-slate-200 shadow-card hover:shadow-premium transition-all duration-500">
             <img
               src="/images/step-logistics.jpg"
               alt="Containerized cargo loading and marine vessel logistics"
-              class="w-full aspect-[4/3] object-cover"
+              class="w-full aspect-[4/3] object-cover transform transition-transform duration-700 ease-out group-hover:scale-106"
               loading="lazy"
             />
           </div>

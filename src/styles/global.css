@@ -61,8 +61,78 @@
 }
 
 /* ===================================================
-   AWARD-WINNING SMOOTH SCROLL & REVEAL ANIMATIONS
+   AWARD-WINNING SMOOTH SCROLL, REVEAL & MICRO-ANIMATIONS
    =================================================== */
+
+/* Keyframe Animations */
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroScaleSlow {
+  0% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.18);
+  }
+}
+
+@keyframes shimmerGlow {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Hero Entrance Animations */
+.hero-fade-up {
+  opacity: 0;
+  animation: heroFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
+}
+
+.hero-image-reveal {
+  animation: heroScaleSlow 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform;
+}
+
+.animate-float-slow {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3.5s ease-in-out infinite;
+}
 
 /* Smooth fade-in-up scroll reveal */
 .reveal-on-scroll {
@@ -87,24 +157,44 @@
   will-change: opacity, transform;
 }
 
+/* Smooth slide-in from left */
+.reveal-slide-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+/* Smooth slide-in from right */
+.reveal-slide-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
 /* Active revealed state */
 .reveal-on-scroll.revealed,
 .reveal-fade.revealed,
-.reveal-scale.revealed {
+.reveal-scale.revealed,
+.reveal-slide-left.revealed,
+.reveal-slide-right.revealed {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0) translateX(0) scale(1);
 }
 
-/* Natural Stagger Delays for Grid Children */
-.delay-75  { transition-delay: 75ms; }
-.delay-100 { transition-delay: 100ms; }
-.delay-150 { transition-delay: 150ms; }
-.delay-200 { transition-delay: 200ms; }
-.delay-250 { transition-delay: 250ms; }
-.delay-300 { transition-delay: 300ms; }
-.delay-350 { transition-delay: 350ms; }
-.delay-400 { transition-delay: 400ms; }
-.delay-500 { transition-delay: 500ms; }
+/* Natural Stagger Delays for Animation & Transitions */
+.delay-75  { animation-delay: 75ms;  transition-delay: 75ms; }
+.delay-100 { animation-delay: 100ms; transition-delay: 100ms; }
+.delay-150 { animation-delay: 150ms; transition-delay: 150ms; }
+.delay-200 { animation-delay: 200ms; transition-delay: 200ms; }
+.delay-250 { animation-delay: 250ms; transition-delay: 250ms; }
+.delay-300 { animation-delay: 300ms; transition-delay: 300ms; }
+.delay-350 { animation-delay: 350ms; transition-delay: 350ms; }
+.delay-400 { animation-delay: 400ms; transition-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; transition-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; transition-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; transition-delay: 700ms; }
 
 /* Micro-interaction: Smooth Card Lift */
 .hover-lift {
@@ -121,6 +211,38 @@
 .glow-card:hover {
   border-color: rgba(57, 141, 137, 0.45);
   box-shadow: 0 16px 32px -8px rgba(16, 43, 70, 0.12), 0 0 16px rgba(57, 141, 137, 0.1);
+}
+
+/* Micro-interaction: Gold Button Hover & Tactile Click */
+.btn-gold-interactive {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease;
+}
+.btn-gold-interactive:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 10px 25px -4px rgba(200, 164, 93, 0.45);
+}
+.btn-gold-interactive:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Micro-interaction: Navy Button Hover & Tactile Click */
+.btn-navy-interactive {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, background-color 0.25s ease;
+}
+.btn-navy-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -4px rgba(9, 28, 48, 0.4);
+}
+.btn-navy-interactive:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Micro-interaction: Icon Box Lifts & Rotates slightly */
+.icon-box-interactive {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, color 0.3s ease;
+}
+.group:hover .icon-box-interactive {
+  transform: scale(1.08) rotate(3deg);
 }
 
 /* Smooth Accordion FAQ Icon Rotation */

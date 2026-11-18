@@ -45,7 +45,7 @@ const gujaratAdvantages = [
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     
     <!-- Section Header -->
-    <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+    <div class="reveal-on-scroll text-center max-w-3xl mx-auto space-y-4 mb-16">
       <span class="text-xs font-bold uppercase tracking-wider text-teal font-heading">
         Strategic Origin
       </span>
@@ -57,18 +57,18 @@ const gujaratAdvantages = [
       </p>
     </div>
 
-    <!-- Advantages Grid -->
+    <!-- Advantages Grid with Staggered Scroll Reveals -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-      {gujaratAdvantages.map((adv) => {
+      {gujaratAdvantages.map((adv, idx) => {
         const Icon = adv.icon;
         return (
-          <div class="bg-white p-7 sm:p-8 rounded-2xl border border-slate-200 shadow-card hover:shadow-premium transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+          <div class={`reveal-on-scroll delay-${(idx + 1) * 75} bg-white p-7 sm:p-8 rounded-2xl border border-slate-200 shadow-card hover:shadow-premium hover-lift glow-card transition-all duration-300 flex flex-col justify-between group`}>
             <div class="space-y-4">
               <div class="flex items-center justify-between">
-                <div class="w-12 h-12 rounded-xl bg-navy-900/90 text-gold flex items-center justify-center group-hover:bg-teal group-hover:text-white transition-colors">
+                <div class="icon-box-interactive w-12 h-12 rounded-xl bg-navy-900/90 text-gold flex items-center justify-center group-hover:bg-teal group-hover:text-white transition-colors">
                   <Icon className="w-6 h-6" />
                 </div>
-                <span class="text-xs font-mono font-bold text-teal bg-teal/10 px-2.5 py-1 rounded-full border border-teal/20">
+                <span class="text-xs font-mono font-bold text-teal bg-teal/10 px-2.5 py-1 rounded-full border border-teal/20 transition-transform duration-200 group-hover:scale-105">
                   {adv.metric}
                 </span>
               </div>
@@ -88,8 +88,8 @@ const gujaratAdvantages = [
       })}
     </div>
 
-    <!-- Strategic Corridor Callout Strip -->
-    <div class="mt-14 p-8 rounded-3xl bg-navy-950 text-white border border-navy-800 shadow-xl relative overflow-hidden">
+    <!-- Strategic Corridor Callout Strip with Scale Reveal -->
+    <div class="reveal-scale delay-150 mt-14 p-8 rounded-3xl bg-navy-950 text-white border border-navy-800 shadow-xl relative overflow-hidden">
       <div class="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-teal/10 to-transparent pointer-events-none"></div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative z-10">
@@ -108,14 +108,14 @@ const gujaratAdvantages = [
         <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-end">
           <a
             href="/insights/navigating-agricultural-sourcing-india-uae"
-            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gold hover:bg-gold-dark text-navy-950 font-heading font-bold text-xs uppercase tracking-wider transition-colors text-center"
+            class="btn-gold-interactive group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gold hover:bg-gold-dark text-navy-950 font-heading font-bold text-xs uppercase tracking-wider text-center"
           >
             <span>Read Trade Corridor Analysis</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </a>
           <a
             href="/buyer-resources#incoterms-explained"
-            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-navy-900 hover:bg-navy-850 text-slate-200 border border-slate-700 font-heading font-semibold text-xs tracking-wider transition-colors text-center"
+            class="btn-navy-interactive group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-navy-900 hover:bg-navy-850 text-slate-200 border border-slate-700 font-heading font-semibold text-xs tracking-wider text-center"
           >
             <span>Review Shipping Terms</span>
           </a>

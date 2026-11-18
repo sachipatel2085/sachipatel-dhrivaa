@@ -116,8 +116,8 @@ const breadcrumbJsonLd = {
       <!-- Principles Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {specsGuide.principles.map((p, idx) => (
-          <div class="p-8 rounded-2xl bg-surface-light border border-slate-200/90 shadow-card hover:shadow-premium transition-all space-y-4">
-            <div class="w-10 h-10 rounded-xl bg-navy-900 text-gold flex items-center justify-center font-mono font-bold text-sm">
+          <div class={`reveal-on-scroll delay-${(idx + 1) * 100} p-8 rounded-2xl bg-surface-light border border-slate-200/90 shadow-card hover:shadow-premium hover-lift glow-card transition-all space-y-4`}>
+            <div class="w-10 h-10 rounded-xl bg-navy-900 text-gold flex items-center justify-center font-mono font-bold text-sm shadow-sm">
               0{idx + 1}
             </div>
             <h3 class="font-heading font-bold text-lg sm:text-xl text-navy-900">
@@ -131,7 +131,7 @@ const breadcrumbJsonLd = {
       </div>
 
       <!-- Disclaimer Banner -->
-      <div class="mt-10 p-5 rounded-2xl bg-amber-50 border border-amber-200 text-xs sm:text-sm text-amber-950 flex items-start gap-3">
+      <div class="reveal-scale delay-150 mt-10 p-5 rounded-2xl bg-amber-50 border border-amber-200 text-xs sm:text-sm text-amber-950 flex items-start gap-3">
         <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
         <p class="leading-relaxed">
           <strong>Quality Disclaimer:</strong> DHRIVAA does not publish generic rigid chemical guarantees because agricultural processing by-products naturally vary across regional crushing seasons. We guarantee that your contractual parameters are locked with verified mills and confirmed through independent laboratory testing before shipment authorization.
@@ -143,7 +143,7 @@ const breadcrumbJsonLd = {
   <!-- SECTION 2: Export Packaging Standards -->
   <section id="packaging-standards" class="py-20 bg-surface-light border-b border-slate-200 scroll-mt-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl space-y-3 mb-14">
+      <div class="reveal-on-scroll max-w-3xl space-y-3 mb-14">
         <span class="text-xs font-bold uppercase tracking-[0.2em] text-teal font-heading">
           {packagingGuide.badge}
         </span>
@@ -160,8 +160,8 @@ const breadcrumbJsonLd = {
 
       <!-- Packaging Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {packagingGuide.formats.map((pkg) => (
-          <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-card flex flex-col justify-between space-y-5 hover:-translate-y-1 transition-all">
+        {packagingGuide.formats.map((pkg, idx) => (
+          <div class={`reveal-on-scroll delay-${(idx + 1) * 75} bg-white p-7 rounded-2xl border border-slate-200 shadow-card hover:shadow-premium hover-lift glow-card flex flex-col justify-between space-y-5 transition-all`}>
             <div class="space-y-3">
               <div class="flex items-center justify-between pb-2 border-b border-slate-100">
                 <span class="text-xs font-mono font-bold text-teal bg-teal/10 px-2.5 py-1 rounded-md">
@@ -218,11 +218,11 @@ const breadcrumbJsonLd = {
 
       <!-- Documentation Table / Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {documentationGuide.documents.map((doc) => (
-          <div class="p-7 rounded-2xl bg-surface-light border border-slate-200 shadow-subtle hover:shadow-card transition-all flex flex-col justify-between space-y-4">
+        {documentationGuide.documents.map((doc, idx) => (
+          <div class={`reveal-on-scroll delay-${(idx + 1) * 75} p-7 rounded-2xl bg-surface-light border border-slate-200 shadow-subtle hover:shadow-card hover-lift glow-card transition-all flex flex-col justify-between space-y-4`}>
             <div class="space-y-3">
               <div class="flex items-center justify-between">
-                <span class="px-2.5 py-1 rounded bg-navy-900 text-gold font-mono font-bold text-xs">
+                <span class="px-2.5 py-1 rounded bg-navy-900 text-gold font-mono font-bold text-xs shadow-xs">
                   {doc.code}
                 </span>
                 <span class="text-[11px] text-slate-400 font-medium">
@@ -250,7 +250,7 @@ const breadcrumbJsonLd = {
   <!-- SECTION 4: Incoterms for Commodity Buyers -->
   <section id="incoterms-explained" class="py-20 bg-surface-light border-b border-slate-200 scroll-mt-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl space-y-3 mb-14">
+      <div class="reveal-on-scroll max-w-3xl space-y-3 mb-14">
         <span class="text-xs font-bold uppercase tracking-[0.2em] text-teal font-heading">
           {incotermsGuide.badge}
         </span>
@@ -267,10 +267,10 @@ const breadcrumbJsonLd = {
 
       <!-- Incoterms Cards -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {incotermsGuide.terms.map((term) => (
-          <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-card flex flex-col justify-between space-y-6">
+        {incotermsGuide.terms.map((term, idx) => (
+          <div class={`reveal-on-scroll delay-${(idx + 1) * 100} bg-white p-8 rounded-3xl border border-slate-200 shadow-card hover:shadow-premium hover-lift glow-card flex flex-col justify-between space-y-6 transition-all`}>
             <div class="space-y-4">
-              <div class="w-14 h-14 rounded-2xl bg-navy-900 text-gold flex items-center justify-center font-heading font-extrabold text-xl shadow-sm">
+              <div class="icon-box-interactive w-14 h-14 rounded-2xl bg-navy-900 text-gold flex items-center justify-center font-heading font-extrabold text-xl shadow-sm">
                 {term.term}
               </div>
               <h3 class="font-heading font-bold text-lg text-navy-900">
@@ -306,7 +306,7 @@ const breadcrumbJsonLd = {
   <!-- SECTION 5: The Bulk Procurement Roadmap -->
   <section id="procurement-workflow" class="py-20 bg-white border-b border-slate-200 scroll-mt-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl space-y-3 mb-14">
+      <div class="reveal-on-scroll max-w-3xl space-y-3 mb-14">
         <span class="text-xs font-bold uppercase tracking-[0.2em] text-teal font-heading">
           {procurementGuide.badge}
         </span>
@@ -323,10 +323,10 @@ const breadcrumbJsonLd = {
 
       <!-- 5-Step Process Timeline -->
       <div class="space-y-6">
-        {procurementGuide.steps.map((step) => (
-          <div class="p-7 sm:p-8 rounded-2xl bg-surface-light border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-gold/50 transition-all">
+        {procurementGuide.steps.map((step, idx) => (
+          <div class={`reveal-on-scroll delay-${(idx + 1) * 75} p-7 sm:p-8 rounded-2xl bg-surface-light border border-slate-200 hover:border-gold/50 shadow-subtle hover:shadow-card hover-lift transition-all flex flex-col md:flex-row md:items-center justify-between gap-6`}>
             <div class="flex items-start gap-5">
-              <div class="w-12 h-12 rounded-2xl bg-navy-900 text-gold font-mono font-extrabold text-base flex items-center justify-center flex-shrink-0">
+              <div class="icon-box-interactive w-12 h-12 rounded-2xl bg-navy-900 text-gold font-mono font-extrabold text-base flex items-center justify-center flex-shrink-0 shadow-sm">
                 {step.step}
               </div>
               <div class="space-y-1.5">

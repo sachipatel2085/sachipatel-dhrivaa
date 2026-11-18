@@ -59,7 +59,7 @@ const industries = [
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <!-- Header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+    <div class="reveal-on-scroll flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
       <div class="max-w-2xl space-y-3">
         <span class="text-xs font-bold uppercase tracking-wider text-teal font-heading">
           Target Sectors
@@ -75,24 +75,24 @@ const industries = [
       <div class="flex-shrink-0">
         <a
           href="/buyer-resources"
-          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-100 hover:bg-slate-200/80 text-navy-950 font-heading font-bold text-xs uppercase tracking-wider transition-all duration-200 group"
+          class="btn-navy-interactive group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-100 hover:bg-slate-200/80 text-navy-950 font-heading font-bold text-xs uppercase tracking-wider shadow-sm"
         >
           <span>View Buyer Guides</span>
-          <ArrowRight className="w-3.5 h-3.5 text-teal group-hover:translate-x-1 transition-transform" />
+          <ArrowRight className="w-3.5 h-3.5 text-teal group-hover:translate-x-1.5 transition-transform duration-200" />
         </a>
       </div>
     </div>
 
-    <!-- Industries Grid -->
+    <!-- Industries Grid with Staggered Scroll Reveals -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
       {industries.map((ind, idx) => {
         const Icon = ind.icon;
         return (
-          <div class="group relative bg-surface-light hover:bg-white p-7 sm:p-8 rounded-2xl border border-slate-200/90 hover:border-gold/50 shadow-subtle hover:shadow-premium transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
+          <div class={`reveal-on-scroll delay-${(idx + 1) * 75} group relative bg-surface-light hover:bg-white p-7 sm:p-8 rounded-2xl border border-slate-200/90 hover:border-gold/50 shadow-subtle hover:shadow-premium hover-lift glow-card transition-all duration-300 flex flex-col justify-between`}>
             <div class="space-y-4">
               <!-- Top Row: Icon + Index -->
               <div class="flex items-center justify-between">
-                <div class="w-12 h-12 rounded-xl bg-navy-900 text-gold flex items-center justify-center group-hover:bg-gold group-hover:text-navy-950 transition-colors shadow-sm">
+                <div class="icon-box-interactive w-12 h-12 rounded-xl bg-navy-900 text-gold flex items-center justify-center group-hover:bg-gold group-hover:text-navy-950 transition-colors shadow-sm">
                   <Icon className="w-6 h-6" />
                 </div>
                 <span class="font-mono text-xs text-slate-400 group-hover:text-teal font-bold transition-colors">
@@ -135,7 +135,7 @@ const industries = [
     </div>
 
     <!-- Bottom Reassurance Banner -->
-    <div class="mt-12 p-6 rounded-2xl bg-navy-950 text-white flex flex-col sm:flex-row items-center justify-between gap-4 border border-navy-800 shadow-md">
+    <div class="reveal-scale delay-150 mt-12 p-6 rounded-2xl bg-navy-950 text-white flex flex-col sm:flex-row items-center justify-between gap-4 border border-navy-800 shadow-md">
       <div class="flex items-center gap-4 text-left">
         <div class="w-10 h-10 rounded-xl bg-teal/20 text-teal-light flex items-center justify-center flex-shrink-0">
           <ShieldCheck className="w-5 h-5 text-teal" />
@@ -151,10 +151,10 @@ const industries = [
       </div>
       <a
         href="/contact"
-        class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gold hover:bg-gold-dark text-navy-950 font-heading font-bold text-xs uppercase tracking-wider transition-colors flex-shrink-0"
+        class="btn-gold-interactive group inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gold hover:bg-gold-dark text-navy-950 font-heading font-bold text-xs uppercase tracking-wider flex-shrink-0"
       >
         <span>Discuss Requirements</span>
-        <ArrowRight className="w-3.5 h-3.5" />
+        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
       </a>
     </div>
 
