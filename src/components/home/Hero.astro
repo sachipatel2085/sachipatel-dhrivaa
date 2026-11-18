@@ -4,12 +4,12 @@ import { ArrowRight } from 'lucide-react';
 
 <section class="relative min-h-[88vh] lg:min-h-[92vh] flex items-center bg-navy-950 overflow-hidden" aria-label="Hero">
   
-  <!-- Right-Aligned Cargo Ship Photography -->
-  <div class="absolute inset-0 z-0">
+  <!-- Right-Aligned Cargo Ship Photography with Subtle Ken Burns Effect -->
+  <div class="absolute inset-0 z-0 overflow-hidden">
     <img
       src="/images/hero-port.jpg"
       alt="International container cargo ship at deep sea port terminal at sunset"
-      class="w-full h-full object-cover object-right lg:object-[80%_center] filter brightness-[0.98] contrast-[1.04]"
+      class="w-full h-full object-cover object-right lg:object-[80%_center] filter brightness-[0.98] contrast-[1.04] animate-slow-zoom"
       loading="eager"
       fetchpriority="high"
     />
@@ -74,24 +74,24 @@ import { ArrowRight } from 'lucide-react';
   <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 sm:pt-32 sm:pb-24 lg:pt-36 lg:pb-28 w-full">
     <div class="max-w-2xl lg:max-w-3xl space-y-7 text-left">
       
-      <!-- Eyebrow Tag (matching reference format: INDIA · UAE · MIDDLE EAST) -->
-      <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-navy-900/90 border border-gold/30 text-gold-light text-xs font-heading font-semibold uppercase tracking-[0.22em] shadow-sm backdrop-blur-md">
+      <!-- Eyebrow Tag -->
+      <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-navy-900/90 border border-gold/30 text-gold-light text-xs font-heading font-semibold uppercase tracking-[0.22em] shadow-sm backdrop-blur-md animate-hero-1">
         <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
         <span>Gujarat, India &bull; UAE &bull; Middle East</span>
       </div>
 
       <!-- Main Headline -->
-      <h1 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[3.75rem] text-white tracking-tight leading-[1.15] text-balance">
+      <h1 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[3.75rem] text-white tracking-tight leading-[1.15] text-balance animate-hero-2">
         Agricultural Commodity Sourcing from Gujarat to Global Markets
       </h1>
 
       <!-- Supporting Body Text -->
-      <p class="text-sm sm:text-base md:text-lg text-slate-300 max-w-2xl leading-relaxed font-normal">
+      <p class="text-sm sm:text-base md:text-lg text-slate-300 max-w-2xl leading-relaxed font-normal animate-hero-3">
         We coordinate procurement, quality testing, and port logistics for bulk Rapeseed Meal, Castorseed Meal, and Castor Oil shipped via Mundra and Kandla ports to buyers across the UAE and Middle East.
       </p>
 
-      <!-- CTA Buttons (matching reference layout: Primary Pill + Outlined Pill) -->
-      <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
+      <!-- CTA Buttons -->
+      <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 animate-hero-4">
         <!-- Primary Button -->
         <a
           href="/products"
@@ -111,7 +111,7 @@ import { ArrowRight } from 'lucide-react';
       </div>
 
       <!-- Sourcing Trust Highlights at base of text -->
-      <div class="pt-8 border-t border-slate-800/80 flex flex-wrap items-center gap-6 sm:gap-10 text-xs sm:text-sm text-slate-400">
+      <div class="pt-8 border-t border-slate-800/80 flex flex-wrap items-center gap-6 sm:gap-10 text-xs sm:text-sm text-slate-400 animate-hero-5">
         <div class="flex items-center gap-2">
           <span class="w-2 h-2 rounded-full bg-teal"></span>
           <span>Origin: Mundra &amp; Kandla Ports</span>

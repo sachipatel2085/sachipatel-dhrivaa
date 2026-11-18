@@ -125,7 +125,7 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                           aria-current={isActive ? "page" : undefined}
                           className={`relative inline-flex items-center gap-1 px-2.5 py-1 text-xs xl:text-sm font-semibold font-heading transition-colors ${
                             isActive
-                              ? "text-navy-950"
+                              ? "text-navy-950 font-bold"
                               : "text-navy-900/80 hover:text-navy-950"
                           }`}
                         >
@@ -139,7 +139,7 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                           />
                           {/* Active Underline Indicator */}
                           {isActive && (
-                            <span className="absolute -bottom-1 left-2.5 right-2.5 h-[2.5px] bg-navy-900 rounded-full" />
+                            <span className="absolute -bottom-1.5 left-2 right-2 h-[2.5px] bg-navy-950 rounded-full" />
                           )}
                         </a>
 
@@ -196,19 +196,32 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                       aria-current={isActive ? "page" : undefined}
                       className={`relative inline-flex items-center px-2.5 py-1 text-xs xl:text-sm font-semibold font-heading transition-colors ${
                         isActive
-                          ? "text-navy-950"
+                          ? "text-navy-950 font-bold"
                           : "text-navy-900/80 hover:text-navy-950"
                       }`}
                     >
                       <span>{item.label}</span>
                       {/* Active Underline Indicator */}
                       {isActive && (
-                        <span className="absolute -bottom-1 left-2.5 right-2.5 h-[2.5px] bg-navy-900 rounded-full" />
+                        <span className="absolute -bottom-1.5 left-2 right-2 h-[2.5px] bg-navy-950 rounded-full" />
                       )}
                     </a>
                   );
                 })}
               </nav>
+
+              {/* Desktop Right CTA Pill Button (Exact Match to Chemixco Reference) */}
+              <div className="hidden lg:flex items-center flex-shrink-0">
+                <a
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-navy-950 text-white font-heading font-semibold text-xs xl:text-sm hover:bg-navy-900 active:scale-[0.98] transition-all shadow-sm group"
+                >
+                  <span>Inquire Now</span>
+                  <span className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                    <ArrowRight className="w-3 h-3 text-gold" />
+                  </span>
+                </a>
+              </div>
 
               {/* Mobile Hamburger Button */}
               <div className="flex lg:hidden items-center">
@@ -224,26 +237,26 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                   aria-expanded={mobileMenuOpen}
                 >
                   {mobileMenuOpen ? (
-                    <X className="w-6 h-6 text-navy-900" />
+                    <X className="w-6 h-6 text-navy-900 transition-transform duration-200 rotate-90" />
                   ) : (
-                    <Menu className="w-6 h-6 text-navy-900" />
+                    <Menu className="w-6 h-6 text-navy-900 transition-transform duration-200" />
                   )}
                 </button>
               </div>
             </div>
           </div>
 
-          {/* Mobile Dropdown Menu — SEPARATE CONTAINER THAT SLIDES DOWN FROM HEADER WITH NO WHITE LINE AND NO EFFECT ON THE HEADER */}
+          {/* Mobile Dropdown Menu — Attached directly beneath the floating pill header (Exact Match to Reference) */}
           <div
-            className={`lg:hidden grid transition-all duration-400 ease-out mt-2 ${
+            className={`lg:hidden grid transition-all duration-300 ease-out ${
               mobileMenuOpen
-                ? "grid-rows-[1fr] opacity-100 translate-y-0"
-                : "grid-rows-[0fr] opacity-0 -translate-y-2 pointer-events-none"
+                ? "grid-rows-[1fr] opacity-100 translate-y-0 mt-1.5"
+                : "grid-rows-[0fr] opacity-0 -translate-y-2 mt-0 pointer-events-none"
             }`}
           >
-            <div className="overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl bg-navy-950 border border-navy-800/80">
+            <div className="overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl bg-[#142244] border border-[#233566]/80">
               <nav
-                className="divide-y divide-navy-800/60"
+                className="divide-y divide-[#233566]/70"
                 aria-label="Mobile Navigation"
               >
                 {mainNavItems.map((item) => {
@@ -251,20 +264,20 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
 
                   if (item.children) {
                     return (
-                      <div key={item.label} className="bg-navy-950">
+                      <div key={item.label} className="bg-[#142244]">
                         {/* Parent row with accordion toggle */}
                         <div
                           className={`flex items-center justify-between px-5 py-3.5 transition-colors cursor-pointer ${
                             isActive
-                              ? "bg-[#2563eb] text-white"
-                              : "text-white hover:bg-navy-900"
+                              ? "bg-[#3b82f6] text-white"
+                              : "text-white hover:bg-[#1a2b54]"
                           }`}
                           onClick={() => setMobileProductsOpen((prev) => !prev)}
                         >
                           <span className="font-heading font-medium text-sm flex-1">
                             {item.label}
                           </span>
-                          <span className="p-1 text-slate-300">
+                          <span className="p-1 text-white">
                             <ChevronDown
                               className={`w-4 h-4 transition-transform duration-200 ${
                                 mobileProductsOpen ? "rotate-180" : ""
@@ -281,7 +294,7 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                               : "grid-rows-[0fr] opacity-0"
                           }`}
                         >
-                          <div className="overflow-hidden bg-navy-900/90 divide-y divide-navy-800/40">
+                          <div className="overflow-hidden bg-[#0e1933] divide-y divide-[#233566]/40">
                             {item.children.map((child) => {
                               const isChildActive =
                                 normalizePath(path) ===
@@ -291,10 +304,10 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                                   key={child.href}
                                   href={child.href}
                                   onClick={() => setMobileMenuOpen(false)}
-                                  className={`block px-8 py-3 text-xs transition-colors ${
+                                  className={`block px-7 py-3 text-xs transition-colors ${
                                     isChildActive
                                       ? "bg-teal text-white font-bold"
-                                      : "text-slate-300 hover:text-white hover:bg-navy-850"
+                                      : "text-slate-300 hover:text-white hover:bg-[#16254a]"
                                   }`}
                                 >
                                   <div className="font-semibold">
@@ -319,8 +332,8 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                       onClick={() => setMobileMenuOpen(false)}
                       className={`block px-5 py-3.5 font-heading font-medium text-sm transition-colors ${
                         isActive
-                          ? "bg-[#2563eb] text-white font-semibold"
-                          : "text-white hover:bg-navy-900"
+                          ? "bg-[#3b82f6] text-white font-bold"
+                          : "text-white hover:bg-[#1a2b54]"
                       }`}
                     >
                       {item.label}
@@ -329,13 +342,13 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                 })}
               </nav>
 
-              {/* Mobile Bottom Action: WhatsApp Quick Inquiry */}
-              <div className="p-4 bg-navy-900/95 border-t border-navy-800">
+              {/* Mobile Bottom Quick Inquiry */}
+              <div className="p-3.5 bg-[#0e1933] border-t border-[#233566]/70">
                 <a
                   href={companyData.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-full bg-[#25D366] text-white font-heading font-bold text-xs tracking-wider hover:bg-[#20bd5a] transition-colors shadow-sm"
+                  className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-full bg-[#25D366] text-white font-heading font-bold text-xs tracking-wider hover:bg-[#20bd5a] transition-colors shadow-sm"
                 >
                   <MessageSquare className="w-4 h-4 text-white" />
                   <span>Direct WhatsApp Inquiry</span>

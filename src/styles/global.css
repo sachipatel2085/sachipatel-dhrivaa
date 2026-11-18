@@ -30,6 +30,11 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
+    .reveal-on-scroll {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -60,9 +65,70 @@
   }
 }
 
-/* Custom premium scrollbar */
+/* =====================================================================
+   AWARD-WINNING INTERACTION & SCROLL REVEAL SUITE
+   ===================================================================== */
+
+/* 1. Scroll-Triggered Reveal Animations */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px) scale(0.99);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* 2. Staggered Entrance Timing */
+.delay-75  { transition-delay: 75ms; }
+.delay-100 { transition-delay: 100ms; }
+.delay-150 { transition-delay: 150ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-250 { transition-delay: 250ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-350 { transition-delay: 350ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+
+/* 3. Hero Cascading Entrance Keyframes */
+@keyframes heroEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-1 { animation: heroEntrance 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both; }
+.animate-hero-2 { animation: heroEntrance 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both; }
+.animate-hero-3 { animation: heroEntrance 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both; }
+.animate-hero-4 { animation: heroEntrance 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both; }
+.animate-hero-5 { animation: heroEntrance 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both; }
+
+/* 4. Cinematic Gentle Background Zoom (Ken Burns) */
+@keyframes slowZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-slow-zoom {
+  animation: slowZoom 24s ease-out infinite alternate;
+  will-change: transform;
+}
+
+/* 5. Custom Premium Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
   background: #091C30;
