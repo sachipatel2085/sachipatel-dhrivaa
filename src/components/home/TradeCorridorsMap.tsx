@@ -1,14 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Anchor, 
   Globe2, 
   Navigation, 
   Clock, 
-  ArrowRight, 
-  Layers, 
-  CheckCircle2, 
-  MapPin,
-  Compass,
   Ship
 } from 'lucide-react';
 import { 
@@ -21,15 +16,21 @@ import {
 } from '../../data/worldMapData';
 
 export default function TradeCorridorsMap() {
-  const [selectedId, setSelectedId] = useState<string>('uae');
+  const [activeIndex, setActiveIndex] = useState<number>(0);
   const [viewMode, setViewMode] = useState<'world' | 'gulf'>('world');
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [isPaused, setIsPaused] = useState<boolean>(false);
 
-  const activeDest: TradeDestination = 
-    TARGET_DESTINATIONS.find(d => d.id === (hoveredId || selectedId)) || TARGET_DESTINATIONS[0];
+  // Auto-cycle through target trade corridors every 3.5 seconds
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % TARGET_DESTINATIONS.length);
+    }, 3600);
+    return () => clearInterval(interval);
+  }, [isPaused]);
 
+  const activeDest: TradeDestination = TARGET_DESTINATIONS[activeIndex];
   const isZoomed = viewMode === 'gulf';
-  // Dynamic scale factor for SVG text and strokes between 960w full world and 220w zoomed Gulf
   const sf = isZoomed ? 0.28 : 1.0;
 
   const currentViewBox = isZoomed 
@@ -37,78 +38,79 @@ export default function TradeCorridorsMap() {
     : "0 0 960 480";
 
   return (
-    <div className="w-full flex flex-col gap-6">
+    <div 
+      className="w-full flex flex-col gap-4 select-none"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
       
-      {/* Top Interactive Controls & Status Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-800">
+      {/* Top Header / View Controller */}
+      <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-800">
         
         {/* Origin Live Indicator */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
           <div className="relative flex items-center justify-center">
-            <span className="w-3 h-3 rounded-full bg-gold animate-ping absolute opacity-75"></span>
-            <span className="w-2.5 h-2.5 rounded-full bg-gold relative"></span>
+            <span className="w-2.5 h-2.5 rounded-full bg-gold animate-ping absolute opacity-75"></span>
+            <span className="w-2 h-2 rounded-full bg-gold relative"></span>
           </div>
           <div>
             <div className="flex items-center gap-2">
               <span className="text-xs font-bold uppercase tracking-wider text-white font-heading">
-                Origin Gateway: Gujarat, India
+                Gujarat Gateway
               </span>
-              <span className="hidden sm:inline-block text-[10px] font-mono text-gold bg-gold/10 px-2 py-0.5 rounded border border-gold/30">
+              <span className="text-[10px] font-mono text-gold bg-gold/10 px-1.5 py-0.5 rounded border border-gold/30">
                 Mundra &amp; Kandla
               </span>
             </div>
-            <p className="text-[11px] text-slate-400">
-              Direct ocean freight connection to Arabian Gulf &amp; Indian Ocean terminals
-            </p>
           </div>
         </div>
 
-        {/* View Mode Switcher */}
-        <div className="flex items-center gap-1.5 bg-navy-900/90 p-1 rounded-xl border border-slate-800">
+        {/* View Mode Toggle */}
+        <div className="flex items-center gap-1 bg-navy-900/90 p-0.5 rounded-lg border border-slate-800 text-xs">
           <button
             type="button"
             onClick={() => setViewMode('world')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 ${
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-medium transition-all duration-200 ${
               viewMode === 'world'
                 ? 'bg-gold text-navy-950 font-semibold shadow-sm'
-                : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+                : 'text-slate-300 hover:text-white'
             }`}
-            title="Show full authentic world map with global shipping corridors"
+            title="World map view"
           >
-            <Globe2 className="w-3.5 h-3.5" />
-            <span>Global World Map</span>
+            <Globe2 className="w-3 h-3" />
+            <span>World</span>
           </button>
 
           <button
             type="button"
             onClick={() => setViewMode('gulf')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 ${
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-medium transition-all duration-200 ${
               viewMode === 'gulf'
                 ? 'bg-teal text-white font-semibold shadow-sm'
-                : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+                : 'text-slate-300 hover:text-white'
             }`}
-            title="Zoom into Arabian Gulf & Red Sea maritime corridors"
+            title="Gulf corridor zoom"
           >
-            <Navigation className="w-3.5 h-3.5" />
-            <span>Gulf Corridor Focus</span>
+            <Navigation className="w-3 h-3" />
+            <span>Gulf Focus</span>
           </button>
         </div>
 
       </div>
 
-      {/* Main Map Presentation Stage */}
-      <div className="relative w-full aspect-[16/9] sm:aspect-[16/8.5] lg:aspect-[16/8] bg-navy-950 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl group select-none">
+      {/* Main Map Visual Canvas */}
+      <div className="relative w-full aspect-[16/10.5] sm:aspect-[16/10] bg-navy-950 rounded-2xl overflow-hidden border border-slate-800 shadow-xl group">
         
-        {/* Ocean Background & Bathymetric Glow */}
+        {/* Ocean Radial Bathymetric Glow */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_65%_45%,#0f2844_0%,#081726_70%,#050e18_100%)]"></div>
 
         {/* Subtle Lat/Long Grid overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#16304d15_1px,transparent_1px),linear-gradient(to_bottom,#16304d15_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#16304d15_1px,transparent_1px),linear-gradient(to_bottom,#16304d15_1px,transparent_1px)] bg-[size:36px_36px] pointer-events-none"></div>
 
-        {/* Compass Rose Accent (Top Right) */}
-        <div className="absolute top-4 right-4 z-10 pointer-events-none opacity-40 hidden sm:flex items-center gap-1.5 text-[10px] text-slate-400 font-mono">
-          <Compass className="w-4 h-4 text-gold animate-spin-slow" />
-          <span>INDIAN OCEAN TRADE NETWORK</span>
+        {/* Top-Right Ambient Status */}
+        <div className="absolute top-3 right-3 z-10 pointer-events-none flex items-center gap-1.5 text-[10px] text-slate-400 font-mono bg-navy-900/80 px-2 py-0.5 rounded-md border border-slate-800/80 backdrop-blur-sm">
+          <span className="w-1.5 h-1.5 rounded-full bg-teal animate-pulse"></span>
+          <span>AUTO-CORRIDOR {activeIndex + 1}/{TARGET_DESTINATIONS.length}</span>
         </div>
 
         {/* SVG World Map */}
@@ -119,19 +121,11 @@ export default function TradeCorridorsMap() {
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
-            {/* Gradients */}
-            <linearGradient id="corridorGlow" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#C8A45D" stopOpacity="0.9" />
-              <stop offset="60%" stopColor="#398D89" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#38BDF8" stopOpacity="0.95" />
-            </linearGradient>
-
             <linearGradient id="globalLaneGlow" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#C8A45D" stopOpacity="0.4" />
               <stop offset="100%" stopColor="#398D89" stopOpacity="0.2" />
             </linearGradient>
 
-            {/* Glowing Drop Filter */}
             <filter id="routeBloom" x="-20%" y="-20%" width="140%" height="140%">
               <feGaussianBlur stdDeviation={isZoomed ? "0.8" : "2"} result="blur" />
               <feMerge>
@@ -143,13 +137,9 @@ export default function TradeCorridorsMap() {
 
           {/* 1. Global Graticule Reference Lines */}
           <g opacity="0.18" stroke="#398D89" strokeWidth={0.5 * sf} strokeDasharray={`${3 * sf} ${6 * sf}`}>
-            {/* Tropic of Cancer (23.5° N) -> y ≈ 201 */}
             <line x1="0" y1="201.7" x2="960" y2="201.7" />
-            {/* Equator (0°) -> y ≈ 280 */}
             <line x1="0" y1="280.0" x2="960" y2="280.0" />
-            {/* Prime Meridian (0°) -> x = 480 */}
             <line x1="480" y1="0" x2="480" y2="480" />
-            {/* 60°E Meridian (Arabian Sea) -> x = 640 */}
             <line x1="640" y1="0" x2="640" y2="480" stroke="#C8A45D" strokeWidth={0.8 * sf} opacity="0.4" />
           </g>
 
@@ -159,45 +149,41 @@ export default function TradeCorridorsMap() {
             fill="#122744"
             stroke="#1b395d"
             strokeWidth={0.6 * sf}
-            className="transition-colors duration-300"
           />
 
-          {/* 3. Non-Target Highlights (India Origin Base) */}
+          {/* 3. India Origin Base */}
           {TARGET_COUNTRY_PATHS['IN'] && (
             <path
               d={TARGET_COUNTRY_PATHS['IN']}
               fill="#163c63"
               stroke="#398D89"
               strokeWidth={1.2 * sf}
-              className="transition-all duration-300"
             />
           )}
 
-          {/* 4. Target GCC Countries (Interactive Landmasses) */}
-          {TARGET_DESTINATIONS.map((dest) => {
+          {/* 4. Target GCC Countries (Active Auto-Highlighted) */}
+          {TARGET_DESTINATIONS.map((dest, idx) => {
             const p = TARGET_COUNTRY_PATHS[dest.code];
             if (!p) return null;
-            const isSelected = dest.id === activeDest.id;
+            const isSelected = idx === activeIndex;
             return (
               <path
                 key={`country-${dest.id}`}
                 d={p}
                 fill={isSelected ? (dest.id === 'uae' ? '#C8A45D' : '#2A7270') : '#183a5c'}
-                fillOpacity={isSelected ? 0.85 : 0.6}
+                fillOpacity={isSelected ? 0.9 : 0.55}
                 stroke={isSelected ? '#C8A45D' : '#398D89'}
                 strokeWidth={(isSelected ? 1.4 : 0.8) * sf}
-                className="cursor-pointer transition-all duration-300 hover:fill-teal/60"
-                onClick={() => setSelectedId(dest.id)}
-                onMouseEnter={() => setHoveredId(dest.id)}
-                onMouseLeave={() => setHoveredId(null)}
+                className="transition-all duration-500 cursor-pointer"
+                onClick={() => setActiveIndex(idx)}
               >
-                <title>{dest.country} - Click to inspect trade corridor</title>
+                <title>{dest.country}</title>
               </path>
             );
           })}
 
-          {/* 5. Global Secondary Maritime Shipping Corridors (Visible in World Mode) */}
-          <g opacity={isZoomed ? "0.2" : "0.7"}>
+          {/* 5. Global Secondary Maritime Shipping Corridors */}
+          <g opacity={isZoomed ? "0.2" : "0.6"}>
             {GLOBAL_SHIPPING_LANES.map((lane, idx) => (
               <g key={`global-lane-${idx}`}>
                 <path
@@ -209,13 +195,11 @@ export default function TradeCorridorsMap() {
                   fill="none"
                 />
                 {!isZoomed && (
-                  <circle r={2.5 * sf} fill="#398D89">
+                  <circle r={2.2 * sf} fill="#398D89">
                     <animateMotion
                       dur="5s"
                       repeatCount="indefinite"
                       path={lane.path}
-                      keyPoints="0;1"
-                      keyTimes="0;1"
                     />
                   </circle>
                 )}
@@ -224,20 +208,20 @@ export default function TradeCorridorsMap() {
           </g>
 
           {/* 6. Primary Commercial Trade Routes to GCC Destinations */}
-          {TARGET_DESTINATIONS.map((dest) => {
-            const isSelected = dest.id === activeDest.id;
+          {TARGET_DESTINATIONS.map((dest, idx) => {
+            const isSelected = idx === activeIndex;
             const routeStrokeColor = isSelected ? '#C8A45D' : '#398D89';
-            const baseOpacity = isSelected ? 1 : 0.45;
-            const strokeW = (isSelected ? 2.2 : 1.4) * sf;
+            const baseOpacity = isSelected ? 1 : 0.35;
+            const strokeW = (isSelected ? 2.2 : 1.2) * sf;
 
             return (
-              <g key={`route-${dest.id}`} className="transition-opacity duration-300">
+              <g key={`route-${dest.id}`} className="transition-all duration-500">
                 {/* Route Glow Underlay */}
                 <path
                   d={dest.routePath}
                   stroke={dest.color}
-                  strokeWidth={(isSelected ? 4 : 2) * sf}
-                  strokeOpacity={isSelected ? 0.35 : 0.1}
+                  strokeWidth={(isSelected ? 4 : 1.8) * sf}
+                  strokeOpacity={isSelected ? 0.4 : 0.08}
                   fill="none"
                   strokeLinecap="round"
                 />
@@ -254,24 +238,22 @@ export default function TradeCorridorsMap() {
                   strokeLinecap="round"
                 />
 
-                {/* Traveling Photon / Cargo Beacon along the Path */}
+                {/* Traveling Photon Beacon */}
                 <circle
-                  r={(isSelected ? 3.2 : 2.2) * sf}
+                  r={(isSelected ? 3.2 : 2.0) * sf}
                   fill={isSelected ? "#FFFFFF" : dest.color}
                   stroke={dest.color}
                   strokeWidth={0.8 * sf}
                   filter="url(#routeBloom)"
                 >
                   <animateMotion
-                    dur={isSelected ? "2.6s" : "4.2s"}
+                    dur={isSelected ? "2.6s" : "4.5s"}
                     repeatCount="indefinite"
                     path={dest.routePath}
-                    keyPoints="0;1"
-                    keyTimes="0;1"
                   />
                 </circle>
 
-                {/* Secondary Route (e.g. Red Sea to Jeddah for Saudi Arabia) */}
+                {/* Alternate Route (Red Sea to Jeddah for Saudi) */}
                 {dest.altRoutePath && (
                   <>
                     <path
@@ -279,18 +261,18 @@ export default function TradeCorridorsMap() {
                       stroke={routeStrokeColor}
                       strokeWidth={strokeW * 0.9}
                       strokeDasharray={`${4 * sf} ${4 * sf}`}
-                      strokeOpacity={baseOpacity * 0.85}
+                      strokeOpacity={baseOpacity * 0.8}
                       fill="none"
                       className="animate-route-flow"
                       strokeLinecap="round"
                     />
                     <circle
-                      r={2.2 * sf}
+                      r={2.0 * sf}
                       fill={dest.color}
                       filter="url(#routeBloom)"
                     >
                       <animateMotion
-                        dur="4.5s"
+                        dur="4.8s"
                         repeatCount="indefinite"
                         path={dest.altRoutePath}
                       />
@@ -301,21 +283,19 @@ export default function TradeCorridorsMap() {
             );
           })}
 
-          {/* 7. Destination Port Markers & Beacons */}
-          {TARGET_DESTINATIONS.map((dest) => {
-            const isSelected = dest.id === activeDest.id;
+          {/* 7. Destination Port Markers */}
+          {TARGET_DESTINATIONS.map((dest, idx) => {
+            const isSelected = idx === activeIndex;
             const { x, y } = dest.portCoords;
-            const r = (isSelected ? 4 : 2.6) * sf;
+            const r = (isSelected ? 4 : 2.4) * sf;
 
             return (
               <g
                 key={`port-${dest.id}`}
-                className="cursor-pointer group/marker"
-                onClick={() => setSelectedId(dest.id)}
-                onMouseEnter={() => setHoveredId(dest.id)}
-                onMouseLeave={() => setHoveredId(null)}
+                className="cursor-pointer"
+                onClick={() => setActiveIndex(idx)}
               >
-                {/* Pulsing Radar Ring when active */}
+                {/* Pulsing Radar Ring on the active port */}
                 {isSelected && (
                   <circle
                     cx={x}
@@ -327,7 +307,6 @@ export default function TradeCorridorsMap() {
                   />
                 )}
 
-                {/* Port Core Node */}
                 <circle
                   cx={x}
                   cy={y}
@@ -335,7 +314,6 @@ export default function TradeCorridorsMap() {
                   fill={isSelected ? dest.color : '#38BDF8'}
                   stroke="#FFFFFF"
                   strokeWidth={0.7 * sf}
-                  className="transition-transform duration-200"
                 />
 
                 {/* Port Label in Zoomed Mode */}
@@ -365,41 +343,26 @@ export default function TradeCorridorsMap() {
                   </g>
                 )}
 
-                {/* Alternate Port for Saudi (Jeddah) in Zoomed Mode */}
                 {dest.altPortCoords && (
-                  <g>
-                    <circle
-                      cx={dest.altPortCoords.x}
-                      cy={dest.altPortCoords.y}
-                      r={(isSelected ? 3.5 : 2.2) * sf}
-                      fill={dest.color}
-                      stroke="#FFFFFF"
-                      strokeWidth={0.6 * sf}
-                    />
-                    {isZoomed && (
-                      <text
-                        x={dest.altPortCoords.x - 22 * sf}
-                        y={dest.altPortCoords.y + 1 * sf}
-                        fill="#94A3B8"
-                        fontSize={3.2 * sf}
-                        fontFamily="sans-serif"
-                      >
-                        Jeddah
-                      </text>
-                    )}
-                  </g>
+                  <circle
+                    cx={dest.altPortCoords.x}
+                    cy={dest.altPortCoords.y}
+                    r={(isSelected ? 3.5 : 2.0) * sf}
+                    fill={dest.color}
+                    stroke="#FFFFFF"
+                    strokeWidth={0.6 * sf}
+                  />
                 )}
               </g>
             );
           })}
 
-          {/* 8. Sourcing Origin Gateway: Gujarat, India (Mundra / Kandla) */}
-          <g className="cursor-pointer">
-            {/* Multiple Radar Waves */}
+          {/* 8. Sourcing Origin: Gujarat Hub */}
+          <g>
             <circle
               cx={SOURCING_ORIGIN.coords.x}
               cy={SOURCING_ORIGIN.coords.y}
-              r={14 * sf}
+              r={12 * sf}
               stroke="#C8A45D"
               fill="none"
               className="animate-radar-wave"
@@ -407,29 +370,27 @@ export default function TradeCorridorsMap() {
             <circle
               cx={SOURCING_ORIGIN.coords.x}
               cy={SOURCING_ORIGIN.coords.y}
-              r={7 * sf}
+              r={6 * sf}
               fill="#C8A45D"
               fillOpacity="0.3"
             />
-            {/* Origin Pin Core */}
             <circle
               cx={SOURCING_ORIGIN.coords.x}
               cy={SOURCING_ORIGIN.coords.y}
-              r={4.2 * sf}
+              r={3.8 * sf}
               fill="#C8A45D"
               stroke="#FFFFFF"
-              strokeWidth={1.2 * sf}
+              strokeWidth={1.0 * sf}
               filter="url(#routeBloom)"
             />
 
-            {/* Origin Label */}
             {isZoomed ? (
               <g>
                 <rect
                   x={SOURCING_ORIGIN.coords.x + 5 * sf}
                   y={SOURCING_ORIGIN.coords.y - 7 * sf}
-                  width={52 * sf}
-                  height={13 * sf}
+                  width={50 * sf}
+                  height={12 * sf}
                   rx={2 * sf}
                   fill="#091C30"
                   fillOpacity="0.92"
@@ -453,16 +414,16 @@ export default function TradeCorridorsMap() {
                   fontSize={3.2 * sf}
                   fontFamily="sans-serif"
                 >
-                  Mundra &amp; Kandla Hub
+                  Mundra &amp; Kandla
                 </text>
               </g>
             ) : (
               <g>
                 <text
-                  x={SOURCING_ORIGIN.coords.x + 12}
+                  x={SOURCING_ORIGIN.coords.x + 10}
                   y={SOURCING_ORIGIN.coords.y - 2}
                   fill="#FFFFFF"
-                  fontSize="12"
+                  fontSize="11"
                   fontWeight="bold"
                   fontFamily="sans-serif"
                   filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))"
@@ -470,15 +431,15 @@ export default function TradeCorridorsMap() {
                   Gujarat, India
                 </text>
                 <text
-                  x={SOURCING_ORIGIN.coords.x + 12}
-                  y={SOURCING_ORIGIN.coords.y + 12}
+                  x={SOURCING_ORIGIN.coords.x + 10}
+                  y={SOURCING_ORIGIN.coords.y + 11}
                   fill="#C8A45D"
-                  fontSize="10"
+                  fontSize="9.5"
                   fontFamily="sans-serif"
                   fontWeight="600"
                   filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))"
                 >
-                  Sourcing Gateway (Mundra / Kandla)
+                  Mundra &amp; Kandla Port Gateway
                 </text>
               </g>
             )}
@@ -486,9 +447,9 @@ export default function TradeCorridorsMap() {
 
         </svg>
 
-        {/* Floating Interactive Route HUD Card on Map (Bottom Left) */}
-        <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 z-20 max-w-[280px] sm:max-w-sm bg-navy-900/95 backdrop-blur-md p-3.5 sm:p-4 rounded-xl border border-slate-700/80 shadow-2xl text-white transition-all duration-300">
-          <div className="flex items-center justify-between gap-2 pb-2 border-b border-slate-800">
+        {/* Floating Active Corridor HUD Card (Automatically updates as routes cycle) */}
+        <div className="absolute bottom-2.5 left-2.5 sm:bottom-3 sm:left-3 z-20 max-w-[270px] sm:max-w-xs bg-navy-900/95 backdrop-blur-md p-3 sm:p-3.5 rounded-xl border border-slate-700/80 shadow-2xl text-white transition-all duration-300">
+          <div className="flex items-center justify-between gap-2 pb-1.5 border-b border-slate-800">
             <div className="flex items-center gap-2">
               <span 
                 className="w-2.5 h-2.5 rounded-full" 
@@ -498,20 +459,20 @@ export default function TradeCorridorsMap() {
                 {activeDest.country}
               </span>
             </div>
-            <span className="text-[10px] font-mono text-teal bg-teal/10 px-2 py-0.5 rounded border border-teal/20">
+            <span className="text-[9px] font-mono text-teal bg-teal/10 px-1.5 py-0.5 rounded border border-teal/20">
               Active Lane
             </span>
           </div>
 
-          <div className="mt-2 space-y-1.5 text-xs">
-            <div className="flex items-start gap-1.5 text-slate-300">
+          <div className="mt-1.5 space-y-1 text-xs">
+            <div className="flex items-start gap-1 text-slate-300">
               <Anchor className="w-3.5 h-3.5 text-gold shrink-0 mt-0.5" />
-              <span className="leading-tight text-[11px] sm:text-xs">
+              <span className="leading-tight text-[11px]">
                 <strong>Ports:</strong> {activeDest.portName}
               </span>
             </div>
 
-            <div className="flex items-center gap-4 text-[11px] text-slate-300">
+            <div className="flex items-center gap-3 text-[10px] text-slate-300 pt-0.5">
               <span className="flex items-center gap-1">
                 <Clock className="w-3 h-3 text-teal" />
                 <span>{activeDest.transitDays}</span>
@@ -522,71 +483,39 @@ export default function TradeCorridorsMap() {
               </span>
             </div>
 
-            <div className="text-[11px] text-slate-400 line-clamp-2 pt-1 border-t border-slate-800/60">
+            <div className="text-[10px] text-slate-400 line-clamp-1 pt-1 border-t border-slate-800/60">
               <span className="text-slate-300 font-medium">Cargo:</span> {activeDest.commodities}
             </div>
           </div>
         </div>
 
-        {/* Map Legend (Bottom Right) */}
-        <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 z-20 hidden md:flex items-center gap-3 bg-navy-900/90 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-slate-800 text-[10px] text-slate-300">
-          <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-gold"></span>
-            Gujarat Origin
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-teal"></span>
-            Gulf Berths
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="w-2 h-0.5 bg-gold border-t border-dashed border-gold"></span>
-            Maritime Arcs
-          </span>
+        {/* Mini Corridor Cycle Indicator Dots at Bottom-Right of map */}
+        <div className="absolute bottom-3 right-3 z-20 flex items-center gap-1.5 bg-navy-900/80 backdrop-blur-sm px-2 py-1 rounded-md border border-slate-800/80">
+          {TARGET_DESTINATIONS.map((d, idx) => (
+            <button
+              key={d.id}
+              type="button"
+              onClick={() => setActiveIndex(idx)}
+              className={`transition-all duration-300 rounded-full ${
+                idx === activeIndex 
+                  ? 'w-4 h-1.5 bg-gold' 
+                  : 'w-1.5 h-1.5 bg-slate-600 hover:bg-slate-400'
+              }`}
+              title={`Switch to ${d.country}`}
+            />
+          ))}
         </div>
 
       </div>
 
-      {/* Target Destination Selectable Cards Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-        {TARGET_DESTINATIONS.map((dest) => {
-          const isSelected = dest.id === activeDest.id;
-          return (
-            <button
-              key={`btn-${dest.id}`}
-              type="button"
-              onClick={() => {
-                setSelectedId(dest.id);
-                // When selecting a destination, default to zoomed view for close detail
-                setViewMode('gulf');
-              }}
-              onMouseEnter={() => setHoveredId(dest.id)}
-              onMouseLeave={() => setHoveredId(null)}
-              className={`p-3 rounded-xl text-left transition-all duration-300 group border ${
-                isSelected
-                  ? 'bg-navy-900 border-gold shadow-lg shadow-gold/10 -translate-y-1'
-                  : 'bg-navy-900/70 border-slate-800 hover:border-slate-700 hover:bg-navy-900'
-              }`}
-            >
-              <div className="flex items-center justify-between mb-1">
-                <span className={`text-xs font-bold font-heading transition-colors ${
-                  isSelected ? 'text-gold' : 'text-white group-hover:text-gold'
-                }`}>
-                  {dest.country}
-                </span>
-                <span 
-                  className="w-1.5 h-1.5 rounded-full"
-                  style={{ backgroundColor: dest.color }}
-                ></span>
-              </div>
-              <p className="text-[10px] text-slate-400 line-clamp-1">
-                {dest.transitDays}
-              </p>
-              <span className="text-[9px] font-mono text-teal mt-1 block">
-                {dest.code} Sea Lane
-              </span>
-            </button>
-          );
-        })}
+      <div className="flex items-center justify-between text-[11px] text-slate-400 px-1">
+        <span className="flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-gold"></span>
+          Direct Sourcing: Gujarat (Mundra &amp; Kandla)
+        </span>
+        <span className="italic text-[10px]">
+          Auto-cycling through 6 GCC destination ports
+        </span>
       </div>
 
     </div>
