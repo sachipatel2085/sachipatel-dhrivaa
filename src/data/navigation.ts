@@ -31,7 +31,6 @@ export const mainNavItems: NavItem[] = [
   { label: 'Sourcing & Procurement', href: '/sourcing-procurement' },
   { label: 'Quality Assurance', href: '/quality-assurance' },
   { label: 'Buyer Resources', href: '/buyer-resources' },
-  { label: 'Insights', href: '/insights' },
   { label: 'Contact', href: '/contact' }
 ];
 
@@ -40,7 +39,6 @@ export const footerQuickLinks = [
   { label: 'About DHRIVAA', href: '/about-us' },
   { label: 'Our Products', href: '/products' },
   { label: 'Buyer Resources', href: '/buyer-resources' },
-  { label: 'Trade Insights', href: '/insights' },
   { label: 'Sourcing Process', href: '/sourcing-procurement' },
   { label: 'Quality Coordination', href: '/quality-assurance' },
   { label: 'Contact Us', href: '/contact' }
