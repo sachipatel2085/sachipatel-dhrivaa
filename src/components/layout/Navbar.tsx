@@ -82,9 +82,9 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
         <div className="max-w-7xl mx-auto pointer-events-auto">
           {/* Main Floating Bar */}
           <div
-            className={`bg-white transition-all duration-300 border border-slate-200/90 ${
+            className={`bg-white transition-all duration-300 ease-in-out border border-slate-200/90 ${
               mobileMenuOpen
-                ? "rounded-t-2xl sm:rounded-t-3xl shadow-xl border-b-0"
+                ? "rounded-t-2xl sm:rounded-t-3xl shadow-2xl"
                 : "rounded-full shadow-lg shadow-navy-950/8"
             } ${isScrolled && !mobileMenuOpen ? "shadow-xl shadow-navy-950/12" : ""}`}
           >
@@ -225,12 +225,12 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                 </a>
               </div>
 
-              {/* Mobile Hamburger Button */}
+              {/* Mobile Hamburger Button with Smooth Rotate Animation */}
               <div className="flex lg:hidden items-center">
                 <button
                   type="button"
                   onClick={() => setMobileMenuOpen((prev) => !prev)}
-                  className="p-2 rounded-lg text-navy-900 hover:bg-slate-100 active:bg-slate-200 focus:outline-none"
+                  className="w-10 h-10 flex items-center justify-center rounded-xl text-navy-900 hover:bg-slate-100 active:bg-slate-200 focus:outline-none transition-colors"
                   aria-label={
                     mobileMenuOpen
                       ? "Close Navigation Menu"
@@ -238,124 +238,152 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                   }
                   aria-expanded={mobileMenuOpen}
                 >
-                  {mobileMenuOpen ? (
-                    <X className="w-6 h-6 text-navy-900" />
-                  ) : (
-                    <Menu className="w-6 h-6 text-navy-900" />
-                  )}
+                  <div
+                    className={`transition-transform duration-300 ease-in-out ${
+                      mobileMenuOpen ? "rotate-90" : "rotate-0"
+                    }`}
+                  >
+                    {mobileMenuOpen ? (
+                      <X className="w-6 h-6 text-navy-900" />
+                    ) : (
+                      <Menu className="w-6 h-6 text-navy-900" />
+                    )}
+                  </div>
                 </button>
               </div>
             </div>
 
-            {/* Mobile Dropdown Menu (Attached directly beneath top bar, matching screenshot 2) */}
-            {mobileMenuOpen && (
-              <div className="lg:hidden bg-navy-950 border-t border-navy-800 rounded-b-2xl sm:rounded-b-3xl overflow-hidden shadow-2xl animate-in fade-in slide-in-from-top-1 duration-200">
-                <nav className="divide-y divide-navy-800/60" aria-label="Mobile Navigation">
-                  {mainNavItems.map((item) => {
-                    const isActive = checkIsActive(item.href, path);
+            {/* Mobile Dropdown Menu with Smooth Slide/Roll Transition from Header */}
+            <div
+              className={`lg:hidden grid transition-all duration-300 ease-in-out ${
+                mobileMenuOpen
+                  ? "grid-rows-[1fr] opacity-100 border-t border-navy-800"
+                  : "grid-rows-[0fr] opacity-0 border-t-0 pointer-events-none"
+              }`}
+            >
+              <div className="overflow-hidden bg-navy-950 rounded-b-2xl sm:rounded-b-3xl">
+                <div
+                  className={`transition-transform duration-300 ease-out ${
+                    mobileMenuOpen ? "translate-y-0" : "-translate-y-3"
+                  }`}
+                >
+                  <nav className="divide-y divide-navy-800/60" aria-label="Mobile Navigation">
+                    {mainNavItems.map((item) => {
+                      const isActive = checkIsActive(item.href, path);
 
-                    if (item.children) {
-                      return (
-                        <div key={item.label} className="bg-navy-950">
-                          {/* Parent row with accordion toggle */}
-                          <div
-                            className={`flex items-center justify-between px-5 py-3.5 transition-colors cursor-pointer ${
-                              isActive ? "bg-[#2563eb] text-white" : "text-white hover:bg-navy-900"
-                            }`}
-                            onClick={() => setMobileProductsOpen((prev) => !prev)}
-                          >
-                            <span className="font-heading font-medium text-sm flex-1">
-                              {item.label}
-                            </span>
-                            <span className="p-1 text-slate-300">
-                              <ChevronDown
-                                className={`w-4 h-4 transition-transform duration-200 ${
-                                  mobileProductsOpen ? "rotate-180" : ""
-                                }`}
-                              />
-                            </span>
-                          </div>
-
-                          {/* Accordion Sub-items */}
-                          {mobileProductsOpen && (
-                            <div className="bg-navy-900/90 divide-y divide-navy-800/40">
-                              {item.children.map((child) => {
-                                const isChildActive =
-                                  normalizePath(path) ===
-                                  normalizePath(child.href);
-                                return (
-                                  <a
-                                    key={child.href}
-                                    href={child.href}
-                                    onClick={() => setMobileMenuOpen(false)}
-                                    className={`block px-8 py-3 text-xs transition-colors ${
-                                      isChildActive
-                                        ? "bg-teal text-white font-bold"
-                                        : "text-slate-300 hover:text-white hover:bg-navy-850"
-                                    }`}
-                                  >
-                                    <div className="font-semibold">{child.label}</div>
-                                    <div className="text-[10px] text-slate-400 mt-0.5 line-clamp-1">{child.description}</div>
-                                  </a>
-                                );
-                              })}
+                      if (item.children) {
+                        return (
+                          <div key={item.label} className="bg-navy-950">
+                            {/* Parent row with accordion toggle */}
+                            <div
+                              className={`flex items-center justify-between px-5 py-3.5 transition-colors cursor-pointer ${
+                                isActive ? "bg-[#2563eb] text-white" : "text-white hover:bg-navy-900"
+                              }`}
+                              onClick={() => setMobileProductsOpen((prev) => !prev)}
+                            >
+                              <span className="font-heading font-medium text-sm flex-1">
+                                {item.label}
+                              </span>
+                              <span className="p-1 text-slate-300">
+                                <ChevronDown
+                                  className={`w-4 h-4 transition-transform duration-200 ${
+                                    mobileProductsOpen ? "rotate-180" : ""
+                                  }`}
+                                />
+                              </span>
                             </div>
-                          )}
-                        </div>
+
+                            {/* Smooth Accordion Sub-items */}
+                            <div
+                              className={`grid transition-all duration-200 ease-in-out ${
+                                mobileProductsOpen
+                                  ? "grid-rows-[1fr] opacity-100"
+                                  : "grid-rows-[0fr] opacity-0"
+                              }`}
+                            >
+                              <div className="overflow-hidden bg-navy-900/90 divide-y divide-navy-800/40">
+                                {item.children.map((child) => {
+                                  const isChildActive =
+                                    normalizePath(path) ===
+                                    normalizePath(child.href);
+                                  return (
+                                    <a
+                                      key={child.href}
+                                      href={child.href}
+                                      onClick={() => setMobileMenuOpen(false)}
+                                      className={`block px-8 py-3 text-xs transition-colors ${
+                                        isChildActive
+                                          ? "bg-teal text-white font-bold"
+                                          : "text-slate-300 hover:text-white hover:bg-navy-850"
+                                      }`}
+                                    >
+                                      <div className="font-semibold">{child.label}</div>
+                                      <div className="text-[10px] text-slate-400 mt-0.5 line-clamp-1">
+                                        {child.description}
+                                      </div>
+                                    </a>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      }
+
+                      return (
+                        <a
+                          key={item.label}
+                          href={item.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className={`block px-5 py-3.5 font-heading font-medium text-sm transition-colors ${
+                            isActive
+                              ? "bg-[#2563eb] text-white font-semibold"
+                              : "text-white hover:bg-navy-900"
+                          }`}
+                        >
+                          {item.label}
+                        </a>
                       );
-                    }
+                    })}
+                  </nav>
 
-                    return (
-                      <a
-                        key={item.label}
-                        href={item.href}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className={`block px-5 py-3.5 font-heading font-medium text-sm transition-colors ${
-                          isActive
-                            ? "bg-[#2563eb] text-white font-semibold"
-                            : "text-white hover:bg-navy-900"
-                        }`}
-                      >
-                        {item.label}
-                      </a>
-                    );
-                  })}
-                </nav>
-
-                {/* Mobile Bottom Action: Brochure & WhatsApp */}
-                <div className="p-4 bg-navy-900/95 border-t border-navy-800 flex items-center gap-3">
-                  <a
-                    href="/buyer-resources"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-full bg-white text-navy-900 font-heading font-bold text-xs uppercase tracking-wider hover:bg-slate-100 transition-colors shadow-sm"
-                  >
-                    <Download className="w-3.5 h-3.5 text-navy-900" />
-                    <span>Brochure</span>
-                  </a>
-                  <a
-                    href={companyData.whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-full bg-[#25D366] text-white font-heading font-bold text-xs tracking-wider hover:bg-[#20bd5a] transition-colors shadow-sm"
-                  >
-                    <MessageSquare className="w-3.5 h-3.5 text-white" />
-                    <span>WhatsApp</span>
-                  </a>
+                  {/* Mobile Bottom Action: Brochure & WhatsApp */}
+                  <div className="p-4 bg-navy-900/95 border-t border-navy-800 flex items-center gap-3">
+                    <a
+                      href="/buyer-resources"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-full bg-white text-navy-900 font-heading font-bold text-xs uppercase tracking-wider hover:bg-slate-100 transition-colors shadow-sm"
+                    >
+                      <Download className="w-3.5 h-3.5 text-navy-900" />
+                      <span>Brochure</span>
+                    </a>
+                    <a
+                      href={companyData.whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-full bg-[#25D366] text-white font-heading font-bold text-xs tracking-wider hover:bg-[#20bd5a] transition-colors shadow-sm"
+                    >
+                      <MessageSquare className="w-3.5 h-3.5 text-white" />
+                      <span>WhatsApp</span>
+                    </a>
+                  </div>
                 </div>
               </div>
-            )}
+            </div>
           </div>
         </div>
       </header>
 
-      {/* Background Dimmer when mobile menu is open */}
-      {mobileMenuOpen && (
-        <div
-          className="fixed inset-0 bg-navy-950/60 backdrop-blur-sm z-40 lg:hidden"
-          onClick={() => setMobileMenuOpen(false)}
-          aria-hidden="true"
-        />
-      )}
+      {/* Smooth Background Dimmer when mobile menu is open */}
+      <div
+        className={`fixed inset-0 bg-navy-950/60 backdrop-blur-sm z-40 lg:hidden transition-all duration-300 ease-in-out ${
+          mobileMenuOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setMobileMenuOpen(false)}
+        aria-hidden="true"
+      />
     </>
   );
 }
