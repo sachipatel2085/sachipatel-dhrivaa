@@ -123,7 +123,7 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                         <a
                           href={item.href}
                           aria-current={isActive ? "page" : undefined}
-                          className={`relative inline-flex items-center gap-1 px-2.5 py-1 text-xs xl:text-sm font-semibold font-heading transition-colors ${
+                          className={`relative inline-flex items-center gap-1 px-2.5 py-1 text-xs xl:text-sm font-semibold font-heading whitespace-nowrap transition-colors ${
                             isActive
                               ? "text-navy-950"
                               : "text-navy-900/80 hover:text-navy-950"
@@ -134,12 +134,12 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                             className={`w-3.5 h-3.5 transition-transform duration-200 ${
                               productsDropdownOpen
                                 ? "rotate-180 text-navy-950"
-                                : "text-slate-400 group-hover:text-navy-950"
+                                : "text-slate-500 group-hover:text-navy-950"
                             }`}
                           />
                           {/* Active Underline Indicator */}
                           {isActive && (
-                            <span className="absolute -bottom-1 left-2.5 right-2.5 h-[2.5px] bg-navy-900 rounded-full" />
+                            <span className="absolute -bottom-1 left-2.5 right-2.5 h-[2px] bg-navy-950 rounded-full" />
                           )}
                         </a>
 
@@ -194,7 +194,7 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                       key={item.label}
                       href={item.href}
                       aria-current={isActive ? "page" : undefined}
-                      className={`relative inline-flex items-center px-2.5 py-1 text-xs xl:text-sm font-semibold font-heading transition-colors ${
+                      className={`relative inline-flex items-center px-2.5 py-1 text-xs xl:text-sm font-semibold font-heading whitespace-nowrap transition-colors ${
                         isActive
                           ? "text-navy-950"
                           : "text-navy-900/80 hover:text-navy-950"
@@ -203,12 +203,23 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                       <span>{item.label}</span>
                       {/* Active Underline Indicator */}
                       {isActive && (
-                        <span className="absolute -bottom-1 left-2.5 right-2.5 h-[2.5px] bg-navy-900 rounded-full" />
+                        <span className="absolute -bottom-1 left-2.5 right-2.5 h-[2px] bg-navy-950 rounded-full" />
                       )}
                     </a>
                   );
                 })}
               </nav>
+
+              {/* Desktop Action CTA (Right) - Matches Image 1 pill button */}
+              <div className="hidden lg:flex items-center flex-shrink-0">
+                <a
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-5 py-2 xl:px-6 xl:py-2.5 rounded-full bg-navy-950 text-white text-xs xl:text-sm font-semibold font-heading hover:bg-navy-900 transition-all duration-200 shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  <span>Inquire Now</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-gold" />
+                </a>
+              </div>
 
               {/* Mobile Hamburger Button */}
               <div className="flex lg:hidden items-center">
@@ -235,15 +246,15 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
 
           {/* Mobile Dropdown Menu — SEPARATE CONTAINER THAT SLIDES DOWN FROM HEADER WITH NO WHITE LINE AND NO EFFECT ON THE HEADER */}
           <div
-            className={`lg:hidden grid transition-all duration-400 ease-out mt-2 ${
+            className={`lg:hidden grid transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
               mobileMenuOpen
-                ? "grid-rows-[1fr] opacity-100 translate-y-0"
-                : "grid-rows-[0fr] opacity-0 -translate-y-2 pointer-events-none"
+                ? "grid-rows-[1fr] opacity-100 translate-y-0 mt-2 pointer-events-auto"
+                : "grid-rows-[0fr] opacity-0 -translate-y-2 mt-0 pointer-events-none"
             }`}
           >
-            <div className="overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl bg-navy-950 border border-navy-800/80">
+            <div className="min-h-0 overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl bg-navy-950 border border-navy-800/80">
               <nav
-                className="divide-y divide-navy-800/60"
+                className="divide-y divide-navy-800/70"
                 aria-label="Mobile Navigation"
               >
                 {mainNavItems.map((item) => {
@@ -253,35 +264,35 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                     return (
                       <div key={item.label} className="bg-navy-950">
                         {/* Parent row with accordion toggle */}
-                        <div
-                          className={`flex items-center justify-between px-5 py-3.5 transition-colors cursor-pointer ${
+                        <button
+                          type="button"
+                          className={`w-full flex items-center justify-between px-6 py-3.5 sm:py-4 transition-colors cursor-pointer text-left ${
                             isActive
                               ? "bg-[#2563eb] text-white"
-                              : "text-white hover:bg-navy-900"
+                              : "text-white hover:bg-navy-900 active:bg-navy-850"
                           }`}
                           onClick={() => setMobileProductsOpen((prev) => !prev)}
+                          aria-expanded={mobileProductsOpen}
                         >
-                          <span className="font-heading font-medium text-sm flex-1">
+                          <span className="font-heading font-medium text-sm sm:text-base">
                             {item.label}
                           </span>
-                          <span className="p-1 text-slate-300">
-                            <ChevronDown
-                              className={`w-4 h-4 transition-transform duration-200 ${
-                                mobileProductsOpen ? "rotate-180" : ""
-                              }`}
-                            />
-                          </span>
-                        </div>
+                          <ChevronDown
+                            className={`w-4 h-4 text-white transition-transform duration-200 flex-shrink-0 ml-2 ${
+                              mobileProductsOpen ? "rotate-180" : ""
+                            }`}
+                          />
+                        </button>
 
                         {/* Smooth Accordion Sub-items */}
                         <div
                           className={`grid transition-all duration-200 ease-in-out ${
                             mobileProductsOpen
                               ? "grid-rows-[1fr] opacity-100"
-                              : "grid-rows-[0fr] opacity-0"
+                              : "grid-rows-[0fr] opacity-0 pointer-events-none"
                           }`}
                         >
-                          <div className="overflow-hidden bg-navy-900/90 divide-y divide-navy-800/40">
+                          <div className="min-h-0 overflow-hidden bg-navy-900/90 divide-y divide-navy-800/40">
                             {item.children.map((child) => {
                               const isChildActive =
                                 normalizePath(path) ===
@@ -291,7 +302,7 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                                   key={child.href}
                                   href={child.href}
                                   onClick={() => setMobileMenuOpen(false)}
-                                  className={`block px-8 py-3 text-xs transition-colors ${
+                                  className={`block px-8 py-3 text-xs sm:text-sm transition-colors ${
                                     isChildActive
                                       ? "bg-teal text-white font-bold"
                                       : "text-slate-300 hover:text-white hover:bg-navy-850"
@@ -300,7 +311,7 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                                   <div className="font-semibold">
                                     {child.label}
                                   </div>
-                                  <div className="text-[10px] text-slate-400 mt-0.5 line-clamp-1">
+                                  <div className="text-[11px] text-slate-400 mt-0.5 line-clamp-1">
                                     {child.description}
                                   </div>
                                 </a>
@@ -317,20 +328,28 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                       key={item.label}
                       href={item.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`block px-5 py-3.5 font-heading font-medium text-sm transition-colors ${
+                      className={`flex items-center justify-between px-6 py-3.5 sm:py-4 font-heading font-medium text-sm sm:text-base transition-colors ${
                         isActive
                           ? "bg-[#2563eb] text-white font-semibold"
-                          : "text-white hover:bg-navy-900"
+                          : "text-white hover:bg-navy-900 active:bg-navy-850"
                       }`}
                     >
-                      {item.label}
+                      <span>{item.label}</span>
                     </a>
                   );
                 })}
               </nav>
 
               {/* Mobile Bottom Action: WhatsApp Quick Inquiry */}
-              <div className="p-4 bg-navy-900/95 border-t border-navy-800">
+              <div className="p-4 bg-navy-900/95 border-t border-navy-800/80 flex flex-col sm:flex-row gap-2.5">
+                <a
+                  href="/contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-full bg-navy-800 hover:bg-navy-700 text-white font-heading font-bold text-xs tracking-wider transition-colors border border-navy-700/80 shadow-sm"
+                >
+                  <span>Inquire Now</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-gold" />
+                </a>
                 <a
                   href={companyData.whatsappUrl}
                   target="_blank"
@@ -338,7 +357,7 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                   className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-full bg-[#25D366] text-white font-heading font-bold text-xs tracking-wider hover:bg-[#20bd5a] transition-colors shadow-sm"
                 >
                   <MessageSquare className="w-4 h-4 text-white" />
-                  <span>Direct WhatsApp Inquiry</span>
+                  <span>WhatsApp Inquiry</span>
                 </a>
               </div>
             </div>

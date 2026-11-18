@@ -60,6 +60,80 @@
   }
 }
 
+/* ===================================================
+   AWARD-WINNING SMOOTH SCROLL & REVEAL ANIMATIONS
+   =================================================== */
+
+/* Smooth fade-in-up scroll reveal */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+/* Smooth fade-in scroll reveal */
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity;
+}
+
+/* Smooth scale-in scroll reveal for banners/maps/media */
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.96) translateY(20px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+/* Active revealed state */
+.reveal-on-scroll.revealed,
+.reveal-fade.revealed,
+.reveal-scale.revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Natural Stagger Delays for Grid Children */
+.delay-75  { transition-delay: 75ms; }
+.delay-100 { transition-delay: 100ms; }
+.delay-150 { transition-delay: 150ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-250 { transition-delay: 250ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-350 { transition-delay: 350ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+
+/* Micro-interaction: Smooth Card Lift */
+.hover-lift {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+/* Micro-interaction: Subtle Ambient Glow on Card Hover */
+.glow-card {
+  transition: border-color 0.35s ease, box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glow-card:hover {
+  border-color: rgba(57, 141, 137, 0.45);
+  box-shadow: 0 16px 32px -8px rgba(16, 43, 70, 0.12), 0 0 16px rgba(57, 141, 137, 0.1);
+}
+
+/* Smooth Accordion FAQ Icon Rotation */
+details summary::-webkit-details-marker {
+  display: none;
+}
+details summary svg {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+details[open] summary svg {
+  transform: rotate(90deg);
+}
+
 /* Custom premium scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

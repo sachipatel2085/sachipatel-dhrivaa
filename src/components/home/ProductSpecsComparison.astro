@@ -48,7 +48,7 @@ const comparisonData = [
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     
     <!-- Section Header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+    <div class="reveal-on-scroll flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
       <div class="max-w-2xl space-y-3">
         <span class="text-xs font-bold uppercase tracking-wider text-teal font-heading">
           Technical Benchmarks
@@ -64,7 +64,7 @@ const comparisonData = [
       <div class="flex-shrink-0">
         <a
           href="/buyer-resources#specifications-guide"
-          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white hover:bg-slate-100 text-navy-950 border border-slate-200 font-heading font-bold text-xs uppercase tracking-wider transition-colors shadow-sm"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white hover:bg-slate-100 text-navy-950 border border-slate-200 font-heading font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-sm hover:scale-[1.02] active:scale-[0.98]"
         >
           <span>Specifications Guide</span>
           <ArrowRight className="w-3.5 h-3.5 text-teal" />
@@ -73,7 +73,7 @@ const comparisonData = [
     </div>
 
     <!-- Mandatory Specifications Disclaimer Box -->
-    <div class="mb-8 p-4 sm:p-5 rounded-2xl bg-amber-50/90 border border-amber-200 text-xs sm:text-sm text-amber-950 flex items-start gap-3">
+    <div class="reveal-on-scroll delay-100 mb-8 p-4 sm:p-5 rounded-2xl bg-amber-50/90 border border-amber-200 text-xs sm:text-sm text-amber-950 flex items-start gap-3">
       <Info className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
       <p class="leading-relaxed">
         <strong>Procurement Notice:</strong> Data below represents typical commercial benchmark parameters. DHRIVAA coordinates bespoke batch specifications according to buyer contracts. An authentic, lot-specific Certificate of Analysis (COA) is issued by accredited testing laboratories prior to vessel loading.
@@ -81,7 +81,7 @@ const comparisonData = [
     </div>
 
     <!-- Responsive Comparison Table Container -->
-    <div class="overflow-x-auto rounded-3xl border border-slate-200 bg-white shadow-card">
+    <div class="reveal-scale delay-150 overflow-x-auto rounded-3xl border border-slate-200 bg-white shadow-card">
       <table class="w-full text-left text-sm text-slate-700 min-w-[760px]">
         <thead class="bg-navy-900 text-white text-xs uppercase tracking-wider font-heading">
           <tr>
