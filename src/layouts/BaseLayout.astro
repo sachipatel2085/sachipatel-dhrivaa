@@ -125,9 +125,6 @@ const finalJsonLd = jsonLd || defaultOrgJsonLd;
     <script type="application/ld+json" set:html={JSON.stringify(finalJsonLd)} />
   </head>
   <body class="bg-surface-light text-trade-text flex flex-col min-h-screen antialiased selection:bg-navy-900 selection:text-gold" id="top">
-    <!-- Sleek Reading Scroll Progress Indicator -->
-    <div id="scroll-progress" class="fixed top-0 left-0 right-0 h-[2.5px] z-[60] bg-gradient-to-r from-teal via-gold to-teal origin-left scale-x-0 transition-transform duration-75 pointer-events-none" aria-hidden="true"></div>
-
     <!-- Top Sticky Navigation -->
     <Navbar client:load currentPath={currentPath} />
 
@@ -154,49 +151,5 @@ const finalJsonLd = jsonLd || defaultOrgJsonLd;
         <span class="hidden sm:inline font-medium">WhatsApp Sourcing</span>
       </a>
     </aside>
-
-    <!-- Smooth Scroll & Reveal Interaction Engine -->
-    <script>
-      // 1. Reading Scroll Progress Bar
-      const progressBar = document.getElementById('scroll-progress');
-      const updateScrollProgress = () => {
-        const scrollPx = document.documentElement.scrollTop || document.body.scrollTop;
-        const winHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        if (winHeight > 0 && progressBar) {
-          const scrolled = scrollPx / winHeight;
-          progressBar.style.transform = `scaleX(${scrolled})`;
-        }
-      };
-      window.addEventListener('scroll', updateScrollProgress, { passive: true });
-      updateScrollProgress();
-
-      // 2. IntersectionObserver for Butter-Smooth Scroll Reveals
-      const initScrollReveals = () => {
-        const revealElements = document.querySelectorAll('.reveal-on-scroll:not(.is-revealed)');
-        if ('IntersectionObserver' in window && revealElements.length > 0) {
-          const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('is-revealed');
-                observer.unobserve(entry.target);
-              }
-            });
-          }, {
-            rootMargin: '0px 0px -40px 0px',
-            threshold: 0.1
-          });
-
-          revealElements.forEach((el) => revealObserver.observe(el));
-        } else {
-          revealElements.forEach((el) => el.classList.add('is-revealed'));
-        }
-      };
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initScrollReveals);
-      } else {
-        initScrollReveals();
-      }
-    </script>
   </body>
 </html>
