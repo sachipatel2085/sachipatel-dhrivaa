@@ -1,17 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/home/Hero.astro';
-import Capabilities from '../components/home/Capabilities.astro';
 import ProductShowcase from '../components/home/ProductShowcase.astro';
 import ProductSpecsComparison from '../components/home/ProductSpecsComparison.astro';
-import IndustriesWeServe from '../components/home/IndustriesWeServe.astro';
 import WhyGujarat from '../components/home/WhyGujarat.astro';
-import BuyerCommitment from '../components/home/BuyerCommitment.astro';
-import WhyChooseUs from '../components/home/WhyChooseUs.astro';
+import IndustriesWeServe from '../components/home/IndustriesWeServe.astro';
 import SourcingProcess from '../components/home/SourcingProcess.astro';
+import BuyerCommitment from '../components/home/BuyerCommitment.astro';
 import GlobalMarkets from '../components/home/GlobalMarkets.astro';
-import QualityAssurance from '../components/home/QualityAssurance.astro';
-import HomeInsightsPreview from '../components/home/HomeInsightsPreview.astro';
 import HomeFAQ from '../components/home/HomeFAQ.astro';
 import FinalCTA from '../components/home/FinalCTA.astro';
 import { companyData } from '../data/company';
@@ -21,45 +17,33 @@ const pageDescription = 'Connecting global buyers with reliable agricultural com
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-  <!-- Section 1: Cinematic Hero -->
+  <!-- 1. Hero -->
   <Hero />
 
-  <!-- Section 2: Business Capabilities Strip -->
-  <Capabilities />
-
-  <!-- Section 3: Product Portfolio Overview -->
+  <!-- 2. Product Portfolio Overview -->
   <ProductShowcase />
 
-  <!-- Section 4: NEW - Product Specifications at a Glance -->
+  <!-- 3. Product Specifications at a Glance -->
   <ProductSpecsComparison />
 
-  <!-- Section 5: NEW - Industries We Serve -->
-  <IndustriesWeServe />
-
-  <!-- Section 6: NEW - Why Source from Gujarat, India? -->
+  <!-- 4. Why Source from Gujarat, India -->
   <WhyGujarat />
 
-  <!-- Section 7: NEW - Our Commitment to International Buyers -->
-  <BuyerCommitment />
+  <!-- 5. Industries We Serve -->
+  <IndustriesWeServe />
 
-  <!-- Section 8: Why Choose DHRIVAA Trade Partner -->
-  <WhyChooseUs />
-
-  <!-- Section 9: Sourcing Process Workflow -->
+  <!-- 6. Step-by-Step Sourcing Process -->
   <SourcingProcess />
 
-  <!-- Section 10: Global Markets & Maritime Corridor -->
+  <!-- 7. Our Commitment to Buyers (Quality & Transparency) -->
+  <BuyerCommitment />
+
+  <!-- 8. Shipping Corridors & Target Gulf Ports -->
   <GlobalMarkets />
 
-  <!-- Section 11: Quality Assurance & Testing Standards -->
-  <QualityAssurance />
-
-  <!-- Section 12: NEW - International Trade Insights Preview -->
-  <HomeInsightsPreview />
-
-  <!-- Section 13: NEW - Frequently Asked Questions (with FAQ Schema) -->
+  <!-- 9. Frequently Asked Questions -->
   <HomeFAQ />
 
-  <!-- Section 14: Final Commercial Inquiry CTA -->
+  <!-- 10. Direct Sourcing Inquiry & WhatsApp -->
   <FinalCTA />
 </BaseLayout>

@@ -29,7 +29,7 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(() =>
-    checkIsActive("/products", currentPath)
+    checkIsActive("/products", currentPath),
   );
 
   useEffect(() => {
@@ -80,7 +80,6 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
       {/* Floating Island Header Container */}
       <header className="fixed top-3 sm:top-4 left-0 right-0 z-50 px-3 sm:px-6 lg:px-8 pointer-events-none">
         <div className="max-w-7xl mx-auto pointer-events-auto relative">
-          
           {/* Main Floating Header Pill — REMAINS 100% STATIC & UNTOUCHED (No border-radius change, no background morph, no white border around menu) */}
           <div
             className={`relative z-20 bg-white rounded-full border border-slate-200/90 shadow-lg shadow-navy-950/8 transition-shadow duration-300 ${
@@ -236,14 +235,17 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
 
           {/* Mobile Dropdown Menu — SEPARATE CONTAINER THAT SLIDES DOWN FROM HEADER WITH NO WHITE LINE AND NO EFFECT ON THE HEADER */}
           <div
-            className={`lg:hidden grid transition-all duration-300 ease-out mt-2 ${
+            className={`lg:hidden grid transition-all duration-400 ease-out mt-2 ${
               mobileMenuOpen
                 ? "grid-rows-[1fr] opacity-100 translate-y-0"
                 : "grid-rows-[0fr] opacity-0 -translate-y-2 pointer-events-none"
             }`}
           >
             <div className="overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl bg-navy-950 border border-navy-800/80">
-              <nav className="divide-y divide-navy-800/60" aria-label="Mobile Navigation">
+              <nav
+                className="divide-y divide-navy-800/60"
+                aria-label="Mobile Navigation"
+              >
                 {mainNavItems.map((item) => {
                   const isActive = checkIsActive(item.href, path);
 
@@ -253,7 +255,9 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                         {/* Parent row with accordion toggle */}
                         <div
                           className={`flex items-center justify-between px-5 py-3.5 transition-colors cursor-pointer ${
-                            isActive ? "bg-[#2563eb] text-white" : "text-white hover:bg-navy-900"
+                            isActive
+                              ? "bg-[#2563eb] text-white"
+                              : "text-white hover:bg-navy-900"
                           }`}
                           onClick={() => setMobileProductsOpen((prev) => !prev)}
                         >
@@ -293,7 +297,9 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                                       : "text-slate-300 hover:text-white hover:bg-navy-850"
                                   }`}
                                 >
-                                  <div className="font-semibold">{child.label}</div>
+                                  <div className="font-semibold">
+                                    {child.label}
+                                  </div>
                                   <div className="text-[10px] text-slate-400 mt-0.5 line-clamp-1">
                                     {child.description}
                                   </div>
@@ -337,7 +343,6 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
               </div>
             </div>
           </div>
-
         </div>
       </header>
 

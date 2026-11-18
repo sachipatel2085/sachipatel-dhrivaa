@@ -14,10 +14,10 @@ export interface ResourceSection {
 
 export const buyerResourcesData = {
   hero: {
-    eyebrow: 'INTERNATIONAL PROCUREMENT INTELLIGENCE',
-    title: 'B2B Agricultural Commodity Buyer Resources',
-    titleAccent: 'Clarity, Compliance & Coordination.',
-    description: 'An authoritative procurement reference for international buyers, commodity traders, and commercial feed & chemical manufacturers sourcing agricultural products from western India.',
+    eyebrow: 'Buyer Reference Guide',
+    title: 'Agricultural Commodity Buyer Resources',
+    titleAccent: 'Specifications, Packaging & Export Documentation',
+    description: 'A practical trade reference for buyers sourcing bulk Rapeseed Meal, Castorseed Meal, and Castor Oil from Gujarat, India.',
     bannerImage: '/images/banner-about.jpg',
     bannerAlt: 'International shipping logistics and agricultural trade operations in Gujarat'
   },
