@@ -39,8 +39,8 @@ export default function TradeCorridorsMap() {
       onMouseLeave={() => setIsPaused(false)}
     >
       
-      {/* Top Header Status */}
-      <div className="flex items-center justify-between gap-3 pb-2.5 border-b border-slate-800">
+      {/* Top Header Status (Light Theme) */}
+      <div className="flex items-center justify-between gap-3 pb-2.5 border-b border-slate-200">
         
         {/* Origin Live Indicator */}
         <div className="flex items-center gap-2">
@@ -49,31 +49,31 @@ export default function TradeCorridorsMap() {
             <span className="w-2 h-2 rounded-full bg-gold relative"></span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-white font-heading">
+            <span className="text-xs font-bold uppercase tracking-wider text-navy-900 font-heading">
               Gujarat Gateway
             </span>
-            <span className="text-[10px] font-mono text-gold bg-gold/10 px-1.5 py-0.5 rounded border border-gold/30">
+            <span className="text-[10px] font-mono text-gold-dark bg-gold/15 px-1.5 py-0.5 rounded border border-gold/40 font-semibold">
               Mundra &amp; Kandla
             </span>
           </div>
         </div>
 
         {/* Gulf Corridor Focus Badge */}
-        <div className="flex items-center gap-1.5 text-[10px] font-mono text-teal bg-teal/10 px-2 py-0.5 rounded-md border border-teal/20">
+        <div className="flex items-center gap-1.5 text-[10px] font-mono text-teal bg-teal/10 px-2 py-0.5 rounded-md border border-teal/20 font-semibold">
           <Navigation className="w-3 h-3 text-teal" />
           <span>GULF FOCUS ({activeIndex + 1}/{TARGET_DESTINATIONS.length})</span>
         </div>
 
       </div>
 
-      {/* Main Map Visual Canvas (Gulf Focus Mode) */}
-      <div className="relative w-full aspect-[16/10.5] sm:aspect-[16/10] bg-navy-950 rounded-2xl overflow-hidden border border-slate-800 shadow-xl group">
+      {/* Main Map Visual Canvas (Light Maritime Chart Theme) */}
+      <div className="relative w-full aspect-[16/10.5] sm:aspect-[16/10] bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 shadow-md group">
         
-        {/* Ocean Radial Bathymetric Glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_65%_45%,#0f2844_0%,#081726_70%,#050e18_100%)]"></div>
+        {/* Maritime Ocean Radial Chart Color */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_65%_45%,#EDF4F9_0%,#E4EEF5_60%,#D9E6F0_100%)]"></div>
 
         {/* Subtle Lat/Long Grid overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#16304d15_1px,transparent_1px),linear-gradient(to_bottom,#16304d15_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#CBD5E130_1px,transparent_1px),linear-gradient(to_bottom,#CBD5E130_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none"></div>
 
         {/* SVG Gulf Focus Maritime Corridor Map */}
         <svg
@@ -83,8 +83,8 @@ export default function TradeCorridorsMap() {
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
-            <filter id="routeBloom" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="0.8" result="blur" />
+            <filter id="routeBloomLight" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="0.6" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
                 <feMergeNode in="SourceGraphic" />
@@ -93,24 +93,24 @@ export default function TradeCorridorsMap() {
           </defs>
 
           {/* 1. Subtle Graticule Reference Lines */}
-          <g opacity="0.18" stroke="#398D89" strokeWidth={0.5 * sf} strokeDasharray={`${3 * sf} ${6 * sf}`}>
+          <g opacity="0.4" stroke="#94A3B8" strokeWidth={0.5 * sf} strokeDasharray={`${3 * sf} ${6 * sf}`}>
             <line x1="0" y1="201.7" x2="960" y2="201.7" />
-            <line x1="640" y1="0" x2="640" y2="480" stroke="#C8A45D" strokeWidth={0.8 * sf} opacity="0.35" />
+            <line x1="640" y1="0" x2="640" y2="480" stroke="#C8A45D" strokeWidth={0.8 * sf} opacity="0.6" />
           </g>
 
-          {/* 2. Authentic Landmass Continents */}
+          {/* 2. Authentic Landmass Continents (Light Crisp Theme) */}
           <path
             d={WORLD_LANDMASS}
-            fill="#122744"
-            stroke="#1b395d"
+            fill="#FFFFFF"
+            stroke="#CBD5E1"
             strokeWidth={0.6 * sf}
           />
 
-          {/* 3. India Origin Base */}
+          {/* 3. India Origin Base (Teal-tinted light wash) */}
           {TARGET_COUNTRY_PATHS['IN'] && (
             <path
               d={TARGET_COUNTRY_PATHS['IN']}
-              fill="#163c63"
+              fill="#E6F2F0"
               stroke="#398D89"
               strokeWidth={1.2 * sf}
             />
@@ -125,9 +125,9 @@ export default function TradeCorridorsMap() {
               <path
                 key={`country-${dest.id}`}
                 d={p}
-                fill={isSelected ? (dest.id === 'uae' ? '#C8A45D' : '#2A7270') : '#183a5c'}
-                fillOpacity={isSelected ? 0.9 : 0.55}
-                stroke={isSelected ? '#C8A45D' : '#398D89'}
+                fill={isSelected ? '#C8A45D' : '#F1F5F9'}
+                fillOpacity={isSelected ? 0.95 : 0.8}
+                stroke={isSelected ? '#967735' : '#94A3B8'}
                 strokeWidth={(isSelected ? 1.4 : 0.8) * sf}
                 className="transition-all duration-500 cursor-pointer"
                 onClick={() => setActiveIndex(idx)}
@@ -140,8 +140,8 @@ export default function TradeCorridorsMap() {
           {/* 5. Primary Commercial Trade Routes to GCC Destinations */}
           {TARGET_DESTINATIONS.map((dest, idx) => {
             const isSelected = idx === activeIndex;
-            const routeStrokeColor = isSelected ? '#C8A45D' : '#398D89';
-            const baseOpacity = isSelected ? 1 : 0.35;
+            const routeStrokeColor = isSelected ? '#102B46' : '#64748B';
+            const baseOpacity = isSelected ? 1 : 0.4;
             const strokeW = (isSelected ? 2.2 : 1.2) * sf;
 
             return (
@@ -151,7 +151,7 @@ export default function TradeCorridorsMap() {
                   d={dest.routePath}
                   stroke={dest.color}
                   strokeWidth={(isSelected ? 4 : 1.8) * sf}
-                  strokeOpacity={isSelected ? 0.4 : 0.08}
+                  strokeOpacity={isSelected ? 0.45 : 0.12}
                   fill="none"
                   strokeLinecap="round"
                 />
@@ -171,10 +171,10 @@ export default function TradeCorridorsMap() {
                 {/* Traveling Photon Beacon */}
                 <circle
                   r={(isSelected ? 3.2 : 2.0) * sf}
-                  fill={isSelected ? "#FFFFFF" : dest.color}
-                  stroke={dest.color}
+                  fill={isSelected ? "#C8A45D" : "#102B46"}
+                  stroke="#FFFFFF"
                   strokeWidth={0.8 * sf}
-                  filter="url(#routeBloom)"
+                  filter="url(#routeBloomLight)"
                 >
                   <animateMotion
                     dur={isSelected ? "2.6s" : "4.5s"}
@@ -191,7 +191,7 @@ export default function TradeCorridorsMap() {
                       stroke={routeStrokeColor}
                       strokeWidth={strokeW * 0.9}
                       strokeDasharray={`${4 * sf} ${4 * sf}`}
-                      strokeOpacity={baseOpacity * 0.8}
+                      strokeOpacity={baseOpacity * 0.85}
                       fill="none"
                       className="animate-route-flow"
                       strokeLinecap="round"
@@ -199,7 +199,9 @@ export default function TradeCorridorsMap() {
                     <circle
                       r={2.0 * sf}
                       fill={dest.color}
-                      filter="url(#routeBloom)"
+                      stroke="#FFFFFF"
+                      strokeWidth={0.6 * sf}
+                      filter="url(#routeBloomLight)"
                     >
                       <animateMotion
                         dur="4.8s"
@@ -241,9 +243,9 @@ export default function TradeCorridorsMap() {
                   cx={x}
                   cy={y}
                   r={r}
-                  fill={isSelected ? dest.color : '#38BDF8'}
+                  fill={isSelected ? dest.color : '#398D89'}
                   stroke="#FFFFFF"
-                  strokeWidth={0.7 * sf}
+                  strokeWidth={0.8 * sf}
                 />
 
                 {/* Port Country Label */}
@@ -254,15 +256,15 @@ export default function TradeCorridorsMap() {
                     width={(dest.country.length * 2.8 + 8) * sf}
                     height={7.5 * sf}
                     rx={1.5 * sf}
-                    fill="#091C30"
-                    fillOpacity="0.88"
-                    stroke={isSelected ? dest.color : '#1F456E'}
-                    strokeWidth={0.5 * sf}
+                    fill="#FFFFFF"
+                    fillOpacity="0.95"
+                    stroke={isSelected ? dest.color : '#CBD5E1'}
+                    strokeWidth={0.6 * sf}
                   />
                   <text
                     x={x + 5 * sf}
                     y={y - 0.5 * sf}
-                    fill={isSelected ? '#FFFFFF' : '#CBD5E1'}
+                    fill={isSelected ? '#102B46' : '#475569'}
                     fontSize={3.6 * sf}
                     fontWeight={isSelected ? 'bold' : '600'}
                     fontFamily="sans-serif"
@@ -279,13 +281,14 @@ export default function TradeCorridorsMap() {
                       r={(isSelected ? 3.5 : 2.0) * sf}
                       fill={dest.color}
                       stroke="#FFFFFF"
-                      strokeWidth={0.6 * sf}
+                      strokeWidth={0.7 * sf}
                     />
                     <text
                       x={dest.altPortCoords.x - 20 * sf}
                       y={dest.altPortCoords.y + 1 * sf}
-                      fill="#94A3B8"
+                      fill="#64748B"
                       fontSize={3.2 * sf}
+                      fontWeight="600"
                       fontFamily="sans-serif"
                     >
                       Jeddah
@@ -311,7 +314,7 @@ export default function TradeCorridorsMap() {
               cy={SOURCING_ORIGIN.coords.y}
               r={6 * sf}
               fill="#C8A45D"
-              fillOpacity="0.3"
+              fillOpacity="0.25"
             />
             <circle
               cx={SOURCING_ORIGIN.coords.x}
@@ -320,7 +323,7 @@ export default function TradeCorridorsMap() {
               fill="#C8A45D"
               stroke="#FFFFFF"
               strokeWidth={1.0 * sf}
-              filter="url(#routeBloom)"
+              filter="url(#routeBloomLight)"
             />
 
             <g>
@@ -330,15 +333,15 @@ export default function TradeCorridorsMap() {
                 width={50 * sf}
                 height={12 * sf}
                 rx={2 * sf}
-                fill="#091C30"
-                fillOpacity="0.92"
+                fill="#FFFFFF"
+                fillOpacity="0.95"
                 stroke="#C8A45D"
                 strokeWidth={0.8 * sf}
               />
               <text
                 x={SOURCING_ORIGIN.coords.x + 8 * sf}
                 y={SOURCING_ORIGIN.coords.y - 2.5 * sf}
-                fill="#FFFFFF"
+                fill="#102B46"
                 fontSize={4.2 * sf}
                 fontWeight="bold"
                 fontFamily="sans-serif"
@@ -348,8 +351,9 @@ export default function TradeCorridorsMap() {
               <text
                 x={SOURCING_ORIGIN.coords.x + 8 * sf}
                 y={SOURCING_ORIGIN.coords.y + 2.5 * sf}
-                fill="#C8A45D"
+                fill="#B8860B"
                 fontSize={3.2 * sf}
+                fontWeight="600"
                 fontFamily="sans-serif"
               >
                 Mundra &amp; Kandla
@@ -359,50 +363,50 @@ export default function TradeCorridorsMap() {
 
         </svg>
 
-        {/* Floating Active Corridor HUD Card (Automatically updates as routes cycle) */}
-        <div className="absolute bottom-2.5 left-2.5 sm:bottom-3 sm:left-3 z-20 max-w-[270px] sm:max-w-xs bg-navy-900/95 backdrop-blur-md p-3 sm:p-3.5 rounded-xl border border-slate-700/80 shadow-2xl text-white transition-all duration-300">
-          <div className="flex items-center justify-between gap-2 pb-1.5 border-b border-slate-800">
+        {/* Floating Active Corridor HUD Card (Light Glass Theme) */}
+        <div className="absolute bottom-2.5 left-2.5 sm:bottom-3 sm:left-3 z-20 max-w-[270px] sm:max-w-xs bg-white/95 backdrop-blur-md p-3 sm:p-3.5 rounded-xl border border-slate-200/90 shadow-xl text-slate-800 transition-all duration-300">
+          <div className="flex items-center justify-between gap-2 pb-1.5 border-b border-slate-100">
             <div className="flex items-center gap-2">
               <span 
                 className="w-2.5 h-2.5 rounded-full" 
                 style={{ backgroundColor: activeDest.color }}
               ></span>
-              <span className="text-xs font-bold text-white uppercase tracking-wider font-heading">
+              <span className="text-xs font-bold text-navy-900 uppercase tracking-wider font-heading">
                 {activeDest.country}
               </span>
             </div>
-            <span className="text-[9px] font-mono text-teal bg-teal/10 px-1.5 py-0.5 rounded border border-teal/20">
+            <span className="text-[9px] font-mono text-teal bg-teal/10 px-1.5 py-0.5 rounded border border-teal/20 font-semibold">
               Active Lane
             </span>
           </div>
 
           <div className="mt-1.5 space-y-1 text-xs">
-            <div className="flex items-start gap-1 text-slate-300">
+            <div className="flex items-start gap-1 text-slate-700">
               <Anchor className="w-3.5 h-3.5 text-gold shrink-0 mt-0.5" />
               <span className="leading-tight text-[11px]">
-                <strong>Ports:</strong> {activeDest.portName}
+                <strong className="text-navy-900">Ports:</strong> {activeDest.portName}
               </span>
             </div>
 
-            <div className="flex items-center gap-3 text-[10px] text-slate-300 pt-0.5">
-              <span className="flex items-center gap-1">
+            <div className="flex items-center gap-3 text-[10px] text-slate-600 pt-0.5">
+              <span className="flex items-center gap-1 font-medium">
                 <Clock className="w-3 h-3 text-teal" />
                 <span>{activeDest.transitDays}</span>
               </span>
-              <span className="flex items-center gap-1 font-mono text-slate-400">
+              <span className="flex items-center gap-1 font-mono text-slate-500">
                 <Ship className="w-3 h-3 text-gold" />
                 <span>{activeDest.nauticalMiles}</span>
               </span>
             </div>
 
-            <div className="text-[10px] text-slate-400 line-clamp-1 pt-1 border-t border-slate-800/60">
-              <span className="text-slate-300 font-medium">Cargo:</span> {activeDest.commodities}
+            <div className="text-[10px] text-slate-500 line-clamp-1 pt-1 border-t border-slate-100">
+              <span className="text-slate-700 font-semibold">Cargo:</span> {activeDest.commodities}
             </div>
           </div>
         </div>
 
         {/* Mini Corridor Cycle Indicator Dots at Bottom-Right of map */}
-        <div className="absolute bottom-3 right-3 z-20 flex items-center gap-1.5 bg-navy-900/80 backdrop-blur-sm px-2 py-1 rounded-md border border-slate-800/80">
+        <div className="absolute bottom-3 right-3 z-20 flex items-center gap-1.5 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-md border border-slate-200 shadow-sm">
           {TARGET_DESTINATIONS.map((d, idx) => (
             <button
               key={d.id}
@@ -411,7 +415,7 @@ export default function TradeCorridorsMap() {
               className={`transition-all duration-300 rounded-full ${
                 idx === activeIndex 
                   ? 'w-4 h-1.5 bg-gold' 
-                  : 'w-1.5 h-1.5 bg-slate-600 hover:bg-slate-400'
+                  : 'w-1.5 h-1.5 bg-slate-300 hover:bg-slate-400'
               }`}
               title={`Switch to ${d.country}`}
             />
@@ -420,7 +424,7 @@ export default function TradeCorridorsMap() {
 
       </div>
 
-      <div className="flex items-center justify-between text-[11px] text-slate-400 px-1">
+      <div className="flex items-center justify-between text-[11px] text-slate-500 px-1">
         <span className="flex items-center gap-1.5">
           <span className="w-2 h-2 rounded-full bg-gold"></span>
           Direct Sourcing: Gujarat (Mundra &amp; Kandla)
