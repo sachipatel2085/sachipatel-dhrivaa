@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ChevronDown, Menu, X, Download, ArrowRight, MessageSquare } from "lucide-react";
+import { ChevronDown, Menu, X, ArrowRight, MessageSquare } from "lucide-react";
 import { mainNavItems } from "../../data/navigation";
 import { companyData } from "../../data/company";
 
@@ -211,19 +211,6 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                 })}
               </nav>
 
-              {/* Right CTA Button (Desktop) - Matches "Brochure [icon]" in screenshot */}
-              <div className="hidden lg:flex items-center gap-2 flex-shrink-0">
-                <a
-                  href="/buyer-resources"
-                  className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-navy-900 hover:bg-navy-800 text-white font-heading font-bold text-xs xl:text-sm tracking-wide transition-all duration-200 shadow-sm hover:scale-[1.02] active:scale-[0.98]"
-                >
-                  <span>Brochure</span>
-                  <span className="w-6 h-6 rounded-full border border-white/30 flex items-center justify-center">
-                    <Download className="w-3 h-3 text-white" />
-                  </span>
-                </a>
-              </div>
-
               {/* Mobile Hamburger Button */}
               <div className="flex lg:hidden items-center">
                 <button
@@ -336,24 +323,16 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                 })}
               </nav>
 
-              {/* Mobile Bottom Action: Brochure & WhatsApp */}
-              <div className="p-4 bg-navy-900/95 border-t border-navy-800 flex items-center gap-3">
-                <a
-                  href="/buyer-resources"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-full bg-white text-navy-900 font-heading font-bold text-xs uppercase tracking-wider hover:bg-slate-100 transition-colors shadow-sm"
-                >
-                  <Download className="w-3.5 h-3.5 text-navy-900" />
-                  <span>Brochure</span>
-                </a>
+              {/* Mobile Bottom Action: WhatsApp Quick Inquiry */}
+              <div className="p-4 bg-navy-900/95 border-t border-navy-800">
                 <a
                   href={companyData.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-full bg-[#25D366] text-white font-heading font-bold text-xs tracking-wider hover:bg-[#20bd5a] transition-colors shadow-sm"
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-full bg-[#25D366] text-white font-heading font-bold text-xs tracking-wider hover:bg-[#20bd5a] transition-colors shadow-sm"
                 >
-                  <MessageSquare className="w-3.5 h-3.5 text-white" />
-                  <span>WhatsApp</span>
+                  <MessageSquare className="w-4 h-4 text-white" />
+                  <span>Direct WhatsApp Inquiry</span>
                 </a>
               </div>
             </div>
