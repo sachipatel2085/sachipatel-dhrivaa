@@ -1,120 +1,169 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/common/PageHero.astro';
 import ContactForm from '../components/contact/ContactForm';
 import { companyData } from '../data/company';
-import { Mail, Phone, MapPin, MessageSquare, Clock, ShieldCheck } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageSquare, Clock, Globe, ShieldCheck, Linkedin, Instagram, ArrowUpRight } from 'lucide-react';
 
 const pageTitle = `Contact Trade Coordination | ${companyData.name} – Global Trade Partner`;
-const pageDescription = 'Contact DHRIVAA’s agricultural commodity sourcing desk in Gujarat, India. Submit inquiries for Rapeseed Meal, Castorseed Meal, or Castor Oil procurement.';
+const pageDescription = 'Get in touch with DHRIVAA’s agricultural commodity sourcing team. Inquire about Rapeseed Meal, Castorseed Meal, or Castor Oil procurement from Gujarat, India.';
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   
-  <!-- Header / Breadcrumb -->
-  <section class="bg-stone-50 py-12 sm:py-16 border-b border-stone-200">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-      <nav class="flex items-center gap-2 text-xs text-stone-500" aria-label="Breadcrumb">
-        <a href="/" class="hover:text-stone-900 transition-colors">Home</a>
-        <span class="text-stone-300">/</span>
-        <span class="text-stone-900 font-semibold">Contact</span>
-      </nav>
+  <!-- Cinematic Hero Header with Dark Gradient Overlay & Maritime Terminal Banner -->
+  <PageHero
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Contact' }
+    ]}
+    eyebrow="Contact Sourcing Desk"
+    title="Contact DHRIVAA"
+    titleAccent="Request a Quote or Discuss Sourcing Needs"
+    description="Get in touch with our Gujarat sourcing desk for product specifications, indicative spot pricing, and ocean shipping schedules to your port."
+    bannerImage="/images/banner-contact.jpg"
+    bannerAlt="International container shipping terminal and berthed cargo ship at twilight with harbor reflections"
+    primaryButton={{
+      label: 'Direct WhatsApp Chat',
+      href: companyData.whatsappUrl
+    }}
+    secondaryButton={{
+      label: 'Email Trade Desk',
+      href: `mailto:${companyData.email}`
+    }}
+    trustTags={[
+      { text: 'Gujarat, India Hub', color: 'teal' },
+      { text: 'Prompt Mandate Review', color: 'gold' },
+      { text: 'FCL Procurement Mandates', color: 'slate' }
+    ]}
+  />
 
-      <span class="text-xs font-semibold uppercase tracking-widest text-forest block">
-        Direct Procurement Desk
-      </span>
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 tracking-tight leading-tight">
-        Contact <span class="font-editorial font-normal italic text-forest">DHRIVAA</span>
-      </h1>
-      <p class="text-stone-600 text-base sm:text-lg max-w-2xl leading-relaxed">
-        Get in touch with our Gujarat sourcing desk for verified commodity specifications, indicative pricing, and shipping schedules to your destination port.
-      </p>
-    </div>
-  </section>
-
-  <!-- Clean Two-Column Contact Section -->
-  <section class="py-16 sm:py-24 bg-white border-b border-stone-200">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- Main Contact Section: Left Info, Right Form -->
+  <section class="py-16 lg:py-24 bg-surface-light">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         
-        <!-- Left: Verified Details (5 cols) -->
-        <div class="lg:col-span-5 space-y-6">
+        <!-- Left: Contact Details & Quick Links (5 cols) with Slide Reveal -->
+        <div class="reveal-slide-left lg:col-span-5 space-y-8">
           
-          <div class="space-y-2">
-            <h2 class="text-xl sm:text-2xl font-bold text-stone-900 tracking-tight">
-              Sourcing Coordination Desk
+          <div class="bg-white rounded-2xl p-8 border border-slate-200/90 shadow-card hover:shadow-premium hover-lift transition-all duration-300 space-y-6">
+            <h2 class="font-heading font-bold text-xl text-navy-900 border-b border-slate-100 pb-4">
+              Trade Coordination Desk
             </h2>
-            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
-              We review commercial inquiries promptly. Reach out by inquiry form, email, or direct WhatsApp trade chat.
-            </p>
-          </div>
 
-          <!-- Contact Cards -->
-          <div class="space-y-4 text-xs sm:text-sm">
-            
-            <!-- Email -->
-            <div class="p-4 rounded-xl bg-stone-50 border border-stone-200 space-y-1">
-              <div class="flex items-center gap-2 text-stone-500 text-xs">
-                <Mail className="w-4 h-4 text-forest" />
-                <span>Email Correspondence</span>
+            <!-- Contact List -->
+            <div class="space-y-5 text-sm text-slate-600">
+              
+              <div class="flex items-start gap-4">
+                <div class="icon-box-interactive w-10 h-10 rounded-xl bg-navy-900 text-teal flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <MapPin className="w-5 h-5" />
+                </div>
+                <div>
+                  <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block">Sourcing Location</span>
+                  <p class="font-semibold text-navy-900 text-base mt-0.5">{companyData.location}</p>
+                  <p class="text-xs text-slate-500 mt-0.5">Gateway to Mundra &amp; Kandla Seaports</p>
+                </div>
               </div>
-              <a href={`mailto:${companyData.email}`} class="font-semibold text-stone-900 hover:text-forest transition-colors block text-sm">
-                {companyData.email}
-              </a>
-              <span class="text-[11px] text-stone-400 block">Official procurement correspondence</span>
+
+              <div class="flex items-start gap-4">
+                <div class="icon-box-interactive w-10 h-10 rounded-xl bg-navy-900 text-teal flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <div>
+                  <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block">Electronic Inquiries</span>
+                  <a href={`mailto:${companyData.email}`} class="font-semibold text-navy-900 hover:text-teal transition-colors text-base mt-0.5 block">
+                    {companyData.email}
+                  </a>
+                  <p class="text-xs text-slate-500 mt-0.5">Official procurement correspondence</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="icon-box-interactive w-10 h-10 rounded-xl bg-navy-900 text-teal flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <Phone className="w-5 h-5" />
+                </div>
+                <div>
+                  <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block">Direct Telephone</span>
+                  <a href={`tel:${companyData.phone}`} class="font-semibold text-navy-900 hover:text-teal transition-colors text-base mt-0.5 block">
+                    {companyData.phoneDisplay}
+                  </a>
+                  <p class="text-xs text-slate-500 mt-0.5">Mon – Sat: 09:00 AM – 07:00 PM IST</p>
+                </div>
+              </div>
+
             </div>
 
-            <!-- WhatsApp -->
-            <div class="p-4 rounded-xl bg-stone-50 border border-stone-200 space-y-1">
-              <div class="flex items-center gap-2 text-stone-500 text-xs">
-                <MessageSquare className="w-4 h-4 text-[#25D366]" />
-                <span>Direct WhatsApp Chat</span>
-              </div>
+            <!-- WhatsApp Direct Action -->
+            <div class="pt-4 border-t border-slate-100">
               <a
                 href={companyData.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="font-semibold text-stone-900 hover:text-forest transition-colors block text-sm"
+                class="w-full flex items-center justify-center gap-3 px-6 py-3.5 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] group"
               >
-                {companyData.phoneDisplay}
+                <MessageSquare className="w-4 h-4 group-hover:rotate-12 transition-transform duration-200" />
+                <span>Chat on WhatsApp Directly</span>
               </a>
-              <span class="text-[11px] text-stone-400 block">Instant trade desk communication</span>
             </div>
 
-            <!-- Address / Location -->
-            <div class="p-4 rounded-xl bg-stone-50 border border-stone-200 space-y-1">
-              <div class="flex items-center gap-2 text-stone-500 text-xs">
-                <MapPin className="w-4 h-4 text-forest" />
-                <span>Verified Business Location</span>
+            <!-- Official Social Channels -->
+            <div class="pt-4 border-t border-slate-100 space-y-2.5">
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block font-heading">
+                Connect on Social Networks
+              </span>
+              <div class="grid grid-cols-2 gap-3">
+                <a
+                  href={companyData.socialLinks.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-navy-900 text-xs font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] group"
+                >
+                  <span class="flex items-center gap-2">
+                    <Linkedin className="w-4 h-4 text-[#0A66C2] group-hover:scale-115 transition-transform duration-200" />
+                    <span>LinkedIn</span>
+                  </span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-navy-900 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+                </a>
+                <a
+                  href={companyData.socialLinks.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-navy-900 text-xs font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] group"
+                >
+                  <span class="flex items-center gap-2">
+                    <Instagram className="w-4 h-4 text-[#E4405F] group-hover:scale-115 transition-transform duration-200" />
+                    <span>Instagram</span>
+                  </span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-navy-900 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+                </a>
               </div>
-              <p class="font-semibold text-stone-900 text-sm">{companyData.location}</p>
-              <span class="text-[11px] text-stone-400 block">Western India Agro Processing Corridor &bull; Mundra &amp; Kandla Seaports</span>
-            </div>
-
-            <!-- Operating Hours -->
-            <div class="p-4 rounded-xl bg-stone-50 border border-stone-200 space-y-1">
-              <div class="flex items-center gap-2 text-stone-500 text-xs">
-                <Clock className="w-4 h-4 text-forest" />
-                <span>Trade Desk Hours</span>
-              </div>
-              <p class="font-semibold text-stone-900 text-sm">Monday &ndash; Saturday: 09:00 AM &ndash; 07:00 PM IST</p>
-              <span class="text-[11px] text-stone-400 block">Inquiries received outside hours answered next business day</span>
             </div>
 
           </div>
 
-          <!-- Compliance Note -->
-          <div class="p-4 rounded-xl bg-stone-100 border border-stone-200 text-xs text-stone-600 flex items-start gap-2.5">
-            <ShieldCheck className="w-4 h-4 text-forest shrink-0 mt-0.5" />
-            <p class="leading-relaxed text-[11px] text-stone-500">
-              *DHRIVAA operates as an independent sourcing and procurement coordinator. We partner with verified Indian crushing mills; we do not manufacture.
+          <!-- Trade Territory Card -->
+          <div class="bg-navy-900 text-white rounded-2xl p-7 border border-navy-800 space-y-4 hover-lift transition-all">
+            <div class="flex items-center gap-2 text-gold">
+              <Globe className="w-5 h-5" />
+              <h3 class="font-heading font-bold text-base">Key Trade Destinations</h3>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Serving industrial commodity buyers, feed millers, and agricultural distributors across:
             </p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              {['UAE', 'Saudi Arabia', 'Oman', 'Qatar', 'Bahrain', 'Kuwait'].map((m) => (
+                <span class="px-3 py-1 rounded-full bg-navy-850 border border-slate-700 text-slate-200 font-medium">
+                  {m}
+                </span>
+              ))}
+            </div>
           </div>
 
         </div>
 
-        <!-- Right: Inquiry Form (7 cols) -->
-        <div class="lg:col-span-7">
+        <!-- Right: Interactive Form (7 cols) with Slide Reveal -->
+        <div class="reveal-slide-right delay-100 lg:col-span-7">
           <ContactForm client:load />
         </div>
 
