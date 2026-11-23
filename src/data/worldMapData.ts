@@ -9,7 +9,7 @@ export interface PortCoord {
 export interface TradeDestination {
   id: string;
   country: string;
-  code: 'AE' | 'SA' | 'OM' | 'QA' | 'BH' | 'KW';
+  code: 'AE' | 'SA' | 'OM' | 'QA' | 'BH' | 'KW' | 'AU' | 'US' | 'GB' | string;
   portName: string;
   portCoords: PortCoord;
   transitDays: string;
@@ -131,6 +131,45 @@ export const TARGET_DESTINATIONS: TradeDestination[] = [
     focusCommodity: 'Intensive dairy feeding, forage balancing & soil treatment',
     color: '#10B981',
     routePath: 'M 665.9 203.9 C 655 206, 642 203, 637 199 C 633 196, 631 192, 629 193 C 623 191, 616 186, 607.8 182.2'
+  },
+  {
+    id: 'australia',
+    country: 'Australia',
+    code: 'AU',
+    portName: 'Port of Melbourne & Fremantle',
+    portCoords: { x: 720, y: 250 },
+    transitDays: '14 – 18 Days',
+    nauticalMiles: '~4,200 NM',
+    commodities: 'Rapeseed Meal, Castor Oil',
+    focusCommodity: 'Livestock protein feed & industrial castor formulations',
+    color: '#EAB308',
+    routePath: 'M 665.9 203.9 C 685 220, 705 235, 720 250'
+  },
+  {
+    id: 'us',
+    country: 'United States',
+    code: 'US',
+    portName: 'Port of Houston & New York / New Jersey',
+    portCoords: { x: 555, y: 160 },
+    transitDays: '24 – 28 Days',
+    nauticalMiles: '~8,400 NM',
+    commodities: 'Castor Oil (FSG, Pale Pressed) & Derivatives',
+    focusCommodity: 'Bio-lubricants, polyurethanes & specialty polymers',
+    color: '#3B82F6',
+    routePath: 'M 665.9 203.9 C 635 220, 595 240, 575 225 C 565 210, 560 180, 555 160'
+  },
+  {
+    id: 'uk',
+    country: 'United Kingdom',
+    code: 'GB',
+    portName: 'Port of Felixstowe & Port of London',
+    portCoords: { x: 560, y: 168 },
+    transitDays: '18 – 22 Days',
+    nauticalMiles: '~6,200 NM',
+    commodities: 'Rapeseed Meal, Castor Oil & Organic Fertilizer Meal',
+    focusCommodity: 'Animal nutrition, oleochemical synthesis & organic agriculture',
+    color: '#EC4899',
+    routePath: 'M 665.9 203.9 C 635 215, 600 230, 580 220 C 570 205, 565 185, 560 168'
   }
 ];
 

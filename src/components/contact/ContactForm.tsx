@@ -241,7 +241,7 @@ export default function ContactForm() {
             value={formData.country}
             onChange={handleChange}
             onBlur={() => handleBlur('country')}
-            placeholder="e.g. United Arab Emirates, Saudi Arabia, Oman"
+            placeholder="e.g. UAE, Saudi Arabia, Australia, US, UK"
             className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm text-trade-text placeholder-slate-400 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
           />
           {touched.country && !formData.country && (

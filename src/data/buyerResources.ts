@@ -27,23 +27,23 @@ export const buyerResourcesData = {
     badge: 'TECHNICAL COMPLIANCE',
     title: 'Product Specifications Coordination Guide',
     subtitle: 'How Technical Parameters are Evaluated, Matched, and Verified',
-    description: 'DHRIVAA operates as an independent sourcing coordinator. We do not manufacture standardized retail products; rather, every commercial contract is engineered to fulfill the buyer\'s exact chemical, physical, and regulatory parameters.',
+    description: 'DHRIVAA coordinates procurement based strictly on buyer parameters. Every commercial contract is aligned with your required chemical, physical, and regulatory standards.',
     principles: [
       {
         title: 'Buyer-Mandated Parameter Mapping',
-        description: 'You provide target thresholds (e.g., minimum protein for rapeseed meal, nitrogen/NPK for castorseed meal, or acid/color values for castor oil). We cross-reference regional crushing lot databases to identify processors equipped to meet your thresholds.'
+        description: 'We match your target thresholds against vetted crushing lots to identify capable processors.'
       },
       {
         title: 'Pre-Shipment Laboratory Analysis (COA)',
-        description: 'Before any container is cleared for seaport dispatch, composite representative samples are analyzed at ISO/IEC 17025 accredited laboratory facilities in India. An authentic Certificate of Analysis (COA) is transmitted for buyer review.'
+        description: 'Composite samples are tested at accredited laboratories and an authentic Certificate of Analysis (COA) is issued before port dispatch.'
       },
       {
         title: 'Third-Party Independent Inspection Support',
-        description: 'Buyers may elect to nominate international surveyor agencies—such as SGS, Bureau Veritas, or Intertek—to perform independent draft survey, sampling, moisture testing, and container stuffing supervision.'
+        description: 'Buyers may appoint international surveyors (SGS, Bureau Veritas) for independent sampling, testing, and container inspection.'
       },
       {
         title: 'Retention Sample Management',
-        description: 'Sealed duplicate representative samples are cataloged and preserved for each export dispatch lot to provide complete traceability and audit verification across the maritime voyage.'
+        description: 'Sealed duplicate samples are retained for each export batch to ensure full voyage traceability.'
       }
     ]
   },
@@ -53,48 +53,48 @@ export const buyerResourcesData = {
     badge: 'CONTAINERIZED LOGISTICS',
     title: 'International Export Packaging Standards',
     subtitle: 'Engineered for Maritime Transit and Middle Eastern Climates',
-    description: 'Agricultural commodities shipped through tropical and maritime corridors face moisture variations. We coordinate packaging solutions tailored to ocean freight and terminal handling equipment.',
+    description: 'We coordinate packaging solutions engineered to withstand maritime transit and protect product integrity.',
     formats: [
       {
         title: '50 kg Polypropylene (PP) Woven Bags',
         capacity: '50 kg net weight',
         commodities: 'Rapeseed Meal, Castorseed Meal',
-        description: 'High-tensile UV-treated woven polypropylene bags with double-lock bottom stitching. Can be specified with inner polyethylene liners for moisture-sensitive destinations.',
+        description: 'Double-stitched woven polypropylene bags with optional inner polyethylene moisture liners for standard handling.',
         advantages: ['Manual handling friendly', 'Facilitates direct distributor re-sale', 'Standard 20–22 MT per 20ft container']
       },
       {
         title: '1,000 kg (1 MT) Industrial Jumbo Bags (FIBC)',
         capacity: '1,000 kg (1 Metric Ton)',
         commodities: 'Rapeseed Meal, Castorseed Meal',
-        description: 'Four-point lifting loop Flexible Intermediate Bulk Containers constructed from heavy-gauge polypropylene with top duffle filling and bottom discharge spouts.',
+        description: 'Four-point lifting loop FIBC bags designed for rapid crane handling and automated feed mill intake.',
         advantages: ['Rapid crane and forklift maneuvering', 'Optimized for commercial feed mill silos', 'Reduces terminal labor costs']
       },
       {
         title: 'Bulk Sea Container Liners (20ft FCL)',
         capacity: 'Up to 24 MT net',
         commodities: 'Rapeseed Meal',
-        description: 'Heavy-duty food-grade polyethylene liners installed inside standard 20ft ocean containers, loaded through specialized pneumatic blowing equipment.',
+        description: 'Heavy-duty food-grade polyethylene liners installed inside 20ft containers for maximum freight payload.',
         advantages: ['Maximum freight payload per container', 'Zero bag packaging cost', 'Pneumatic unloading directly into mill silos']
       },
       {
         title: 'Bulk Flexitanks (24,000 Liters)',
         capacity: '21.5 MT to 24 MT net',
         commodities: 'Castor Oil',
-        description: 'Single-use food/chemical-grade multi-layer polyethylene bladders installed with steel bulkheads inside 20ft ocean containers, equipped with bottom discharge valves.',
+        description: 'Single-use multi-layer polyethylene bladders with bulkheads for bulk liquid castor oil transport.',
         advantages: ['Lowest packaging cost per metric ton for bulk liquids', 'Zero contamination risk between shipments', 'Direct discharge into plant storage tanks']
       },
       {
         title: '200-Liter ISO Steel Drums',
         capacity: '200 Liters (approx. 195–200 kg net)',
         commodities: 'Castor Oil',
-        description: 'Brand-new epoxy-lined or mild steel tight-head ISO drums with 2-inch and ¾-inch bungs. Loaded 80 drums per standard 20ft container (approx. 16 MT net).',
+        description: 'New tight-head steel ISO drums packed 80 drums per 20ft container for modular chemical batching.',
         advantages: ['Modular batch dosing for small-to-mid chemical plants', 'Resistant to warehouse rough handling', 'Easily palletized and moved via drum lifters']
       },
       {
         title: '1,000-Liter IBC Totes',
         capacity: '1,000 Liters (approx. 960 kg net)',
         commodities: 'Castor Oil',
-        description: 'Composite Intermediate Bulk Containers featuring high-density polyethylene inner bottle reinforced with tubular steel cage and integrated pallet base.',
+        description: 'Composite intermediate bulk containers with tubular steel cages and pallet bases for precision dispensing.',
         advantages: ['Precision valve-controlled liquid dispensing', 'Stackable for compact plant storage', 'Forklift-ready without special attachments']
       }
     ]
@@ -105,48 +105,48 @@ export const buyerResourcesData = {
     badge: 'TRADE COMPLIANCE',
     title: 'Essential Export Documentation Guide',
     subtitle: 'Streamlining Middle Eastern Customs Clearance & Trade Integrity',
-    description: 'International agricultural trade demands flawless documentation. DHRIVAA coordinates complete, auditable document packages certified to meet Indian export regulations and destination customs authorities in the UAE, Saudi Arabia, Oman, Qatar, Bahrain, and Kuwait.',
+    description: 'We coordinate complete document packages certified to meet Indian export regulations and destination customs authorities.',
     documents: [
       {
         code: 'BL',
         name: 'Ocean Bill of Lading (Clean on Board)',
         issuedBy: 'Shipping Line / Ocean Carrier',
-        description: 'The definitive document of title and contract of carriage confirming that the containerized commodity has been received onboard the vessel in apparent good condition.',
+        description: 'Definitive document of title and contract of carriage confirming receipt of goods on board the vessel.',
         importance: 'Mandatory for customs release and bank Letter of Credit negotiation.'
       },
       {
         code: 'COA',
         name: 'Certificate of Analysis (COA)',
         issuedBy: 'Accredited Laboratory / Manufacturer',
-        description: 'Comprehensive laboratory report detailing test results for contracted parameters (e.g., protein, moisture, sand/silica, acid value, color) matched against contracted tolerances.',
+        description: 'Accredited laboratory report verifying contracted parameters against agreed tolerances before departure.',
         importance: 'Ensures contractual quality compliance prior to vessel departure.'
       },
       {
         code: 'COO',
         name: 'Certificate of Origin (Chamber Legalized)',
         issuedBy: 'Indian Chamber of Commerce / Authorized Agency',
-        description: 'Legal document certifying that the commodity was wholly grown, harvested, and processed within India.',
+        description: 'Official document certifying that the commodity was grown and processed in India for customs tariff clearance.',
         importance: 'Required for GCC customs tariff classification and preferential trade agreements.'
       },
       {
         code: 'PHYTO',
         name: 'Phytosanitary Certificate',
         issuedBy: 'Plant Quarantine Organization of India',
-        description: 'Official agricultural health certificate certifying that the plant-derived commodity has been inspected and found free from quarantine pests, noxious weeds, and diseases.',
+        description: 'Official health certificate confirming the plant-derived cargo is free from quarantine pests and diseases.',
         importance: 'Mandatory for importing plant-derived meals into GCC agriculture ministries.'
       },
       {
         code: 'INV-PL',
         name: 'Commercial Invoice & Detailed Packing List',
         issuedBy: 'Sourcing Company / Exporter',
-        description: 'Itemized invoice disclosing full commercial terms, Incoterms, container numbers, seal numbers, gross weight, net weight, and bag/package counts.',
+        description: 'Itemized commercial document detailing values, weights, container numbers, and seal records.',
         importance: 'Essential for customs duty assessment and port terminal intake.'
       },
       {
         code: 'FUM-INSP',
         name: 'Fumigation & Third-Party Inspection Certificates',
         issuedBy: 'Accredited Fumigator / SGS / Bureau Veritas',
-        description: 'Confirms authorized container fumigation (e.g., Methyl Bromide or Phosphine) and independent third-party surveyor weight/quality certificates where contracted.',
+        description: 'Evidence of authorized container fumigation and third-party surveyor weight and quality certification.',
         importance: 'Satisfies port health and plant quarantine biosecurity mandates.'
       }
     ]
@@ -191,37 +191,37 @@ export const buyerResourcesData = {
     badge: 'BUYER JOURNEY',
     title: 'The Bulk Commodity Procurement Roadmap',
     subtitle: 'Step-by-Step B2B Procurement Journey with DHRIVAA',
-    description: 'We demystify the agricultural sourcing process into a structured, predictable 5-step workflow designed to eliminate counterparty risk and protect international buyers.',
+    description: 'A structured 5-step workflow designed to ensure contract compliance and reliable execution.',
     steps: [
       {
         step: '01',
         title: 'Requirement Definition & RFQ Submission',
-        description: 'You share your detailed specification requirements (target protein, moisture, packaging format, monthly or spot metric tonnage, target Incoterm, and destination port).',
-        output: 'Structured Sourcing Evaluation and commercial feasibility indication.'
+        description: 'You share your technical parameters, volume, packaging preference, target Incoterms, and destination port.',
+        output: 'Structured sourcing evaluation and commercial quotation.'
       },
       {
         step: '02',
         title: 'Supplier Vetting & Specification Matching',
-        description: 'DHRIVAA surveys solvent extraction and crushing facilities across the Gujarat agro corridor, auditing mill processing capacity, raw seed quality, and batch consistency.',
-        output: 'Transparent procurement proposal and pre-contract sample dispatch if requested.'
+        description: 'We audit regional crushing plants in Gujarat to identify processors matching your exact quality thresholds.',
+        output: 'Procurement proposal and pre-shipment sample dispatch.'
       },
       {
         step: '03',
         title: 'Commercial Agreement & Trade Structuring',
-        description: 'Contract terms, specifications, packaging markings, shipment schedules, and payment terms (e.g., Irrevocable Letter of Credit or Bank Wire Transfer) are finalized.',
-        output: 'Binding Commercial Sourcing Agreement with mutually agreed specifications.'
+        description: 'Contract parameters, packaging markings, shipment timetables, and payment terms are finalized.',
+        output: 'Commercial sourcing agreement with mutually agreed specifications.'
       },
       {
         step: '04',
         title: 'Quality Verification & Pre-Shipment Testing',
-        description: 'Production lots are sampled and tested at accredited laboratories. Optional independent inspection agencies (SGS, Bureau Veritas) conduct container stuffing inspection.',
-        output: 'Certified Certificate of Analysis (COA) and stuffing photographic documentation.'
+        description: 'Production batches are tested at accredited laboratories and verified by optional third-party inspectors.',
+        output: 'Certified Certificate of Analysis (COA) and stuffing inspection photos.'
       },
       {
         step: '05',
-        title: 'Port Dispatch, Ocean Transit & Documentation Delivery',
-        description: 'Containers are gated into Mundra or Kandla deep-sea ports, loaded on rapid Gulf-bound container vessels, and complete legalized export document packages are dispatched.',
-        output: 'Full Clean Bill of Lading, Phyto, COO, and customs clearance package.'
+        title: 'Port Dispatch, Ocean Transit & Documentation',
+        description: 'Containers are loaded at Mundra or Kandla ports and dispatched with full export documentation.',
+        output: 'Clean on Board Bill of Lading, Phytosanitary, and Certificate of Origin package.'
       }
     ]
   }

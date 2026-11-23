@@ -58,12 +58,11 @@ export const productsData: ProductItem[] = [
     slug: 'rapeseed-meal',
     name: 'Rapeseed Meal',
     eyebrow: 'AGRICULTURAL BY-PRODUCT · PROTEIN SUPPLEMENT',
-    shortDescription: 'A high-protein agricultural processing by-product sourced from western India according to buyer specifications for livestock, dairy, and poultry feed formulation.',
-    heroDescription: 'Nutrient-rich protein meal derived from Brassica napus processing, sourced across verified solvent extraction units in Gujarat and western India for international animal nutrition blenders.',
+    shortDescription: 'High-protein solvent-extracted meal for commercial livestock, dairy, and poultry feed formulations.',
+    heroDescription: 'Nutrient-rich protein meal derived from Indian Brassica napus processing, sourced across verified extraction units in Gujarat.',
     fullOverview: [
-      'Rapeseed meal is an established agricultural processing by-product generated following the solvent extraction of oil from Indian mustard and rapeseed. Sourced directly from key agro-processing clusters in Gujarat and western India, it serves as a cost-effective, high-performing protein and essential amino acid constituent for commercial feed formulation.',
-      'DHRIVAA operates as an independent sourcing and procurement coordinator for international buyers, particularly feed compounders and commercial importers in the UAE and wider Middle East. We liaise directly with vetted solvent extraction mills to match buyer-stipulated parameters for protein content, moisture thresholds, granulation, and container packaging.',
-      'By focusing strictly on buyer representation, DHRIVAA ensures rigorous pre-shipment sampling, laboratory analysis coordination, and container inspection at Mundra and Kandla ports, delivering verifiable consistency and total supply chain transparency without trading markups on factory ownership.'
+      'Rapeseed meal is an established agricultural by-product from the solvent extraction of Indian rapeseed and mustard. It provides a balanced source of crude protein and essential amino acids for livestock, poultry, and aquaculture feed formulations.',
+      'DHRIVAA coordinates procurement directly from vetted extraction plants in Gujarat. We manage pre-shipment sampling, laboratory testing, and container logistics through Mundra and Kandla ports to meet buyer-contracted specifications.'
     ],
     image: '/images/rapeseed-meal.jpg',
     alt: 'High-quality golden-yellow rapeseed meal protein powder with canola flowers',
@@ -199,12 +198,11 @@ export const productsData: ProductItem[] = [
     slug: 'castorseed-meal',
     name: 'Castorseed Meal',
     eyebrow: 'ORGANIC BIO-FERTILIZER · SOIL CONDITIONER',
-    shortDescription: 'An organic plant-derived agricultural commodity sourced directly from Gujarat—the global castor capital—for high-value organic fertilization and soil conditioning.',
-    heroDescription: 'Organic nutrient-rich residue from Ricinus communis processing, sourced from primary crushers in Gujarat for international fertilizer blenders, landscaping, and commercial horticulture.',
+    shortDescription: 'Organic plant-derived fertilizer and soil conditioner sourced from primary crushers in Gujarat.',
+    heroDescription: 'Natural nutrient-rich residue from Ricinus communis processing, sourced for organic agriculture, turf management, and soil conditioning.',
     fullOverview: [
-      'Castorseed meal (also commonly designated as castor cake or de-oiled castor meal) is the nutrient-dense solid organic residue remaining after commercial oil extraction from castor seeds. As Gujarat produces over 70% of the world’s castor harvest, the region features the world’s highest concentration of specialized castor processing and solvent extraction mills.',
-      'DHRIVAA connects international agricultural distributors, commercial landscapers, organic fertilizer manufacturers, and date palm plantations across the Middle East with verified crushing units in Gujarat. Sourced primarily as an exceptional, slow-release natural organic fertilizer, it naturally enriches soil with nitrogen, phosphorus, potassium, and vital organic matter.',
-      'In addition to high nutritional value, castorseed meal contains natural phytochemicals that act as an organic soil deterrent against nematodes, white grubs, and subterranean pests, making it a prized soil conditioner for intensive irrigation agriculture and golf courses in arid and desert climates.'
+      'Castorseed meal (castor cake) is the solid organic residue remaining after oil extraction from castor seeds. As Gujarat produces over 70% of the world’s castor harvest, the region offers the largest concentration of primary processing facilities.',
+      'DHRIVAA connects international agricultural distributors and commercial growers with vetted crushing units in Gujarat. Rich in organic nitrogen, phosphorus, and potassium, castorseed meal enriches soil structure while naturally deterring subterranean pests.'
     ],
     image: '/images/castorseed-meal.jpg',
     alt: 'Rich brown organic castorseed meal and castor seeds on natural stone',
@@ -339,12 +337,11 @@ export const productsData: ProductItem[] = [
     slug: 'castor-oil',
     name: 'Castor Oil',
     eyebrow: 'INDUSTRIAL VEGETABLE OIL · RENEWABLE CHEMICAL',
-    shortDescription: 'A high-purity industrial vegetable oil sourced across vetted crushing and refining facilities in Gujarat for international chemical, lubricant, polyurethane, and manufacturing industries.',
-    heroDescription: 'Versatile non-edible vegetable oil rich in unique ricinoleic acid, sourced across verified crushing and refining plants in Gujarat for international industrial buyers in the UAE, GCC, and global markets.',
+    shortDescription: 'High-purity industrial vegetable oil sourced from vetted refining facilities in Gujarat for chemical, lubricant, and polymer manufacturing.',
+    heroDescription: 'Non-edible vegetable oil rich in ricinoleic acid, sourced for international industrial buyers across chemical, coating, and lubricant sectors.',
     fullOverview: [
-      'Castor oil is an extraordinary non-edible industrial vegetable oil extracted from the seeds of Ricinus communis. It occupies a unique position in global oleochemistry due to its naturally high concentration (~85%–90%) of ricinoleic fatty acid, which imparts singular viscosity, oxidative stability, hydroxyl functionality, and high-temperature performance.',
-      'Through our established sourcing network in Gujarat—the undisputed global heartland of the castor trade—DHRIVAA assists international chemical formulators, lubricant blenders, and industrial manufacturers in sourcing First Special Grade (FSG), Commercial Grade, Pale Pressed, and tailored technical oil grades.',
-      'We coordinate directly with modern refining plants to enforce rigorous chemical standards—including strict controls on Gardner color, acid value, moisture, and iodine value—while overseeing specialized bulk container flexitank installations and new ISO drum loading.'
+      'Castor oil is a non-edible industrial vegetable oil extracted from Ricinus communis seeds. Characterized by a high concentration (85%–90%) of ricinoleic acid, it offers distinct viscosity, oxidative stability, and hydroxyl functionality for industrial synthesis.',
+      'DHRIVAA coordinates sourcing for First Special Grade (FSG), Commercial Grade, Pale Pressed, and technical oil grades from audited refineries in Gujarat. We manage quality testing, container flexitanks, and drum loading for prompt dispatch through Mundra and Kandla ports.'
     ],
     image: '/images/castor-oil.jpg',
     alt: 'Pure golden castor oil in elegant glassware surrounded by castor seeds',

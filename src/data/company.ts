@@ -32,6 +32,9 @@ export const companyData: CompanyInfo = {
     'Qatar',
     'Bahrain',
     'Kuwait',
+    'Australia',
+    'United States',
+    'United Kingdom',
     'Other International Markets'
   ],
   email: 'info@dhrivaa.com',
@@ -76,57 +79,57 @@ export const coreCapabilities = [
 export const sourcingSteps = [
   {
     step: '01',
-    title: 'Understand Requirements',
-    shortDesc: 'Your product specifications, quantity, and market needs.',
-    fullDesc: 'We evaluate your technical parameters, intended industrial or feed application, delivery schedule, port destination, and target packaging requirements.',
+    title: 'Requirement',
+    shortDesc: 'We evaluate your specifications, target volume, and delivery schedule.',
+    fullDesc: 'We evaluate your specifications, target volume, and delivery schedule.',
     image: '/images/step-requirements.jpg'
   },
   {
     step: '02',
-    title: 'Identify Suppliers',
-    shortDesc: 'We connect with suitable suppliers across India based on your requirements.',
-    fullDesc: 'Leveraging our regional presence in Gujarat, we survey established crushing units and extraction plants to match capacity, pricing, and quality standards.',
+    title: 'Sourcing',
+    shortDesc: 'We identify vetted crushing mills and extraction plants across Gujarat.',
+    fullDesc: 'We identify vetted crushing mills and extraction plants across Gujarat.',
     image: '/images/step-suppliers.jpg'
   },
   {
     step: '03',
-    title: 'Coordinate Quality',
-    shortDesc: 'Product specifications, samples, and documentation support.',
-    fullDesc: 'We coordinate pre-shipment sample testing, independent Certificate of Analysis (COA) verification, and contract packaging specifications prior to dispatch.',
+    title: 'Quality',
+    shortDesc: 'We coordinate lab testing, sample approvals, and third-party inspections.',
+    fullDesc: 'We coordinate lab testing, sample approvals, and third-party inspections.',
     image: '/images/step-quality.jpg'
   },
   {
     step: '04',
-    title: 'Procurement & Shipment',
-    shortDesc: 'Packaging and logistics coordination as per requirements.',
-    fullDesc: 'We assist with container stuffing, stuffing photographs, customs documentation coordination, and timely dispatch through Mundra or Kandla ports.',
+    title: 'Shipment',
+    shortDesc: 'We manage packaging, export documentation, and port dispatch via Mundra or Kandla.',
+    fullDesc: 'We manage packaging, export documentation, and port dispatch via Mundra or Kandla.',
     image: '/images/step-logistics.jpg'
   }
 ];
 
 export const whyChoosePoints = [
   {
-    title: 'Buyer-Centric Approach',
-    description: 'Every procurement inquiry is treated as a bespoke mandate tailored exclusively to the buyer\'s specifications rather than pushing surplus inventory.'
+    title: 'Buyer-Centric Sourcing',
+    description: 'Procurement structured strictly around your required specifications and delivery timelines.'
   },
   {
-    title: 'Reliable Sourcing Network',
-    description: 'Established access to vetted solvent extraction plants and crushing units across Gujarat and major western Indian agricultural belts.'
+    title: 'Verified Supplier Network',
+    description: 'Direct access to vetted solvent extraction plants and crushing mills across Gujarat.'
   },
   {
     title: 'Quality Coordination',
-    description: 'Independent coordination of sample dispatch, batch testing, and third-party inspection agencies to preserve contract integrity.'
+    description: 'Independent coordination of pre-shipment sampling, lab testing, and third-party inspections.'
   },
   {
-    title: 'Transparent Process',
-    description: 'Open communication regarding market trends, supplier capacity, dispatch milestones, and complete documentation trail.'
+    title: 'Transparent Execution',
+    description: 'Clear communication on processor capacity, production schedules, and dispatch milestones.'
   },
   {
-    title: 'Documentation Support',
-    description: 'Assistance with essential export compliance, bills of lading, phytosanitary certifications, certificates of origin, and COAs.'
+    title: 'Export Documentation',
+    description: 'Full coordination of Certificates of Analysis, Phytosanitary certificates, and Bills of Lading.'
   },
   {
-    title: 'Long-Term Partnerships',
-    description: 'Focus on cultivating enduring trade relationships with international buyers through dependable execution and honest advisory.'
+    title: 'Reliable Delivery',
+    description: 'Dependable logistics and container stuffing through Mundra and Kandla ports.'
   }
 ];

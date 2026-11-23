@@ -58,10 +58,10 @@ export default function TradeCorridorsMap() {
           </div>
         </div>
 
-        {/* Gulf Corridor Focus Badge */}
+        {/* Corridor Focus Badge */}
         <div className="flex items-center gap-1.5 text-[10px] font-mono text-teal bg-teal/10 px-2 py-0.5 rounded-md border border-teal/20 font-semibold">
           <Navigation className="w-3 h-3 text-teal" />
-          <span>GULF FOCUS ({activeIndex + 1}/{TARGET_DESTINATIONS.length})</span>
+          <span>TRADE CORRIDORS ({activeIndex + 1}/{TARGET_DESTINATIONS.length})</span>
         </div>
 
       </div>
@@ -430,7 +430,7 @@ export default function TradeCorridorsMap() {
           Direct Sourcing: Gujarat (Mundra &amp; Kandla)
         </span>
         <span className="italic text-[10px]">
-          Auto-cycling through 6 GCC destination ports
+          Auto-cycling through active global trade corridors
         </span>
       </div>
 
