@@ -4,56 +4,81 @@ export default {
   theme: {
     extend: {
       colors: {
+        // New Premium Minimal Corporate Palette
+        stone: {
+          50: '#FAFAF7',   // Primary Page Background
+          100: '#F1F0E9',  // Secondary Background
+          200: '#E5E5DF',  // Subtle Borders
+          300: '#D5D5CD',
+          400: '#9CA39E',
+          500: '#606963',  // Muted Body Text
+          700: '#3D4640',
+          800: '#2A332C',
+          900: '#202923',  // Primary Text
+        },
+        forest: {
+          DEFAULT: '#355C46', // Accent Green
+          dark: '#284735',
+          light: '#446F56',
+          subtle: '#EBF2EE',
+        },
+        brand: {
+          bg: '#FAFAF7',
+          surface: '#F1F0E9',
+          border: '#E5E5DF',
+          text: '#202923',
+          muted: '#606963',
+          green: '#355C46',
+          greenDark: '#284735',
+          gold: '#B8860B',
+        },
+        // Backward compatibility mappings
         navy: {
-          950: '#091C30', // Deep Navy
-          900: '#102B46', // Primary Navy
-          850: '#133556',
-          800: '#193F66',
-          700: '#235384',
-          600: '#2F6DAA',
+          950: '#141C16',
+          900: '#202923', // Primary Corporate Text
+          850: '#28332C',
+          800: '#35433A',
+          700: '#48574D',
+          600: '#5C6D62',
         },
         teal: {
-          DEFAULT: '#398D89',
-          dark: '#2A6E6A',
-          light: '#4EA5A1',
-          tint: '#EBF6F5',
+          DEFAULT: '#355C46', // Map teal to Corporate Forest Green
+          dark: '#284735',
+          light: '#446F56',
+          tint: '#EBF2EE',
         },
         gold: {
-          DEFAULT: '#C8A45D',
-          dark: '#B5924B',
-          light: '#DFBF7C',
-          tint: '#FAF5EB',
+          DEFAULT: '#C29B38',
+          dark: '#A68228',
+          light: '#D4B35A',
+          tint: '#FAF6EC',
           subtle: '#F4ECE0',
         },
         surface: {
           DEFAULT: '#FFFFFF',
-          light: '#F7F9FA',
-          subtle: '#EEF2F6',
-          card: '#F8FAFC',
+          light: '#FAFAF7',
+          subtle: '#F1F0E9',
+          card: '#FFFFFF',
         },
         trade: {
-          text: '#263746',
-          muted: '#64748B',
-          light: '#94A3B8',
-          border: '#E2E8F0',
-          darkBorder: '#1E3A5F',
+          text: '#202923',
+          muted: '#606963',
+          light: '#9CA39E',
+          border: '#E5E5DF',
+          darkBorder: '#35433A',
         }
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        heading: ['Manrope', 'Inter', 'system-ui', 'sans-serif'],
+        heading: ['Inter', 'system-ui', 'sans-serif'],
         serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        editorial: ['"Playfair Display"', 'Georgia', 'serif'],
       },
       boxShadow: {
-        'subtle': '0 1px 3px rgba(16, 43, 70, 0.05), 0 1px 2px rgba(16, 43, 70, 0.03)',
-        'card': '0 4px 20px -2px rgba(16, 43, 70, 0.08)',
-        'card-hover': '0 12px 30px -4px rgba(16, 43, 70, 0.12)',
-        'premium': '0 20px 40px -10px rgba(9, 28, 48, 0.35)',
-        'gold-glow': '0 0 25px rgba(200, 164, 93, 0.25)',
-      },
-      backgroundImage: {
-        'navy-gradient': 'linear-gradient(180deg, #102B46 0%, #091C30 100%)',
-        'navy-radial': 'radial-gradient(circle at top right, #163B5F 0%, #091C30 70%)',
+        'subtle': '0 1px 2px rgba(32, 41, 35, 0.04)',
+        'card': '0 2px 8px -1px rgba(32, 41, 35, 0.05), 0 1px 3px rgba(32, 41, 35, 0.03)',
+        'card-hover': '0 10px 24px -4px rgba(32, 41, 35, 0.08)',
+        'premium': '0 16px 36px -8px rgba(32, 41, 35, 0.1)',
       }
     },
   },

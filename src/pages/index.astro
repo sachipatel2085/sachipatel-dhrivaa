@@ -2,48 +2,32 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/home/Hero.astro';
 import ProductShowcase from '../components/home/ProductShowcase.astro';
-import ProductSpecsComparison from '../components/home/ProductSpecsComparison.astro';
-import WhyGujarat from '../components/home/WhyGujarat.astro';
-import IndustriesWeServe from '../components/home/IndustriesWeServe.astro';
-import SourcingProcess from '../components/home/SourcingProcess.astro';
-import BuyerCommitment from '../components/home/BuyerCommitment.astro';
-import GlobalMarkets from '../components/home/GlobalMarkets.astro';
-import HomeFAQ from '../components/home/HomeFAQ.astro';
-import FinalCTA from '../components/home/FinalCTA.astro';
+import AboutIntro from '../components/home/AboutIntro.astro';
+import WhyDhrivaa from '../components/home/WhyDhrivaa.astro';
+import HowWeWork from '../components/home/HowWeWork.astro';
+import HomeContactCTA from '../components/home/HomeContactCTA.astro';
 import { companyData } from '../data/company';
 
 const pageTitle = `${companyData.name} – Global Trade Partner | Agricultural Commodity Sourcing India`;
-const pageDescription = 'Connecting global buyers with reliable agricultural commodity sources from Gujarat, India through transparent sourcing and procurement. Specializing in Rapeseed Meal, Castorseed Meal, and Castor Oil.';
+const pageDescription = 'Connecting global buyers with reliable agricultural commodity sources from Gujarat, India. Specializing in Rapeseed Meal, Castorseed Meal, and Castor Oil procurement.';
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <!-- 1. Hero -->
   <Hero />
 
-  <!-- 2. Product Portfolio Overview -->
+  <!-- 2. Products Portfolio -->
   <ProductShowcase />
 
-  <!-- 3. Product Specifications at a Glance -->
-  <ProductSpecsComparison />
+  <!-- 3. About DHRIVAA -->
+  <AboutIntro />
 
-  <!-- 4. Why Source from Gujarat, India -->
-  <WhyGujarat />
+  <!-- 4. Why DHRIVAA -->
+  <WhyDhrivaa />
 
-  <!-- 5. Industries We Serve -->
-  <IndustriesWeServe />
+  <!-- 5. How We Work -->
+  <HowWeWork />
 
-  <!-- 6. Step-by-Step Sourcing Process -->
-  <SourcingProcess />
-
-  <!-- 7. Our Commitment to Buyers (Quality & Transparency) -->
-  <BuyerCommitment />
-
-  <!-- 8. Shipping Corridors & Target Gulf Ports -->
-  <GlobalMarkets />
-
-  <!-- 9. Frequently Asked Questions -->
-  <HomeFAQ />
-
-  <!-- 10. Direct Sourcing Inquiry & WhatsApp -->
-  <FinalCTA />
+  <!-- 6. Contact CTA -->
+  <HomeContactCTA />
 </BaseLayout>

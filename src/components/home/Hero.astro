@@ -2,132 +2,74 @@
 import { ArrowRight } from 'lucide-react';
 ---
 
-<section class="relative min-h-[88vh] lg:min-h-[92vh] flex items-center bg-navy-950 overflow-hidden" aria-label="Hero">
-  
-  <!-- Right-Aligned Cargo Ship Photography with Subtle Cinematic Scale Reveal -->
-  <div class="absolute inset-0 z-0 overflow-hidden">
-    <img
-      src="/images/hero-port.jpg"
-      alt="International container cargo ship at deep sea port terminal at sunset"
-      class="w-full h-full object-cover object-right lg:object-[80%_center] filter brightness-[0.98] contrast-[1.04] hero-image-reveal"
-      loading="eager"
-      fetchpriority="high"
-    />
-    
-    <!-- Dark Gradient Overlay (matching reference layout in Dark Theme):
-         Solid deep navy on the left (0% to ~38%), smooth gradient transition across center (38% to ~75%),
-         leaving the cargo vessel on the right vibrant and clearly visible -->
-    <div class="absolute inset-0 bg-[linear-gradient(90deg,#091C30_0%,#091C30_36%,rgba(9,28,48,0.94)_48%,rgba(9,28,48,0.68)_64%,rgba(9,28,48,0.2)_82%,transparent_100%)] pointer-events-none"></div>
-    
-    <!-- Subtle vertical bottom fade into capabilities bar -->
-    <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-navy-950 via-navy-950/60 to-transparent pointer-events-none"></div>
-  </div>
-
-  <!-- Subtle Global Trade Map / Watermark Layer in Midground with Ambient Float -->
-  <div class="absolute inset-0 z-10 pointer-events-none overflow-hidden animate-float-slow">
-    <svg class="w-full h-full opacity-25" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Dotted world map abstraction centered between text and ship -->
-      <g fill="#398D89" opacity="0.6">
-        <!-- Arabian Gulf & Middle East Node Cluster -->
-        <circle cx="680" cy="380" r="2.5" />
-        <circle cx="700" cy="370" r="2.5" />
-        <circle cx="720" cy="365" r="3" />
-        <circle cx="740" cy="380" r="2.5" />
-        <circle cx="710" cy="395" r="2" />
-        <circle cx="690" cy="410" r="2" />
-        <circle cx="730" cy="405" r="2.5" />
-
-        <!-- Indian Subcontinent Node Cluster -->
-        <circle cx="820" cy="400" r="3" fill="#C8A45D" />
-        <circle cx="840" cy="420" r="2.5" fill="#C8A45D" />
-        <circle cx="830" cy="440" r="2" fill="#C8A45D" />
-        <circle cx="850" cy="450" r="2.5" fill="#C8A45D" />
-        <circle cx="810" cy="420" r="2.5" fill="#C8A45D" />
-        <circle cx="860" cy="430" r="2" fill="#C8A45D" />
-
-        <!-- Connecting Trade Grid Dots -->
-        <circle cx="600" cy="320" r="1.5" />
-        <circle cx="630" cy="340" r="1.5" />
-        <circle cx="660" cy="330" r="1.5" />
-        <circle cx="750" cy="340" r="1.5" />
-        <circle cx="780" cy="360" r="1.5" />
-        <circle cx="880" cy="380" r="1.5" />
-        <circle cx="910" cy="400" r="1.5" />
-        <circle cx="940" cy="420" r="1.5" />
-      </g>
-
-      <!-- Glowing Sourcing Connection Arcs (Gujarat <-> UAE & Gulf) -->
-      <path d="M820 400 C780 340, 740 340, 720 365" stroke="#C8A45D" stroke-width="1.8" stroke-dasharray="5 4" opacity="0.8" />
-      <path d="M820 400 C760 370, 720 370, 680 380" stroke="#398D89" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.7" />
+<section class="relative bg-stone-50 py-16 sm:py-20 lg:py-28 overflow-hidden" aria-label="Hero">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
       
-      <!-- Sourcing Hub Node (Gujarat, India) -->
-      <circle cx="820" cy="400" r="5" fill="#C8A45D" />
-      <circle cx="820" cy="400" r="12" stroke="#C8A45D" stroke-width="1.2" opacity="0.4" class="animate-pulse-glow" />
-      
-      <!-- Target Gulf Hub Node (UAE) -->
-      <circle cx="720" cy="365" r="5" fill="#398D89" />
-      <circle cx="720" cy="365" r="13" stroke="#398D89" stroke-width="1.5" opacity="0.5" class="animate-pulse-glow delay-200" />
-    </svg>
-  </div>
+      <!-- Left Content (7 cols) -->
+      <div class="lg:col-span-7 space-y-6 sm:space-y-8 text-left animate-fade-up">
+        
+        <!-- Subtle Eyebrow -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-100 border border-stone-200 text-stone-700 text-xs font-medium tracking-wide">
+          <span class="w-1.5 h-1.5 rounded-full bg-forest"></span>
+          <span>Agricultural Commodity Procurement &bull; Gujarat, India</span>
+        </div>
 
-  <!-- Hero Content Container: Left-Aligned Editorial Layout with Staggered Entrance -->
-  <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 sm:pt-32 sm:pb-24 lg:pt-36 lg:pb-28 w-full">
-    <div class="max-w-2xl lg:max-w-3xl space-y-7 text-left">
-      
-      <!-- Eyebrow Tag -->
-      <div class="hero-fade-up inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-navy-900/90 border border-gold/30 text-gold-light text-xs font-heading font-semibold uppercase tracking-[0.22em] shadow-sm backdrop-blur-md hover:border-gold/60 transition-colors">
-        <span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse"></span>
-        <span>Gujarat, India &bull; UAE &bull; Middle East</span>
+        <!-- Exact Requested Headline -->
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-stone-900 tracking-tight leading-[1.15] text-balance">
+          Indian Agricultural Commodities. <span class="font-editorial font-normal italic text-forest">Sourced for Global Markets.</span>
+        </h1>
+
+        <!-- Short Business Introduction -->
+        <p class="text-base sm:text-lg text-stone-600 max-w-xl leading-relaxed">
+          DHRIVAA coordinates procurement, pre-shipment quality testing, and port logistics for verified Indian agricultural commodities, connecting international buyers with dependable extraction units across western India.
+        </p>
+
+        <!-- Buttons: Explore Products & Request a Quote -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
+          <a
+            href="/products"
+            class="btn-forest inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide shadow-subtle hover:shadow-sm"
+          >
+            <span>Explore Products</span>
+            <ArrowRight className="w-4 h-4" />
+          </a>
+
+          <a
+            href="/contact"
+            class="btn-outline inline-flex items-center justify-center px-6 py-3.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide"
+          >
+            <span>Request a Quote</span>
+          </a>
+        </div>
+
+        <!-- Minimal Trust Badges -->
+        <div class="pt-4 border-t border-stone-200/80 flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-stone-500 font-medium">
+          <span>Direct Mill Coordination</span>
+          <span class="text-stone-300">&bull;</span>
+          <span>Mundra &amp; Kandla Ports</span>
+          <span class="text-stone-300">&bull;</span>
+          <span>Verified Specifications</span>
+        </div>
+
       </div>
 
-      <!-- Main Headline with Staggered Fade Up -->
-      <h1 class="hero-fade-up delay-150 font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[3.75rem] text-white tracking-tight leading-[1.15] text-balance">
-        Agricultural Commodity Sourcing from Gujarat to Global Markets
-      </h1>
-
-      <!-- Supporting Body Text -->
-      <p class="hero-fade-up delay-300 text-sm sm:text-base md:text-lg text-slate-300 max-w-2xl leading-relaxed font-normal">
-        We coordinate procurement, quality testing, and port logistics for bulk Rapeseed Meal, Castorseed Meal, and Castor Oil shipped via Mundra and Kandla ports to buyers across the UAE and Middle East.
-      </p>
-
-      <!-- CTA Buttons with Micro-Interactions -->
-      <div class="hero-fade-up delay-400 pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
-        <!-- Primary Button -->
-        <a
-          href="/products"
-          class="btn-gold-interactive group inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-gold hover:bg-gold-dark text-navy-950 font-heading font-bold text-xs sm:text-sm tracking-wider uppercase text-center shadow-gold-glow"
-        >
-          <span>Explore Our Products</span>
-          <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-200" />
-        </a>
-
-        <!-- Secondary Button ("Partner With Us" / Enquiry) -->
-        <a
-          href="/contact"
-          class="btn-navy-interactive group inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-navy-900/70 hover:bg-navy-850 text-slate-100 hover:text-white border border-slate-600/70 hover:border-gold/70 font-heading font-semibold text-xs sm:text-sm tracking-wide backdrop-blur-md text-center"
-        >
-          <span>Partner With Us</span>
-          <ArrowRight className="w-3.5 h-3.5 text-gold opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
-        </a>
-      </div>
-
-      <!-- Sourcing Trust Highlights at base of text -->
-      <div class="hero-fade-up delay-500 pt-8 border-t border-slate-800/80 flex flex-wrap items-center gap-6 sm:gap-10 text-xs sm:text-sm text-slate-400">
-        <div class="flex items-center gap-2 hover:text-slate-200 transition-colors">
-          <span class="w-2 h-2 rounded-full bg-teal animate-pulse"></span>
-          <span>Origin: Mundra &amp; Kandla Ports</span>
-        </div>
-        <div class="flex items-center gap-2 hover:text-slate-200 transition-colors">
-          <span class="w-2 h-2 rounded-full bg-gold animate-pulse delay-150"></span>
-          <span>Destination: UAE, Saudi Arabia &amp; Gulf</span>
-        </div>
-        <div class="flex items-center gap-2 hover:text-slate-200 transition-colors">
-          <span class="w-2 h-2 rounded-full bg-slate-500"></span>
-          <span>Buyer-Specific Sourcing</span>
+      <!-- Right Image: High-Quality Maritime Port & Sourcing Photo (5 cols) -->
+      <div class="lg:col-span-5">
+        <div class="relative rounded-2xl overflow-hidden border border-stone-200 shadow-card bg-stone-100 group">
+          <img
+            src="/images/hero-port.jpg"
+            alt="Commercial cargo vessel and export terminal infrastructure in Gujarat India"
+            class="w-full aspect-[4/3] lg:aspect-[5/4] object-cover object-center transform transition-transform duration-700 ease-out group-hover:scale-103"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-stone-200 text-[11px] text-stone-700 font-medium shadow-subtle">
+            Western India Export Gateway &bull; Mundra &amp; Kandla
+          </div>
         </div>
       </div>
 
     </div>
   </div>
-
 </section>

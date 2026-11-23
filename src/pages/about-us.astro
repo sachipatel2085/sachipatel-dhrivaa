@@ -1,109 +1,169 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHero from '../components/common/PageHero.astro';
-import FinalCTA from '../components/home/FinalCTA.astro';
 import { companyData } from '../data/company';
-import { ShieldCheck, Compass, CheckCircle2, ArrowRight } from 'lucide-react';
+import { ShieldCheck, CheckCircle2, ArrowRight, Anchor, FileText, Compass, MapPin } from 'lucide-react';
 
 const pageTitle = `About Us | ${companyData.name} – Global Trade Partner`;
-const pageDescription = 'Learn about DHRIVAA, a Gujarat-based agricultural commodity sourcing and procurement partner connecting international buyers with verified Indian extraction units and suppliers.';
+const pageDescription = 'Learn about DHRIVAA, an independent agricultural commodity sourcing and procurement coordinator based in Gujarat, India connecting global buyers with verified extraction units.';
 
-const pillars = [
+const coreCommodities = [
   {
-    title: 'Buyer Focused',
-    desc: 'We structure every procurement mandate around your exact target specifications, packaging needs, and shipping schedule.'
+    name: 'Rapeseed Meal',
+    role: 'Animal Nutrition & Ruminant Feed',
+    desc: 'High-protein agricultural by-product extracted from Brassica napus processing, sourced across vetted solvent extraction units in western India.',
+    href: '/products/rapeseed-meal'
   },
   {
-    title: 'Transparent Process',
-    desc: 'Clear communication at every stage—from supplier identification and lot pricing to pre-shipment inspection and dispatch.'
+    name: 'Castorseed Meal',
+    role: 'Organic Fertilizer & Soil Conditioning',
+    desc: 'Nutrient-dense organic de-oiled meal naturally rich in nitrogen, phosphorus, and potassium for commercial organic agriculture.',
+    href: '/products/castorseed-meal'
   },
   {
-    title: 'Quality Coordination',
-    desc: 'Independent coordination for laboratory testing, Certificate of Analysis (COA) verification, and container stuffing.'
+    name: 'Castor Oil',
+    role: 'Industrial & Technical Formulations',
+    desc: 'Commercial and technical grade vegetable oil for industrial manufacturing, lubricants, and chemical derivatives.',
+    href: '/products/castor-oil'
+  }
+];
+
+const sourcingPrinciples = [
+  {
+    title: 'Buyer-Led Specifications',
+    desc: 'We do not trade speculative stock. Every procurement mandate is initiated by buyer parameters for protein, moisture, packaging, and volume.'
   },
   {
-    title: 'Long-Term Partnerships',
-    desc: 'Cultivating sustainable, repeat trading relationships built on consistent execution, market honesty, and mutual trust.'
+    title: 'Direct Mill Coordination',
+    desc: 'Direct access to established crushing plants in Gujarat, eliminating layers of brokers and ensuring authentic lot traceability.'
+  },
+  {
+    title: 'Pre-Shipment Testing',
+    desc: 'Coordination with independent certified laboratories (SGS, Geo-Chem) to issue Certificates of Analysis (COA) matching contract specifications.'
+  },
+  {
+    title: 'Port Logistics Execution',
+    desc: 'Supervision of container stuffing, moisture barrier lining, and export customs clearance at Mundra and Deendayal (Kandla) ports.'
   }
 ];
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   
-  <!-- Cinematic Hero Header with Dark Gradient Overlay & Topic Banner -->
-  <PageHero
-    breadcrumbs={[
-      { label: 'Home', href: '/' },
-      { label: 'About Us' }
-    ]}
-    eyebrow="Company Overview"
-    title="About DHRIVAA"
-    titleAccent="Agricultural Sourcing from Gujarat, India"
-    description="DHRIVAA is a Gujarat, India-based agricultural commodity sourcing and procurement company. We connect international buyers with reliable suppliers in India, focusing on quality, transparency, and long-term trade relationships."
-    bannerImage="/images/banner-about.jpg"
-    bannerAlt="Modern agricultural commodity processing silos and export infrastructure in Gujarat India at sunset"
-    primaryButton={{
-      label: 'Our Sourcing Approach',
-      href: '#approach'
-    }}
-    secondaryButton={{
-      label: 'Contact Procurement Desk',
-      href: '/contact'
-    }}
-    trustTags={[
-      { text: 'Gujarat Sourcing Hub', color: 'teal' },
-      { text: 'Direct Mill Coordination', color: 'gold' },
-      { text: 'Mundra & Kandla Ports', color: 'slate' }
-    ]}
-  />
+  <!-- Header / Breadcrumb -->
+  <section class="bg-stone-50 py-12 sm:py-16 border-b border-stone-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+      <nav class="flex items-center gap-2 text-xs text-stone-500" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-stone-900 transition-colors">Home</a>
+        <span class="text-stone-300">/</span>
+        <span class="text-stone-900 font-medium">About Us</span>
+      </nav>
 
-  <!-- Business Positioning Statement (Strict Compliance) -->
-  <section class="py-12 bg-white border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="reveal-on-scroll p-6 sm:p-8 rounded-2xl bg-slate-50 border border-slate-200/90 flex flex-col md:flex-row items-start md:items-center gap-6 hover-lift">
-        <div class="icon-box-interactive w-12 h-12 rounded-xl bg-navy-900 text-gold flex items-center justify-center flex-shrink-0">
-          <ShieldCheck className="w-6 h-6" />
+      <span class="text-xs font-semibold uppercase tracking-widest text-forest block">
+        Company Overview
+      </span>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 tracking-tight leading-tight">
+        Connecting Global Buyers with <span class="font-editorial font-normal italic text-forest">Indian Agricultural Sources</span>
+      </h1>
+      <p class="text-stone-600 text-base sm:text-lg max-w-2xl leading-relaxed">
+        DHRIVAA is an independent sourcing and procurement coordinator based in Gujarat, India, specializing in verified agricultural by-products and vegetable oils.
+      </p>
+    </div>
+  </section>
+
+  <!-- Business Model & Transparent Positioning -->
+  <section class="py-16 sm:py-20 bg-white border-b border-stone-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
+            Our Business Model
+          </h2>
+          <div class="space-y-4 text-stone-600 text-sm sm:text-base leading-relaxed">
+            <p>
+              DHRIVAA represents overseas buyers seeking reliable, contract-compliant agricultural commodities from India. We operate directly within western India's oilseed processing heartland, bridging geographical and regulatory gaps between Indian crushing facilities and international markets—particularly in the UAE and Arabian Gulf.
+            </p>
+            <p>
+              Rather than maintaining proprietary inventory, we coordinate every shipment from verified processing facilities to match the buyer's precise grade, moisture, protein, and packaging stipulations.
+            </p>
+          </div>
+
+          <!-- Strict Compliance Notice Box -->
+          <div class="p-4 sm:p-5 rounded-2xl bg-stone-50 border border-stone-200 text-xs sm:text-sm text-stone-600 space-y-2 mt-6">
+            <div class="flex items-center gap-2 font-semibold text-stone-900">
+              <ShieldCheck className="w-4 h-4 text-forest flex-shrink-0" />
+              <span>Independent Coordinator Status</span>
+            </div>
+            <p class="leading-relaxed text-stone-500 pl-6 text-xs">
+              DHRIVAA operates as an independent sourcing and procurement coordinator. We do not manufacture commodities or own crushing mills. We represent buyers with fiduciary independence, managing supplier evaluation, pricing negotiation, and pre-shipment quality inspection.
+            </p>
+          </div>
         </div>
-        <div class="space-y-1 flex-grow">
-          <h3 class="font-heading font-bold text-base text-navy-900">
-            Transparent Business Positioning
+
+        <div class="lg:col-span-5 bg-stone-50 p-6 sm:p-7 rounded-2xl border border-stone-200 space-y-4">
+          <h3 class="text-base font-bold text-stone-900 border-b border-stone-200 pb-3">
+            Company Facts
           </h3>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            DHRIVAA operates strictly as a specialized sourcing, quality coordination, and procurement partner. We do not manufacture products or claim ownership of processing mills. Instead, we act with fiduciary independence on behalf of international buyers to source from audited Indian suppliers.
-          </p>
+          <dl class="space-y-3 text-xs sm:text-sm">
+            <div>
+              <dt class="text-stone-500 text-xs">Headquarters</dt>
+              <dd class="font-medium text-stone-900 mt-0.5">Gujarat, India</dd>
+            </div>
+            <div>
+              <dt class="text-stone-500 text-xs">Primary Shipping Ports</dt>
+              <dd class="font-medium text-stone-900 mt-0.5">Mundra Port &amp; Deendayal Port (Kandla)</dd>
+            </div>
+            <div>
+              <dt class="text-stone-500 text-xs">Key Destination Markets</dt>
+              <dd class="font-medium text-stone-900 mt-0.5">UAE, Saudi Arabia, Oman, Qatar, Bahrain, Kuwait</dd>
+            </div>
+            <div>
+              <dt class="text-stone-500 text-xs">Procurement Mode</dt>
+              <dd class="font-medium text-stone-900 mt-0.5">Buyer-specific contract structuring (FCL &amp; Break-Bulk)</dd>
+            </div>
+          </dl>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- 4 Core Pillars -->
-  <section id="approach" class="py-20 bg-surface-light">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- Core Commodities -->
+  <section class="py-16 sm:py-20 bg-stone-50 border-b border-stone-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="reveal-on-scroll max-w-3xl space-y-3 mb-14">
-        <span class="text-xs font-bold uppercase tracking-wider text-teal font-heading">
-          Our Working Principles
+      <div class="max-w-2xl mb-12">
+        <span class="text-xs font-semibold uppercase tracking-widest text-forest">
+          Portfolio
         </span>
-        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-navy-900 tracking-tight">
-          Built on Predictability and Trust
+        <h2 class="text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight mt-1.5">
+          Core Commodities We Coordinate
         </h2>
-        <p class="text-base text-slate-600">
-          We bridge the gap between overseas commodity specifications and Indian agricultural producers.
+        <p class="text-stone-600 text-sm sm:text-base leading-relaxed mt-2">
+          We focus our sourcing strictly on three high-volume agro-industrial commodities where western India holds verified global cost and volume advantages.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {pillars.map((pillar, i) => (
-          <div class={`reveal-on-scroll delay-${(i + 1) * 100} bg-white p-7 rounded-2xl border border-slate-200/80 shadow-subtle hover:shadow-card hover-lift glow-card transition-all space-y-4`}>
-            <span class="font-mono text-xs font-bold text-gold bg-gold/10 px-2.5 py-1 rounded">
-              0{i + 1}
-            </span>
-            <h3 class="font-heading font-bold text-lg text-navy-900">
-              {pillar.title}
-            </h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              {pillar.desc}
-            </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {coreCommodities.map((item) => (
+          <div class="bg-white rounded-2xl p-6 border border-stone-200 hover:border-forest/40 hover-lift transition-all space-y-3 flex flex-col justify-between">
+            <div class="space-y-2">
+              <span class="text-[11px] font-semibold text-forest uppercase tracking-wider block">
+                {item.role}
+              </span>
+              <h3 class="text-lg font-bold text-stone-900">
+                {item.name}
+              </h3>
+              <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                {item.desc}
+              </p>
+            </div>
+            <div class="pt-2">
+              <a href={item.href} class="inline-flex items-center gap-1.5 text-xs font-semibold text-stone-900 hover:text-forest transition-colors">
+                <span>View Specifications</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
           </div>
         ))}
       </div>
@@ -111,54 +171,79 @@ const pillars = [
     </div>
   </section>
 
-  <!-- Strategic Advantage of Gujarat -->
-  <section class="py-20 bg-white border-t border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        
-        <div class="reveal-slide-left lg:col-span-6 space-y-6">
-          <span class="text-xs font-bold uppercase tracking-[0.2em] text-teal font-heading">
-            Sourcing Epicentre
-          </span>
-          <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-navy-900 tracking-tight leading-tight">
-            Why Gujarat is the Ideal Commodity Gateway
-          </h2>
-          <p class="text-base text-slate-600 leading-relaxed">
-            Gujarat represents India's leading maritime and agricultural processing state. Home to the country's deepest draft ports and the central cultivation belts for oilseeds, sourcing through Gujarat delivers substantial operational advantages:
-          </p>
-
-          <ul class="space-y-3 text-sm text-slate-700" role="list">
-            <li class="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-teal flex-shrink-0 mt-0.5" />
-              <span>Direct access to Mundra &amp; Kandla container terminals offering rapid maritime transit to Arabian Gulf ports (Jebel Ali, Dammam, Sohar).</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-teal flex-shrink-0 mt-0.5" />
-              <span>Epicentre of the Indian castor economy, producing over 70% of the world's castor seed harvest and meal by-products.</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-teal flex-shrink-0 mt-0.5" />
-              <span>Extensive clusters of modern solvent extraction plants, expeller units, and vegetable oil refining facilities.</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="reveal-slide-right delay-150 lg:col-span-6">
-          <div class="group rounded-2xl overflow-hidden border border-slate-200 shadow-card hover:shadow-premium transition-all duration-500">
-            <img
-              src="/images/step-suppliers.jpg"
-              alt="Agricultural sourcing storage facilities and logistics in Gujarat India"
-              class="w-full aspect-[4/3] object-cover transform transition-transform duration-700 ease-out group-hover:scale-106"
-              loading="lazy"
-            />
-          </div>
-        </div>
-
+  <!-- Sourcing Approach & Quality Coordination (Merged Content) -->
+  <section id="approach" class="py-16 sm:py-20 bg-white border-b border-stone-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-2xl mb-12">
+        <span class="text-xs font-semibold uppercase tracking-widest text-forest">
+          Sourcing &amp; Quality Approach
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight mt-1.5">
+          Quality Verification &amp; Procurement Execution
+        </h2>
+        <p class="text-stone-600 text-sm sm:text-base leading-relaxed mt-2">
+          Our operational methodology ensures that buyers receive transparent pricing, documented quality testing, and reliable port handling.
+        </p>
       </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {sourcingPrinciples.map((p, idx) => (
+          <div class="bg-stone-50 rounded-2xl p-6 sm:p-7 border border-stone-200 space-y-3">
+            <span class="font-mono text-xs font-bold text-forest bg-forest/10 px-2 py-0.5 rounded">
+              0{idx + 1}
+            </span>
+            <h3 class="text-base font-bold text-stone-900">
+              {p.title}
+            </h3>
+            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+              {p.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Export Documentation Standards Box -->
+      <div class="mt-8 p-6 rounded-2xl bg-stone-100 border border-stone-200 space-y-3">
+        <h3 class="text-sm font-bold text-stone-900 flex items-center gap-2">
+          <FileText className="w-4 h-4 text-forest" />
+          <span>Standard Pre-Shipment Documentation Package</span>
+        </h3>
+        <p class="text-xs text-stone-600 leading-relaxed">
+          Every export consignment coordinated through DHRIVAA is backed by verified commercial and regulatory paperwork: Certificate of Analysis (COA) issued by certified labs, Phytosanitary Certificate issued by Indian Quarantine authorities, Certificate of Origin (COO), Commercial Invoice, Packing List, and Bill of Lading.
+        </p>
+      </div>
+
     </div>
   </section>
 
-  <!-- Final CTA -->
-  <FinalCTA />
+  <!-- Contact CTA -->
+  <section class="py-16 sm:py-20 bg-stone-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
+      <h2 class="text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
+        Discuss Sourcing Requirements
+      </h2>
+      <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+        Speak directly with our team in Gujarat to discuss grade requirements, trial volumes, or ocean transit timelines.
+      </p>
+      <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a
+          href="/contact"
+          class="btn-forest inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide"
+        >
+          <span>Request a Quote</span>
+          <ArrowRight className="w-4 h-4" />
+        </a>
+        <a
+          href={companyData.whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-outline inline-flex items-center justify-center px-6 py-3.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide"
+        >
+          <span>WhatsApp Trade Desk</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
 </BaseLayout>

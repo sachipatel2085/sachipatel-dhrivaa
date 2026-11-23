@@ -1,0 +1,58 @@
+---
+import { companyData } from '../../data/company';
+import { Mail, Phone, MessageSquare, ArrowRight } from 'lucide-react';
+---
+
+<section class="py-16 sm:py-24 bg-white border-t border-stone-200" aria-labelledby="cta-heading">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="reveal-scale rounded-3xl bg-stone-50 border border-stone-200 p-8 sm:p-12 text-center space-y-6">
+      
+      <div class="space-y-3 max-w-xl mx-auto">
+        <span class="text-xs font-semibold uppercase tracking-widest text-forest">
+          Direct Inquiries
+        </span>
+        <h2 id="cta-heading" class="text-2xl sm:text-3xl md:text-4xl font-bold text-stone-900 tracking-tight">
+          Request a Sourcing Quotation
+        </h2>
+        <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+          Submit your product specifications, volume requirements, and destination port. Our sourcing desk provides prompt indicative pricing and shipping schedules.
+        </p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+        <a
+          href="/contact"
+          class="btn-forest w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide shadow-subtle hover:shadow-sm"
+        >
+          <span>Submit Inquiry Form</span>
+          <ArrowRight className="w-4 h-4" />
+        </a>
+
+        <a
+          href={companyData.whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-outline w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide"
+        >
+          <MessageSquare className="w-4 h-4 text-[#25D366]" />
+          <span>WhatsApp Trade Desk</span>
+        </a>
+      </div>
+
+      <!-- Contact Details Line -->
+      <div class="pt-6 border-t border-stone-200/80 flex flex-wrap items-center justify-center gap-y-2 gap-x-8 text-xs text-stone-600">
+        <a href={`mailto:${companyData.email}`} class="inline-flex items-center gap-1.5 hover:text-forest transition-colors font-medium">
+          <Mail className="w-3.5 h-3.5 text-stone-400" />
+          <span>{companyData.email}</span>
+        </a>
+        <a href={`tel:${companyData.phone}`} class="inline-flex items-center gap-1.5 hover:text-forest transition-colors font-medium">
+          <Phone className="w-3.5 h-3.5 text-stone-400" />
+          <span>{companyData.phoneDisplay}</span>
+        </a>
+        <span class="text-stone-500">Mundra &amp; Kandla Port Gateway, Gujarat</span>
+      </div>
+
+    </div>
+  </div>
+</section>

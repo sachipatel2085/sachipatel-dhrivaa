@@ -1,0 +1,55 @@
+---
+const pillars = [
+  {
+    number: '01',
+    title: 'Buyer-Specific Sourcing',
+    description: 'We do not push existing stock. Every procurement mandate is structured around your exact target specifications, required volume, and customized container packaging.'
+  },
+  {
+    number: '02',
+    title: 'Quality Coordination',
+    description: 'We coordinate pre-shipment sampling, independent certified laboratory testing (SGS, Geo-Chem), and container inspection to verify physical and chemical parameters prior to dispatch.'
+  },
+  {
+    number: '03',
+    title: 'Transparent Communication',
+    description: 'We deliver clear contract structuring, open supplier pricing visibility, and prompt milestone reporting from factory loading through customs clearance at Mundra and Kandla ports.'
+  }
+];
+---
+
+<section class="py-16 sm:py-24 bg-white border-t border-stone-200" aria-labelledby="why-dhrivaa-heading">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="reveal-on-scroll max-w-2xl mb-12 sm:mb-16">
+      <span class="text-xs font-semibold uppercase tracking-widest text-forest">
+        Why DHRIVAA
+      </span>
+      <h2 id="why-dhrivaa-heading" class="text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight mt-1.5">
+        Principles That Guide Our Trade
+      </h2>
+      <p class="text-stone-600 text-sm sm:text-base leading-relaxed mt-2">
+        International commodity trade requires predictability, rigorous verification, and honest communication.
+      </p>
+    </div>
+
+    <!-- 3 Pillars Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      {pillars.map((pillar, idx) => (
+        <div class={`reveal-on-scroll delay-${(idx + 1) * 100} bg-stone-50 rounded-2xl p-6 sm:p-8 border border-stone-200 hover:border-forest/40 hover-lift transition-all duration-300 space-y-4`}>
+          <span class="text-xs font-mono font-bold text-forest bg-forest/10 px-2.5 py-1 rounded">
+            {pillar.number}
+          </span>
+          <h3 class="text-lg font-bold text-stone-900">
+            {pillar.title}
+          </h3>
+          <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+            {pillar.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

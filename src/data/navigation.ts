@@ -4,6 +4,7 @@ export interface NavItem {
   children?: { label: string; href: string; description: string }[];
 }
 
+// Simplified Primary Navigation (Home, About Us, Products, Contact)
 export const mainNavItems: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about-us" },
@@ -14,77 +15,41 @@ export const mainNavItems: NavItem[] = [
       {
         label: "Rapeseed Meal",
         href: "/products/rapeseed-meal",
-        description:
-          "High-protein agricultural processing by-product for animal nutrition.",
+        description: "High-protein meal for commercial livestock & animal nutrition.",
       },
       {
         label: "Castorseed Meal",
         href: "/products/castorseed-meal",
-        description:
-          "Organic nutrient-rich meal for bio-fertilizers and soil conditioning.",
+        description: "Organic nutrient-rich meal for soil conditioning & fertilizer.",
       },
       {
         label: "Castor Oil",
         href: "/products/castor-oil",
-        description:
-          "Industrial and technical grade vegetable oil for global manufacturing.",
+        description: "Industrial and commercial grade vegetable oil.",
       },
     ],
   },
-  { label: "Sourcing & Procurement", href: "/sourcing-procurement" },
-  { label: "Quality Assurance", href: "/quality-assurance" },
-  { label: "Buyer Resources", href: "/buyer-resources" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const footerQuickLinks = [
   { label: "Home", href: "/" },
-  { label: "About DHRIVAA", href: "/about-us" },
-  { label: "Our Products", href: "/products" },
-  { label: "Buyer Resources", href: "/buyer-resources" },
-  { label: "Sourcing Process", href: "/sourcing-procurement" },
-  { label: "Quality Coordination", href: "/quality-assurance" },
-  { label: "Contact Us", href: "/contact" },
+  { label: "About Us", href: "/about-us" },
+  { label: "Products", href: "/products" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const footerProductLinks = [
   { label: "Rapeseed Meal", href: "/products/rapeseed-meal" },
   { label: "Castorseed Meal", href: "/products/castorseed-meal" },
   { label: "Castor Oil", href: "/products/castor-oil" },
-  { label: "All Products Overview", href: "/products" },
 ];
 
 export const footerResourceLinks = [
-  {
-    label: "Product Specifications Guide",
-    href: "/buyer-resources#specifications-guide",
-  },
-  {
-    label: "Packaging Standards Guide",
-    href: "/buyer-resources#packaging-standards",
-  },
-  {
-    label: "Export Documentation Package",
-    href: "/buyer-resources#export-documentation",
-  },
-  {
-    label: "Incoterms for Commodity Buyers",
-    href: "/buyer-resources#incoterms-explained",
-  },
-  {
-    label: "Bulk Procurement Roadmap",
-    href: "/buyer-resources#procurement-workflow",
-  },
-];
-
-export const footerServiceLinks = [
-  { label: "Buyer-Led Sourcing", href: "/sourcing-procurement#capabilities" },
-  { label: "Supplier Identification", href: "/sourcing-procurement#process" },
-  { label: "Quality Coordination", href: "/quality-assurance" },
-  { label: "Pre-Shipment Inspection", href: "/quality-assurance#inspection" },
-  {
-    label: "Export Documentation Support",
-    href: "/quality-assurance#documentation",
-  },
+  { label: "Buyer Resources & Guides", href: "/buyer-resources" },
+  { label: "Sourcing & Quality Approach", href: "/about-us#approach" },
+  { label: "Export Packaging Standards", href: "/buyer-resources#packaging-standards" },
+  { label: "Product Specifications Guide", href: "/buyer-resources#specifications-guide" },
 ];
 
 export const footerLegalLinks = [
