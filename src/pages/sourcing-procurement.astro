@@ -60,12 +60,18 @@ const pageDescription = 'Discover DHRIVAA’s structured four-stage agricultural
             
             <!-- Photographic Preview -->
             <div class="relative aspect-[4/3] overflow-hidden bg-slate-100">
-              <img
-                src={step.image}
-                alt={step.title}
-                class="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-108"
-                loading="lazy"
-              />
+              <picture class="w-full h-full block">
+                <source srcset={step.image.replace(/\.(jpg|jpeg|png)$/i, '.webp')} type="image/webp" />
+                <img
+                  src={step.image}
+                  alt={step.title}
+                  class="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-108"
+                  width="900"
+                  height="675"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
               <div class="absolute top-3 left-3 w-8 h-8 rounded-lg bg-navy-900 text-gold flex items-center justify-center font-heading font-bold text-xs shadow-md">
                 {step.step}
               </div>

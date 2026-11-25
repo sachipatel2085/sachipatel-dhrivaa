@@ -44,19 +44,27 @@ const {
   trustTags = [],
   minHeightClass = 'min-h-[54vh] lg:min-h-[60vh]'
 } = Astro.props;
+
+const webpBanner = bannerImage.replace(/\.(jpg|jpeg|png)$/i, '.webp');
 ---
 
 <section class={`relative ${minHeightClass} flex items-center bg-navy-950 overflow-hidden`} aria-label="Page Header">
   
   <!-- Right-Aligned Topic Banner Photography with Subtle Cinematic Scale Reveal -->
   <div class="absolute inset-0 z-0 overflow-hidden">
-    <img
-      src={bannerImage}
-      alt={bannerAlt}
-      class="w-full h-full object-cover object-right lg:object-[80%_center] filter brightness-[0.98] contrast-[1.04] hero-image-reveal"
-      loading="eager"
-      fetchpriority="high"
-    />
+    <picture class="w-full h-full block">
+      <source srcset={webpBanner} type="image/webp" />
+      <img
+        src={bannerImage}
+        alt={bannerAlt}
+        class="w-full h-full object-cover object-right lg:object-[80%_center] filter brightness-[0.98] contrast-[1.04] hero-image-reveal"
+        width="1600"
+        height="900"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </picture>
     
     <!-- Dark Gradient Overlay (Exact reference layout in Dark Theme):
          Solid deep navy on the left (0% to ~36%), smooth multi-stop gradient transition across center (36% to ~82%),

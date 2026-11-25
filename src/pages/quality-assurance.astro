@@ -160,12 +160,18 @@ const qualityStages = [
 
         <div class="reveal-slide-right delay-150 lg:col-span-6">
           <div class="group rounded-2xl overflow-hidden border border-slate-200 shadow-card hover:shadow-premium transition-all duration-500">
-            <img
-              src="/images/step-logistics.jpg"
-              alt="Containerized cargo loading and marine vessel logistics"
-              class="w-full aspect-[4/3] object-cover transform transition-transform duration-700 ease-out group-hover:scale-106"
-              loading="lazy"
-            />
+            <picture class="w-full aspect-[4/3] block">
+              <source srcset="/images/step-logistics.webp" type="image/webp" />
+              <img
+                src="/images/step-logistics.jpg"
+                alt="Containerized cargo loading and marine vessel logistics"
+                class="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-106"
+                width="900"
+                height="675"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </div>
         </div>
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import { Mail, CheckCircle2, AlertCircle } from 'lucide-react';
 import { productsData } from '../../data/products';
 
 interface FormState {
@@ -25,8 +25,8 @@ const initialFormState: FormState = {
 export default function ContactForm() {
   const [formData, setFormData] = useState<FormState>(initialFormState);
   const [touched, setTouched] = useState<Record<string, boolean>>({});
-  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [mailtoHref, setMailtoHref] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
@@ -55,7 +55,7 @@ export default function ContactForm() {
 
   const isEmailValid = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setTouched({
       fullName: true,
@@ -72,39 +72,31 @@ export default function ContactForm() {
     }
 
     setErrorMessage(null);
-    setSubmitting(true);
 
-    try {
-      // Third-party endpoint (e.g. Formspree / Web3Forms fallback)
-      const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || 'demo-inquiry-key';
-      
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json'
-        },
-        body: JSON.stringify({
-          access_key: accessKey,
-          subject: `New Sourcing Inquiry: ${formData.interestedProduct} - ${formData.companyName}`,
-          from_name: 'DHRIVAA Trade Portal',
-          ...formData
-        })
-      });
+    const subject = `Procurement Inquiry: ${formData.interestedProduct} - ${formData.companyName}`;
+    const bodyLines = [
+      'Hello DHRIVAA Procurement Team,',
+      '',
+      'Please find our agricultural commodity inquiry details below:',
+      '',
+      `Full Name: ${formData.fullName}`,
+      `Company Name: ${formData.companyName}`,
+      `Business Email: ${formData.email}`,
+      `Destination Country: ${formData.country}`,
+      `Product of Interest: ${formData.interestedProduct}`,
+      `Required Quantity: ${formData.requiredQuantity || 'Not specified'}`,
+      '',
+      'Specific Requirements & Target Parameters:',
+      formData.message || 'N/A'
+    ];
 
-      // Even if mock/demo key, provide seamless user feedback
-      if (response.ok || accessKey === 'demo-inquiry-key') {
-        setSubmitted(true);
-        setFormData(initialFormState);
-      } else {
-        throw new Error('Form submission failed. Please reach out to info@dhrivaa.com directly.');
-      }
-    } catch (err: any) {
-      // Graceful fallback: set submitted to true so buyer request is acknowledged, or prompt direct email
-      setSubmitted(true);
-    } finally {
-      setSubmitting(false);
-    }
+    const mailtoUrl = `mailto:info@dhrivaa.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+      bodyLines.join('\n')
+    )}`;
+
+    setMailtoHref(mailtoUrl);
+    setSubmitted(true);
+    window.location.href = mailtoUrl;
   };
 
   if (submitted) {
@@ -114,18 +106,25 @@ export default function ContactForm() {
           <CheckCircle2 className="w-8 h-8" />
         </div>
         <h3 className="font-heading font-extrabold text-2xl text-navy-900">
-          Inquiry Successfully Received
+          Inquiry Loaded in Your Email Client
         </h3>
         <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-          Thank you for sharing your procurement requirements. Our trade coordination team will review your specifications and contact your office promptly with sourcing options.
+          Your inquiry details have been prepared in your default mail application addressed to <strong className="text-navy-900">info@dhrivaa.com</strong>. Please review and click send in your email client.
         </p>
-        <div className="pt-2">
+        <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a
+            href={mailtoHref}
+            className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-gold hover:bg-gold-dark text-navy-950 text-xs font-heading font-bold uppercase tracking-wider transition-colors"
+          >
+            <Mail className="w-4 h-4" />
+            <span>Open Email Client Again</span>
+          </a>
           <button
             type="button"
             onClick={() => setSubmitted(false)}
             className="px-6 py-2.5 rounded-full bg-navy-900 hover:bg-navy-800 text-gold-light text-xs font-heading font-bold uppercase tracking-wider transition-colors"
           >
-            Submit Another Request
+            Edit Inquiry Details
           </button>
         </div>
       </div>
@@ -307,24 +306,14 @@ export default function ContactForm() {
       {/* Submit Button */}
       <button
         type="submit"
-        disabled={submitting}
-        className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-navy-900 hover:bg-navy-850 text-gold-light font-heading font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-md hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50"
+        className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-navy-900 hover:bg-navy-850 text-gold-light font-heading font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-md hover:-translate-y-0.5 active:translate-y-0"
       >
-        {submitting ? (
-          <>
-            <Loader2 className="w-4 h-4 animate-spin text-gold" />
-            <span>Transmitting Request...</span>
-          </>
-        ) : (
-          <>
-            <span>Send Procurement Enquiry</span>
-            <Send className="w-3.5 h-3.5 text-gold" />
-          </>
-        )}
+        <span>Open Inquiry in Email Client</span>
+        <Mail className="w-3.5 h-3.5 text-gold" />
       </button>
 
       <p className="text-[11px] text-slate-400 leading-normal">
-        Your trade information is kept confidential. By submitting, you agree to receive communications regarding your procurement mandate.
+        Clicking above will open your default email client with your inquiry details pre-filled for manual sending to info@dhrivaa.com.
       </p>
     </form>
   );

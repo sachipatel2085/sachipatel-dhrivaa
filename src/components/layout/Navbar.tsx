@@ -93,15 +93,18 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                 className="inline-flex items-center flex-shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-lg transition-transform duration-200 hover:scale-[1.02]"
                 aria-label="DHRIVAA – Global Trade Partner Home"
               >
-                <img
-                  src="/images/logo.png"
-                  alt="DHRIVAA – Global Trade Partner"
-                  className="h-8 sm:h-9 md:h-10 w-auto object-contain"
-                  width="984"
-                  height="305"
-                  loading="eager"
-                  decoding="async"
-                />
+                <picture>
+                  <source srcSet="/images/logo.webp" type="image/webp" />
+                  <img
+                    src="/images/logo.png"
+                    alt="DHRIVAA – Global Trade Partner"
+                    className="h-8 sm:h-9 md:h-10 w-auto object-contain"
+                    width="984"
+                    height="305"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </picture>
               </a>
 
               {/* Desktop Nav Links (Center) */}

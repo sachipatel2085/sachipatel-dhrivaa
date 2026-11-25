@@ -363,50 +363,8 @@ export default function TradeCorridorsMap() {
 
         </svg>
 
-        {/* Floating Active Corridor HUD Card (Light Glass Theme) */}
-        <div className="absolute bottom-2.5 left-2.5 sm:bottom-3 sm:left-3 z-20 max-w-[270px] sm:max-w-xs bg-white/95 backdrop-blur-md p-3 sm:p-3.5 rounded-xl border border-slate-200/90 shadow-xl text-slate-800 transition-all duration-300">
-          <div className="flex items-center justify-between gap-2 pb-1.5 border-b border-slate-100">
-            <div className="flex items-center gap-2">
-              <span 
-                className="w-2.5 h-2.5 rounded-full" 
-                style={{ backgroundColor: activeDest.color }}
-              ></span>
-              <span className="text-xs font-bold text-navy-900 uppercase tracking-wider font-heading">
-                {activeDest.country}
-              </span>
-            </div>
-            <span className="text-[9px] font-mono text-teal bg-teal/10 px-1.5 py-0.5 rounded border border-teal/20 font-semibold">
-              Active Lane
-            </span>
-          </div>
-
-          <div className="mt-1.5 space-y-1 text-xs">
-            <div className="flex items-start gap-1 text-slate-700">
-              <Anchor className="w-3.5 h-3.5 text-gold shrink-0 mt-0.5" />
-              <span className="leading-tight text-[11px]">
-                <strong className="text-navy-900">Ports:</strong> {activeDest.portName}
-              </span>
-            </div>
-
-            <div className="flex items-center gap-3 text-[10px] text-slate-600 pt-0.5">
-              <span className="flex items-center gap-1 font-medium">
-                <Clock className="w-3 h-3 text-teal" />
-                <span>{activeDest.transitDays}</span>
-              </span>
-              <span className="flex items-center gap-1 font-mono text-slate-500">
-                <Ship className="w-3 h-3 text-gold" />
-                <span>{activeDest.nauticalMiles}</span>
-              </span>
-            </div>
-
-            <div className="text-[10px] text-slate-500 line-clamp-1 pt-1 border-t border-slate-100">
-              <span className="text-slate-700 font-semibold">Cargo:</span> {activeDest.commodities}
-            </div>
-          </div>
-        </div>
-
         {/* Mini Corridor Cycle Indicator Dots at Bottom-Right of map */}
-        <div className="absolute bottom-3 right-3 z-20 flex items-center gap-1.5 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-md border border-slate-200 shadow-sm">
+        <div className="absolute bottom-2.5 right-2.5 z-20 flex items-center gap-1.5 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-md border border-slate-200 shadow-sm">
           {TARGET_DESTINATIONS.map((d, idx) => (
             <button
               key={d.id}
@@ -418,10 +376,53 @@ export default function TradeCorridorsMap() {
                   : 'w-1.5 h-1.5 bg-slate-300 hover:bg-slate-400'
               }`}
               title={`Switch to ${d.country}`}
+              aria-label={`Switch to ${d.country}`}
             />
           ))}
         </div>
 
+      </div>
+
+      {/* Responsive Active Corridor Details Card (Docked cleanly below map so it never hides routes) */}
+      <div className="bg-white p-3.5 sm:p-4 rounded-xl border border-slate-200/90 shadow-sm text-slate-800 transition-all duration-300">
+        <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-slate-100">
+          <div className="flex items-center gap-2">
+            <span
+              className="w-2.5 h-2.5 rounded-full shrink-0"
+              style={{ backgroundColor: activeDest.color }}
+            ></span>
+            <span className="text-xs font-bold text-navy-900 uppercase tracking-wider font-heading">
+              {activeDest.country}
+            </span>
+            <span className="text-[9px] font-mono text-teal bg-teal/10 px-1.5 py-0.5 rounded border border-teal/20 font-semibold">
+              Active Lane
+            </span>
+          </div>
+
+          <div className="flex items-center gap-3 text-[11px] text-slate-600">
+            <span className="flex items-center gap-1 font-medium">
+              <Clock className="w-3.5 h-3.5 text-teal shrink-0" />
+              <span>{activeDest.transitDays}</span>
+            </span>
+            <span className="flex items-center gap-1 font-mono text-slate-500">
+              <Ship className="w-3.5 h-3.5 text-gold shrink-0" />
+              <span>{activeDest.nauticalMiles}</span>
+            </span>
+          </div>
+        </div>
+
+        <div className="mt-2.5 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+          <div className="flex items-start gap-1.5 text-slate-700">
+            <Anchor className="w-3.5 h-3.5 text-gold shrink-0 mt-0.5" />
+            <span className="leading-snug text-[11px]">
+              <strong className="text-navy-900">Ports:</strong> {activeDest.portName}
+            </span>
+          </div>
+
+          <div className="text-[11px] text-slate-600 leading-snug">
+            <strong className="text-navy-900">Cargo:</strong> {activeDest.commodities}
+          </div>
+        </div>
       </div>
 
       <div className="flex items-center justify-between text-[11px] text-slate-500 px-1">

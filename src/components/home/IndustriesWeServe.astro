@@ -169,15 +169,18 @@ const industries = [
                 data-slide-index={idx}
               >
                 <!-- Industry Photo with Smooth Hover Zoom -->
-                <img
-                  src={ind.image}
-                  alt={ind.imageAlt}
-                  width="768"
-                  height="1024"
-                  loading="lazy"
-                  decoding="async"
-                  class="industry-photo absolute inset-0 w-full h-full object-cover object-center"
-                />
+                <picture class="contents">
+                  <source srcset={ind.image.replace(/\.(jpg|jpeg|png)$/i, '.webp')} type="image/webp" />
+                  <img
+                    src={ind.image}
+                    alt={ind.imageAlt}
+                    width="768"
+                    height="1024"
+                    loading="lazy"
+                    decoding="async"
+                    class="industry-photo absolute inset-0 w-full h-full object-cover object-center"
+                  />
+                </picture>
 
                 <!-- Resting Bottom Gradient Scrim -->
                 <div
