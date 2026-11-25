@@ -1,74 +1,113 @@
 ---
-import { ArrowRight, Wheat, Sprout, Factory, Droplets, FlaskConical, ShieldCheck } from 'lucide-react';
+import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  Pause,
+  Play,
+  Wheat,
+  Sprout,
+  Droplets,
+  Factory,
+  FlaskConical,
+  ShieldCheck
+} from 'lucide-react';
 
 const industries = [
   {
     icon: Wheat,
     title: 'Animal Nutrition & Feed Mills',
-    focus: 'Commercial Livestock, Dairy & Poultry Compounds',
-    description: 'Supplying solvent-extracted rapeseed meal with balanced crude protein and bypass amino acids for livestock, dairy cattle, and commercial poultry feed manufacturers across the Gulf.',
+    focus: 'Livestock, Dairy & Poultry Feed',
+    description:
+      'Supplying solvent-extracted rapeseed meal with balanced crude protein and amino acids for commercial livestock, dairy cattle, and poultry feed manufacturers.',
     matchedProduct: 'Rapeseed Meal',
-    matchedLink: '/products/rapeseed-meal'
+    matchedLink: '/products/rapeseed-meal',
+    image: '/images/industry-feed-mills.jpg',
+    imageAlt: 'Commercial dairy cattle barn with golden-brown processed rapeseed meal feed in a stainless-steel hopper'
   },
   {
     icon: Sprout,
     title: 'Organic Farming & Palm Plantations',
-    focus: 'Soil Conditioning & Organic NPK Enrichment',
-    description: 'Sourcing organic castorseed meal (castor cake) to restore arid soil structure, retain irrigation water, and deter soil nematodes in Gulf date palm groves and agricultural projects.',
+    focus: 'Soil Conditioning & Organic NPK',
+    description:
+      'Sourcing organic castorseed meal to enrich arid soil structure, improve moisture retention, and naturally deter nematodes across date palm groves and orchards.',
     matchedProduct: 'Castorseed Meal',
-    matchedLink: '/products/castorseed-meal'
+    matchedLink: '/products/castorseed-meal',
+    image: '/images/industry-palm-farming.jpg',
+    imageAlt: 'Date palm plantation oasis in golden sunlight with dark nutrient-rich organic soil basins'
   },
   {
     icon: Droplets,
     title: 'High-Performance Lubricants & Greases',
-    focus: 'Specialty Tribology & Aviation Fluids',
-    description: 'Procuring high-viscosity-index industrial castor oil for blending thermal-stable heavy machinery greases, hydraulic fluids, and performance synthetic lubricant formulations.',
+    focus: 'Specialty Tribology & Fluids',
+    description:
+      'Procuring high-viscosity-index industrial castor oil for thermal-stable machinery greases, hydraulic fluids, and high-performance synthetic lubricants.',
     matchedProduct: 'Castor Oil',
-    matchedLink: '/products/castor-oil'
+    matchedLink: '/products/castor-oil',
+    image: '/images/industry-lubricants.jpg',
+    imageAlt: 'Golden-amber botanical castor oil lubricating precision stainless-steel helical gears and bearings'
   },
   {
     icon: Factory,
     title: 'Polyurethane Resins, Coatings & Foams',
     focus: 'Bio-Based Polymer Synthesis',
-    description: 'Delivering First Special Grade (FSG) castor oil with natural hydroxyl functionality for direct synthesis into rigid polyurethane foams, industrial adhesives, and architectural coatings.',
+    description:
+      'Delivering First Special Grade (FSG) castor oil with natural hydroxyl functionality for rigid polyurethane foams, industrial adhesives, and protective coatings.',
     matchedProduct: 'Castor Oil (FSG)',
-    matchedLink: '/products/castor-oil'
+    matchedLink: '/products/castor-oil',
+    image: '/images/industry-polyurethane.jpg',
+    imageAlt: 'Clear pale golden bio-resin pouring onto an industrial coating test panel in a materials laboratory'
   },
   {
     icon: FlaskConical,
     title: 'Specialty Oleochemicals & Intermediates',
-    focus: 'Sebacic Acid, Esters & Plasticizers',
-    description: 'Coordinating high-purity industrial vegetable oil feedstocks for synthesizing sebacic acid, nylon-11 engineering polymers, and specialty non-toxic plasticizers.',
+    focus: 'Sebacic Acid & Bio-Plasticizers',
+    description:
+      'Coordinating high-purity industrial vegetable oil feedstocks for synthesizing sebacic acid, nylon-11 engineering polymers, and specialty plasticizers.',
     matchedProduct: 'Castor Oil',
-    matchedLink: '/products/castor-oil'
+    matchedLink: '/products/castor-oil',
+    image: '/images/industry-oleochemicals.jpg',
+    imageAlt: 'Glass distillation equipment containing golden vegetable oil intermediates in an oleochemical laboratory'
   },
   {
     icon: ShieldCheck,
     title: 'Commercial Fertilizer Blending & Turf',
-    focus: 'Customized NPK Granulation & Sports Turf',
-    description: 'Supplying bulk nitrogenous plant meal for commercial compost enrichment, high-end golf course turf maintenance, and specialized horticultural soil mixes.',
+    focus: 'NPK Granulation & Sports Turf',
+    description:
+      'Supplying bulk nitrogenous plant meal for commercial compost enrichment, golf course fairway maintenance, and specialized horticultural soil blends.',
     matchedProduct: 'Castorseed Meal',
-    matchedLink: '/products/castorseed-meal'
+    matchedLink: '/products/castorseed-meal',
+    image: '/images/industry-fertilizer-turf.jpg',
+    imageAlt: 'Dark granular organic fertilizer nestled in lush emerald-green golf course turf under morning sunlight'
   }
 ];
 ---
 
-<section class="py-20 lg:py-28 bg-white border-t border-b border-slate-200 relative overflow-hidden" aria-labelledby="industries-heading">
+<section
+  class="py-20 lg:py-28 bg-white border-t border-b border-slate-200 relative overflow-hidden"
+  aria-labelledby="industries-heading"
+>
   <!-- Subtle background ambient grid -->
-  <div class="absolute inset-0 bg-[radial-gradient(#CBD5E1_1px,transparent_1px)] [background-size:24px_24px] opacity-20 pointer-events-none"></div>
+  <div
+    class="absolute inset-0 bg-[radial-gradient(#CBD5E1_1px,transparent_1px)] [background-size:24px_24px] opacity-20 pointer-events-none"
+    aria-hidden="true"
+  ></div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <!-- Header -->
-    <div class="reveal-on-scroll flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+    <!-- Section Header -->
+    <div class="reveal-on-scroll flex flex-col md:flex-row md:items-end justify-between mb-10 lg:mb-12 gap-6">
       <div class="max-w-2xl space-y-3">
         <span class="text-xs font-bold uppercase tracking-wider text-teal font-heading">
           Target Sectors
         </span>
-        <h2 id="industries-heading" class="font-heading font-extrabold text-3xl sm:text-4xl text-navy-900 tracking-tight leading-tight">
+        <h2
+          id="industries-heading"
+          class="font-heading font-extrabold text-3xl sm:text-4xl text-navy-900 tracking-tight leading-tight"
+        >
           Industries We Serve
         </h2>
         <p class="text-base text-slate-600 leading-relaxed">
-          From Middle Eastern commercial feed mills and date palm growers to international grease and chemical manufacturers, we source commodities matching your industry specifications.
+          From commercial feed mills and date palm growers to international grease and chemical manufacturers, we source commodities tailored to sector specifications.
         </p>
       </div>
 
@@ -83,55 +122,181 @@ const industries = [
       </div>
     </div>
 
-    <!-- Industries Grid with Staggered Scroll Reveals -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-      {industries.map((ind, idx) => {
-        const Icon = ind.icon;
-        return (
-          <div class={`reveal-on-scroll delay-${(idx + 1) * 75} group relative bg-surface-light hover:bg-white p-7 sm:p-8 rounded-2xl border border-slate-200/90 hover:border-gold/50 shadow-subtle hover:shadow-premium hover-lift glow-card transition-all duration-300 flex flex-col justify-between`}>
-            <div class="space-y-4">
-              <!-- Top Row: Icon + Index -->
-              <div class="flex items-center justify-between">
-                <div class="icon-box-interactive w-12 h-12 rounded-xl bg-navy-900 text-gold flex items-center justify-center group-hover:bg-gold group-hover:text-navy-950 transition-colors shadow-sm">
-                  <Icon className="w-6 h-6" />
-                </div>
-                <span class="font-mono text-xs text-slate-400 group-hover:text-teal font-bold transition-colors">
-                  0{idx + 1}
-                </span>
-              </div>
+    <!-- Animated Industry Carousel Region -->
+    <div
+      class="industries-carousel relative"
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Industries we serve"
+      data-industries-carousel
+    >
+      <!-- Carousel Controls Toolbar (DOM-ordered before track) -->
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+        <div class="flex items-center gap-3">
+          <button
+            type="button"
+            class="autoplay-toggle inline-flex items-center gap-2 min-h-[40px] px-4 py-2 rounded-full bg-surface-light hover:bg-slate-100 border border-slate-200 text-navy-900 font-heading font-semibold text-xs tracking-wide transition-all duration-200 shadow-2xs"
+            data-autoplay-toggle
+            aria-label="Pause auto-slide"
+          >
+            <span class="autoplay-icon-pause inline-flex items-center gap-1.5">
+              <Pause className="w-3.5 h-3.5 text-teal" />
+              <span>Pause</span>
+            </span>
+            <span class="autoplay-icon-play hidden items-center gap-1.5">
+              <Play className="w-3.5 h-3.5 text-gold-dark" />
+              <span>Play</span>
+            </span>
+          </button>
 
-              <!-- Titles -->
-              <div>
-                <span class="text-[11px] font-bold uppercase tracking-wider text-teal block mb-1">
-                  {ind.focus}
-                </span>
-                <h3 class="font-heading font-bold text-lg sm:text-xl text-navy-900 group-hover:text-teal transition-colors">
-                  {ind.title}
-                </h3>
-              </div>
+          <span class="hidden sm:inline-flex items-center gap-2 text-xs text-slate-500">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" aria-hidden="true"></span>
+            <span>Hover or focus any card for details</span>
+          </span>
+        </div>
 
-              <!-- Body Description -->
-              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                {ind.description}
-              </p>
-            </div>
+        <!-- Prev / Next Navigation Buttons -->
+        <div class="industries-controls flex items-center gap-2.5">
+          <button
+            type="button"
+            data-direction="previous"
+            aria-label="Previous industry"
+            class="carousel-nav-btn w-11 h-11 rounded-full bg-white hover:bg-navy-900 text-navy-900 hover:text-gold border border-slate-200 hover:border-navy-900 shadow-sm flex items-center justify-center transition-all duration-200"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            type="button"
+            data-direction="next"
+            aria-label="Next industry"
+            class="carousel-nav-btn w-11 h-11 rounded-full bg-white hover:bg-navy-900 text-navy-900 hover:text-gold border border-slate-200 hover:border-navy-900 shadow-sm flex items-center justify-center transition-all duration-200"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
 
-            <!-- Matched Commodity Link -->
-            <div class="pt-5 mt-6 border-t border-slate-200/80 flex items-center justify-between">
-              <span class="text-xs text-slate-500 font-medium">
-                Sourced Commodity:
-              </span>
-              <a
-                href={ind.matchedLink}
-                class="inline-flex items-center gap-1.5 text-xs font-heading font-bold text-navy-900 hover:text-teal transition-colors group/link"
+      <!-- Scrollable Track Stage -->
+      <div class="relative">
+        <div
+          class="industries-track"
+          tabindex="0"
+          role="group"
+          aria-label="Industry slides"
+          data-carousel-track
+        >
+          {industries.map((ind, idx) => {
+            const Icon = ind.icon;
+            return (
+              <article
+                class="industry-slide group relative rounded-2xl overflow-hidden border border-slate-200/80 shadow-card bg-navy-950 select-none"
+                role="group"
+                aria-roledescription="slide"
+                aria-label={`${idx + 1} of ${industries.length}`}
+                data-marker-name={ind.title}
+                data-slide-index={idx}
               >
-                <span>{ind.matchedProduct}</span>
-                <ArrowRight className="w-3 h-3 text-gold group-hover/link:translate-x-1 transition-transform" />
-              </a>
-            </div>
+                <!-- Industry Photo with Smooth Hover Zoom -->
+                <img
+                  src={ind.image}
+                  alt={ind.imageAlt}
+                  width="768"
+                  height="1024"
+                  loading="lazy"
+                  decoding="async"
+                  class="industry-photo absolute inset-0 w-full h-full object-cover object-center"
+                />
+
+                <!-- Resting Bottom Gradient Scrim -->
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-navy-950/95 via-navy-950/45 to-navy-950/15 pointer-events-none"
+                  aria-hidden="true"
+                ></div>
+
+                <!-- Hover / Focus-Within Deepening Glass Backdrop -->
+                <div
+                  class="industry-hover-scrim absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/88 to-navy-950/40 backdrop-blur-[2px] pointer-events-none"
+                  aria-hidden="true"
+                ></div>
+
+                <!-- Top Row: Icon Badge + Commodity Pill -->
+                <div class="relative z-10 p-5 sm:p-6 flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-2.5">
+                    <div class="industry-icon w-10 h-10 rounded-xl bg-navy-950/75 backdrop-blur-md border border-white/15 text-gold flex items-center justify-center shadow-sm">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <span class="font-mono text-xs font-bold text-white/85 bg-navy-950/55 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/10">
+                      0{idx + 1}
+                    </span>
+                  </div>
+
+                  <span class="px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-[11px] font-heading font-semibold text-white tracking-wide">
+                    {ind.matchedProduct}
+                  </span>
+                </div>
+
+                <!-- Bottom Content Stack -->
+                <div class="relative z-10 flex-1 p-5 sm:p-6 flex flex-col justify-end">
+                  <div class="space-y-2">
+                    <span class="text-[11px] font-bold uppercase tracking-widest text-gold-light block">
+                      {ind.focus}
+                    </span>
+                    <h3 class="font-heading font-bold text-xl sm:text-2xl text-white leading-snug">
+                      {ind.title}
+                    </h3>
+                  </div>
+
+                  <!-- Smooth Animated Hover/Focus Text Description Drawer -->
+                  <div class="industry-desc-wrap">
+                    <div class="overflow-hidden">
+                      <div class="industry-desc-inner pt-3 space-y-4">
+                        <p class="text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">
+                          {ind.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Accent Divider + Commodity Link -->
+                  <div class="pt-4 mt-4 border-t border-white/15 relative flex items-center justify-between gap-2">
+                    <span class="industry-accent-bar" aria-hidden="true"></span>
+                    <span class="text-[11px] text-slate-300 font-medium">
+                      Sourced Commodity
+                    </span>
+                    <a
+                      href={ind.matchedLink}
+                      class="inline-flex items-center gap-1.5 text-xs font-heading font-bold text-gold-light hover:text-white transition-colors group/link"
+                    >
+                      <span>Explore {ind.matchedProduct}</span>
+                      <ArrowRight className="w-3.5 h-3.5 text-gold group-hover/link:translate-x-1 transition-transform duration-200" />
+                    </a>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+
+      <!-- Accessible Polite Live Region -->
+      <p class="visually-hidden" role="status" aria-live="polite" data-carousel-status></p>
+
+      <!-- Markers + Auto-Slide Progress Strip -->
+      <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <nav
+          class="industries-markers flex items-center justify-center gap-1.5"
+          aria-label="Choose an industry slide"
+          data-carousel-markers
+        ></nav>
+
+        <!-- Auto-Slide Rhythm Progress Bar -->
+        <div class="hidden sm:flex items-center gap-3 text-xs text-slate-400">
+          <span class="font-mono text-[11px]" data-slide-counter>01 / 0{industries.length}</span>
+          <div class="w-28 h-1 rounded-full bg-slate-200 overflow-hidden" aria-hidden="true">
+            <div class="autoplay-progress-bar h-full bg-gradient-to-r from-teal to-gold origin-left" data-autoplay-progress></div>
           </div>
-        );
-      })}
+        </div>
+      </div>
     </div>
 
     <!-- Bottom Reassurance Banner -->
@@ -157,6 +322,728 @@ const industries = [
         <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
       </a>
     </div>
-
   </div>
 </section>
+
+<style>
+  .visually-hidden:where(:not(:focus-within, :active)) {
+    position: absolute !important;
+    clip-path: inset(50%) !important;
+    overflow: hidden !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  /* Scrollable Track */
+  .industries-track {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    touch-action: manipulation;
+    padding-block: 0.75rem;
+    padding-inline: 0.25rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .industries-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .industries-track {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Responsive Slide Sizing (Peek on mobile/tablet, 3-up centered showcase on desktop) */
+  .industry-slide {
+    flex: 0 0 84%;
+    height: 430px;
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (min-width: 640px) {
+    .industry-slide {
+      flex: 0 0 54%;
+      height: 450px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .industries-track {
+      gap: 1.5rem;
+    }
+    .industry-slide {
+      flex: 0 0 calc((100% - 3rem) / 3);
+      height: 460px;
+    }
+  }
+
+  /* Endless Looping Slide Parking via CSS order (never set a default --current in CSS) */
+  .industries-track > :first-child {
+    order: clamp(0, var(--current) - (var(--children-count, sibling-count()) - 3), 1);
+  }
+
+  .industries-track > :last-child {
+    order: calc(-1 * clamp(0, 2 - var(--current), 1));
+  }
+
+  /* Scroll-Driven Slide Effects (Progressive Enhancement) */
+  @keyframes industrySlideDepth {
+    0% {
+      transform: scale(0.93);
+      opacity: 0.72;
+    }
+    50% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0.93);
+      opacity: 0.72;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    @supports ((animation-timeline: view()) and (animation-range: entry)) {
+      .industries-track > .industry-slide {
+        animation: industrySlideDepth auto linear both;
+        animation-timeline: view(inline);
+      }
+    }
+  }
+
+  /* Active Centered Slide Highlight */
+  .industry-slide[data-active='true'] {
+    border-color: rgba(200, 164, 93, 0.55);
+    box-shadow: 0 22px 42px -12px rgba(9, 28, 48, 0.28);
+  }
+
+  /* Photo & Scrim Transitions */
+  .industry-photo {
+    transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+
+  .industry-hover-scrim {
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .industry-icon {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Smooth Hover / Focus Description Reveal */
+  .industry-desc-wrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .industry-desc-inner {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 0.35s ease-out,
+      transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .industry-accent-bar {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #C8A45D, #398D89);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Reveal on Pointer Hover or Keyboard Focus */
+  .industry-slide:hover .industry-hover-scrim,
+  .industry-slide:focus-within .industry-hover-scrim {
+    opacity: 1;
+  }
+
+  .industry-slide:hover .industry-desc-wrap,
+  .industry-slide:focus-within .industry-desc-wrap {
+    grid-template-rows: 1fr;
+  }
+
+  .industry-slide:hover .industry-desc-inner,
+  .industry-slide:focus-within .industry-desc-inner {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .industry-slide:hover .industry-accent-bar,
+  .industry-slide:focus-within .industry-accent-bar {
+    transform: scaleX(1);
+  }
+
+  .industry-slide:hover .industry-icon,
+  .industry-slide:focus-within .industry-icon {
+    background-color: #C8A45D;
+    color: #091C30;
+    transform: scale(1.06) rotate(3deg);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .industry-slide:hover .industry-photo,
+    .industry-slide:focus-within .industry-photo {
+      transform: scale(1.08);
+    }
+  }
+
+  /* Touch Devices (no hover capability): show descriptions cleanly by default */
+  @media (hover: none) {
+    .industry-hover-scrim {
+      opacity: 0.85;
+    }
+    .industry-desc-wrap {
+      grid-template-rows: 1fr;
+    }
+    .industry-desc-inner {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .industry-accent-bar {
+      transform: scaleX(1);
+    }
+  }
+
+  /* Reduced Motion Safety */
+  @media (prefers-reduced-motion: reduce) {
+    .industry-photo,
+    .industry-icon,
+    .industry-desc-inner,
+    .industry-accent-bar {
+      transition: opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    }
+    .industry-slide:hover .industry-photo,
+    .industry-slide:focus-within .industry-photo {
+      transform: none;
+    }
+  }
+
+  /* Natural Interaction Press & Focus Styles */
+  .carousel-nav-btn,
+  .autoplay-toggle {
+    touch-action: manipulation;
+  }
+
+  .carousel-nav-btn:active,
+  .autoplay-toggle:active {
+    transform: scale(0.96);
+  }
+
+  .industries-carousel :is(button, a, [tabindex]):focus-visible {
+    outline: 2px solid #C8A45D;
+    outline-offset: 3px;
+  }
+
+  /* Carousel Marker Buttons (>= 28x28px hit target via padding + background-clip) */
+  :global(.industry-marker-btn) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    min-height: 28px;
+    padding: 9px 4px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: transform 0.2s ease;
+  }
+
+  :global(.industry-marker-btn:active) {
+    transform: scale(0.92);
+  }
+
+  :global(.industry-marker-pill) {
+    display: block;
+    height: 8px;
+    width: 10px;
+    border-radius: 9999px;
+    background-color: #CBD5E1;
+    transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  :global(.industry-marker-btn:hover .industry-marker-pill) {
+    background-color: #64748B;
+  }
+
+  :global(.industry-marker-btn[aria-current='true'] .industry-marker-pill) {
+    width: 32px;
+    background-color: #C8A45D;
+    box-shadow: 0 0 0 2px rgba(16, 43, 70, 0.2);
+  }
+
+  /* Autoplay Progress Keyframe */
+  @keyframes autoplayFill {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  .autoplay-progress-bar {
+    transform: scaleX(0);
+  }
+
+  .autoplay-progress-bar.is-running {
+    animation: autoplayFill 4500ms linear forwards;
+  }
+
+  .autoplay-progress-bar.is-paused {
+    animation-play-state: paused;
+  }
+</style>
+
+<script>
+  function initIndustriesCarousel() {
+    const carousels = document.querySelectorAll<HTMLElement>('[data-industries-carousel]');
+
+    carousels.forEach((root) => {
+      if (root.dataset.initialized === 'true') return;
+      root.dataset.initialized = 'true';
+
+      const track = root.querySelector<HTMLElement>('[data-carousel-track]');
+      const prevBtn = root.querySelector<HTMLButtonElement>('[data-direction="previous"]');
+      const nextBtn = root.querySelector<HTMLButtonElement>('[data-direction="next"]');
+      const markersNav = root.querySelector<HTMLElement>('[data-carousel-markers]');
+      const statusEl = root.querySelector<HTMLElement>('[data-carousel-status]');
+      const counterEl = root.querySelector<HTMLElement>('[data-slide-counter]');
+      const autoplayBtn = root.querySelector<HTMLButtonElement>('[data-autoplay-toggle]');
+      const pauseIcon = autoplayBtn?.querySelector<HTMLElement>('.autoplay-icon-pause');
+      const playIcon = autoplayBtn?.querySelector<HTMLElement>('.autoplay-icon-play');
+      const progressBar = root.querySelector<HTMLElement>('[data-autoplay-progress]');
+
+      if (!track || !markersNav) return;
+
+      const slides = Array.from(track.children) as HTMLElement[];
+      const count = slides.length;
+      if (count === 0) return;
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      // Fallback for browsers without CSS sibling-count()
+      if (!CSS.supports('order: sibling-count()')) {
+        track.style.setProperty('--children-count', String(count));
+      }
+
+      // Build accessible marker buttons from slide data-marker-name
+      markersNav.innerHTML = '';
+      const markerButtons: HTMLButtonElement[] = slides.map((slide, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'industry-marker-btn';
+        btn.setAttribute('aria-label', slide.dataset.markerName || `Go to slide ${idx + 1}`);
+        const pill = document.createElement('span');
+        pill.className = 'industry-marker-pill';
+        pill.setAttribute('aria-hidden', 'true');
+        btn.appendChild(pill);
+        btn.addEventListener('click', () => handleMarkerClick(idx));
+        markersNav.appendChild(btn);
+        return btn;
+      });
+
+      let currentDomIndex = 0;
+      let settledDomIndex = 0;
+      let pendingTargetDomIndex: number | null = null;
+      let pendingScrollStartLeft: number | null = null;
+      let heldDirection: 'previous' | 'next' | null = null;
+      let userInteractedForStatus = false;
+
+      // Autoplay state
+      const AUTO_INTERVAL_MS = 4500;
+      let userPaused = prefersReducedMotion.matches;
+      let tempPaused = false;
+      let autoTimer: number | null = null;
+
+      // Measure visual center distance from track center
+      const getSlideCenterOffset = (slide: HTMLElement): number => {
+        return slide.offsetLeft + slide.offsetWidth / 2 - (track.scrollLeft + track.clientWidth / 2);
+      };
+
+      const getVisualOrderSlides = (): HTMLElement[] => {
+        return [...slides].sort((a, b) => a.offsetLeft - b.offsetLeft);
+      };
+
+      const getNearestDomIndex = (): number => {
+        let bestIdx = 0;
+        let bestDist = Infinity;
+        slides.forEach((slide, idx) => {
+          const dist = Math.abs(getSlideCenterOffset(slide));
+          if (dist < bestDist) {
+            bestDist = dist;
+            bestIdx = idx;
+          }
+        });
+        return bestIdx;
+      };
+
+      const syncMarkerUI = (domIdx: number) => {
+        markerButtons.forEach((btn, i) => {
+          if (i === domIdx) {
+            btn.setAttribute('aria-current', 'true');
+          } else {
+            btn.removeAttribute('aria-current');
+          }
+        });
+        slides.forEach((slide, i) => {
+          slide.dataset.active = i === domIdx ? 'true' : 'false';
+        });
+        if (counterEl) {
+          counterEl.textContent = `0${domIdx + 1} / 0${count}`;
+        }
+      };
+
+      const updateParking = (targetDomIdx: number, allowOverflowLock: boolean) => {
+        const currentVar = track.style.getPropertyValue('--current');
+        const nextVar = String(targetDomIdx);
+        if (currentVar === nextVar) return;
+
+        const anchorSlide = slides[targetDomIdx];
+        const beforeLeft = anchorSlide.offsetLeft;
+
+        const prevSnap = track.style.scrollSnapType;
+        track.style.scrollSnapType = 'none';
+        if (allowOverflowLock) {
+          track.style.overflowX = 'hidden';
+        }
+
+        track.style.setProperty('--current', nextVar);
+        const afterLeft = anchorSlide.offsetLeft;
+        const delta = afterLeft - beforeLeft;
+        if (delta !== 0) {
+          const prevBehavior = track.style.scrollBehavior;
+          track.style.scrollBehavior = 'auto';
+          track.scrollLeft += delta;
+          track.style.scrollBehavior = prevBehavior;
+        }
+
+        track.style.scrollSnapType = prevSnap;
+        if (allowOverflowLock) {
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              track.style.overflowX = '';
+            });
+          });
+        }
+      };
+
+      const scrollToSlide = (targetDomIdx: number) => {
+        const slide = slides[targetDomIdx];
+        const offset = getSlideCenterOffset(slide);
+        pendingTargetDomIndex = targetDomIdx;
+        pendingScrollStartLeft = track.scrollLeft;
+        currentDomIndex = targetDomIdx;
+        syncMarkerUI(targetDomIdx);
+
+        const behavior: ScrollBehavior = prefersReducedMotion.matches ? 'auto' : 'smooth';
+        track.scrollBy({ left: offset, behavior });
+
+        if (behavior === 'auto') {
+          requestAnimationFrame(() => onScrollSettled());
+        }
+      };
+
+      const handlePrevNext = (dir: 'previous' | 'next', fromUser = true) => {
+        if (fromUser) userInteractedForStatus = true;
+
+        // If markers reset --current to DOM order mid-trip, queue directional step
+        if (pendingTargetDomIndex !== null && !track.style.getPropertyValue('--current') && count >= 3) {
+          heldDirection = dir;
+          return;
+        }
+
+        const baseIdx = pendingTargetDomIndex !== null ? pendingTargetDomIndex : getNearestDomIndex();
+        const visualSlides = getVisualOrderSlides();
+        const visualPos = visualSlides.indexOf(slides[baseIdx]);
+        const targetVisualPos =
+          dir === 'next'
+            ? (visualPos + 1) % visualSlides.length
+            : (visualPos - 1 + visualSlides.length) % visualSlides.length;
+
+        const targetDomIdx = slides.indexOf(visualSlides[targetVisualPos]);
+        scrollToSlide(targetDomIdx);
+      };
+
+      function handleMarkerClick(targetDomIdx: number) {
+        userInteractedForStatus = true;
+        if (targetDomIdx === currentDomIndex && pendingTargetDomIndex === null) return;
+
+        // Release parking to DOM order without overflow lock so Safari starts the scroll cleanly
+        if (track!.style.getPropertyValue('--current')) {
+          const currentSlide = slides[getNearestDomIndex()];
+          const beforeLeft = currentSlide.offsetLeft;
+          const prevSnap = track!.style.scrollSnapType;
+          track!.style.scrollSnapType = 'none';
+          track!.style.removeProperty('--current');
+          const afterLeft = currentSlide.offsetLeft;
+          const delta = afterLeft - beforeLeft;
+          if (delta !== 0) {
+            const prevBehavior = track!.style.scrollBehavior;
+            track!.style.scrollBehavior = 'auto';
+            track!.scrollLeft += delta;
+            track!.style.scrollBehavior = prevBehavior;
+          }
+          track!.style.scrollSnapType = prevSnap;
+        }
+
+        scrollToSlide(targetDomIdx);
+      }
+
+      const onScrollSettled = () => {
+        // Ignore stale settle right at the old scrollLeft before a requested scroll moved
+        if (
+          pendingTargetDomIndex !== null &&
+          pendingScrollStartLeft !== null &&
+          Math.abs(track.scrollLeft - pendingScrollStartLeft) < 2
+        ) {
+          const targetOffset = Math.abs(getSlideCenterOffset(slides[pendingTargetDomIndex]));
+          if (targetOffset > 8) return;
+        }
+
+        const nearestIdx = getNearestDomIndex();
+        // If another scroll is in flight toward a different target, do not disturb it
+        if (pendingTargetDomIndex !== null && nearestIdx !== pendingTargetDomIndex) {
+          return;
+        }
+
+        pendingTargetDomIndex = null;
+        pendingScrollStartLeft = null;
+        currentDomIndex = nearestIdx;
+        syncMarkerUI(nearestIdx);
+
+        if (count >= 3) {
+          updateParking(nearestIdx, heldDirection === null);
+        }
+
+        if (nearestIdx !== settledDomIndex) {
+          settledDomIndex = nearestIdx;
+          if (userInteractedForStatus && statusEl) {
+            const title = slides[nearestIdx].dataset.markerName || '';
+            statusEl.textContent = `Slide ${nearestIdx + 1} of ${count}: ${title}`;
+          }
+          userInteractedForStatus = false;
+        }
+
+        if (heldDirection) {
+          const dir = heldDirection;
+          heldDirection = null;
+          handlePrevNext(dir, true);
+        }
+
+        restartProgressVisual();
+      };
+
+      // Initial silent layout & parking sync (start explicitly at Slide 0)
+      requestAnimationFrame(() => {
+        const startIdx = 0;
+        currentDomIndex = startIdx;
+        settledDomIndex = startIdx;
+        syncMarkerUI(startIdx);
+        if (count >= 3) {
+          updateParking(startIdx, false);
+        }
+        const centerDelta = getSlideCenterOffset(slides[startIdx]);
+        if (Math.abs(centerDelta) > 1) {
+          const prevBehavior = track.style.scrollBehavior;
+          track.style.scrollBehavior = 'auto';
+          track.scrollLeft += centerDelta;
+          track.style.scrollBehavior = prevBehavior;
+        }
+        updateAutoplayUI();
+      });
+
+      // Throttled live marker sync on native scroll
+      let rafId: number | null = null;
+      let fallbackSettleTimer: number | null = null;
+      const supportsScrollEnd = 'onscrollend' in window;
+
+      track.addEventListener(
+        'scroll',
+        () => {
+          if (pendingTargetDomIndex === null) {
+            if (rafId === null) {
+              rafId = requestAnimationFrame(() => {
+                rafId = null;
+                const nearest = getNearestDomIndex();
+                if (nearest !== currentDomIndex) {
+                  currentDomIndex = nearest;
+                  syncMarkerUI(nearest);
+                }
+              });
+            }
+          }
+
+          if (!supportsScrollEnd) {
+            if (fallbackSettleTimer !== null) window.clearTimeout(fallbackSettleTimer);
+            fallbackSettleTimer = window.setTimeout(() => {
+              onScrollSettled();
+            }, 130);
+          }
+        },
+        { passive: true }
+      );
+
+      if (supportsScrollEnd) {
+        track.addEventListener('scrollend', () => onScrollSettled(), { passive: true });
+      }
+
+      // Wire Prev / Next buttons
+      prevBtn?.addEventListener('click', () => handlePrevNext('previous', true));
+      nextBtn?.addEventListener('click', () => handlePrevNext('next', true));
+
+      // Scroll-Driven Slide Effects Fallback (only where CSS view-timeline isn't supported)
+      if (
+        !CSS.supports('(animation-timeline: view()) and (animation-range: entry)') &&
+        !prefersReducedMotion.matches
+      ) {
+        const slideAnimations = new Map<HTMLElement, Animation>();
+        slides.forEach((slide) => {
+          const anim = slide.animate(
+            [
+              { transform: 'scale(0.93)', opacity: 0.72 },
+              { transform: 'scale(1)', opacity: 1 },
+              { transform: 'scale(0.93)', opacity: 0.72 }
+            ],
+            { duration: 1, fill: 'both' }
+          );
+          anim.pause();
+          slideAnimations.set(slide, anim);
+        });
+
+        const updateFallbackSlideFX = () => {
+          const scrollerRect = track.getBoundingClientRect();
+          if (scrollerRect.width <= 0) return;
+          slides.forEach((slide) => {
+            const anim = slideAnimations.get(slide);
+            if (!anim) return;
+            const rect = slide.getBoundingClientRect();
+            const progress = Math.min(
+              1,
+              Math.max(0, (rect.left + rect.width / 2 - scrollerRect.left) / scrollerRect.width)
+            );
+            anim.currentTime = progress;
+          });
+        };
+
+        track.addEventListener('scroll', () => requestAnimationFrame(updateFallbackSlideFX), {
+          passive: true
+        });
+        window.addEventListener('resize', updateFallbackSlideFX, { passive: true });
+        requestAnimationFrame(updateFallbackSlideFX);
+      }
+
+      // Autoplay Control & Progress Synchronization
+      function restartProgressVisual() {
+        if (!progressBar) return;
+        progressBar.classList.remove('is-running', 'is-paused');
+        void progressBar.offsetWidth; // Reflow to restart linear bar cleanly
+        if (!userPaused) {
+          progressBar.classList.add('is-running');
+          if (tempPaused) {
+            progressBar.classList.add('is-paused');
+          }
+        }
+      }
+
+      function scheduleAutoSlide() {
+        if (autoTimer !== null) {
+          window.clearInterval(autoTimer);
+          autoTimer = null;
+        }
+        if (userPaused || tempPaused || document.visibilityState === 'hidden') {
+          if (progressBar) progressBar.classList.add('is-paused');
+          return;
+        }
+        restartProgressVisual();
+        autoTimer = window.setInterval(() => {
+          if (!userPaused && !tempPaused && document.visibilityState === 'visible') {
+            handlePrevNext('next', false);
+          }
+        }, AUTO_INTERVAL_MS);
+      }
+
+      function updateAutoplayUI() {
+        if (autoplayBtn) {
+          autoplayBtn.setAttribute('aria-label', userPaused ? 'Play auto-slide' : 'Pause auto-slide');
+          if (pauseIcon && playIcon) {
+            pauseIcon.classList.toggle('hidden', userPaused);
+            pauseIcon.classList.toggle('inline-flex', !userPaused);
+            playIcon.classList.toggle('hidden', !userPaused);
+            playIcon.classList.toggle('inline-flex', userPaused);
+          }
+        }
+        scheduleAutoSlide();
+      }
+
+      autoplayBtn?.addEventListener('click', () => {
+        userPaused = !userPaused;
+        updateAutoplayUI();
+      });
+
+      // Pause temporarily on hover, touch, or keyboard focus inside carousel
+      root.addEventListener('pointerenter', () => {
+        tempPaused = true;
+        scheduleAutoSlide();
+      });
+      root.addEventListener('pointerleave', () => {
+        tempPaused = false;
+        scheduleAutoSlide();
+      });
+      root.addEventListener('focusin', () => {
+        tempPaused = true;
+        scheduleAutoSlide();
+      });
+      root.addEventListener('focusout', (e) => {
+        if (!root.contains(e.relatedTarget as Node | null)) {
+          tempPaused = false;
+          scheduleAutoSlide();
+        }
+      });
+
+      track.addEventListener(
+        'pointerdown',
+        () => {
+          userInteractedForStatus = true;
+        },
+        { passive: true }
+      );
+
+      document.addEventListener('visibilitychange', () => {
+        scheduleAutoSlide();
+      });
+
+      prefersReducedMotion.addEventListener('change', (e) => {
+        if (e.matches) {
+          userPaused = true;
+          updateAutoplayUI();
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initIndustriesCarousel);
+  } else {
+    initIndustriesCarousel();
+  }
+</script>
