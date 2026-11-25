@@ -3,8 +3,6 @@ import {
   ArrowRight,
   ChevronLeft,
   ChevronRight,
-  Pause,
-  Play,
   Wheat,
   Sprout,
   Droplets,
@@ -130,38 +128,15 @@ const industries = [
       aria-label="Industries we serve"
       data-industries-carousel
     >
-      <!-- Carousel Controls Toolbar (DOM-ordered before track) -->
-      <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
-        <div class="flex items-center gap-3">
-          <button
-            type="button"
-            class="autoplay-toggle inline-flex items-center gap-2 min-h-[40px] px-4 py-2 rounded-full bg-surface-light hover:bg-slate-100 border border-slate-200 text-navy-900 font-heading font-semibold text-xs tracking-wide transition-all duration-200 shadow-2xs"
-            data-autoplay-toggle
-            aria-label="Pause auto-slide"
-          >
-            <span class="autoplay-icon-pause inline-flex items-center gap-1.5">
-              <Pause className="w-3.5 h-3.5 text-teal" />
-              <span>Pause</span>
-            </span>
-            <span class="autoplay-icon-play hidden items-center gap-1.5">
-              <Play className="w-3.5 h-3.5 text-gold-dark" />
-              <span>Play</span>
-            </span>
-          </button>
-
-          <span class="hidden sm:inline-flex items-center gap-2 text-xs text-slate-500">
-            <span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" aria-hidden="true"></span>
-            <span>Hover or focus any card for details</span>
-          </span>
-        </div>
-
-        <!-- Prev / Next Navigation Buttons -->
-        <div class="industries-controls flex items-center gap-2.5">
+      <!-- Scrollable Track Stage -->
+      <div class="relative">
+        <!-- Left & Right Center-Aligned Overlay Arrow Controls (DOM-ordered before track) -->
+        <div class="industries-controls pointer-events-none absolute inset-y-0 left-0 right-0 z-20 flex items-center justify-between px-1 sm:px-2 lg:-mx-5">
           <button
             type="button"
             data-direction="previous"
             aria-label="Previous industry"
-            class="carousel-nav-btn w-11 h-11 rounded-full bg-white hover:bg-navy-900 text-navy-900 hover:text-gold border border-slate-200 hover:border-navy-900 shadow-sm flex items-center justify-center transition-all duration-200"
+            class="carousel-nav-btn pointer-events-auto w-11 h-11 rounded-full bg-white/95 hover:bg-navy-900 text-navy-900 hover:text-gold border border-slate-200/90 hover:border-navy-900 shadow-lg backdrop-blur-md flex items-center justify-center transition-all duration-200"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
@@ -169,15 +144,12 @@ const industries = [
             type="button"
             data-direction="next"
             aria-label="Next industry"
-            class="carousel-nav-btn w-11 h-11 rounded-full bg-white hover:bg-navy-900 text-navy-900 hover:text-gold border border-slate-200 hover:border-navy-900 shadow-sm flex items-center justify-center transition-all duration-200"
+            class="carousel-nav-btn pointer-events-auto w-11 h-11 rounded-full bg-white/95 hover:bg-navy-900 text-navy-900 hover:text-gold border border-slate-200/90 hover:border-navy-900 shadow-lg backdrop-blur-md flex items-center justify-center transition-all duration-200"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
         </div>
-      </div>
 
-      <!-- Scrollable Track Stage -->
-      <div class="relative">
         <div
           class="industries-track"
           tabindex="0"
@@ -281,21 +253,13 @@ const industries = [
       <!-- Accessible Polite Live Region -->
       <p class="visually-hidden" role="status" aria-live="polite" data-carousel-status></p>
 
-      <!-- Markers + Auto-Slide Progress Strip -->
-      <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <!-- Centered Selection Dots -->
+      <div class="mt-6 flex items-center justify-center">
         <nav
           class="industries-markers flex items-center justify-center gap-1.5"
           aria-label="Choose an industry slide"
           data-carousel-markers
         ></nav>
-
-        <!-- Auto-Slide Rhythm Progress Bar -->
-        <div class="hidden sm:flex items-center gap-3 text-xs text-slate-400">
-          <span class="font-mono text-[11px]" data-slide-counter>01 / 0{industries.length}</span>
-          <div class="w-28 h-1 rounded-full bg-slate-200 overflow-hidden" aria-hidden="true">
-            <div class="autoplay-progress-bar h-full bg-gradient-to-r from-teal to-gold origin-left" data-autoplay-progress></div>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -538,14 +502,12 @@ const industries = [
   }
 
   /* Natural Interaction Press & Focus Styles */
-  .carousel-nav-btn,
-  .autoplay-toggle {
+  .carousel-nav-btn {
     touch-action: manipulation;
   }
 
-  .carousel-nav-btn:active,
-  .autoplay-toggle:active {
-    transform: scale(0.96);
+  .carousel-nav-btn:active {
+    transform: scale(0.95);
   }
 
   .industries-carousel :is(button, a, [tabindex]):focus-visible {
@@ -553,7 +515,7 @@ const industries = [
     outline-offset: 3px;
   }
 
-  /* Carousel Marker Buttons (>= 28x28px hit target via padding + background-clip) */
+  /* Carousel Marker Buttons (>= 28x28px hit target via padding) */
   :global(.industry-marker-btn) {
     display: inline-flex;
     align-items: center;
@@ -590,28 +552,6 @@ const industries = [
     background-color: #C8A45D;
     box-shadow: 0 0 0 2px rgba(16, 43, 70, 0.2);
   }
-
-  /* Autoplay Progress Keyframe */
-  @keyframes autoplayFill {
-    from {
-      transform: scaleX(0);
-    }
-    to {
-      transform: scaleX(1);
-    }
-  }
-
-  .autoplay-progress-bar {
-    transform: scaleX(0);
-  }
-
-  .autoplay-progress-bar.is-running {
-    animation: autoplayFill 4500ms linear forwards;
-  }
-
-  .autoplay-progress-bar.is-paused {
-    animation-play-state: paused;
-  }
 </style>
 
 <script>
@@ -627,11 +567,6 @@ const industries = [
       const nextBtn = root.querySelector<HTMLButtonElement>('[data-direction="next"]');
       const markersNav = root.querySelector<HTMLElement>('[data-carousel-markers]');
       const statusEl = root.querySelector<HTMLElement>('[data-carousel-status]');
-      const counterEl = root.querySelector<HTMLElement>('[data-slide-counter]');
-      const autoplayBtn = root.querySelector<HTMLButtonElement>('[data-autoplay-toggle]');
-      const pauseIcon = autoplayBtn?.querySelector<HTMLElement>('.autoplay-icon-pause');
-      const playIcon = autoplayBtn?.querySelector<HTMLElement>('.autoplay-icon-play');
-      const progressBar = root.querySelector<HTMLElement>('[data-autoplay-progress]');
 
       if (!track || !markersNav) return;
 
@@ -708,9 +643,6 @@ const industries = [
         slides.forEach((slide, i) => {
           slide.dataset.active = i === domIdx ? 'true' : 'false';
         });
-        if (counterEl) {
-          counterEl.textContent = `0${domIdx + 1} / 0${count}`;
-        }
       };
 
       const updateParking = (targetDomIdx: number, allowOverflowLock: boolean) => {
@@ -849,8 +781,6 @@ const industries = [
           heldDirection = null;
           handlePrevNext(dir, true);
         }
-
-        restartProgressVisual();
       };
 
       // Initial silent layout & parking sync (start explicitly at Slide 0)
@@ -869,7 +799,7 @@ const industries = [
           track.scrollLeft += centerDelta;
           track.style.scrollBehavior = prevBehavior;
         }
-        updateAutoplayUI();
+        scheduleAutoSlide();
       });
 
       // Throttled live marker sync on native scroll
@@ -952,53 +882,21 @@ const industries = [
         requestAnimationFrame(updateFallbackSlideFX);
       }
 
-      // Autoplay Control & Progress Synchronization
-      function restartProgressVisual() {
-        if (!progressBar) return;
-        progressBar.classList.remove('is-running', 'is-paused');
-        void progressBar.offsetWidth; // Reflow to restart linear bar cleanly
-        if (!userPaused) {
-          progressBar.classList.add('is-running');
-          if (tempPaused) {
-            progressBar.classList.add('is-paused');
-          }
-        }
-      }
-
+      // Autoplay Synchronization
       function scheduleAutoSlide() {
         if (autoTimer !== null) {
           window.clearInterval(autoTimer);
           autoTimer = null;
         }
         if (userPaused || tempPaused || document.visibilityState === 'hidden') {
-          if (progressBar) progressBar.classList.add('is-paused');
           return;
         }
-        restartProgressVisual();
         autoTimer = window.setInterval(() => {
           if (!userPaused && !tempPaused && document.visibilityState === 'visible') {
             handlePrevNext('next', false);
           }
         }, AUTO_INTERVAL_MS);
       }
-
-      function updateAutoplayUI() {
-        if (autoplayBtn) {
-          autoplayBtn.setAttribute('aria-label', userPaused ? 'Play auto-slide' : 'Pause auto-slide');
-          if (pauseIcon && playIcon) {
-            pauseIcon.classList.toggle('hidden', userPaused);
-            pauseIcon.classList.toggle('inline-flex', !userPaused);
-            playIcon.classList.toggle('hidden', !userPaused);
-            playIcon.classList.toggle('inline-flex', userPaused);
-          }
-        }
-        scheduleAutoSlide();
-      }
-
-      autoplayBtn?.addEventListener('click', () => {
-        userPaused = !userPaused;
-        updateAutoplayUI();
-      });
 
       // Pause temporarily on hover, touch, or keyboard focus inside carousel
       root.addEventListener('pointerenter', () => {
@@ -1033,10 +931,8 @@ const industries = [
       });
 
       prefersReducedMotion.addEventListener('change', (e) => {
-        if (e.matches) {
-          userPaused = true;
-          updateAutoplayUI();
-        }
+        userPaused = e.matches;
+        scheduleAutoSlide();
       });
     });
   }
