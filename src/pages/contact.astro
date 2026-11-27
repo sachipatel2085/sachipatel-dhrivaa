@@ -49,7 +49,7 @@ const pageDescription = 'Get in touch with DHRIVAA’s agricultural commodity so
           
           <div class="bg-white rounded-2xl p-8 border border-slate-200/90 shadow-card hover:shadow-premium hover-lift transition-all duration-300 space-y-6">
             <h2 class="font-heading font-bold text-xl text-navy-900 border-b border-slate-100 pb-4">
-              Trade Coordination Desk
+              Contact Info
             </h2>
 
             <!-- Contact List -->
@@ -59,10 +59,18 @@ const pageDescription = 'Get in touch with DHRIVAA’s agricultural commodity so
                 <div class="icon-box-interactive w-10 h-10 rounded-xl bg-navy-900 text-teal flex items-center justify-center flex-shrink-0 shadow-sm">
                   <MapPin className="w-5 h-5" />
                 </div>
-                <div>
-                  <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block">Sourcing Location</span>
-                  <p class="font-semibold text-navy-900 text-base mt-0.5">{companyData.location}</p>
-                  <p class="text-xs text-slate-500 mt-0.5">Gateway to Mundra &amp; Kandla Seaports</p>
+                <div class="space-y-1">
+                  <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block">Office Address</span>
+                  <p class="font-semibold text-navy-900 text-sm leading-relaxed mt-0.5">{companyData.address}</p>
+                  <a
+                    href={companyData.mapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1 text-xs font-medium text-teal hover:text-gold-dark transition-colors"
+                  >
+                    <span>Open Location in Google Maps</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
                 </div>
               </div>
 

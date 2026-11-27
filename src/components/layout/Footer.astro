@@ -1,8 +1,8 @@
 ---
 import Logo from '../common/Logo.astro';
 import { companyData } from '../../data/company';
-import { footerQuickLinks, footerProductLinks, footerServiceLinks, footerResourceLinks, footerLegalLinks } from '../../data/navigation';
-import { Mail, Phone, MapPin, MessageSquare, ArrowUpRight, ShieldCheck, BookOpen, FileCheck, Linkedin, Instagram } from 'lucide-react';
+import { footerQuickLinks, footerProductLinks, footerLegalLinks } from '../../data/navigation';
+import { Mail, Phone, MapPin, MessageSquare, ArrowUpRight, ShieldCheck, Linkedin, Instagram } from 'lucide-react';
 
 const currentYear = new Date().getFullYear();
 ---
@@ -96,36 +96,46 @@ const currentYear = new Date().getFullYear();
         </ul>
       </div>
 
-      <!-- Col 3: Buyer Resources & Intelligence (3 cols) -->
+
+      <!-- Col 3: Quick Links (Navbar Pages) (3 cols) -->
       <div class="lg:col-span-3 space-y-4">
-        <h3 class="font-heading text-xs font-bold uppercase tracking-widest text-gold flex items-center gap-1.5">
-          <span>Buyer Resources</span>
+        <h3 class="font-heading text-xs font-bold uppercase tracking-widest text-gold">
+          Quick Links
         </h3>
         <ul class="space-y-2.5 text-sm" role="list">
-          {footerResourceLinks.map((link) => (
+          {footerQuickLinks.map((link) => (
             <li>
               <a
                 href={link.href}
-                class="text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-200 block text-xs leading-relaxed"
+                class="text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-1 group"
               >
-                {link.label}
+                <span>{link.label}</span>
+                <ArrowUpRight className="w-3 h-3 text-slate-600 group-hover:text-gold opacity-0 group-hover:opacity-100 transition-all duration-200" />
               </a>
             </li>
           ))}
         </ul>
       </div>
 
-      <!-- Col 4: Contact & Geographic Hub (3 cols) -->
+      <!-- Col 4: Contact Info & Geographic Hub (3 cols) -->
       <div class="lg:col-span-3 space-y-4">
         <h3 class="font-heading text-xs font-bold uppercase tracking-widest text-gold">
-          Trade Coordination
+          Contact Info
         </h3>
         <div class="space-y-3 text-sm text-slate-400">
           <div class="flex items-start gap-3">
             <MapPin className="w-4 h-4 text-teal flex-shrink-0 mt-1" />
-            <div>
-              <p class="text-slate-200 font-medium">{companyData.location}</p>
-              <p class="text-xs text-slate-500 mt-0.5">Mundra & Kandla Seaport Corridor</p>
+            <div class="space-y-1">
+              <p class="text-slate-200 font-medium text-xs leading-relaxed">{companyData.address}</p>
+              <a
+                href={companyData.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1 text-[11px] text-teal hover:text-gold transition-colors"
+              >
+                <span>View on Google Maps</span>
+                <ArrowUpRight className="w-3 h-3" />
+              </a>
             </div>
           </div>
 

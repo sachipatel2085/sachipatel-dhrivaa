@@ -8,6 +8,8 @@ export interface CompanyInfo {
   tagline: string;
   legalEntity: string;
   location: string;
+  address: string;
+  mapUrl: string;
   region: string;
   targetMarkets: string[];
   email: string;
@@ -24,6 +26,8 @@ export const companyData: CompanyInfo = {
   tagline: 'Global Trade Partner',
   legalEntity: 'DHRIVAA – Global Trade Partner',
   location: 'Gujarat, India',
+  address: '8, Patel Fali, Fojivada, Sabarkantha, Gujarat, 383305',
+  mapUrl: 'https://share.google/8pHDKtmW56Xg3FizK',
   region: 'Western India Agro Corridor',
   targetMarkets: [
     'United Arab Emirates (UAE)',
